@@ -25,6 +25,10 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
+            
+            <div class="row"> <!-- Start Foundation row -->
+                
+                
 		<div class="site-branding">
 			<?php if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -38,6 +42,10 @@
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'jin' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
+                
+                
+            </div> <!-- End Foundation row --> 
+            
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->

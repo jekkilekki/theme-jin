@@ -147,23 +147,23 @@ add_action( 'wp_enqueue_scripts', 'jin_scripts' );
  * 
  * @link: http://wordpress.tv/2014/06/11/steve-zehngut-build-a-wordpress-theme-with-foundation-and-underscores/
  * @link: http://wordpress.tv/2014/03/31/steve-zehngut-theme-development-with-foundation-framework/
- * @link: http://www.justinfriebel.com/wordpress-underscores-with-the-foundation-framework-116/
+ * @link: http://www.justinfriebel.com/wordpress-underscores-with-the-foundation-framework-09-23-2014/
  * 
-
+ */
 function jin_foundation_enqueue() {
     
-        /* Add Foundation 5.5 CSS 
+        /* Add Foundation 5.5 CSS */
         wp_enqueue_style( 'foundation-normalize', get_stylesheet_directory_uri() . '/foundation/css/normalize.css' );           // Underscores has its own normalize.css, so this is layered on top
-        wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/foundation/css/foundation.css', array(), 'all' );    // This is the Foundation CSS
+        wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/foundation/css/foundation.css' );    // This is the Foundation CSS
         
         /* Add Custom CSS 
         wp_enqueue_style( 'jin-custom-style', get_stylesheet_directory_uri() . '/jin.css' );
         
-        /* Add Foundation JS 
+        /* Add Foundation JS */
         wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/foundation/js/foundation.min.js', array( 'jquery' ), true );
         wp_enqueue_script( 'foundation-modernizr-js', get_template_directory_uri() . '/foundation/js/vendor/modernizr.js', array( 'jquery' ), true );     // This specifically enqueues modernizr.js which had been unenqueued when doing this using Foundation 5.2
         
-        /* Foundation Init JS 
+        /* Foundation Init JS */
         wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
 }
@@ -171,7 +171,7 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
 
 /**
  * Modify Underscores nav menus to work with Foundation
- 
+ */
 function jin_nav_menu( $menu ) {
     
     $menu = str_replace( 'menu-item-has-children', 'menu-item-has-children has-dropdown', $menu );
@@ -180,7 +180,7 @@ function jin_nav_menu( $menu ) {
     
 }
 add_filter( 'wp_nav_menu', 'jin_nav_menu' );
-*/
+
 
 /**
  * Implement the Custom Header feature.

@@ -14,7 +14,9 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+<!-- <div class="row post-listing-padding" data-equalizer> <!-- Foundation .row start -->
+
+	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch> <!-- Foundation .columns start -->
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
@@ -24,10 +26,13 @@ get_header(); ?>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
 			<?php endif; ?>
+                    
+                        <ul class="large-block-grid-2"> <!-- Foundation block grid start -->
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
-
+                                
+                            <li> <!-- Foundation block grid item start -->
 				<?php
 
 					/*
@@ -37,8 +42,11 @@ get_header(); ?>
 					 */
 					get_template_part( 'template-parts/content', get_post_format() );
 				?>
+                            </li> <!-- Foundation block grid item end -->
 
 			<?php endwhile; ?>
+                            
+                        </ul> <!-- Foundation block grid end -->
 
 			<?php the_posts_navigation(); ?>
 
@@ -49,7 +57,9 @@ get_header(); ?>
 		<?php endif; ?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div><!-- #primary Foundation .columns end -->
+
+<!-- </div> <!-- Foundation .row end -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

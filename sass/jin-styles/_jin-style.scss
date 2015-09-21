@@ -18,3 +18,276 @@ ul, ol {
 }
 
 @include htags();
+
+// Temp color guides
+
+.site-header {
+    @include guide;
+}
+
+.hentry, 
+.comments-area, 
+.page-header, 
+.site-main .posts-navigation,
+.site-main .post-navigation,
+.paging-navigation {
+    @include guide;
+}
+
+.widget {
+    @include guide;
+}
+
+.site-footer {
+    @include guide;
+}
+
+// content of layout/content-sidebar pasted here for easier modification
+
+.content-area {
+    //float: left;
+    margin: 0 (-$size__site-sidebar) 0 0;
+    //width: $size__site-main;
+}
+
+.site-main {
+    margin: 0 $size__site-sidebar 0 0;
+}
+
+.site-content .widget-area {
+    //float: right;
+    //overflow: hidden;
+    //width: $size__site-sidebar;
+}
+
+.site-footer {
+    clear: both;
+    //width: $size__site-main;
+}
+
+// **-----
+// CUSTOM STYLES
+// **-----
+
+// Site wrapper
+.site {
+    padding-top: $default_gutter / 2;
+}
+
+// Header
+.site-header {
+    //max-width: total_site_width();
+    margin: $default_gutter/2 auto $default_gutter auto;
+}
+
+.site-branding {
+    padding-left: $phi * 1rem;
+    padding-top: $phi * 1rem;
+    padding-bottom: $phi * 1rem;
+    //font-size: 0.5em;
+    float: left;
+}
+
+.site-title {
+    font-weight: 700;
+}
+
+.site-title, .site-description {
+    margin: 0;
+    line-height: 1em;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.site-description {
+    margin-left: 0.5em;
+    font-style: italic;
+}
+
+// Content
+.site-content {
+    //max-width: total_site_width();
+    margin: $default_gutter auto 0 auto;
+}
+
+//*** Posts and pages
+
+// (hentry class covers both) plus their internal elements
+.hentry,
+.comments-area, 
+.page-header,
+.site-main .posts-navigation,
+.site-main .post-navigation,
+.paging-navigation {
+    padding-left: $post_l_padding;
+    padding-right: $post_r_padding;
+    padding-top: $post_t_padding;
+    padding-bottom: $post_b_padding;
+    margin: 0 0 $default_gutter 0;
+}
+
+// Centers category headers
+.page-header,
+.page-title {
+    //text-align: center;
+}
+
+//**** Individual post styling
+.entry-content {
+    a img {
+        // prevent gap below linked image
+        vertical-align: bottom;
+    }
+}
+
+// Center the post's title 
+.entry-header {
+    text-align: center;
+}
+
+.entry-title {
+    margin: 0;
+    margin-bottom: $post_t_padding;
+}
+
+.entry-meta {
+    display: inline-block;
+    font-size: 18*$px;
+    font-weight: 300;
+    padding: 0.8em 1.2em;
+    margin-bottom: $default_gutter;
+}
+
+.entry-footer {
+    text-align: center;
+    margin: $post_b_padding 0 $post_b_padding / $phi 0;
+    line-height: 3em;
+    span {
+        margin: 0 0.618em;
+        padding: 0 0.618em;
+        display: inline-block;
+    }
+}
+
+.comment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .comment {
+        padding: $default_gutter;
+    }
+}
+
+//**** Widgets
+.widget {
+    padding-left: $widget_l_padding;
+    padding-right: $widget_r_padding;
+    padding-top: $widget_t_padding;
+    padding-bottom: $widget_b_padding;
+    margin-left: 0;
+    margin-bottom: $default-gutter;
+}
+
+.widget ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+        padding: 0.75em 0 0.5em 2em;
+        border-bottom: 1px dotted silver;
+        &.page_item_has_children,
+        &.menu-item-has-children {
+            padding-bottom: 0;
+            //border: none;
+        }
+        // Prevent excessive, layout breaking nesting indentation levels
+        li li li {
+            padding-left: 0;
+        }
+    }
+    .children li:first-of-type, 
+    .sub-menu li:first-of-type {
+        margin-top: 0.5em;
+    }
+    li:last-child {
+        border: none;
+    }
+}
+
+input.search-field {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+// Footer
+.site-footer {
+    padding-top: $phi * 1em;
+    padding-bottom: $phi * 1em;
+    //max-width: total_site_width();
+    margin: 0 auto;
+}
+
+// Temp basic menu, to be replaced later
+.main-navigation {
+    clear: none;
+    float: none;
+    width: auto;
+    ul {
+        float: right;
+        padding: 0 1em;
+        li {
+            float: left;
+            a {
+                padding: $phi * 1rem;
+            }
+            ul {
+                display: none;
+            }
+        }
+    }
+}
+
+.menu-toggle {
+    float: right;
+    margin: $phi * 1rem;
+}
+
+//**** Responsive layout adjustments
+
+@media (max-width: total_site_width()) {
+    
+    // Output headings at smaller size
+    @include htags(0.9);
+    
+    // redeclare variables to be smaller
+    $default_h_padding: $phi * $phi * 1rem;
+    $default_v_padding: $default_h_padding;
+
+    // Posts and widgets horizontal padding
+    $post_l_padding: $default_h_padding;
+    $post_r_padding: $post_l_padding;
+
+    // Posts and widgets vertical padding
+    $post_t_padding: $default_h_padding / $phi;
+    $post_b_padding: $post_t_padding;
+    
+    .hentry,
+    .comments-area, 
+    .page-header,
+    .site-main .posts-navigation,
+    .site-main .post-navigation,
+    .paging-navigation {
+        padding-left: $post_l_padding;
+        padding-right: $post_r_padding;
+        padding-top: $post_t_padding;
+        padding-bottom: $post_b_padding;
+    }
+    
+    .entry-title {
+        margin-bottom: $post_t_padding;
+    }
+    
+    .site-footer {
+        padding: $phi * 1em;
+    }
+}

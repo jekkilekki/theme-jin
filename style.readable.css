@@ -45,7 +45,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # JIN Custom vars & mixins
 --------------------------------------------------------------*/
-@import url("//fonts.googleapis.com/css?family=Lato:300,400,600,700,900");
+@import url("//fonts.googleapis.com/css?family=Khula");
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -274,7 +274,7 @@ input,
 select,
 textarea {
   color: #404040;
-  font-family: Lato, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.618em;
@@ -546,7 +546,7 @@ a:hover, a:active {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 50.0896rem) {
   .menu-toggle {
     display: none;
   }
@@ -836,7 +836,7 @@ a {
 }
 
 blockquote {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 ul, ol {
@@ -845,7 +845,7 @@ ul, ol {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Lato, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   line-height: 1.313em;
   font-weight: 300;
 }
@@ -882,4 +882,255 @@ h6 {
 
 .widget-title {
   font-size: 1.313em;
+}
+
+.site-header {
+  background: #f6f6f6;
+}
+
+.hentry,
+.comments-area,
+.page-header,
+.site-main .posts-navigation,
+.site-main .post-navigation,
+.paging-navigation {
+  background: #f6f6f6;
+}
+
+.widget {
+  background: #f6f6f6;
+}
+
+.site-footer {
+  background: #f6f6f6;
+}
+
+.content-area {
+  margin: 0 0% 0 0;
+}
+
+.site-main {
+  margin: 0 0% 0 0;
+}
+
+.site-footer {
+  clear: both;
+}
+
+.site {
+  padding-top: 0.809rem;
+}
+
+.site-header {
+  margin: 0.809rem auto 1.618rem auto;
+}
+
+.site-branding {
+  padding-left: 1.618rem;
+  padding-top: 1.618rem;
+  padding-bottom: 1.618rem;
+  float: left;
+}
+
+.site-title {
+  font-weight: 700;
+}
+
+.site-title, .site-description {
+  margin: 0;
+  line-height: 1em;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.site-description {
+  margin-left: 0.5em;
+  font-style: italic;
+}
+
+.site-content {
+  margin: 1.618rem auto 0 auto;
+}
+
+.hentry,
+.comments-area,
+.page-header,
+.site-main .posts-navigation,
+.site-main .post-navigation,
+.paging-navigation {
+  padding-left: 4.2358rem;
+  padding-right: 4.2358rem;
+  padding-top: 2.61792rem;
+  padding-bottom: 2.61792rem;
+  margin: 0 0 1.618rem 0;
+}
+
+.entry-content a img {
+  vertical-align: bottom;
+}
+
+.entry-header {
+  text-align: center;
+}
+
+.entry-title {
+  margin: 0;
+  margin-bottom: 2.61792rem;
+}
+
+.entry-meta {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0.8em 1.2em;
+  margin-bottom: 1.618rem;
+}
+
+.entry-footer {
+  text-align: center;
+  margin: 2.61792rem 0 1.618rem 0;
+  line-height: 3em;
+}
+.entry-footer span {
+  margin: 0 0.618em;
+  padding: 0 0.618em;
+  display: inline-block;
+}
+
+.comment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.comment-list .comment {
+  padding: 1.618rem;
+}
+
+.widget {
+  padding-left: 2.61792rem;
+  padding-right: 2.61792rem;
+  padding-top: 2.61792rem;
+  padding-bottom: 2.61792rem;
+  margin-left: 0;
+  margin-bottom: 1.618rem;
+}
+
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.widget ul li {
+  padding: 0.75em 0 0.5em 2em;
+  border-bottom: 1px dotted silver;
+}
+.widget ul li.page_item_has_children, .widget ul li.menu-item-has-children {
+  padding-bottom: 0;
+}
+.widget ul li li li li {
+  padding-left: 0;
+}
+.widget ul .children li:first-of-type,
+.widget ul .sub-menu li:first-of-type {
+  margin-top: 0.5em;
+}
+.widget ul li:last-child {
+  border: none;
+}
+
+input.search-field {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.site-footer {
+  padding-top: 1.618em;
+  padding-bottom: 1.618em;
+  margin: 0 auto;
+}
+
+.main-navigation {
+  clear: none;
+  float: none;
+  width: auto;
+}
+.main-navigation ul {
+  float: right;
+  padding: 0 1em;
+}
+.main-navigation ul li {
+  float: left;
+}
+.main-navigation ul li a {
+  padding: 1.618rem;
+}
+.main-navigation ul li ul {
+  display: none;
+}
+
+.menu-toggle {
+  float: right;
+  margin: 1.618rem;
+}
+
+@media (max-width: 50.0896rem) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    line-height: 1.313em;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-size: 2.7em;
+    margin: 0.563em 0;
+  }
+
+  h2 {
+    font-size: 2.025em;
+    margin: 0.625em 0;
+  }
+
+  h3 {
+    font-size: 1.35em;
+    margin: 1.313em 0;
+  }
+
+  h4 {
+    font-size: 1.1817em;
+    margin: 1.313em 0;
+  }
+
+  h5 {
+    font-size: 1.0125em;
+    margin: 1.313em 0;
+  }
+
+  h6 {
+    font-size: 1em;
+    margin: 0.75em 0;
+  }
+
+  .widget-title {
+    font-size: 1.1817em;
+  }
+
+  .hentry,
+  .comments-area,
+  .page-header,
+  .site-main .posts-navigation,
+  .site-main .post-navigation,
+  .paging-navigation {
+    padding-left: 2.61792rem;
+    padding-right: 2.61792rem;
+    padding-top: 1.618rem;
+    padding-bottom: 1.618rem;
+  }
+
+  .entry-title {
+    margin-bottom: 1.618rem;
+  }
+
+  .site-footer {
+    padding: 1.618em;
+  }
 }

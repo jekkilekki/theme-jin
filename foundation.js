@@ -1,11 +1,14 @@
 /*jslint browser: true*/
 /*global $, jQuery*/
- 
-jQuery(document).ready(function ($) {
-  'use strict';
+(function($) {
+    $(document).ready(function() {
 	$(document).foundation();
+    })
+}(jQuery));
 
-   $('#featured-slider').slick({
+
+
+//  $('#featured-slider').slick({
        // All the defaults
 //       accessibility: true,
 //       adaptiveHeight: false,
@@ -20,7 +23,7 @@ jQuery(document).ready(function ($) {
 //       centerPadding: '50px',
 //       cssEase: 'ease',
 //       customPaging: '',
-         dots: true,
+//         dots: true,
 //       draggable: true,
 //       fade: false,
 //       focusOnSelect: false,
@@ -46,5 +49,4 @@ jQuery(document).ready(function ($) {
 //       variableWidth: false,
 //       vertical: false,
 //       rtl: false,
-   });
-});
+//   });
