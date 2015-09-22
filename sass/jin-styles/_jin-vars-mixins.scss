@@ -9,7 +9,7 @@ $px: ( 1 / $base_font_size ) * 1rem;
 
 // Post and widget column settings
 $readable_width: 40rem;
-$default_gutter: $phi * 1rem;
+$default_gutter: $phi * 1.25rem;
 // 0.3 means sidebar will be 30% width
 $small_col: 0;
 
@@ -33,7 +33,7 @@ $widget_r_padding: $widget_l_padding;
 // Posts and widgets vertical padding
 $post_t_padding: $default_h_padding / $phi;
 $post_b_padding: $post_t_padding;
-$widget_t_padding: $default_h_padding / $phi;
+$widget_t_padding: $default_h_padding / ( $phi * $phi );
 $widget_b_padding: $widget_t_padding;
 
 
@@ -54,7 +54,8 @@ $widget_b_padding: $widget_t_padding;
 // TYPOGRAPHY
 // **-----
 
-@import url("//fonts.googleapis.com/css?family=Khula"); 
+@import url("//fonts.googleapis.com/css?family=Khula:300,400,600,700,800"); 
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
 
 // DEFAULT _S "TYPOGRAPHY" VARS
@@ -94,7 +95,7 @@ $htag_vmargins: 0.563, 0.625, 1.313, 1.313, 1.313, 0.75;
     .widget-title {
         $default: nth($htag_sizes, 4);
         $size: if( ($default * $factor) < 1, 1, $default * $factor );
-        font-size: $size * 1em;
+        font-size: $size * 1em * 0.9;
     }
 }
 
@@ -104,8 +105,8 @@ $htag_vmargins: 0.563, 0.625, 1.313, 1.313, 1.313, 0.75;
 // **-----
 
 // DEFAULT _S "COLORS" VARS
-$color__background-body: #fff;
-$color__background-screen: #f1f1f1;
+$color__background-body: #f0f0f0;
+$color__background-screen: #f0f0f0;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
@@ -114,9 +115,9 @@ $color__background-ins: #fff9c0;
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: royalblue;
-$color__link-visited: purple;
-$color__link-hover: midnightblue;
+$color__link: #00ACDF;
+$color__link-visited: rgba(109, 193, 202, 1);
+$color__link-hover: rgba(75, 135, 150, 1); // darker rgba(40, 57, 77, 1);
 $color__text-main: #404040;
 
 $color__border-button: #ccc #ccc #bbb;
@@ -126,6 +127,63 @@ $color__border-input: #ccc;
 $color__border-abbr: #666;
 // /end
 
-@mixin guide() {
-    background: #f6f6f6;
+
+// custom colors
+
+$color__box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+$color__header-box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+
+$color__background-main-panel: #fff;
+$color__border-main-panel: transparent;
+
+$color__background-sub-panel: transparent;
+$color__border-sub-panel: transparent;
+$color__text-sub-panel: gray;
+
+$color__entry_highlight: silver;
+
+// Mixins to apply coloring
+
+@mixin guide() { // Originally used as a guide, but this is the color I want for these items
+    background: #ffffff;
+}
+
+@mixin body() {
+    border-top: 2*$px solid $color__border-main-panel;
+    background-color: $color__background-body;
+}
+
+@mixin links() {
+    a {
+        text-decoration: none;
+        border-bottom: 1px dotted transparent;
+    }
+    a:hover, a:active {
+        border-bottom: 1px dotted $color__link;
+    }
+}
+
+@mixin blockquote() {
+    background-color: $color__background-sub-panel;
+    border-left: 3*$px solid $color__border-sub-panel;
+    color: $color__text-sub-panel;
+    a, a:visited, a:active {
+        color: inherit;
+    }
+}
+
+@mixin main_panel() {
+    background-color: $color__background-main-panel;
+    border: 1*$px solid $color__border-main-panel;
+    box-shadow: $color__box-shadow;
+}
+
+@mixin sub_panel() {
+    background-color: $color__background-sub-panel;
+    border: 1*$px solid $color__border-sub-panel;
+    box-shadow: inset $color__box-shadow;
+    color: $color__text-sub-panel;
+    a, a:visited, a:active {
+        color: inherit;
+    }
 }

@@ -120,3 +120,24 @@ function jin_category_transient_flusher() {
 }
 add_action( 'edit_category', 'jin_category_transient_flusher' );
 add_action( 'save_post',     'jin_category_transient_flusher' );
+
+/*==============================================================================
+ * JIN CUSTOM TAGS BELOW
+ =============================================================================*/
+/**
+ * Fancy excerpts
+ * 
+ * @link: http://wptheming.com/2015/01/excerpt-versus-content-for-archives/
+ */
+function the_fancy_excerpt() {
+    global $post;
+    if ( has_excerpt() ) :
+        the_excerpt();
+    elseif ( @strpos ( $post->post_content, '<!--more-->' ) ) :
+        the_content();
+    elseif ( str_word_count ( $post->post_content ) < 200 ) :
+        the_content();
+    else :
+        the_excerpt();
+    endif;
+}

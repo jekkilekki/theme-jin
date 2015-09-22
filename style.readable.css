@@ -45,7 +45,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # JIN Custom vars & mixins
 --------------------------------------------------------------*/
-@import url("//fonts.googleapis.com/css?family=Khula");
+@import url("//fonts.googleapis.com/css?family=Khula:300,400,600,700,800");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -347,7 +348,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #f0f0f0;
   /* Fallback for when there is no custom background color defined. */
 }
 
@@ -479,13 +480,13 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue;
+  color: #00ACDF;
 }
 a:visited {
-  color: purple;
+  color: #6dc1ca;
 }
 a:hover, a:focus, a:active {
-  color: midnightblue;
+  color: #4b8796;
 }
 a:focus {
   outline: thin dotted;
@@ -546,7 +547,7 @@ a:hover, a:active {
   display: block;
 }
 
-@media screen and (min-width: 50.0896rem) {
+@media screen and (min-width: 50.4941rem) {
   .menu-toggle {
     display: none;
   }
@@ -587,7 +588,7 @@ a:hover, a:active {
   overflow: hidden;
 }
 .screen-reader-text:focus {
-  background-color: #f1f1f1;
+  background-color: #f0f0f0;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
@@ -831,12 +832,29 @@ object {
   word-wrap: break-word;
 }
 
+body {
+  border-top: 0.1rem solid transparent;
+  background-color: #f0f0f0;
+}
+
 a {
   text-decoration: none;
+  border-bottom: 1px dotted transparent;
+}
+
+a:hover, a:active {
+  border-bottom: 1px dotted #00ACDF;
 }
 
 blockquote {
+  padding: 2.0225rem;
   font-size: 1rem;
+  background-color: transparent;
+  border-left: 0.15rem solid transparent;
+  color: gray;
+}
+blockquote a, blockquote a:visited, blockquote a:active {
+  color: inherit;
 }
 
 ul, ol {
@@ -881,11 +899,19 @@ h6 {
 }
 
 .widget-title {
-  font-size: 1.313em;
+  font-size: 1.1817em;
 }
 
 .site-header {
-  background: #f6f6f6;
+  background: #ffffff;
+  background-color: transparent;
+  border: 0.05rem solid transparent;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+  color: gray;
+  box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+}
+.site-header a, .site-header a:visited, .site-header a:active {
+  color: inherit;
 }
 
 .hentry,
@@ -894,15 +920,28 @@ h6 {
 .site-main .posts-navigation,
 .site-main .post-navigation,
 .paging-navigation {
-  background: #f6f6f6;
+  background: #ffffff;
+  background-color: #fff;
+  border: 0.05rem solid transparent;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
 .widget {
-  background: #f6f6f6;
+  background: #ffffff;
+  background-color: transparent;
+  border: 0.05rem solid transparent;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+  color: gray;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.widget a, .widget a:visited, .widget a:active {
+  color: inherit;
 }
 
 .site-footer {
-  background: #f6f6f6;
+  background: #ffffff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
 .content-area {
@@ -917,12 +956,8 @@ h6 {
   clear: both;
 }
 
-.site {
-  padding-top: 0.809rem;
-}
-
 .site-header {
-  margin: 0.809rem auto 1.618rem auto;
+  margin: 0 auto 2.0225rem auto;
 }
 
 .site-branding {
@@ -949,7 +984,7 @@ h6 {
 }
 
 .site-content {
-  margin: 1.618rem auto 0 auto;
+  margin: 3.27241rem auto 0 auto;
 }
 
 .hentry,
@@ -962,7 +997,12 @@ h6 {
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
   padding-bottom: 2.61792rem;
-  margin: 0 0 1.618rem 0;
+  margin: 0 0 2.0225rem 0;
+}
+
+.sticky {
+  border-bottom: 3px solid;
+  border-color: #00ACDF;
 }
 
 .entry-content a img {
@@ -975,7 +1015,8 @@ h6 {
 
 .entry-title {
   margin: 0;
-  margin-bottom: 2.61792rem;
+  margin-bottom: 1.34833rem;
+  font-weight: 400;
 }
 
 .entry-meta {
@@ -983,13 +1024,15 @@ h6 {
   font-size: 0.9rem;
   font-weight: 300;
   padding: 0.8em 1.2em;
-  margin-bottom: 1.618rem;
+  margin-bottom: 0;
 }
 
 .entry-footer {
   text-align: center;
-  margin: 2.61792rem 0 1.618rem 0;
-  line-height: 3em;
+  margin: 1.0rem 0 1.0rem 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  /*    line-height: 3em;*/
 }
 .entry-footer span {
   margin: 0 0.618em;
@@ -1003,16 +1046,48 @@ h6 {
   padding: 0;
 }
 .comment-list .comment {
-  padding: 1.618rem;
+  padding: 2.0225rem;
+}
+
+.cat-links:before {
+  font-family: "FontAwesome";
+  content: "\f115";
+  margin-right: 0.5em;
+}
+
+.tags-links:before {
+  font-family: "FontAwesome";
+  content: "\f02c";
+  margin-right: 0.5em;
+}
+
+.comments-link:before {
+  font-family: "FontAwesome";
+  content: "\f27b";
+  margin-right: 0.5em;
+}
+
+.edit-link:before {
+  font-family: "FontAwesome";
+  content: "\f040";
+  margin-right: 0.5em;
 }
 
 .widget {
   padding-left: 2.61792rem;
   padding-right: 2.61792rem;
-  padding-top: 2.61792rem;
-  padding-bottom: 2.61792rem;
+  padding-top: 1.618rem;
+  padding-bottom: 1.618rem;
   margin-left: 0;
-  margin-bottom: 1.618rem;
+  margin-bottom: 2.0225rem;
+}
+
+.widget-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2.0225rem;
+  margin-top: 0;
 }
 
 .widget ul {
@@ -1027,6 +1102,13 @@ h6 {
 .widget ul li.page_item_has_children, .widget ul li.menu-item-has-children {
   padding-bottom: 0;
 }
+.widget ul li:before {
+  margin-left: -2em;
+  margin-right: 1em;
+  font-family: "FontAwesome";
+  content: "\f097";
+  opacity: 0.5;
+}
 .widget ul li li li li {
   padding-left: 0;
 }
@@ -1036,6 +1118,28 @@ h6 {
 }
 .widget ul li:last-child {
   border: none;
+}
+
+.widget_recent_comments ul li:before {
+  content: "\f27b";
+}
+
+.widget_archive ul li:before {
+  content: "\f133";
+}
+
+.widget_categories ul li:before {
+  content: "\f115";
+}
+
+.widget_pages ul li:before, .widget_nav_menu ul li:before {
+  content: "\f0f6";
+}
+.widget_pages ul .children li:before, .widget_pages ul .sub-menu li:before, .widget_nav_menu ul .children li:before, .widget_nav_menu ul .sub-menu li:before {
+  content: "\f101";
+}
+.widget_pages ul .children .children li:before, .widget_pages ul .sub-menu .submenu li:before, .widget_nav_menu ul .children .children li:before, .widget_nav_menu ul .sub-menu .submenu li:before {
+  content: "\f105";
 }
 
 input.search-field {
@@ -1073,7 +1177,7 @@ input.search-field {
   margin: 1.618rem;
 }
 
-@media (max-width: 50.0896rem) {
+@media (max-width: 62.5em) {
   h1, h2, h3, h4, h5, h6 {
     font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     line-height: 1.313em;
@@ -1111,26 +1215,120 @@ input.search-field {
   }
 
   .widget-title {
-    font-size: 1.1817em;
+    font-size: 1.06353em;
   }
 
-  .hentry,
-  .comments-area,
-  .page-header,
-  .site-main .posts-navigation,
-  .site-main .post-navigation,
-  .paging-navigation {
-    padding-left: 2.61792rem;
-    padding-right: 2.61792rem;
-    padding-top: 1.618rem;
-    padding-bottom: 1.618rem;
+  /*    // redeclare variables to be smaller
+      $default_h_padding: $phi * $phi * 1rem;
+      $default_v_padding: $default_h_padding;
+  
+      // Posts and widgets horizontal padding
+      $post_l_padding: $default_h_padding;
+      $post_r_padding: $post_l_padding;
+  
+      // Posts and widgets vertical padding
+      $post_t_padding: $default_h_padding / $phi;
+      $post_b_padding: $post_t_padding;
+      
+      .hentry,
+      .comments-area, 
+      .page-header,
+      .site-main .posts-navigation,
+      .site-main .post-navigation,
+      .paging-navigation {
+          padding-left: $post_l_padding;
+          padding-right: $post_r_padding;
+          padding-top: $post_t_padding;
+          padding-bottom: $post_b_padding;
+      }
+      
+      .entry-title {
+          margin-bottom: $post_t_padding;
+      }
+      
+      .site-footer {
+          padding: $phi * 1em;
+      }*/
+}
+@media (max-width: 30rem) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    line-height: 1.313em;
+    font-weight: 300;
   }
 
-  .entry-title {
-    margin-bottom: 1.618rem;
+  h1 {
+    font-size: 2.4em;
+    margin: 0.563em 0;
   }
 
-  .site-footer {
-    padding: 1.618em;
+  h2 {
+    font-size: 1.8em;
+    margin: 0.625em 0;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin: 1.313em 0;
+  }
+
+  h4 {
+    font-size: 1.0504em;
+    margin: 1.313em 0;
+  }
+
+  h5 {
+    font-size: 1em;
+    margin: 1.313em 0;
+  }
+
+  h6 {
+    font-size: 1em;
+    margin: 0.75em 0;
+  }
+
+  .widget-title {
+    font-size: 0.94536em;
+  }
+}
+@media (max-width: 20rem) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    line-height: 1.313em;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-size: 2.1em;
+    margin: 0.563em 0;
+  }
+
+  h2 {
+    font-size: 1.575em;
+    margin: 0.625em 0;
+  }
+
+  h3 {
+    font-size: 1.05em;
+    margin: 1.313em 0;
+  }
+
+  h4 {
+    font-size: 1em;
+    margin: 1.313em 0;
+  }
+
+  h5 {
+    font-size: 1em;
+    margin: 1.313em 0;
+  }
+
+  h6 {
+    font-size: 1em;
+    margin: 0.75em 0;
+  }
+
+  .widget-title {
+    font-size: 0.9em;
   }
 }

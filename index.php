@@ -27,12 +27,12 @@ get_header(); ?>
 				</header>
 			<?php endif; ?>
                     
-                        <ul class="large-block-grid-2"> <!-- Foundation block grid start -->
+                        <!--<ul> Possible to put Foundation block grid here, messes up spacing -->
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
                                 
-                            <li> <!-- Foundation block grid item start -->
+                            <!-- <li> Foundation block grid item start -->
 				<?php
 
 					/*
@@ -42,7 +42,7 @@ get_header(); ?>
 					 */
 					get_template_part( 'template-parts/content', get_post_format() );
 				?>
-                            </li> <!-- Foundation block grid item end -->
+                            <!-- </li> Foundation block grid item end -->
 
 			<?php endwhile; ?>
                             

@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         },
         files: {  // Second Sass task (grab these files and...)
           'style.readable.css': 'sass/style.scss',  // Grab style.scss from SCSS folder and compile into 'style.css' in the root folder
+          'foundation/css/foundation.css': 'foundation/scss/foundation.scss'
         }
       },
       dist: {     // What we're shipping with the Theme (a minimized style.css)
@@ -23,6 +24,7 @@ module.exports = function(grunt) {
         },
         files: {  // Second Sass task (grab these files and...)
           'style.css': 'sass/style.scss',  // Grab style.scss from SCSS folder and compile into 'style.css' in the root folder
+          'foundation/css/foundation.min.css': 'foundation/scss/foundation.scss'
         }
       }
     },

@@ -127,22 +127,6 @@ function jin_widgets_init() {
 add_action( 'widgets_init', 'jin_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
- */
-function jin_scripts() {
-	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'jin_scripts' );
-
-/**
  * Enqueue Foundation scripts and styles.
  * 
  * @link: http://wordpress.tv/2014/06/11/steve-zehngut-build-a-wordpress-theme-with-foundation-and-underscores/
@@ -180,6 +164,23 @@ function jin_nav_menu( $menu ) {
     
 }
 add_filter( 'wp_nav_menu', 'jin_nav_menu' );
+
+
+/**
+ * Enqueue scripts and styles.
+ */
+function jin_scripts() {
+	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
+
+	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+
+	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'jin_scripts' );
 
 
 /**
