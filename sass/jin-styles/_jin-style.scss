@@ -145,8 +145,7 @@ ul, ol {
 
 //**** Individual post styling
 .sticky {
-    border-bottom: 3px solid;
-    border-color: $color__link;
+    @include sticky_post();
 }
 
 .entry-content {
@@ -154,6 +153,7 @@ ul, ol {
         // prevent gap below linked image
         vertical-align: bottom;
     }
+    @include content_link;
 }
 
 // Center the post's title 
@@ -173,11 +173,12 @@ ul, ol {
     font-weight: 300;
     padding: 0.8em 1.2em;
     margin-bottom: 0;
+    @include entry_meta();
 }
 
 .entry-footer {
     text-align: center;
-    margin: $post_b_padding / ($phi * $phi) 0 $post_b_padding / ($phi * $phi) 0; 
+    margin: $post_b_padding 0 $post_b_padding / ($phi * $phi) 0; 
     font-size: 18*$px;
     font-weight: 300;
 /*    line-height: 3em;*/
@@ -186,6 +187,7 @@ ul, ol {
         padding: 0 0.618em;
         display: inline-block;
     }
+    @include entry_footer();
 }
 
 .comment-list {
@@ -194,6 +196,7 @@ ul, ol {
     padding: 0;
     .comment {
         padding: $default_gutter;
+        @include comment();
     }
 }
 
@@ -246,7 +249,7 @@ ul, ol {
     padding: 0;
     li {
         padding: 0.75em 0 0.5em 2em;
-        border-bottom: 1px dotted silver;
+        @include widget-divider;
         &.page_item_has_children,
         &.menu-item-has-children {
             padding-bottom: 0;
@@ -259,6 +262,7 @@ ul, ol {
             font-family: "FontAwesome";
             content: "\f097";
             opacity: 0.5;
+            font-size: 18*$px;
         }
         
         // Prevent excessive, layout breaking nesting indentation levels
@@ -269,6 +273,7 @@ ul, ol {
     .children li:first-of-type, 
     .sub-menu li:first-of-type {
         margin-top: 0.5em;
+        @include widget-divider-top;
     }
     li:last-child {
         border: none;
@@ -321,32 +326,10 @@ input.search-field {
     padding-bottom: $phi * 1em;
     //max-width: total_site_width();
     margin: 0 auto;
+    @include site_footer();
 }
 
-// Temp basic menu, to be replaced later
-.main-navigation {
-    clear: none;
-    float: none;
-    width: auto;
-    ul {
-        float: right;
-        padding: 0 1em;
-        li {
-            float: left;
-            a {
-                padding: $phi * 1rem;
-            }
-            ul {
-                display: none;
-            }
-        }
-    }
-}
 
-.menu-toggle {
-    float: right;
-    margin: $phi * 1rem;
-}
 
 //**** Responsive layout adjustments
 

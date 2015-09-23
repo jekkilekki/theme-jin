@@ -45,8 +45,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # JIN Custom vars & mixins
 --------------------------------------------------------------*/
-@import url("//fonts.googleapis.com/css?family=Khula:300,400,600,700,800");
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -483,10 +481,10 @@ a {
   color: #00ACDF;
 }
 a:visited {
-  color: #6dc1ca;
+  color: #0098c6;
 }
 a:hover, a:focus, a:active {
-  color: #4b8796;
+  color: #00b8ee;
 }
 a:focus {
   outline: thin dotted;
@@ -498,62 +496,134 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-.main-navigation {
-  clear: both;
-  display: block;
-  float: left;
-  width: 100%;
+.main-navigation h1 {
+  display: none !important;
 }
 .main-navigation ul {
-  display: none;
-  list-style: none;
   margin: 0;
-  padding-left: 0;
-}
-.main-navigation ul ul {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  float: left;
-  position: absolute;
-  top: 1.5em;
-  left: -999em;
-  z-index: 99999;
-}
-.main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
-  left: 100%;
-}
-.main-navigation ul ul a {
-  width: 200px;
-}
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-  left: auto;
-}
-.main-navigation li {
-  float: left;
+  padding: 0;
+  list-style: none;
   position: relative;
+  white-space: nowrap;
 }
-.main-navigation a {
+.main-navigation ul li {
+  cursor: pointer;
+  list-style: none;
   display: block;
-  text-decoration: none;
+  position: relative;
+  padding: 0;
+  /* switch symbol for showing child */
+  /* nav child menu */
+  /* show child */
+}
+.main-navigation ul li a {
+  display: inline-block;
+}
+.main-navigation ul li span {
+  display: inline-block;
+  text-align: right;
+  width: 1.4em;
+  padding-right: 0.5em;
+  margin-left: 0.5em;
+  margin-right: -0.5em;
+}
+.main-navigation ul li ul {
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+.main-navigation ul li ul.childopen {
+  display: block;
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-  display: block;
-}
-
-@media screen and (min-width: 50.4941rem) {
-  .menu-toggle {
+/* expanded nav menu */
+@media (min-width: 50.4941rem) {
+  .navicon {
     display: none;
   }
 
-  .main-navigation ul {
+  .navmenu {
     display: block;
+  }
+
+  .main-navigation ul {
+    float: right;
+    display: inline-table;
+  }
+  .main-navigation ul li {
+    float: left;
+    /* expanded nav child menu */
+  }
+  .main-navigation ul li a {
+    padding: 1.618rem;
+  }
+  .main-navigation ul li ul {
+    position: absolute;
+    z-index: 9999;
+    top: 100%;
+    left: 0;
+    background-color: transparent;
+    border: 0.05rem solid silver;
+    border-bottom: 0;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  }
+  .main-navigation ul li ul li {
+    float: none;
+  }
+  .main-navigation ul li ul li a {
+    width: 100%;
+    line-height: 4.5rem;
+    padding: 0 2.1875rem;
+  }
+  .main-navigation ul li ul li a, .main-navigation ul li ul li a:link, .main-navigation ul li ul li a:visited {
+    border: 0;
+    border-top: 0.05rem solid #bbbbbb;
+  }
+  .main-navigation ul li ul li a:hover {
+    background-color: rgba(1, 1, 1, 0);
+  }
+}
+/* collapsed nav menu */
+@media (max-width: 50.4941rem) {
+  .navicon {
+    float: right;
+    font-size: 1.65rem;
+    line-height: 2.8125rem;
+    text-align: center;
+    width: 2.7rem;
+    margin: 0.75rem;
+    cursor: pointer;
+  }
+
+  .main-navigation ul {
+    clear: left;
+    display: none;
+    /* collapsed nav child menu */
+  }
+  .main-navigation ul.show {
+    display: block;
+  }
+  .main-navigation ul li a {
+    width: 100%;
+    line-height: 4.5rem;
+    padding: 0 2.1875rem;
+    border-top: 0.05rem solid silver;
+  }
+  .main-navigation ul li a:hover {
+    border-bottom-color: transparent;
+    background-color: transparent;
+  }
+  .main-navigation ul ul {
+    position: relative;
+    left: 0;
+    background-color: transparent;
+  }
+  .main-navigation ul ul li a {
+    border-top: 0.05rem solid darkent(silver, 2%);
+  }
+  .main-navigation ul ul li a:hover {
+    border-bottom-color: transparent;
+    background-color: transparent;
   }
 }
 .site-main .comment-navigation, .site-main
@@ -842,15 +912,11 @@ a {
   border-bottom: 1px dotted transparent;
 }
 
-a:hover, a:active {
-  border-bottom: 1px dotted #00ACDF;
-}
-
 blockquote {
   padding: 2.0225rem;
   font-size: 1rem;
   background-color: transparent;
-  border-left: 0.15rem solid transparent;
+  border-left: 0.15rem solid silver;
   color: gray;
 }
 blockquote a, blockquote a:visited, blockquote a:active {
@@ -905,7 +971,7 @@ h6 {
 .site-header {
   background: #ffffff;
   background-color: transparent;
-  border: 0.05rem solid transparent;
+  border: 0.05rem solid silver;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
   color: gray;
   box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
@@ -930,7 +996,7 @@ h6 {
 .widget {
   background: #ffffff;
   background-color: transparent;
-  border: 0.05rem solid transparent;
+  border: 0.05rem solid silver;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
   color: gray;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
@@ -1001,12 +1067,17 @@ h6 {
 }
 
 .sticky {
-  border-bottom: 3px solid;
-  border-color: #00ACDF;
+  border-bottom: 0.25rem solid #00ACDF;
 }
 
 .entry-content a img {
   vertical-align: bottom;
+}
+.entry-content a, .entry-content a:link, .entry-content a:visited {
+  border-bottom: 0.05rem dotted #00ACDF;
+}
+.entry-content a:hover, .entry-content a:active {
+  background-color: transparent;
 }
 
 .entry-header {
@@ -1025,19 +1096,32 @@ h6 {
   font-weight: 300;
   padding: 0.8em 1.2em;
   margin-bottom: 0;
+  background-color: transparent;
+  color: inherit;
+}
+.entry-meta a, .entry-meta a:visited, .entry-meta a:active {
+  color: inherit;
+}
+.entry-meta a:hover, .entry-meta a:active {
+  border-bottom: 1px dotted #00ACDF;
 }
 
 .entry-footer {
   text-align: center;
-  margin: 1.0rem 0 1.0rem 0;
+  margin: 2.61792rem 0 1.0rem 0;
   font-size: 0.9rem;
   font-weight: 300;
   /*    line-height: 3em;*/
+  color: inherit;
+  border-bottom: none;
 }
 .entry-footer span {
   margin: 0 0.618em;
   padding: 0 0.618em;
   display: inline-block;
+}
+.entry-footer span {
+  border-top: none;
 }
 
 .comment-list {
@@ -1047,6 +1131,9 @@ h6 {
 }
 .comment-list .comment {
   padding: 2.0225rem;
+  background-color: rgba(250, 250, 250, 0.05);
+  border: 0.05rem solid silver;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
 .cat-links:before {
@@ -1108,6 +1195,7 @@ h6 {
   font-family: "FontAwesome";
   content: "\f097";
   opacity: 0.5;
+  font-size: 0.9rem;
 }
 .widget ul li li li li {
   padding-left: 0;
@@ -1115,6 +1203,7 @@ h6 {
 .widget ul .children li:first-of-type,
 .widget ul .sub-menu li:first-of-type {
   margin-top: 0.5em;
+  border-top: 1px dotted silver;
 }
 .widget ul li:last-child {
   border: none;
@@ -1152,29 +1241,8 @@ input.search-field {
   padding-bottom: 1.618em;
   margin: 0 auto;
 }
-
-.main-navigation {
-  clear: none;
-  float: none;
-  width: auto;
-}
-.main-navigation ul {
-  float: right;
-  padding: 0 1em;
-}
-.main-navigation ul li {
-  float: left;
-}
-.main-navigation ul li a {
-  padding: 1.618rem;
-}
-.main-navigation ul li ul {
-  display: none;
-}
-
-.menu-toggle {
-  float: right;
-  margin: 1.618rem;
+.site-footer a {
+  color: #0098c6;
 }
 
 @media (max-width: 62.5em) {

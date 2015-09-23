@@ -54,8 +54,9 @@ $widget_b_padding: $widget_t_padding;
 // TYPOGRAPHY
 // **-----
 
-@import url("//fonts.googleapis.com/css?family=Khula:300,400,600,700,800"); 
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+// Now enqueuing fonts in functions.php
+// @import url("//fonts.googleapis.com/css?family=Khula:300,400,600,700,800"); 
+// @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
 
 
 // DEFAULT _S "TYPOGRAPHY" VARS
@@ -116,8 +117,8 @@ $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
 $color__link: #00ACDF;
-$color__link-visited: rgba(109, 193, 202, 1);
-$color__link-hover: rgba(75, 135, 150, 1); // darker rgba(40, 57, 77, 1);
+$color__link-visited: darken($color__link, 5%);
+$color__link-hover: lighten($color__link, 3%); // darker rgba(40, 57, 77, 1);
 $color__text-main: #404040;
 
 $color__border-button: #ccc #ccc #bbb;
@@ -137,7 +138,7 @@ $color__background-main-panel: #fff;
 $color__border-main-panel: transparent;
 
 $color__background-sub-panel: transparent;
-$color__border-sub-panel: transparent;
+$color__border-sub-panel: silver;
 $color__text-sub-panel: gray;
 
 $color__entry_highlight: silver;
@@ -159,7 +160,7 @@ $color__entry_highlight: silver;
         border-bottom: 1px dotted transparent;
     }
     a:hover, a:active {
-        border-bottom: 1px dotted $color__link;
+        // border-bottom: 1px dotted $color__link;
     }
 }
 
@@ -185,5 +186,92 @@ $color__entry_highlight: silver;
     color: $color__text-sub-panel;
     a, a:visited, a:active {
         color: inherit;
+    }
+}
+
+@mixin widget-divider() {
+    border-bottom: 1px dotted $color__border-sub-panel;
+}
+@mixin widget-divider-top() {
+    border-top: 1px dotted $color__border-sub-panel;
+}
+
+@mixin entry_meta() {
+    background-color: transparent;
+    color: inherit;
+    a, a:visited, a:active {
+        color: inherit;
+    }
+    a:hover, a:active {
+        border-bottom: 1px dotted $color__link;
+    }
+}
+@mixin content_link() {
+    a, a:link, a:visited {
+        border-bottom: 1*$px dotted $color__link;
+        // background-color: lighten($color__background-sub-panel, 2%);
+        // color: $color__text-main;
+    }
+    a:hover, a:active {
+        background-color: $color__background-sub-panel;
+    }
+}
+@mixin entry_footer() {
+    color: inherit;
+    border-bottom: none;
+    span {
+        border-top: none;
+    }
+}
+@mixin comment() {
+    background-color: rgba(250, 250, 250, 0.05);
+    border: 1*$px solid silver;
+    box-shadow: inset $color__box-shadow;
+}
+@mixin sticky_post() {
+    border-bottom: 5*$px solid $color__link;
+}
+@mixin site_footer() {
+    a {
+        color: darken($color__link, 5%);
+    }
+}
+
+// Menu styling
+
+@mixin child_menu_expanded() {
+    background-color: darken(saturate($color__background-sub-panel, 5%), 1%);
+    border: 1*$px solid $color__border-sub-panel;
+    border-bottom: 0;
+    box-shadow: $color__box-shadow;
+}
+
+@mixin child_menu_item() {
+    a, a:link, a:visited {
+        border: 0;
+        border-top: 1*$px solid darken($color__border-sub-panel, 2%);
+    }
+    a:hover {
+        background-color: lighten(saturate($color__background-sub-panel, 3%), 0.25%);
+    }
+}
+
+@mixin compact_menu_item() {
+    border-top: 1*$px solid $color__border-sub-panel;
+    &:hover {
+        border-bottom-color: transparent;
+        background-color: darken(saturate($color__background-sub-panel, 5%), 1%);
+    }
+}
+
+@mixin child_menu_compact() {
+    background-color: darken(saturate($color__background-sub-panel, 7%), 2%);
+}
+
+@mixin child_menu_compact_item() {
+    border-top: 1*$px solid darkent($color__border-sub-panel, 2%);
+    &:hover {
+        border-bottom-color: transparent;
+        background-color: darken(saturate($color__background-sub-panel, 8%), 3%);
     }
 }

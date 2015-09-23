@@ -45,8 +45,6 @@ function jin_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'jin' ),
-                'social'  => esc_html__( 'Social Menu', 'jin' ),
-                'footer'  => esc_html__( 'Footer Menu', 'jin' ),
 	) );
 
 	/*
@@ -67,14 +65,10 @@ function jin_setup() {
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
-                'gallery',
 		'image',
 		'video',
 		'quote',
 		'link',
-                'status',
-                'audio',
-                'chat'
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -113,49 +107,8 @@ function jin_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-        
-        register_sidebar( array(
-                'name'          => esc_html__( 'Footer Widgets', 'jin' ),
-                'id'            => 'sidebar-footer',
-                'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jin' ),
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-                'after_widget'  => '</aside>',
-                'before_title'  => '<h2 class="widget-title">',
-                'after_title'   => '</h2>',
-        ) );
 }
 add_action( 'widgets_init', 'jin_widgets_init' );
-
-/**
- * Enqueue Foundation scripts and styles.
- * 
- * @link: http://wordpress.tv/2014/06/11/steve-zehngut-build-a-wordpress-theme-with-foundation-and-underscores/
- * @link: http://wordpress.tv/2014/03/31/steve-zehngut-theme-development-with-foundation-framework/
- * @link: http://www.justinfriebel.com/wordpress-underscores-with-the-foundation-framework-09-23-2014/
- * 
- */
-function jin_foundation_enqueue() {
-    
-        /* Add Foundation 5.5 CSS */
-        wp_enqueue_style( 'foundation-normalize', get_stylesheet_directory_uri() . '/foundation/css/normalize.css' );           // Underscores has its own normalize.css, so this is layered on top
-        wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/foundation/css/foundation.css' );    // This is the Foundation CSS
-        
-        /* Add Custom CSS 
-        wp_enqueue_style( 'jin-custom-style', get_stylesheet_directory_uri() . '/jin.css' );
-        
-        /* Add Foundation JS */
-        wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/foundation/js/foundation.min.js', array( 'jquery' ), true );
-        wp_enqueue_script( 'foundation-modernizr-js', get_template_directory_uri() . '/foundation/js/vendor/modernizr.js', array( 'jquery' ), true );     // This specifically enqueues modernizr.js which had been unenqueued when doing this using Foundation 5.2
-        
-        /* Foundation Init JS */
-        wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
-        
-        /* Add Custom Fonts */
-        wp_enqueue_style( 'gfonts', '//fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
-        wp_enqueue_style( 'fawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
-        
-}
-add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
 
 /**
  * Enqueue scripts and styles.
@@ -163,8 +116,7 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
 function jin_scripts() {
 	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
 
-        /* Custom navigation script */
-	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation-custom.js', array(), '20120206', true );
+	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
@@ -173,7 +125,6 @@ function jin_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'jin_scripts' );
-
 
 /**
  * Implement the Custom Header feature.
@@ -199,27 +150,3 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-
-/**
- * -----------------------------------------------------------------------------
- * JIN custom functions below
- * -----------------------------------------------------------------------------
- */
-
-/**
- * Load Theme Options file that includes the Theme Customizer and the Theme Options page
- */
-//require get_template_directory() . '/inc/theme-options.php';
-
-/**
- * Modify Underscores nav menus to work with Foundation
- */
-function jin_nav_menu( $menu ) {
-    
-    $menu = str_replace( 'menu-item-has-children', 'menu-item-has-children has-dropdown', $menu );
-    $menu = str_replace( 'sub-menu', 'sub-menu dropdown', $menu );
-    return $menu;
-    
-}
-add_filter( 'wp_nav_menu', 'jin_nav_menu' );
