@@ -28,22 +28,41 @@
             
             <div class="row"> <!-- Start Foundation row -->
                 
-                
+                <!-- Changed from original Underscores to fit Foundation's classes
 		<div class="site-branding">
-			<?php if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php endif; ?>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+		
 		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
+                <div class=" large-12 columns">
+		<nav id="site-navigation" class="main-navigation top-bar" role="navigation" data-topbar>
+                    <ul class="site-branding title-area">
+                        <li class="name">
+                            <?php if ( is_front_page() && is_home() ) : ?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                            <?php else : ?>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                            <?php endif; ?>
+                            <p class="site-description"><?php bloginfo( 'description' ); ?></p>
+                        </li>
+                        
+                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                    </ul>
+                    
+                    <section class="top-bar-section">
+                        
+                        <!-- Right Nav Section -->
+                        <ul class="right">
+                            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'depth' => 2 ) ); ?>
+                        </ul>
+                        
+                    </section>
+                    
+                        <!-- Original Underscores stuff - menu was here originally too
                         <h1 class="screen-reader-text">Main Navigation</h1>
                         <div class=""navicon closed"><i class=""fa fa-navicon"></i></div>
-                        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'depth' => 2 ) ); ?>
+                        -->
+                        
 		</nav><!-- #site-navigation -->
-                
+                </div>
                 
             </div> <!-- End Foundation row --> 
             

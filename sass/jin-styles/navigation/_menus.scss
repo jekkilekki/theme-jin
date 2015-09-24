@@ -1,6 +1,6 @@
 .main-navigation {
 	h1 {
-	  display: none !important;
+	  // display: none !important;
 	}
 	ul {
 		margin: 0;
@@ -41,7 +41,7 @@
 }
 
 /* expanded nav menu */
-@media (min-width: total_site_width()) {
+@media (min-width: 1200*$px) {
 
 	.navicon {
 		display: none;
@@ -83,7 +83,7 @@
 }
 
 /* collapsed nav menu */
-@media (max-width: total_site_width()) {
+@media (max-width: 1200*$px) {
 
 	.navicon {
 		float: right;

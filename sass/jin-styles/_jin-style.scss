@@ -29,6 +29,7 @@ ul, ol {
     @include guide;
     @include sub_panel();
     box-shadow: $color__header-box-shadow;
+    background-color: #f9f9f9;
 }
 
 .hentry, 
@@ -92,11 +93,11 @@ ul, ol {
 }
 
 .site-branding {
-    padding-left: $phi * 1rem;
-    padding-top: $phi * 1rem;
-    padding-bottom: $phi * 1rem;
+    //padding-left: $phi * 1rem;
+    //padding-top: $phi * 1rem;
+    //padding-bottom: $phi * 1rem;
     //font-size: 0.5em;
-    float: left;
+    //float: left;
 }
 
 .site-title {
@@ -104,15 +105,16 @@ ul, ol {
 }
 
 .site-title, .site-description {
-    margin: 0;
-    line-height: 1em;
-    display: inline-block;
-    vertical-align: bottom;
+    //margin: 0;
+    //line-height: 1em;
+    //display: inline-block;
+    //vertical-align: bottom;
 }
 
 .site-description {
-    margin-left: 0.5em;
+    //margin-left: 0.5em;
     font-style: italic;
+    display: none; 
 }
 
 // Content

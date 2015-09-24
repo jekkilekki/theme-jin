@@ -496,9 +496,6 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-.main-navigation h1 {
-  display: none !important;
-}
 .main-navigation ul {
   margin: 0;
   padding: 0;
@@ -537,7 +534,7 @@ a:hover, a:active {
 }
 
 /* expanded nav menu */
-@media (min-width: 50.4941rem) {
+@media (min-width: 60rem) {
   .navicon {
     display: none;
   }
@@ -562,7 +559,7 @@ a:hover, a:active {
     z-index: 9999;
     top: 100%;
     left: 0;
-    background-color: transparent;
+    background-color: #f3f2f2;
     border: 0.05rem solid silver;
     border-bottom: 0;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
@@ -580,11 +577,11 @@ a:hover, a:active {
     border-top: 0.05rem solid #bbbbbb;
   }
   .main-navigation ul li ul li a:hover {
-    background-color: rgba(1, 1, 1, 0);
+    background-color: #f6f5f5;
   }
 }
 /* collapsed nav menu */
-@media (max-width: 50.4941rem) {
+@media (max-width: 60rem) {
   .navicon {
     float: right;
     font-size: 1.65rem;
@@ -611,19 +608,19 @@ a:hover, a:active {
   }
   .main-navigation ul li a:hover {
     border-bottom-color: transparent;
-    background-color: transparent;
+    background-color: #f3f2f2;
   }
   .main-navigation ul ul {
     position: relative;
     left: 0;
-    background-color: transparent;
+    background-color: #f1efef;
   }
   .main-navigation ul ul li a {
     border-top: 0.05rem solid darkent(silver, 2%);
   }
   .main-navigation ul ul li a:hover {
     border-bottom-color: transparent;
-    background-color: transparent;
+    background-color: #efecec;
   }
 }
 .site-main .comment-navigation, .site-main
@@ -915,7 +912,7 @@ a {
 blockquote {
   padding: 2.0225rem;
   font-size: 1rem;
-  background-color: transparent;
+  background-color: whitesmoke;
   border-left: 0.15rem solid silver;
   color: gray;
 }
@@ -970,11 +967,12 @@ h6 {
 
 .site-header {
   background: #ffffff;
-  background-color: transparent;
+  background-color: whitesmoke;
   border: 0.05rem solid silver;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
   color: gray;
   box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+  background-color: #f9f9f9;
 }
 .site-header a, .site-header a:visited, .site-header a:active {
   color: inherit;
@@ -995,7 +993,7 @@ h6 {
 
 .widget {
   background: #ffffff;
-  background-color: transparent;
+  background-color: whitesmoke;
   border: 0.05rem solid silver;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
   color: gray;
@@ -1026,27 +1024,13 @@ h6 {
   margin: 0 auto 2.0225rem auto;
 }
 
-.site-branding {
-  padding-left: 1.618rem;
-  padding-top: 1.618rem;
-  padding-bottom: 1.618rem;
-  float: left;
-}
-
 .site-title {
   font-weight: 700;
 }
 
-.site-title, .site-description {
-  margin: 0;
-  line-height: 1em;
-  display: inline-block;
-  vertical-align: bottom;
-}
-
 .site-description {
-  margin-left: 0.5em;
   font-style: italic;
+  display: none;
 }
 
 .site-content {
@@ -1077,7 +1061,7 @@ h6 {
   border-bottom: 0.05rem dotted #00ACDF;
 }
 .entry-content a:hover, .entry-content a:active {
-  background-color: transparent;
+  background-color: whitesmoke;
 }
 
 .entry-header {

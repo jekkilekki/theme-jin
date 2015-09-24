@@ -95,25 +95,25 @@ $column-gutter: rem-calc(30);
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
 
-// $white       : #FFFFFF;
-// $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
-// $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
-// $silver      : #EFEFEF;
-// $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
-// $iron        : #CCCCCC;
-// $base        : #AAAAAA;
-// $aluminum    : #999999;
-// $jumbo       : #888888;
-// $monsoon     : #777777;
-// $steel       : #666666;
-// $charcoal    : #555555;
-// $tuatara     : #444444;
-// $oil         : #333333;
-// $jet         : #222222;
-// $black       : #000000;
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
 
 // We use these as default colors throughout
 $primary-color: rgba(40, 57, 77, 1);
@@ -1402,44 +1402,44 @@ $info-color: rgba(100, 66, 87, 1);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $oil;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $snow;
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: rem-calc(45);
-// $topbar-margin-bottom: 0;
+$topbar-height: rem-calc(70);
+$topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
 // $topbar-title-weight: $font-weight-normal;
-// $topbar-title-font-size: rem-calc(17);
+$topbar-title-font-size: rem-calc(20);
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: $white;
-// $topbar-link-color-hover: $white;
-// $topbar-link-color-active: $white;
-// $topbar-link-color-active-hover: $white;
+$topbar-link-color: $monsoon;
+$topbar-link-color-hover: $monsoon;
+$topbar-link-color-active: $monsoon;
+$topbar-link-color-active-hover: $monsoon;
 // $topbar-link-weight: $font-weight-normal;
-// $topbar-link-font-size: rem-calc(13);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
-// $topbar-link-bg-color-hover: $charcoal;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-font-size: rem-calc(14);
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-hover: $white;
+$topbar-link-bg-color-hover: $white;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
-// $topbar-link-padding: ($topbar-height / 3);
+$topbar-link-padding: ($topbar-height / 3);
 // $topbar-back-link-size: rem-calc(18);
-// $topbar-link-dropdown-padding: rem-calc(20);
+$topbar-link-dropdown-padding: rem-calc(20);
 // $topbar-button-font-size: .75rem;
 // $topbar-button-top: 7px;
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
-// $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-// $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $jet;
+$topbar-dropdown-bg: $snow;
+$topbar-dropdown-link-color: $monsoon;
+$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-bg: $snow;
+$topbar-dropdown-link-bg-hover: $white;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
