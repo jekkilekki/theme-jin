@@ -17,6 +17,7 @@
             
             <div class="row"> <!-- Start Foundation row -->
                 
+                <?php get_sidebar( 'footer' ); ?>
                 
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'jin' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'jin' ), 'WordPress' ); ?></a>

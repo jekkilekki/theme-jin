@@ -32,7 +32,7 @@
 		<div class="site-branding">
 		
 		</div><!-- .site-branding -->
-                <div class=" large-12 columns">
+                <div class="fixed contain-to-grid large-12 columns">
 		<nav id="site-navigation" class="main-navigation top-bar" role="navigation" data-topbar>
                     <ul class="site-branding title-area">
                         <li class="name">
@@ -52,6 +52,10 @@
                         <!-- Right Nav Section -->
                         <ul class="right">
                             <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'depth' => 2 ) ); ?>
+                            <div class="search-toggle">
+                                <i class="fa fa-search"></i>
+                                <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jin' ); ?></a>
+                            </div>
                         </ul>
                         
                     </section>
@@ -64,7 +68,19 @@
 		</nav><!-- #site-navigation -->
                 </div>
                 
+            </div> <!-- End Foundation row -->
+            
+            <div class="search-box-wrapper fixed">
+            <div class="row"> <!-- Start Foundation row -->
+                
+                <div id="search-container" class="clear small-12 medium-6 medium-push-6 large-4 large-push-8 columns end">
+                    <div class="search-box clear">
+                        <?php get_search_form(); ?>
+                    </div>
+                </div>
+                
             </div> <!-- End Foundation row --> 
+            </div>
             
 	</header><!-- #masthead -->
 

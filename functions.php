@@ -41,6 +41,8 @@ function jin_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+        // Set the post thumbnail default size to suit the theme layout
+        set_post_thumbnail_size( 770, 400, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -79,7 +81,7 @@ function jin_setup() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'jin_custom_background_args', array(
-		'default-color' => 'ffffff',
+		'default-color' => 'f0f0f0',
 		'default-image' => '',
 	) ) );
 }
@@ -94,7 +96,7 @@ add_action( 'after_setup_theme', 'jin_setup' );
  * @global int $content_width
  */
 function jin_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'jin_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'jin_content_width', 770 );
 }
 add_action( 'after_setup_theme', 'jin_content_width', 0 );
 
@@ -116,9 +118,9 @@ function jin_widgets_init() {
         
         register_sidebar( array(
                 'name'          => esc_html__( 'Footer Widgets', 'jin' ),
-                'id'            => 'sidebar-footer',
                 'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jin' ),
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                'id'            => 'sidebar-footer',
+                'before_widget' => '<aside id="%1$s" class="widget small-6 medium-4 large-3 %2$s">',
                 'after_widget'  => '</aside>',
                 'before_title'  => '<h2 class="widget-title">',
                 'after_title'   => '</h2>',
@@ -151,8 +153,8 @@ function jin_foundation_enqueue() {
         wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
         /* Add Custom Fonts */
-        wp_enqueue_style( 'gfonts', '//fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
-        wp_enqueue_style( 'fawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
+        wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
+        wp_enqueue_style( 'fawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
         
 }
 add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
@@ -165,7 +167,13 @@ function jin_scripts() {
 
         /* Custom navigation script */
 	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation-custom.js', array(), '20120206', true );
+        
+        /* Toggle Main Search script */
+        wp_enqueue_script( 'jin-toggle-search', get_template_directory_uri() . '/js/toggle-search.js', array( 'jquery' ), '20150925', true );
 
+        /* Masonry for Footer widgets */
+        wp_enqueue_script( 'jin-masonry', get_template_directory_uri() . '/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
+        
 	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -178,7 +186,8 @@ add_action( 'wp_enqueue_scripts', 'jin_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+// Unneccessary in this design
+// require get_template_directory() . '/inc/custom-header.php'; 
 
 /**
  * Custom template tags for this theme.

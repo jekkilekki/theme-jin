@@ -978,6 +978,11 @@ h6 {
   color: inherit;
 }
 
+.admin-bar .site-header .fixed {
+  top: 32px;
+  box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+}
+
 .hentry,
 .comments-area,
 .page-header,
@@ -1008,6 +1013,15 @@ h6 {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
+#supplementary .widget {
+  background-color: #fff;
+  border: 0.05rem solid transparent;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border: none;
+  box-shadow: none;
+  float: left;
+}
+
 .content-area {
   margin: 0 0% 0 0;
 }
@@ -1033,8 +1047,57 @@ h6 {
   display: none;
 }
 
+.search-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 4.375rem;
+  padding: 25px;
+  color: gray;
+  text-align: center;
+  cursor: pointer;
+}
+
+.search-toggle:hover,
+.search-toggle.active {
+  background: #fff;
+}
+
+.main-navigation ul {
+  padding-right: 32px;
+}
+
+#search-container {
+  display: none;
+  margin-top: 4.3rem;
+  height: 4.2rem;
+}
+
+.search-box-wrapper {
+  z-index: 2;
+  background: #fff;
+}
+
+.search-box {
+  padding: 1em;
+}
+
+.search-box .search-field {
+  float: right;
+  padding: 1rem 1rem 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.error404 .search-submit,
+.search .search-submit,
+.search-box .search-submit {
+  display: none;
+}
+
 .site-content {
-  margin: 3.27241rem auto 0 auto;
+  margin: 4rem auto 0 auto;
 }
 
 .hentry,
@@ -1197,6 +1260,10 @@ h6 {
   content: "\f27b";
 }
 
+.widget_recent_entries ul li:before {
+  content: "\f0f6";
+}
+
 .widget_archive ul li:before {
   content: "\f133";
 }
@@ -1213,6 +1280,13 @@ h6 {
 }
 .widget_pages ul .children .children li:before, .widget_pages ul .sub-menu .submenu li:before, .widget_nav_menu ul .children .children li:before, .widget_nav_menu ul .sub-menu .submenu li:before {
   content: "\f105";
+}
+
+.widget_rss .rss-date,
+.widget_rss cite {
+  display: block;
+  font-size: 90%;
+  padding: 0.4045rem 0;
 }
 
 input.search-field {

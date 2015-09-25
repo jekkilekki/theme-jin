@@ -154,6 +154,27 @@ $color__entry_highlight: silver;
     background-color: $color__background-body;
 }
 
+@mixin search_toggle() {
+    .search-toggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 4rem;
+        height: 4.375rem;
+        padding: 25px;
+        color: $color__text-sub-panel;
+        text-align: center;
+        cursor: pointer;
+    }
+    .search-toggle:hover,
+    .search-toggle.active {
+        background: $color__background-main-panel;
+    }
+    .main-navigation ul {
+        padding-right: 32px;
+    }
+}
+
 @mixin links() {
     a {
         text-decoration: none;

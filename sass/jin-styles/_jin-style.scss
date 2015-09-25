@@ -31,6 +31,10 @@ ul, ol {
     box-shadow: $color__header-box-shadow;
     background-color: #f9f9f9;
 }
+.admin-bar .site-header .fixed {
+    top: 32px;
+    box-shadow: $color__header-box-shadow;
+}
 
 .hentry, 
 .comments-area, 
@@ -52,6 +56,14 @@ ul, ol {
 .site-footer {
     @include guide;
     box-shadow: $color__box-shadow;
+}
+
+// Styles for footer widgets
+#supplementary .widget {
+    @include main_panel();
+    border: none;
+    box-shadow: none;
+    float: left;
 }
 
 // content of layout/content-sidebar pasted here for easier modification
@@ -117,10 +129,38 @@ ul, ol {
     display: none; 
 }
 
+// Header Search
+@include search_toggle();
+
+#search-container {
+    display: none;
+    margin-top: 86*$px;
+    height: 84*$px;
+}
+.search-box-wrapper {
+    z-index: 2;
+    background: $color__background-main-panel;
+}
+.search-box {
+    padding: 1em;
+}
+.search-box .search-field {
+    float: right;
+    padding: 1rem 1rem 0.5rem 1.5rem;
+    font-size: 24*$px;
+    color: $color__text-sub-panel;
+    
+}
+.error404 .search-submit,
+.search .search-submit,
+.search-box .search-submit {
+    display: none;
+}
+
 // Content
 .site-content {
     //max-width: total_site_width();
-    margin: $default_gutter * $phi auto 0 auto;
+    margin: 80*$px auto 0 auto;
 }
 
 //*** Posts and pages
@@ -289,6 +329,12 @@ ul, ol {
     }
 }
 
+.widget_recent_entries ul {
+    li:before {
+        content: "\f0f6";
+    }
+}
+
 .widget_archive ul {
     li:before {
         content: "\f133";
@@ -315,6 +361,14 @@ ul, ol {
             content: "\f105";
         }
     }
+}
+
+.widget_rss li {  }
+.widget_rss .rss-date,
+.widget_rss cite {
+    display: block;
+    font-size: 90%;
+    padding: $phi * 0.25rem 0;
 }
 
 input.search-field {
@@ -371,6 +425,14 @@ input.search-field {
     .site-footer {
         padding: $phi * 1em;
     }*/
+}
+
+@media (max-width: 782*$px) {
+    
+    .admin-bar .site-header .fixed {
+        //top: 46px;
+    }
+    
 }
 
 @media (max-width: 600*$px) {
