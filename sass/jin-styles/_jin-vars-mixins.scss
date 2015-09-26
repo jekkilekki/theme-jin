@@ -131,8 +131,9 @@ $color__border-abbr: #666;
 
 // custom colors
 
-$color__box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+$color__box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 $color__header-box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+$color__light-border: gainsboro;
 
 $color__background-main-panel: #fff;
 $color__border-main-panel: transparent;
@@ -175,6 +176,36 @@ $color__entry_highlight: silver;
     }
 }
 
+@mixin topbutton() {
+    .topbutton {
+        height: 50*$px;
+        width: 50*$px;
+        position: fixed;
+        right: 20*$px;
+        bottom: 20*$px;
+        z-index: 2;
+        font-family: "FontAwesome";
+        color: white;
+        background: lighten($color__link, 5%);
+        display: none;
+        font-size: 24*$px;
+        opacity: 0.5;
+    }
+    .topbutton:hover {
+        opacity: 1;
+    }
+    .topbutton:hover:before,
+    .topbutton:before:hover {
+        color: white;
+    }
+    .topbutton:before {
+        content: "\f106";
+        display: block;
+        text-align: center;
+        padding-top: 5px;
+    }
+}
+
 @mixin links() {
     a {
         text-decoration: none;
@@ -187,7 +218,7 @@ $color__entry_highlight: silver;
 
 @mixin blockquote() {
     background-color: $color__background-sub-panel;
-    border-left: 3*$px solid $color__border-sub-panel;
+    border-left: 3*$px solid $color__light-border;
     color: $color__text-sub-panel;
     a, a:visited, a:active {
         color: inherit;
@@ -211,10 +242,10 @@ $color__entry_highlight: silver;
 }
 
 @mixin widget-divider() {
-    border-bottom: 1px dotted $color__border-sub-panel;
+    border-bottom: 1px solid $color__light-border;
 }
 @mixin widget-divider-top() {
-    border-top: 1px dotted $color__border-sub-panel;
+    border-top: 1px solid $color__light-border;
 }
 
 @mixin entry_meta() {
@@ -229,7 +260,7 @@ $color__entry_highlight: silver;
 }
 @mixin content_link() {
     a, a:link, a:visited {
-        border-bottom: 1*$px dotted $color__link;
+        border-bottom: 1px solid $color__link;
         // background-color: lighten($color__background-sub-panel, 2%);
         // color: $color__text-main;
     }
@@ -251,6 +282,11 @@ $color__entry_highlight: silver;
 }
 @mixin sticky_post() {
     border-bottom: 5*$px solid $color__link;
+}
+@mixin more_link() {
+    background: none;
+    border: 1px solid $color__light-border;
+    color: $color__text-sub-panel;
 }
 @mixin site_footer() {
     a {

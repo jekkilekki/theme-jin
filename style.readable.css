@@ -562,7 +562,7 @@ a:hover, a:active {
     background-color: #f3f2f2;
     border: 0.05rem solid silver;
     border-bottom: 0;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
   .main-navigation ul li ul li {
     float: none;
@@ -913,7 +913,7 @@ blockquote {
   padding: 2.0225rem;
   font-size: 1rem;
   background-color: whitesmoke;
-  border-left: 0.15rem solid silver;
+  border-left: 0.15rem solid gainsboro;
   color: gray;
 }
 blockquote a, blockquote a:visited, blockquote a:active {
@@ -969,7 +969,7 @@ h6 {
   background: #ffffff;
   background-color: whitesmoke;
   border: 0.05rem solid silver;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: gray;
   box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
   background-color: #f9f9f9;
@@ -992,17 +992,17 @@ h6 {
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .widget {
   background: #ffffff;
   background-color: whitesmoke;
   border: 0.05rem solid silver;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: gray;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 .widget a, .widget a:visited, .widget a:active {
   color: inherit;
@@ -1010,13 +1010,13 @@ h6 {
 
 .site-footer {
   background: #ffffff;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 #supplementary .widget {
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   border: none;
   box-shadow: none;
   float: left;
@@ -1070,13 +1070,11 @@ h6 {
 
 #search-container {
   display: none;
-  margin-top: 4.3rem;
-  height: 4.2rem;
-}
-
-.search-box-wrapper {
-  z-index: 2;
+  height: 4.4rem;
   background: #fff;
+  position: absolute;
+  width: 94%;
+  margin-right: 4.1rem;
 }
 
 .search-box {
@@ -1084,10 +1082,11 @@ h6 {
 }
 
 .search-box .search-field {
-  float: right;
   padding: 1rem 1rem 0.5rem 1.5rem;
   font-size: 1.2rem;
   color: gray;
+  margin-top: -1.25rem;
+  height: 2.25rem;
 }
 
 .error404 .search-submit,
@@ -1117,14 +1116,18 @@ h6 {
   border-bottom: 0.25rem solid #00ACDF;
 }
 
-.entry-content a img {
+.index-post-thumbnail img {
+  min-width: 100%;
   vertical-align: bottom;
 }
-.entry-content a, .entry-content a:link, .entry-content a:visited {
-  border-bottom: 0.05rem dotted #00ACDF;
+
+.single-post-thumbnail {
+  background: gray;
 }
-.entry-content a:hover, .entry-content a:active {
-  background-color: whitesmoke;
+
+.single-post-thumbnail img {
+  display: block;
+  margin: 0 auto;
 }
 
 .entry-header {
@@ -1151,6 +1154,46 @@ h6 {
 }
 .entry-meta a:hover, .entry-meta a:active {
   border-bottom: 1px dotted #00ACDF;
+}
+
+.entry-content .continue-reading {
+  text-align: center;
+}
+.entry-content a, .entry-content a:link, .entry-content a:visited {
+  border-bottom: 1px solid #00ACDF;
+}
+.entry-content a:hover, .entry-content a:active {
+  background-color: whitesmoke;
+}
+.entry-content a img {
+  vertical-align: bottom;
+}
+.entry-content a.more-link {
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  display: inline-block;
+  padding: 0.75em 1.618em 0.5em;
+  margin: 0 0 2em 0;
+  background: none;
+  border: 1px solid gainsboro;
+  color: gray;
+}
+.entry-content a.more-link:before {
+  font-family: "FontAwesome";
+  content: "\f0a4";
+  margin-right: 0.5em;
+  opacity: 0.5;
+}
+.entry-content a.more-link:after {
+  font-family: "FontAwesome";
+  content: "\f0a5";
+  margin-left: 0.5em;
+  opacity: 0.5;
+}
+.entry-content a.more-link:hover {
+  background-color: whitesmoke;
 }
 
 .entry-footer {
@@ -1180,7 +1223,7 @@ h6 {
   padding: 2.0225rem;
   background-color: rgba(250, 250, 250, 0.05);
   border: 0.05rem solid silver;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .cat-links:before {
@@ -1231,7 +1274,7 @@ h6 {
 }
 .widget ul li {
   padding: 0.75em 0 0.5em 2em;
-  border-bottom: 1px dotted silver;
+  border-bottom: 1px solid gainsboro;
 }
 .widget ul li.page_item_has_children, .widget ul li.menu-item-has-children {
   padding-bottom: 0;
@@ -1250,7 +1293,7 @@ h6 {
 .widget ul .children li:first-of-type,
 .widget ul .sub-menu li:first-of-type {
   margin-top: 0.5em;
-  border-top: 1px dotted silver;
+  border-top: 1px solid gainsboro;
 }
 .widget ul li:last-child {
   border: none;
@@ -1301,6 +1344,37 @@ input.search-field {
 }
 .site-footer a {
   color: #0098c6;
+}
+
+.topbutton {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  font-family: "FontAwesome";
+  color: white;
+  background: #00c0f9;
+  display: none;
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+.topbutton:hover {
+  opacity: 1;
+}
+
+.topbutton:hover:before,
+.topbutton:before:hover {
+  color: white;
+}
+
+.topbutton:before {
+  content: "\f106";
+  display: block;
+  text-align: center;
+  padding-top: 5px;
 }
 
 @media (max-width: 62.5em) {

@@ -9,8 +9,16 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<?php 
+        if ( has_post_thumbnail() ) {
+            echo '<div class="single-post-thumbnail clear">';
+            echo the_post_thumbnail( 'full' );
+            echo '</div>';
+        }
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>    
+        <header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">

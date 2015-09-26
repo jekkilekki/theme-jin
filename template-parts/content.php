@@ -13,9 +13,9 @@
 	
         <?php if ( has_post_thumbnail() ) {
             
-            echo '<div>';
+            echo '<div class="index-post-thumbnail">';
             echo '<a href="' . get_permalink() . '" title="' . __( 'Click to read ', 'jin' ) . get_the_title() . '" rel="bookmark">';
-            echo the_post_thumbnail( 'full' );
+            echo the_post_thumbnail( 'index-thumb' );
             echo '</a>';
             echo '</div>';
             

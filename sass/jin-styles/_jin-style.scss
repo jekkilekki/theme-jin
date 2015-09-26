@@ -134,21 +134,23 @@ ul, ol {
 
 #search-container {
     display: none;
-    margin-top: 86*$px;
-    height: 84*$px;
-}
-.search-box-wrapper {
-    z-index: 2;
+    // margin-left: -82*$px;
+    height: 88*$px;
     background: $color__background-main-panel;
+    position: absolute;
+    width: 94%;
+    margin-right: 82*$px;
+    // z-index: 99;
 }
 .search-box {
     padding: 1em;
 }
 .search-box .search-field {
-    float: right;
     padding: 1rem 1rem 0.5rem 1.5rem;
     font-size: 24*$px;
     color: $color__text-sub-panel;
+    margin-top: -25*$px;
+    height: 45*$px;
     
 }
 .error404 .search-submit,
@@ -190,12 +192,21 @@ ul, ol {
     @include sticky_post();
 }
 
-.entry-content {
-    a img {
-        // prevent gap below linked image
+// Featured Images
+// Index pages
+.index-post-thumbnail {
+    img {
+        min-width: 100%;
         vertical-align: bottom;
     }
-    @include content_link;
+}
+// Single pages
+.single-post-thumbnail {
+    background: $color__text-sub-panel;
+}
+.single-post-thumbnail img {
+    display: block;
+    margin: 0 auto;
 }
 
 // Center the post's title 
@@ -216,6 +227,42 @@ ul, ol {
     padding: 0.8em 1.2em;
     margin-bottom: 0;
     @include entry_meta();
+}
+
+.entry-content {
+    .continue-reading {
+        text-align: center;
+    }
+    @include content_link;
+    a img {
+        // prevent gap below linked image
+        vertical-align: bottom;
+    }
+    a.more-link {
+        font-size: 18*$px;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2*$px;
+        display: inline-block;
+        padding: 0.75em $phi * 1em 0.5em;
+        margin: 0 0 2em 0;
+        &:before {
+            font-family: "FontAwesome";
+            content: "\f0a4";
+            margin-right: 0.5em;
+            opacity: 0.5;
+        }
+        &:after {
+            font-family: "FontAwesome";
+            content: "\f0a5";
+            margin-left: 0.5em;
+            opacity: 0.5;
+        }
+        @include more_link();
+    }
+    a.more-link:hover {
+        background-color: $color__background-sub-panel;
+    }
 }
 
 .entry-footer {
@@ -385,6 +432,7 @@ input.search-field {
     @include site_footer();
 }
 
+@include topbutton();
 
 
 //**** Responsive layout adjustments

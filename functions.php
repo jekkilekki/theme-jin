@@ -43,6 +43,7 @@ function jin_setup() {
 	add_theme_support( 'post-thumbnails' );
         // Set the post thumbnail default size to suit the theme layout
         set_post_thumbnail_size( 770, 400, true );
+        add_image_size( 'index-thumb', 770, 400, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -173,6 +174,9 @@ function jin_scripts() {
 
         /* Masonry for Footer widgets */
         wp_enqueue_script( 'jin-masonry', get_template_directory_uri() . '/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
+        
+        /* Add dynamic back to top button */
+        wp_enqueue_script( 'jin-topbutton', get_template_directory_uri(). '/js/topbutton.js', array( 'jquery' ), '20150926', true );
         
 	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
