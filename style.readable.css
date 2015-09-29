@@ -1025,52 +1025,70 @@ h6 {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
-.site-main .post-navigation,
-.site-main .comment-navigation {
+.site-main .post-navigation {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   background-color: #fff;
   border: 0.05rem solid transparent;
   border-top: 0.05rem solid gainsboro;
   margin-top: -2.0225rem;
+  margin-bottom: 2.0225rem;
 }
-.site-main .post-navigation .nav-previous, .site-main .post-navigation .nav-next,
-.site-main .comment-navigation .nav-previous,
-.site-main .comment-navigation .nav-next {
+.site-main .post-navigation .nav-previous, .site-main .post-navigation .nav-next {
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 1.618rem;
   padding-bottom: 1.618rem;
   margin: 0;
 }
-.site-main .post-navigation .nav-previous h4, .site-main .post-navigation .nav-next h4,
-.site-main .comment-navigation .nav-previous h4,
-.site-main .comment-navigation .nav-next h4 {
+.site-main .post-navigation .nav-previous h4, .site-main .post-navigation .nav-next h4 {
   font-size: 1.2rem;
   margin: 0;
-  line-height: 2rem;
 }
-.site-main .post-navigation .nav-previous:hover, .site-main .post-navigation .nav-next:hover,
-.site-main .comment-navigation .nav-previous:hover,
-.site-main .comment-navigation .nav-next:hover {
+.site-main .post-navigation .nav-previous:hover, .site-main .post-navigation .nav-next:hover {
   background-color: #f9f9f9;
 }
-.site-main .post-navigation .nav-previous h4:before,
-.site-main .comment-navigation .nav-previous h4:before {
+.site-main .post-navigation .nav-previous h4:before {
   font-family: "FontAwesome";
   margin-right: 0.5em;
   content: '\f0d9';
 }
-.site-main .post-navigation .nav-next h4:after,
-.site-main .comment-navigation .nav-next h4:after {
+.site-main .post-navigation .nav-next h4:after {
   font-family: "FontAwesome";
   margin-left: 0.5em;
   content: '\f0da';
 }
-.site-main .post-navigation .nav-indicator,
-.site-main .comment-navigation .nav-indicator {
+.site-main .post-navigation .nav-indicator {
   font-size: 0.9rem;
   font-weight: 300;
   color: #9e9e9e;
+}
+
+.site-main .comment-navigation {
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  box-shadow: none;
+}
+.site-main .comment-navigation span a {
+  color: #9e9e9e;
+}
+.site-main .comment-navigation span a:hover {
+  text-decoration: underline;
+  color: #00ACDF;
+}
+.site-main .comment-navigation .nav-previous, .site-main .comment-navigation .nav-next {
+  padding-top: 0.809rem;
+  padding-bottom: 0.6472rem;
+  padding-left: 4.2358rem;
+  padding-right: 4.2358rem;
+}
+.site-main .comment-navigation .nav-previous:hover, .site-main .comment-navigation .nav-next:hover {
+  background-color: #f9f9f9;
+}
+.site-main .comment-navigation .nav-previous i {
+  margin-right: 0.5em;
+}
+.site-main .comment-navigation .nav-next i {
+  margin-left: 0.5em;
 }
 
 .widget {
@@ -1251,13 +1269,14 @@ h6 {
   content: '';
   margin: 0;
 }
-.entry-meta .vcard {
+
+.vcard {
   border: none;
   padding: 0;
   text-transform: capitalize;
   margin: 0;
 }
-.entry-meta .vcard a {
+.vcard a {
   font-weight: 400;
 }
 
@@ -1352,16 +1371,112 @@ h6 {
   border-top: none;
 }
 
+.comments-area {
+  border-top: 1px solid #00ACDF;
+}
+
+.comment-navigation, .write-comments, .read-comments {
+  margin: 0 !important;
+}
+
+.comments-title, .comment-reply-title {
+  font-weight: 400;
+}
+
 .comment-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .comment-list .comment {
-  padding: 2.0225rem;
-  background-color: rgba(250, 250, 250, 0.05);
-  border: 0.05rem solid silver;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+}
+.comment-list .comments-area > ol {
+  padding: 0;
+  margin: 2.0225rem 0;
+  list-style-type: none;
+}
+.comment-list ol.children {
+  list-style-type: none;
+}
+.comment-list .comment-list ol {
+  margin-left: 4.045rem;
+}
+.comment-list .comment-meta {
+  position: relative;
+}
+.comment-list .comment-author .avatar {
+  border-radius: 100px;
+  display: block;
+  float: left;
+  box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+}
+.comment-list .comment-author .fn {
+  font-weight: 600;
+  margin-left: 20px;
+}
+.comment-list .comment-author span {
+  text-transform: lowercase;
+}
+.comment-list .comment-metadata {
+  font-weight: 300;
+  font-size: 0.9rem;
+  margin-left: 100px;
+  position: absolute;
+  top: 30px;
+}
+.comment-list .comment-content {
+  font-size: 90%;
+  margin-left: 100px;
+}
+.comment-list .comment-body {
+  padding-top: 2.0225rem;
+  margin-bottom: 2.0225rem;
+  border-top: 1px solid gainsboro;
+}
+.comment-list .reply {
+  margin-left: 100px;
+}
+.comment-list .reply:before {
+  font-family: "FontAwesome";
+  font-size: 70%;
+  margin-right: 0.5em;
+  content: '\f112';
+  transform: rotate(180deg);
+}
+
+.bypostauthor .comment-body {
+  background: whitesmoke;
+  padding: 1.618rem;
+  border: none;
+}
+
+/* Comments responsive */
+@media screen and (max-width: 600px) {
+  .comment-list ol {
+    margin-left: 0;
+  }
+
+  .comment-content, .reply {
+    margin-left: 0;
+  }
+}
+.comment-form-author, .comment-form-email, .comment-form-url {
+  width: 50%;
+}
+
+.comment-form textarea {
+  font-size: 1.2rem;
+  color: #9e9e9e;
+  padding: 1em;
+}
+
+.required {
+  color: red;
+}
+
+.comment-awaiting-moderation {
+  margin: 1em 0;
 }
 
 .cat-links:before {

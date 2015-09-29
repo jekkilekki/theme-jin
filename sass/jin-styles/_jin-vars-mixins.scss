@@ -283,9 +283,9 @@ $color__entry_highlight: silver;
     }
 }
 @mixin comment() {
-    background-color: rgba(250, 250, 250, 0.05);
-    border: 1*$px solid silver;
-    box-shadow: inset $color__box-shadow;
+    //background-color: rgba(250, 250, 250, 0.05);
+    //border: 1*$px solid silver;
+    //box-shadow: inset $color__box-shadow;
 }
 @mixin sticky_post() {
     border-bottom: 5*$px solid $color__link;

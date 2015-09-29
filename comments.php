@@ -40,6 +40,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+                                        'avatar_size'=> 80,
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -49,10 +50,10 @@ if ( post_password_required() ) {
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jin' ); ?></h2>
-			<div class="nav-links">
+			<div class="nav-links" data-equalizer>
 
-                            <div class="nav-previous"><p class="nav-indicator"><?php previous_comments_link( esc_html__( 'Older Comments', 'jin' ) ); ?></p></div>
-                            <div class="nav-next"><p class="nav-indicator"><?php next_comments_link( esc_html__( 'Newer Comments', 'jin' ) ); ?></p></div>
+                            <div class="nav-previous" data-equalizer-watch><span class="nav-indicator"><?php previous_comments_link( __( '<i class="fa fa-caret-left"></i>Older Comments', 'jin' ) ); ?></span></div>
+                            <div class="nav-next" data-equalizer-watch><span class="nav-indicator"><?php next_comments_link( __( 'Newer Comments<i class="fa fa-caret-right"></i>', 'jin' ) ); ?></span></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
