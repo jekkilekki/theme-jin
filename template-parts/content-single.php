@@ -17,8 +17,19 @@
         }
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>    
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>   
         <header class="entry-header">
+            
+                <?php
+                if ( 'post' === get_post_type() ) {
+                            /* translators: used between list items, there is a space after the comma */
+                            $categories_list = get_the_category_list( esc_html__( ', ', 'jin' ) );
+                            if ( $categories_list && jin_categorized_blog() ) {
+                                    printf( '<div class="cat-links label radius">' . esc_html__( '%1$s', 'jin' ) . '</div>', $categories_list ); // WPCS: XSS OK.
+                            }
+                }
+                ?>
+            
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">

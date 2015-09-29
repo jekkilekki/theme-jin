@@ -10,9 +10,40 @@ body {
 @include links();
 
 blockquote {
-    padding: $default_gutter;
-    font-size: 20*$px;
+    padding: $default_gutter / 2 $default_gutter;
+    margin: $default_gutter $default_gutter / 2;
+    font-size: 24*$px;
+    //font-style: italic;
+    font-weight: 300;
     @include blockquote();
+    cite {
+        font-weight: 300;
+        font-size: 18*$px;
+        text-align: right;
+        margin-left: 25%;
+        margin-top: $default_gutter;
+    }
+    &.alignright {
+        width: 50%;
+        float: right;
+        padding: 1em 2em 0 0;
+        margin-left: 2em;
+        border-left: none;
+        border-right: 6*$px solid $color__light-border;
+        margin-right: 0;
+    }
+    &.alignright cite {
+        margin-left: 0;
+        margin-right: 25%;
+        text-align: left;
+    }
+    &.alignleft {
+        width: 50%;
+        float: left;
+        padding: 1em 0 0 2em;
+        margin-right: 2em;
+        margin-left: 0;
+    }
 }
 
 // Overridden from lists.scss
@@ -29,7 +60,7 @@ ul, ol {
     @include guide;
     @include sub_panel();
     box-shadow: $color__header-box-shadow;
-    background-color: #f9f9f9;
+    background-color: $color__background-header;
 }
 .admin-bar .site-header .fixed {
     top: 32px;
@@ -40,11 +71,48 @@ ul, ol {
 .comments-area, 
 .page-header, 
 .site-main .posts-navigation,
-.site-main .post-navigation,
 .paging-navigation {
     @include guide;
     @include main_panel();
     box-shadow: $color__box-shadow;
+}
+.site-main .post-navigation,
+.site-main .comment-navigation {
+    box-shadow: $color__box-shadow;
+    background-color: $color__background-main-panel;
+    border: 1*$px solid $color__border-main-panel;
+    border-top: 1*$px solid $color__light-border;
+    margin-top: -$default_gutter;
+    .nav-previous, .nav-next {
+        padding-left: $post_l_padding;
+        padding-right: $post_r_padding;
+        padding-top: $phi * 1rem;
+        padding-bottom: $phi * 1rem;
+        margin: 0;
+        h4 {
+            font-size: 24*$px;
+            margin: 0;
+            line-height: 2rem;
+        }
+        &:hover {
+            background-color: $color__background-header;
+        }
+    }
+    .nav-previous h4:before {
+        font-family: "FontAwesome";
+        margin-right: 0.5em;
+        content: '\f0d9';
+    }
+    .nav-next h4:after {
+        font-family: "FontAwesome";
+        margin-left: 0.5em;
+        content: '\f0da';
+    }
+    .nav-indicator {
+        font-size: 18*$px;
+        font-weight: 300;
+        color: $color__text-sub-panel;
+    }
 }
 
 .widget {
@@ -169,10 +237,10 @@ ul, ol {
 
 // (hentry class covers both) plus their internal elements
 .hentry,
-.comments-area, 
+.read-comments,
+.write-comments,
 .page-header,
 .site-main .posts-navigation,
-.site-main .post-navigation,
 .paging-navigation {
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
@@ -212,6 +280,20 @@ ul, ol {
 // Center the post's title 
 .entry-header {
     text-align: center;
+    .cat-links {
+        position: absolute;
+        left: 0.9375rem;
+        top: 0.5rem;
+        background-color: $color__background-body;
+        a{
+            color: $color__text-sub-panel;
+        } 
+        &:before {
+            //content: '';
+            //margin-right: 0;
+            color: $color__text-sub-panel;
+        }
+    }
 }
 
 .entry-title {
@@ -224,9 +306,26 @@ ul, ol {
     display: inline-block;
     font-size: 18*$px;
     font-weight: 300;
-    padding: 0.8em 1.2em;
-    margin-bottom: 0;
+    padding: 0.25rem;
+    margin-bottom: $phi * 0.75rem;
+    width: 100%;
     @include entry_meta();
+    span {
+        padding: 0 0.75em;
+        &:before{
+            content: '';
+            margin: 0;
+        }
+    }
+    .vcard {
+        border: none;
+        padding: 0;
+        text-transform: capitalize;
+        margin: 0;
+        a{
+            font-weight: 400;
+        }
+    }
 }
 
 .entry-content {
@@ -263,18 +362,50 @@ ul, ol {
     a.more-link:hover {
         background-color: $color__background-sub-panel;
     }
+    p {
+        margin: $default_gutter 0;
+    }
+    img, figure {
+        margin: 1.5rem; 
+        &.alignnone {
+            margin: 1.5rem 0;
+        }
+        &.alignright {
+            margin: 1.5rem 0 1.5rem 1.5rem;
+        }
+        &.alignleft {
+            margin: 1.5rem 1.5rem 1.5rem 0;
+        }
+    }
+    .wp-caption-text, .gallery-caption {
+        font-size: 18*$px;
+        font-weight: 300;
+        margin-top: -1.5rem;
+        padding: 0.5rem;
+        line-height: $phi * 1rem;
+        margin-bottom: 2rem;
+        @include img_caption();
+    }
 }
 
 .entry-footer {
     text-align: center;
     margin: $post_b_padding 0 $post_b_padding / ($phi * $phi) 0; 
+    border-top: 1px solid $color__light-border;
     font-size: 18*$px;
     font-weight: 300;
+    padding-top: 0.5rem;
 /*    line-height: 3em;*/
-    span {
-        margin: 0 0.618em;
+    span, ul {
+        margin: 0.618em 0.618em;
         padding: 0 0.618em;
         display: inline-block;
+        float: left;
+    }
+    li {
+        display: inline-block;
+        list-style-type: none;
+        background: $color__background-body;
     }
     @include entry_footer();
 }

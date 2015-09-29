@@ -30,11 +30,11 @@ function jin_posted_on() {
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'By %s / ', 'post author', 'jin' ),
+		esc_html_x( 'By %s', 'post author', 'jin' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+	echo '<span class="byline"> ' . $byline . '</span> / <span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
         
         if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) {
                 echo ' / <span class="comments-link">';
@@ -65,13 +65,13 @@ function jin_entry_footer() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'jin' ) );
 		if ( $categories_list && jin_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'jin' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . $categories_list . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'jin' ) );
+		$tags_list = get_the_tag_list( '<li class="label radius">', '</li><li class="label radius">', '</li>' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'jin' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			echo '<ul class="tags-links">' . $tags_list . '</ul>'; // WPCS: XSS OK.
 		}
 	}
 
@@ -152,4 +152,28 @@ function the_fancy_excerpt() {
         echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     }
+}
+
+/**
+ * Prints HTML with post navigation.
+ */
+function jin_post_navigation() {
+    // Don't print empty makrup if there's nowhere to navigate.
+    $previous   = ( is_attachment() ) ? get_post ( get_post() -> post_parent ) : get_adjacent_post( false, '', true );
+    $next       = get_adjacent_post( false, '', false );
+    
+    if ( ! $next && !previous ) {
+        return;
+    }
+    ?>
+    <nav class="navigation post-navigation" role="navigation">
+        <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'jin' ); ?></h1>
+        <div class="nav-links" data-equalizer>
+                <?php
+                        previous_post_link( '<div class="nav-previous" data-equalizer-watch><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'jin' ) . '</div><h4>%link</h4></div>', '%title' );
+                        next_post_link(     '<div class="nav-next" data-equalizer-watch><div class="nav-indicator">'     . _x( 'Next Post:', 'Next post', 'jin' ) . '</div><h4>%link</h4></div>', '%title' );
+                ?>
+        </div> <!-- .nav-links -->
+    </nav> <!-- .navigation -->
+    <?php
 }
