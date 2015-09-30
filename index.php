@@ -48,7 +48,7 @@ get_header(); ?>
                             
                         </ul> <!-- Foundation block grid end -->
 
-			<?php the_posts_navigation(); ?>
+			<?php jin_paging_nav(); ?>
 
 		<?php else : ?>
 

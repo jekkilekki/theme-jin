@@ -1017,7 +1017,7 @@ h6 {
 .comments-area,
 .page-header,
 .site-main .posts-navigation,
-.paging-navigation {
+.paging-navigation li {
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
@@ -1061,6 +1061,19 @@ h6 {
   font-size: 0.9rem;
   font-weight: 300;
   color: #9e9e9e;
+}
+
+.paging-navigation ul {
+  margin: 0 0 2.0225rem;
+}
+.paging-navigation li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 -0.14rem;
+  padding: 0.75rem 1.618rem 0.5rem;
+}
+.paging-navigation li:hover {
+  background-color: whitesmoke;
 }
 
 .site-main .comment-navigation {
@@ -1198,13 +1211,29 @@ h6 {
 .read-comments,
 .write-comments,
 .page-header,
-.site-main .posts-navigation,
-.paging-navigation {
+.site-main .posts-navigation {
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
   padding-bottom: 2.61792rem;
   margin: 0 0 2.0225rem 0;
+}
+
+.page-header {
+  padding-bottom: 2.0225rem;
+}
+.page-header .taxonomy-description p {
+  color: #9e9e9e;
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.page-title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0;
 }
 
 .sticky {
@@ -1369,6 +1398,18 @@ h6 {
 }
 .entry-footer span {
   border-top: none;
+}
+
+/**
+POST FORMATS
+**/
+.format-aside .entry-meta {
+  margin-bottom: 0;
+  margin-top: 2.61792rem;
+  border-bottom: none;
+}
+.format-aside .entry-footer {
+  margin-top: 0;
 }
 
 .comments-area {
