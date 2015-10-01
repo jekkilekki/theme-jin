@@ -7,6 +7,25 @@ body {
     @include body();
 }
 
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+article,
+.not-found .hentry {
+    margin-bottom: $default_gutter;
+}
+
+.index-post, 
+.page-header {
+    border: 1px solid $color__light-border;
+}
+.index-post:hover {
+    border: 1px solid $color__link;
+}
+
 @include links();
 
 blockquote {
@@ -70,6 +89,7 @@ ul, ol {
 .hentry, 
 .comments-area, 
 .page-header, 
+.page-content, 
 .site-main .posts-navigation,
 .paging-navigation li {
     @include guide;
@@ -81,7 +101,7 @@ ul, ol {
     background-color: $color__background-main-panel;
     border: 1*$px solid $color__border-main-panel;
     border-top: 1*$px solid $color__light-border;
-    margin-top: -$default_gutter;
+    margin-top: 0;
     margin-bottom: $default_gutter;
     .nav-previous, .nav-next {
         padding-left: $post_l_padding;
@@ -224,7 +244,11 @@ ul, ol {
 }
 
 .site-title {
-    font-weight: 700;
+    margin-top: 0.2rem!important;
+    text-transform: uppercase;
+    &:hover {
+        text-shadow: $color__box-shadow;
+    }
 }
 
 .site-title, .site-description {
@@ -256,13 +280,18 @@ ul, ol {
 .search-box {
     padding: 1em;
 }
-.search-box .search-field {
+.search-box .search-field,
+.hentry .search-field {
     padding: 1rem 1rem 0.5rem 1.5rem;
     font-size: 24*$px;
     color: $color__text-sub-panel;
     margin-top: -25*$px;
     height: 45*$px;
     
+}
+.hentry .search-field {
+    margin-top: $phi * 1rem;
+    margin-bottom: 1rem;
 }
 .error404 .search-submit,
 .search .search-submit,
@@ -273,7 +302,7 @@ ul, ol {
 // Content
 .site-content {
     //max-width: total_site_width();
-    margin: 80*$px auto 0 auto;
+    margin: 100*$px auto 0 auto;
 }
 
 //*** Posts and pages
@@ -283,6 +312,7 @@ ul, ol {
 .read-comments,
 .write-comments,
 .page-header,
+.page-content,
 .site-main .posts-navigation {
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
@@ -291,24 +321,33 @@ ul, ol {
     margin: 0 0 $default_gutter 0;
 }
 
+.hentry {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
 // Centers category headers
 .page-header {
-    //padding-top: $widget_t_padding;
-    padding-bottom: $default_gutter;
+    padding-top: $phi * 1rem;
+    padding-bottom: $phi * 1rem;
     .taxonomy-description p {
         color: $color__text-sub-panel;
-        margin: 0;
+        margin: $phi * 1rem 0 0;
         font-weight: 300;
-        font-size: 18*$px;
+        text-align: center;
+        //font-size: 18*$px;
     }
 }
 .page-title {
-    //text-align: center;
+    text-align: center;
     font-size: 24*$px;
     text-transform: uppercase;
     font-weight: 700;
     //margin-bottom: $default-gutter;
-    margin-top: 0;  
+    margin: 0;
+    border-top: 1px solid $color__light-border;
+    border-bottom: 1px solid $color__light-border;
+    padding: 1rem 0 0.75rem;
 }
 
 //**** Individual post styling
@@ -356,6 +395,20 @@ ul, ol {
     margin: 0;
     margin-bottom: $default_gutter / 1.5;
     font-weight: 400;
+}
+.not-found {
+    .entry-title {
+        font-size: 36*$px;
+        margin-bottom: 0;
+    }
+    .entry-content {
+        margin-top: 0;
+    }
+    ins {
+        background: $color__background-sub-panel;
+        font-weight: 300;
+        padding: 0.2rem 0.5rem 0;
+    }
 }
 
 .entry-meta {
@@ -446,18 +499,18 @@ ul, ol {
 }
 
 .entry-footer {
-    text-align: center;
-    margin: $post_b_padding 0 $post_b_padding / ($phi * $phi) 0; 
+    //text-align: center;
+    margin-top: $post_b_padding; 
     border-top: 1px solid $color__light-border;
     font-size: 18*$px;
     font-weight: 300;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0;
 /*    line-height: 3em;*/
     span, ul {
-        margin: 0.618em 0.618em;
-        padding: 0 0.618em;
+        margin: 0.618em 0.618em * 2 0.618em 0;
+        padding: 0 0.618em * 2 0 0;
         display: inline-block;
-        float: left;
+        //float: left;
     }
     li {
         display: inline-block;

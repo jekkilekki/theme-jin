@@ -10,7 +10,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>">
-	
+    
+    <div class="<?php if ( !is_singular() ) { echo 'index-'; } else { echo 'single-'; } ?>post">
+        
         <?php if ( has_post_thumbnail() ) {
             
             echo '<div class="index-post-thumbnail">';
@@ -61,4 +63,5 @@
 		<?php jin_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
     </div><!-- end entry classes -->
+    </div><!-- end index-post OR single-post -->
 </article><!-- #post-## -->

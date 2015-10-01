@@ -44,7 +44,7 @@
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
 				'after'  => '</div>',
 			) );
-		?>
+		?> 
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">

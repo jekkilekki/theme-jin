@@ -32,7 +32,7 @@
                 <?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer group">
 		<?php jin_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
     </div><!-- end entry classes -->
