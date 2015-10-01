@@ -79,5 +79,10 @@
             </div> <!-- End Foundation row -->
             
 	</header><!-- #masthead -->
-
-	<div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->
+        
+        
+        <?php if ( !is_page_template( 'page-templates/page-front.php' ) ) { ?>
+        
+                <div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->
+                    
+        <?php } ?>

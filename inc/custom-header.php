@@ -25,9 +25,9 @@
 function jin_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'jin_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'default-text-color'     => '777777',
+		'width'                  => 1280,
+		'height'                 => 640,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'jin_header_style',
 		'admin-head-callback'    => 'jin_admin_header_style',

@@ -813,6 +813,12 @@ input.search-field {
         padding: $phi * 0.5rem 0;
         opacity: 0.5;
     }
+    a {
+        color: $color__light-border;
+        &:hover {
+            text-transform: underline;
+        }
+    }
 }
 
 @include topbutton();

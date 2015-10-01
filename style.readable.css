@@ -1699,10 +1699,7 @@ input.search-field {
   margin: 0 auto;
 }
 .site-footer a {
-  color: gainsboro;
-}
-.site-footer a:hover {
-  text-transform: underline;
+  color: #0098c6;
 }
 
 .site-info {
@@ -1728,6 +1725,12 @@ input.search-field {
   font-weight: 300;
   padding: 0.809rem 0;
   opacity: 0.5;
+}
+.site-info a {
+  color: gainsboro;
+}
+.site-info a:hover {
+  text-transform: underline;
 }
 
 .topbutton {

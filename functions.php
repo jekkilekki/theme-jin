@@ -170,6 +170,11 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
  */
 function jin_scripts() {
 	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
+        
+        /* Conditional stylesheet only for Front Page Template */
+        if ( is_page_template( 'page-templates/page-front.php' ) ) {
+            wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/front.css' );
+        }
 
         /* Custom navigation script */
 	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation-custom.js', array(), '20120206', true );
@@ -196,7 +201,7 @@ add_action( 'wp_enqueue_scripts', 'jin_scripts' );
  * Implement the Custom Header feature.
  */
 // Unneccessary in this design
-// require get_template_directory() . '/inc/custom-header.php'; 
+require get_template_directory() . '/inc/custom-header.php'; 
 
 /**
  * Custom template tags for this theme.
