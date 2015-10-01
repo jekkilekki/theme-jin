@@ -16,6 +16,11 @@ if ( ! function_exists( 'jin_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function jin_setup() {
+    
+        // This theme styles the visual editor to resemble the theme style.
+        $font_url = 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800';
+        add_editor_style( array( 'inc/editor-style.css', str_replace( ',', '%2C', $font_url ) ) );
+    
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.

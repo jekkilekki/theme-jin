@@ -904,20 +904,14 @@ body {
   background-color: #f0f0f0;
 }
 
-.group:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 article,
-.not-found .hentry {
+.not-found .hentry,
+.page .hentry {
   margin-bottom: 2.0225rem;
 }
 
-.index-post,
-.page-header {
-  border: 1px solid gainsboro;
+.index-post {
+  border: 1px solid transparent;
 }
 
 .index-post:hover {
@@ -1469,7 +1463,7 @@ POST FORMATS
   border-top: 1px solid #00ACDF;
 }
 
-.comment-navigation, .write-comments, .read-comments {
+.comment-navigation, .read-comments {
   margin: 0 !important;
 }
 
