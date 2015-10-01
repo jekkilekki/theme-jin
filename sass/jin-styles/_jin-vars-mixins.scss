@@ -297,7 +297,10 @@ $color__entry_highlight: silver;
 }
 @mixin site_footer() {
     a {
-        color: darken($color__link, 5%);
+        color: $color__light-border;
+    }
+    a:hover {
+        text-transform: underline;
     }
 }
 

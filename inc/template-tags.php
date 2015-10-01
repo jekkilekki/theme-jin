@@ -34,10 +34,10 @@ function jin_posted_on() {
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="byline"> ' . $byline . '</span> / <span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
         
         if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) {
-                echo ' / <span class="comments-link">';
+                echo '<span class="comments-link">';
                 comments_popup_link( esc_html__( 'Comment', 'jin' ), esc_html__( '1 Comment', 'jin' ), esc_html__( '% Comments', 'jin' ) );
                 echo '</span>';
         }
@@ -48,7 +48,7 @@ function jin_posted_on() {
 			esc_html__( 'Edit %s', 'jin' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
-		' / <span class="edit-link">',
+		'<span class="edit-link">',
 		'</span>'
 	);
 

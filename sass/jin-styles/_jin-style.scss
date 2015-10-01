@@ -19,6 +19,9 @@ article,
 .index-post:hover {
     border: 1px solid $color__link;
 }
+.single-post .hentry {
+    border-top: 1px solid $color__link;
+}
 
 @include links();
 
@@ -369,17 +372,16 @@ ul, ol {
 // Center the post's title 
 .entry-header {
     text-align: center;
+    margin-bottom: $post_b_padding;
     .cat-links {
-        position: absolute;
-        left: 0.9375rem;
-        top: 0.5rem;
+        margin-top: 1rem;
         background-color: $color__background-body;
         a{
             color: $color__text-sub-panel;
         } 
         &:before {
-            //content: '';
-            //margin-right: 0;
+            content: '';
+            margin-right: 0;
             color: $color__text-sub-panel;
         }
     }
@@ -410,24 +412,33 @@ ul, ol {
     font-size: 18*$px;
     font-weight: 300;
     padding: 0.25rem;
-    margin-bottom: $phi * 0.75rem;
     width: 100%;
     @include entry_meta();
-    span {
-        padding: 0 0.75em;
-        &:before{
-            content: '';
-            margin: 0;
-        }
+    .comments-link:before,
+    .edit-link:before {
+        padding: 0 0.5em;
+        content: '\22c5';
+        margin: 0;
+        font-size: 1.2rem;
     }
-    
+    .author:after {
+        content: '\22c5';
+        padding: 0 0.5em;
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
+    a:hover {
+        color: $color__text-main;
+        text-decoration: underline;
+    }
 }
 .vcard {
     border: none;
     padding: 0;
     text-transform: capitalize;
     margin: 0;
-    a{
+    .fn {
         font-weight: 400;
     }
 }
@@ -510,6 +521,7 @@ ul, ol {
         display: inline-block;
         list-style-type: none;
         background: $color__background-body;
+        margin-right: 0.5em;
     }
     @include entry_footer();
 }
@@ -772,10 +784,35 @@ input.search-field {
 // Footer
 .site-footer {
     padding-top: $phi * 1em;
-    padding-bottom: $phi * 1em;
+    //padding-bottom: $phi * 1em;
     //max-width: total_site_width();
     margin: 0 auto;
     @include site_footer();
+}
+
+.site-info {
+    background-color: $color__text-main;
+    color: $color__background-main-panel;
+    .site-links {
+        padding: $phi * 1rem 0;
+        border-bottom: 1px solid $color__text-sub-panel;
+        .menu {
+            float: right;
+            ul {
+                margin: 0;
+            }
+            li {
+                display: inline-block;
+                margin: 0 1em;
+            }
+        }
+    }
+    .theme-info {
+        font-size: 14*$px;
+        font-weight: 300;
+        padding: $phi * 0.5rem 0;
+        opacity: 0.5;
+    }
 }
 
 @include topbutton();

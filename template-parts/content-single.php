@@ -20,6 +20,12 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>   
         <header class="entry-header">
             
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+		<div class="entry-meta">
+			<?php jin_posted_on(); ?>
+		</div><!-- .entry-meta -->
+                
                 <?php
                 if ( 'post' === get_post_type() ) {
                             /* translators: used between list items, there is a space after the comma */
@@ -29,12 +35,6 @@
                             }
                 }
                 ?>
-            
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-
-		<div class="entry-meta">
-			<?php jin_posted_on(); ?>
-		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

@@ -51,7 +51,7 @@
                         
                         <!-- Right Nav Section -->
                         <ul class="right">
-                            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'depth' => 2 ) ); ?>
+                            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu'/*, 'depth' => 2*/ ) ); ?>
                             <div id="search-container">
                                 <div class="search-box clear">
                                     <?php get_search_form(); ?>
