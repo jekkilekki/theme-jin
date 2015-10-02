@@ -81,7 +81,7 @@
 	</header><!-- #masthead -->
         
         
-        <?php if ( !is_page_template( 'page-templates/page-front.php' ) ) { ?>
+        <?php if ( !is_page_template( 'page-templates/page-landing.php' ) ) { ?>
         
                 <div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->
                     

@@ -55,6 +55,7 @@ function jin_setup() {
 		'primary' => esc_html__( 'Primary Menu', 'jin' ),
                 'social'  => esc_html__( 'Social Menu', 'jin' ),
                 'footer'  => esc_html__( 'Footer Menu', 'jin' ),
+                'front'   => esc_html__( 'Front Page Menu', 'jin' )
 	) );
 
 	/*
@@ -172,8 +173,8 @@ function jin_scripts() {
 	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
         
         /* Conditional stylesheet only for Front Page Template */
-        if ( is_page_template( 'page-templates/page-front.php' ) ) {
-            wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/front.css' );
+        if ( is_page_template( 'page-templates/page-landing.php' ) ) {
+            wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
         }
 
         /* Custom navigation script */
