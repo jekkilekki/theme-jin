@@ -13,11 +13,17 @@
     
     <div class="row">
         <div class="large-12 columns front-title-box">
-                <?php the_title( '<h1 class="front-title">', '</h1>' ); ?>
-                <?php //the_title( '<h3 class="front-subtitle>', '</h3>' ); ?>
+                <h1 class="front-title">
+                    <?php if ( false ) { // In Customizer, ask if user wants Page Title or Blog Title
+                        echo bloginfo(); 
+                    } else {
+                        echo get_the_title();
+                    } ?>
+                </h1>
+                <h3 class="front-subtitle"><?php echo bloginfo( 'description' ); ?></h3>
         </div>
         
-        <div class="large-12 columns">
+        <div class="large-12 columns front-menu-box group">
             
             <?php wp_nav_menu( array( 
                 'theme_location'    => 'front', 
@@ -25,23 +31,25 @@
                 'menu_id'           => 'front-menu',
                 'menu_class'        => 'small-block-grid-2 medium-block-grid-3 flip-cards',
                 'fallback_cb'       => false,
+                'walker'            => new jin_front_page_walker()
                 /*, 'depth' => 2*/ 
                 ) ); 
             ?>
             
         </div>
         
+        <?php if ( true ) { // In Customizer, allow to set the bottom link ?>
         <div class="small-12 small-centered medium-6 medium-centered large-3 large-centered columns clients">
             <a href="">
-                <h6 class="text-center">CUSTOMIZE OPTION</h6>
-                <p class="text-center">
+                <h6 class="action-link text-center">CUSTOMIZE OPTION
                     <span class="fa-stack">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-angle-right fa-inverse fa-stack-1x"></i>
                     </span>
-                </p>
+                </h6>
             </a>
         </div>
+        <?php } ?>
     </div>
 
 </section>

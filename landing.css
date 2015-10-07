@@ -22,6 +22,12 @@ body {
 .hentry {
     box-shadow: none;
     border: none;
+    padding-top: 0;
+    margin-top: -2.6375rem;
+}
+.entry-content {
+    margin-top: 0;
+    border: none;
 }
 
 /**
@@ -36,8 +42,17 @@ body {
   clear: both;
 }
 hr {
-	margin-top: 2rem;
+	margin-top: 3rem;
 	margin-bottom: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 4rem;
+    font-weight: 400;
+}
+.action-link {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
 }
 .front-title,
 .front-subtitle {
@@ -53,6 +68,12 @@ hr {
 }
 .front-title-box {
 	margin: 3rem 0;
+}
+.front-menu-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    float: none;
+    z-index: 0;
 }
 .hero-unit .card-icon {
 	display: block;
@@ -231,7 +252,7 @@ hr {
 	//border: none;
         // STYLED LIKE THEME WIDGETS
         border: 0.05rem solid silver;
-        box-shadow: 0 0 2px rgba(0,0,0,0.15);
+        //box-shadow: 0 0 2px rgba(0,0,0,0.15);
         background-color: #f5f5f5;
 }
 .panel a {
@@ -268,6 +289,9 @@ hr {
 	font-size: 0.7rem;
 	margin-left: 20%;
 	font-style: oblique;
+        width: 80%;
+        float: right;
+        margin-top: 5px;
 }
 .hub-info ul {
 	margin-top: 0.5rem;

@@ -236,3 +236,27 @@ function jin_paging_nav() {
 	endif;
 }
 endif;
+
+if ( ! function_exists( 'jin_copyright' ) ) :
+/** 
+ * Dynamic Copyright as per WPBeginner.com
+ * @source: http://www.wpbeginner.com/wp-tutorials/how-to-add-a-dynamic-copyright-date-in-wordpress-footer/
+ */
+function jin_copyright() {
+    
+    global $wpdb;
+    
+    $copyright_dates = $wpdb->get_results( "SELECT YEAR(min(post_date_gmt)) AS firstdate, YEAR(max(post_date_gmt)) AS lastdate FROM $wpdb->posts WHERE post_status = 'publish' " );
+    $output = '';
+    $blog_name = get_bloginfo();
+    
+    if ( $copyright_dates ) {
+        $copyright = "&copy; " . $copyright_dates[0]->firstdate;
+        if ( $copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate ) {
+            $copyright .= " &ndash; " . $copyright_dates[0]->lastdate;
+        }
+        $output = $copyright . " " . $blog_name;
+    }
+    return $output;
+}
+endif;
