@@ -682,29 +682,7 @@ table {
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
-a {
-  color: #00ACDF;
-}
-
-a:visited {
-  color: #0098c6;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: #00b8ee;
-}
-
-a:focus {
-  outline: thin dotted;
-}
-
-a:hover,
-a:active {
-  outline: 0;
-}
-
+/*@import "links";*/
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
@@ -775,9 +753,9 @@ a:active {
     top: 100%;
     left: 0;
     background-color: #f3f2f2;
-    border: 0.05rem solid silver;
+    border: 0.05rem solid white;
     border-bottom: 0;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   }
   .main-navigation ul li ul li {
     float: none;
@@ -789,7 +767,7 @@ a:active {
   }
   .main-navigation ul li ul li a, .main-navigation ul li ul li a:link, .main-navigation ul li ul li a:visited {
     border: 0;
-    border-top: 0.05rem solid #bbbbbb;
+    border-top: 0.05rem solid #fafafa;
   }
   .main-navigation ul li ul li a:hover {
     background-color: #f6f5f5;
@@ -819,7 +797,7 @@ a:active {
     width: 100%;
     line-height: 4.5rem;
     padding: 0 2.1875rem;
-    border-top: 0.05rem solid silver;
+    border-top: 0.05rem solid white;
   }
   .main-navigation ul li a:hover {
     border-bottom-color: transparent;
@@ -831,7 +809,7 @@ a:active {
     background-color: #f1efef;
   }
   .main-navigation ul ul li a {
-    border-top: 0.05rem solid darkent(silver, 2%);
+    border-top: 0.05rem solid darkent(white, 2%);
   }
   .main-navigation ul ul li a:hover {
     border-bottom-color: transparent;
@@ -1129,6 +1107,14 @@ body {
   background-color: #f0f0f0;
 }
 
+.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  left: 0;
+}
+
 article,
 .not-found .hentry,
 .page .hentry {
@@ -1244,11 +1230,15 @@ h6 {
 }
 
 .site-header {
-  background: #ffffff;
   background-color: whitesmoke;
-  border: 0.05rem solid silver;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
+  border: 0.05rem solid white;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
   color: #9e9e9e;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 0;
+  padding: 0;
   box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
   background-color: #f9f9f9;
 }
@@ -1258,8 +1248,16 @@ h6 {
 }
 
 .admin-bar .site-header .fixed {
-  top: 32px;
-  box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+  /*    top: 32px;
+    box-shadow: $color__header-box-shadow;*/
+}
+
+.top-bar, .top-bar ul {
+  padding: 0;
+  background: transparent;
+  height: 4.375rem;
+  line-height: 4.375rem;
+  position: relative;
 }
 
 .hentry,
@@ -1271,12 +1269,12 @@ h6 {
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .site-main .post-navigation {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border: 0.05rem solid transparent;
   border-top: 0.05rem solid gainsboro;
@@ -1371,10 +1369,10 @@ h6 {
 .widget {
   background: #ffffff;
   background-color: whitesmoke;
-  border: 0.05rem solid silver;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
+  border: 0.05rem solid white;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
   color: #9e9e9e;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .widget a, .widget a:visited, .widget a:active {
@@ -1383,13 +1381,13 @@ h6 {
 
 .site-footer {
   background: #ffffff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 #supplementary .widget {
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   border: none;
   box-shadow: none;
   float: left;
@@ -1407,17 +1405,13 @@ h6 {
   clear: both;
 }
 
-.site-header {
-  margin: 0 auto 2.0225rem auto;
-}
-
 .site-title {
   margin-top: 0.2rem !important;
   text-transform: uppercase;
 }
 
 .site-title:hover {
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .site-description {

@@ -47,25 +47,38 @@
 <?php } ?>
     
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
-
-	<header id="masthead" class="site-header" role="banner">
+        
+        <div data-sticky-container>
+	<header id="masthead" class="site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
             
             <div class="row"> <!-- Start Foundation row -->
+                
+                <div class="top-bar-title">
+                    <?php jin_the_site_logo(); ?>
+                    <?php get_template_part( 'components/header/header', 'image' ); ?>
+                </div>
 	
-		<?php // get_template_part( 'components/header/header', 'image' ); // Moved to navigation-top.php ?>
-		
-		<?php jin_the_site_logo(); ?>
-
-		<?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
-		
-		<?php // jin_social_menu(); ?>
+                <div class="top-bar-right">
+                    <?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
+                    <?php jin_social_menu(); ?>
+                </div>
+                
+                <div id="search-container">
+                    <div class="search-box clear">
+                        <?php get_search_form(); ?> 
+                    </div>
+                </div>
+                <div class="search-toggle">
+                    <i class="fa fa-search"></i>
+                    <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jin' ); ?></a>
+                </div>
                 
             </div> <!-- End Foundation row -->
 	
 	</header>
-        
+        </div><!-- END data-sticky-container -->
 	<?php if ( !is_page_template( 'page-templates/page-landing.php' ) ) { ?>
         
-                <div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->
+                <div id="content" class="site-content row"> <!-- Foundation row start -->
                     
         <?php } ?>

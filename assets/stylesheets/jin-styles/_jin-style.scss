@@ -7,6 +7,14 @@ body {
     @include body();
 }
 
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    left: 0;
+}
+    
 article,
 .not-found .hentry,
 .page .hentry {
@@ -73,14 +81,27 @@ ul, ol {
 // Layout colors
 
 .site-header {
-    @include guide;
+    //@include guide;
     @include sub_panel();
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin: 0;
+    padding: 0;
     box-shadow: $color__header-box-shadow;
     background-color: $color__background-header;
 }
 .admin-bar .site-header .fixed {
-    top: 32px;
-    box-shadow: $color__header-box-shadow;
+/*    top: 32px;
+    box-shadow: $color__header-box-shadow;*/
+}
+
+.top-bar, .top-bar ul {
+    padding: 0;
+    background: transparent;
+    height: 4.375rem;
+    line-height: 4.375rem;
+    position: relative;
 }
 
 .hentry, 
@@ -229,7 +250,7 @@ ul, ol {
 // Header
 .site-header {
     //max-width: total_site_width();
-    margin: 0 auto $default_gutter auto;
+    //margin: 0 auto $default_gutter auto;
 }
 
 .site-branding {
