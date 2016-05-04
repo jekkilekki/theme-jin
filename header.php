@@ -48,6 +48,8 @@
     
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
         
+        <?php get_template_part( 'components/header/header', 'image' ); ?>
+        
         <div data-sticky-container>
 	<header id="masthead" class="site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
             
@@ -55,7 +57,16 @@
                 
                 <div class="top-bar-title">
                     <?php jin_the_site_logo(); ?>
-                    <?php get_template_part( 'components/header/header', 'image' ); ?>
+                    <div class="site-branding">
+
+                                <?php if ( is_front_page() || is_home() ) : ?>
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                <?php else : ?>
+                                    <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                                <?php endif; ?>
+                                <p class="site-description"><?php bloginfo( 'description' ); ?></p>
+
+                    </div><!-- .site-branding -->
                 </div>
 	
                 <div class="top-bar-right">

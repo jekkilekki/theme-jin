@@ -47,7 +47,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "variables/variables-base";
 @import "mixins/mixins-base";
-@import "jin-styles/jin-vars-mixins"; /* Custom mixins for this theme */
+@import "jin-styles/jin-vars"; /* Custom vars for this theme */
+@import "jin-styles/jin-mixins";
 
 /*--------------------------------------------------------------
 # Normalize

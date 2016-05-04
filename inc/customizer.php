@@ -165,10 +165,6 @@ function jin_customizer_css() {
         .entry-summary a {
             color: <?php echo $highlight_color; ?>;
         }
-        .search-toggle,
-        .search-box-wrapper {
-            background-color: <?php echo $highlight_color; ?>;
-        }
     </style>
     <?php
 }
