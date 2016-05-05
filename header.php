@@ -51,12 +51,16 @@
         <?php get_template_part( 'components/header/header', 'image' ); ?>
         
         <div data-sticky-container>
-	<header id="masthead" class="site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+            
+	<header id="masthead" class="site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="content:bottom">
             
             <div class="row"> <!-- Start Foundation row -->
                 
                 <div class="top-bar-title">
-                    <?php jin_the_site_logo(); ?>
+                    <?php 
+                    if ( function_exists( 'the_custom_logo' ) || function_exists( 'jetpack_the_site_logo' ) ) {
+                        jin_the_site_logo(); 
+                    } else { ?>
                     <div class="site-branding">
 
                                 <?php if ( is_front_page() || is_home() ) : ?>
@@ -67,6 +71,7 @@
                                 <p class="site-description"><?php bloginfo( 'description' ); ?></p>
 
                     </div><!-- .site-branding -->
+                    <?php } // endif ?>
                 </div>
 	
                 <div class="top-bar-right">

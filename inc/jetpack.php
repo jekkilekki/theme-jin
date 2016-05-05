@@ -54,10 +54,12 @@ function jin_infinite_scroll_render() {
  * Return early if Site Logo is not available.
  */
 function jin_the_site_logo() {
-	if ( ! function_exists( 'jetpack_the_site_logo' ) ) {
-		return;
+        if ( function_exists( 'the_custom_logo' ) ) {
+                the_custom_logo();
+        } else if ( function_exists( 'jetpack_the_site_logo' ) ) {
+                jetpack_the_site_logo();
 	} else {
-		jetpack_the_site_logo();
+                return;
 	}
 }
 

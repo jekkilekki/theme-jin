@@ -88,6 +88,16 @@ function jin_setup() {
 		'default-color' => 'f1f1f1',
 		'default-image' => '',
 	) ) );
+        
+        // Add Custom Logo support (WordPress defaults)
+        add_theme_support( 'custom-logo', array(
+                'height'        => 60,
+                'width'         => 200,
+                'flex-height'   => true,
+                'flex-width'    => true,
+                'header-text'   => array( 'site-title', 'site-description' ),
+        ) );
+        
 }
 endif;
 add_action( 'after_setup_theme', 'jin_setup' );
