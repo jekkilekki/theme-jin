@@ -104,8 +104,9 @@
 
 @mixin custom_logo() {
     .custom-logo {
-        /*max-height: 65px;*/
-        /*max-width: 20%;*/
+        max-height: 66px;
+        max-width: 70px;
+        margin-left: 1rem;
     }
 }
 
@@ -244,7 +245,9 @@
     //box-shadow: inset $color__box-shadow;
 }
 @mixin sticky_post() {
+    border-top: 1*$px solid $color__link;
     border-bottom: 5*$px solid $color__link;
+    position: relative;
 }
 @mixin more_link() {
     background: none;
@@ -293,5 +296,32 @@
     &:hover {
         border-bottom-color: transparent;
         background-color: darken(saturate($color__background-sub-panel, 8%), 3%);
+    }
+}
+
+@mixin archive_item() {
+    .archive-item {
+        float: left;
+        .index-post-thumbnail {
+            height: 320px;
+            overflow: hidden;
+            background: white;
+            img {
+                height: 100%;
+            }
+        }
+        .hentry {
+            /*position: absolute;*/
+            top: 300px;
+            height: 320px;
+            overflow: hidden;
+            padding: 1rem;
+            background-size: cover!important;
+            background-position: 50% 50%!important;
+            background-repeat: no-repeat!important;
+            .entry-title {
+                font-size: 36*$px;
+            }
+        }
     }
 }

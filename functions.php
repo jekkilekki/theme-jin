@@ -91,8 +91,8 @@ function jin_setup() {
         
         // Add Custom Logo support (WordPress defaults)
         add_theme_support( 'custom-logo', array(
-                'height'        => 60,
-                'width'         => 200,
+                'height'        => 66,
+                'width'         => 66,
                 'flex-height'   => true,
                 'flex-width'    => true,
                 'header-text'   => array( 'site-title', 'site-description' ),

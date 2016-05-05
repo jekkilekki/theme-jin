@@ -1174,8 +1174,9 @@ body {
 }
 
 .custom-logo {
-  /*max-height: 65px;*/
-  /*max-width: 20%;*/
+  max-height: 66px;
+  max-width: 70px;
+  margin-left: 1rem;
 }
 
 .row {
@@ -1568,6 +1569,35 @@ h6 {
   margin: 5rem auto 0 auto;
 }
 
+.archive-item {
+  float: left;
+}
+
+.archive-item .index-post-thumbnail {
+  height: 320px;
+  overflow: hidden;
+  background: white;
+}
+
+.archive-item .index-post-thumbnail img {
+  height: 100%;
+}
+
+.archive-item .hentry {
+  /*position: absolute;*/
+  top: 300px;
+  height: 320px;
+  overflow: hidden;
+  padding: 1rem;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat !important;
+}
+
+.archive-item .hentry .entry-title {
+  font-size: 1.8rem;
+}
+
 .hentry,
 .read-comments,
 .write-comments,
@@ -1609,8 +1639,10 @@ h6 {
   padding: 1rem 0 0.75rem;
 }
 
-.sticky {
+#content .sticky {
+  border-top: 0.05rem solid #00ACDF;
   border-bottom: 0.25rem solid #00ACDF;
+  position: relative;
 }
 
 .index-post-thumbnail {

@@ -9,15 +9,8 @@
 
 ?>
 
-<?php if ( '' != get_the_post_thumbnail() ) : ?>
-        <div class="index-post-thumbnail">
-                <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail( 'jin-featured-image' ); ?>
-                </a>
-        </div>
-<?php endif; ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
+            if ( '' != get_the_post_thumbnail() ) { ?> style="background: url(<?php echo the_post_thumbnail_url( 'jin-featured-image' ); ?>);" <?php } ?>>
 
 	<header class="entry-header">
 		<?php

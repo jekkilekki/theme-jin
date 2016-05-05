@@ -327,6 +327,8 @@ ul, ol {
     margin: 100*$px auto 0 auto;
 }
 
+@include archive_item();
+
 //** Posts and pages
 
 // (hentry class covers both) plus their internal elements
@@ -373,7 +375,7 @@ ul, ol {
 }
 
 //**** Individual post styling
-.sticky {
+#content .sticky {
     @include sticky_post();
 }
 

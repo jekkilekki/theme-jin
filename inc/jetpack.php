@@ -33,8 +33,43 @@ function jin_jetpack_setup() {
 
 	// Add theme support for JetPack Portfolio
 	add_theme_support( 'jetpack-portfolio' );
+        
+        // Add theme support for JetPack Testimonial
+        add_theme_support( 'jetpack-testimonial' );
 }
 add_action( 'after_setup_theme', 'jin_jetpack_setup' );
+
+/**
+ * Add Custom Fields to JetPack Custom Content Types
+ */
+function jin_jetpack_add_cf_support() {
+    add_post_type_support( 'jetpack-portfolio', 'custom-fields' );
+    add_post_type_support( 'jetpack-testimonial', 'custom-fields' );
+}
+add_action( 'init', 'jin_jetpack_add_cf_support' );
+
+/**
+ * Make Custom Fields hidden by default in JetPack Portfolios and Testimonials
+ * @link    https://www.vanpattenmedia.com/2014/code-snippet-hide-post-meta-boxes-wordpress
+ */
+function jin_jetpack_default_hide_cf( $hidden, $screen ) {
+    // Grab the current post type
+    $post_type = $screen->post_type;
+    
+    // If we're on a 'jetpack-portfolio' or 'jetpack-testimonial'...
+    if ( $post_type == 'jetpack-portfolio' || $post_type == 'jetpack-testimonial' ) {
+        // Define which meta boxes we wish to hide
+        $hidden = array(
+                'postcustom',
+                'slugdiv'
+        );
+        // Pass our new defaults onto WordPress
+        return $hidden;
+    }
+    // If we are NOT on a JetPack Custom Content Type, use the original defaults
+    return $hidden;
+}
+add_action( 'default_hidden_meta_boxes', 'jin_jetpack_default_hide_cf', 10, 2 );
 
 /**
  * Custom render function for Infinite Scroll.

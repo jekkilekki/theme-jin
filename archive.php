@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+	<div id="primary" class="content-area archive large-12 columns">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -24,17 +24,18 @@ get_header(); ?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-
+                            echo '<div class="archive-item small-12 medium-4 large-3 columns">';
 				/*
 				 * Include the Post-Format-specific template for the content.
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
 				get_template_part( 'components/post/content', get_post_format() );
-
+                            echo '</div>';
 			endwhile;
 
-			the_posts_navigation();
+                        jin_paging_nav();
+			// the_posts_navigation();
 
 		else :
 
