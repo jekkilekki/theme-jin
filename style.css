@@ -1116,16 +1116,18 @@ body {
 
 #header-image {
   overflow: hidden;
+  position: relative;
 }
 
 #header-image .site-branding-header {
   position: absolute;
   width: 100%;
-  top: -webkit-calc( 45% - 235px);
-  top: calc( 45% - 235px);
-  text-align: center;
+  top: 50%;
   left: 50%;
-  margin-left: -50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 #header-image a {
@@ -1134,7 +1136,6 @@ body {
 
 #header-image .site-title,
 #header-image .site-description {
-  /*text-align: center;*/
   color: white;
   font-weight: normal;
   text-transform: capitalize;
@@ -1142,12 +1143,12 @@ body {
 
 #header-image .site-title {
   font-size: 5.5rem;
-  margin-bottom: 0;
+  margin: 0;
   font-weight: 100;
   text-shadow: 0 2px 0 rgba(0, 91, 103, 0.15);
 }
 
-#header-image .site-title::after {
+#header-image .site-title:after {
   content: "";
   position: absolute;
   width: 84px;
@@ -1170,7 +1171,11 @@ body {
 }
 
 .single #header-image {
-  max-height: 200px;
+  max-height: 300px;
+}
+
+.single #header-image .site-title {
+  font-size: 3rem;
 }
 
 .custom-logo {

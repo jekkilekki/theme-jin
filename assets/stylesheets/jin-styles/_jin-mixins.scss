@@ -51,54 +51,57 @@
 @mixin header_image() {
     #header-image {
         overflow: hidden;
-    }
-    #header-image img {
+        position: relative;
+        img {
         
-    }
-    #header-image .site-branding-header {
-        position: absolute;
-        width: 100%;
-        top: calc( 45% - 235px );
-        text-align: center;
-        left: 50%;
-        margin-left: -50%;
-    }
-    #header-image a {
-        color: white;
-    }
-    #header-image .site-title,
-    #header-image .site-description {
-        /*text-align: center;*/
-        color: white;
-        font-weight: normal;
-        text-transform: capitalize;
-    }
-    #header-image .site-title {
-        font-size: 110*$px;
-        margin-bottom: 0;
-        font-weight: 100;
-        text-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
-    }
-    #header-image .site-title::after {
-        content: "";
-        position: absolute;
-        width: 84px;
-        height: 2px;
-        left: calc( 50% - 42px );
-        bottom: 11px;
-        background: linear-gradient( to right, rgba( 0, 113, 117, 0.3), rgba( 0, 143, 135, 0.45 ));
-        box-shadow: 0 1px 0 rgba( 181, 243, 241, 0.07 );
-    }
-    #header-image .site-description {
-        display: block;
-        font-size: 20*$px;
-        line-height: 1.3;
-        width: 380px;
-        margin: 0.7em auto 1.35em;
-        text-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
+        }
+        .site-branding-header {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        a {
+            color: white;
+        }
+        .site-title,
+        .site-description {
+            color: white;
+            font-weight: normal;
+            text-transform: capitalize;
+        }
+        .site-title {
+            font-size: 110*$px;
+            margin: 0;
+            font-weight: 100;
+            text-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
+            &:after {
+                content: "";
+                position: absolute;
+                width: 84px;
+                height: 2px;
+                left: calc( 50% - 42px );
+                bottom: 11px;
+                background: linear-gradient( to right, rgba( 0, 113, 117, 0.3), rgba( 0, 143, 135, 0.45 ));
+                box-shadow: 0 1px 0 rgba( 181, 243, 241, 0.07 );
+            }
+        }
+        .site-description {
+            display: block;
+            font-size: 20*$px;
+            line-height: 1.3;
+            width: 380px;
+            margin: 0.7em auto 1.35em;
+            text-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
+        }
     }
     .single #header-image {
-        max-height: 200px;
+        max-height: 300px;
+        .site-title {
+            font-size: 60*$px;
+        }
     }
 }
 

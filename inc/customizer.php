@@ -25,7 +25,7 @@ function jin_customize_register( $wp_customize ) {
          */
         // Highlight Color Setting
         $wp_customize->add_setting( 'highlight_color', array(
-            'default'           => '#00acdf', // steelblue
+            'default'           => 'green', // steelblue
             'type'              => 'theme_mod',
             'sanitize_callback' => 'sanitize_hex_color',
             'transport'         => 'postMessage'
@@ -174,7 +174,7 @@ add_action( 'customize_register', 'jin_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function jin_customize_preview_js() {
-	wp_enqueue_script( 'jin_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+	wp_enqueue_script( 'jin_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20160507', true );
 }
 add_action( 'customize_preview_init', 'jin_customize_preview_js' );
 
@@ -194,9 +194,11 @@ function jin_sanitize_layout ( $value ) {
 function jin_customizer_css() {
     $highlight_color = get_theme_mod( 'highlight_color' );
     
-    $gradient_color_1 = null !== get_theme_mod( 'grad1_color' ) ? get_theme_mod( 'grad1_color' ) : '#085078';
-    $gradient_color_2 = null !== get_theme_mod( 'grad2_color' ) ? get_theme_mod( 'grad2_color' ) : '#85D8CE';
-    $gradient_color_3 = null !== get_theme_mod( 'grad3_color' ) ? get_theme_mod( 'grad3_color' ) : '#F8FFF3';
+    $use_gradient = get_theme_mod( 'use_gradient' );
+    
+    $gradient_color_1 = get_theme_mod( 'grad1_color', '#085078' );
+    $gradient_color_2 = get_theme_mod( 'grad2_color', '#85D8CE' );
+    $gradient_color_3 = get_theme_mod( 'grad3_color', '#F8FFF3' );
     
     ?>
     <style>
@@ -205,13 +207,7 @@ function jin_customizer_css() {
                 <?php echo $gradient_color_3; ?> 10%,
                 <?php echo $gradient_color_2; ?> 50%,
                 <?php echo $gradient_color_1; ?> 120% );
-        }
-        .split-navigation-menu {
-            background: <?php echo $menu_color; ?>;
-        }
-        #main-nav-left li a,
-        #main-nav-right li a {
-            color: <?php echo $menu_text_color; ?>;
+            <?php echo $use_gradient ? 'height: 600px;' : ''; ?>
         }
         a,
         a:visited,
