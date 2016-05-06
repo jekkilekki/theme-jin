@@ -300,10 +300,14 @@
 }
 
 @mixin archive_item() {
+    .archive {
+        padding: 2rem 0;
+    }
     .archive-item {
+        transition: all 0.5s ease-in;
         float: left;
         .index-post-thumbnail {
-            height: 320px;
+            height: 380px;
             overflow: hidden;
             background: white;
             img {
@@ -311,17 +315,31 @@
             }
         }
         .hentry {
-            /*position: absolute;*/
-            top: 300px;
-            height: 320px;
+            position: relative;
+            height: 360px;
             overflow: hidden;
-            padding: 1rem;
+            padding: 0;
             background-size: cover!important;
             background-position: 50% 50%!important;
             background-repeat: no-repeat!important;
+            border: 0;
             .entry-title {
-                font-size: 36*$px;
+                font-size: 30*$px;
             }
+        }
+        .post-content {
+            transition: all 0.3s ease-in;
+            background: white;
+            padding: 2rem;
+            margin: 0;
+            height: 360px;
+            position: absolute;
+            top: 100%;
+        }
+    }
+    .archive-item:hover {
+        .post-content {
+            top: 0;
         }
     }
 }

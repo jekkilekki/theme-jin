@@ -8,10 +8,25 @@
  */
 
 ?>
+<?php if ( ! is_archive() ) : // Display the Featured Image ABOVE the Posts on Index Pages ?> 
+    <?php if ( '' != get_the_post_thumbnail() ) : ?>
+        <div class="index-post-thumbnail">
+                <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                </a>
+        </div>
+    <?php endif; ?>
+    
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
-            if ( '' != get_the_post_thumbnail() ) { ?> style="background: url(<?php echo the_post_thumbnail_url( 'jin-featured-image' ); ?>);" <?php } ?>>
+<?php else : // Set the Featured Image as the Background Image on Archive Pages ?>
+        
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
+            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jin-featured-image' ); ?>);" <?php } ?>>
 
+<?php endif; ?>
+        
+    <div class="post-content">
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) {
@@ -40,4 +55,5 @@
 		?>
 	</div>
 	<?php get_template_part( 'components/post/content', 'footer' ); ?>
+    </div>
 </article><!-- #post-## -->

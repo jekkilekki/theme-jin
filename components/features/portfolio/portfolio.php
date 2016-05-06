@@ -12,7 +12,7 @@
 					$paged = 1;
 				endif;
 
-				$posts_per_page = get_option( 'jetpack_portfolio_posts_per_page', '10' );
+				$posts_per_page = get_option( 'jetpack_portfolio_posts_per_page', '12' );
 				$args = array(
 					'post_type'      => 'jetpack-portfolio',
 					'posts_per_page' => $posts_per_page,
@@ -22,13 +22,17 @@
 				if ( post_type_exists( 'jetpack-portfolio' ) && $project_query -> have_posts() ) :
 			?>
 
-				<div class="portfolio-wrapper">
+				<div class="portfolio-wrapper content-area archive large-12 columns">
 
+                                    <h2 class="portfolio-title"><?php _e( 'Projects', 'jin' ); ?></h2>
+                                    
 					<?php /* Start the Loop */ ?>
 					<?php while ( $project_query -> have_posts() ) : $project_query -> the_post(); ?>
-
+                                            <div class="archive-item small-12 medium-4 large-3 columns">
+                                                    
 						<?php get_template_part( 'components/features/portfolio/content', 'portfolio' ); ?>
 
+                                            </div>
 					<?php endwhile; ?>
 
 				</div>

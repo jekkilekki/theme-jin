@@ -20,50 +20,6 @@ function jin_customize_register( $wp_customize ) {
          * #1: Settings, #2: Controls
          */
         
-        /* 
-         * Menu Background Color 
-         */
-        // Menu Color Setting
-        $wp_customize->add_setting( 'menu_color', array(
-            'default'           => '#ffffff',
-            'type'              => 'theme_mod',
-            'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
-        ) );
-        
-        // Menu Color Control
-        $wp_customize->add_control( 
-                new WP_Customize_Color_Control(
-                        $wp_customize,
-                        'menu_color', array(
-                            'label'         => __( 'Menu Background Color', 'jin' ),
-                            'description'   => __( 'Change the background color of the menu.', 'jin' ),
-                            'section'       => 'colors',
-                        )
-        ) );
-        
-        /* 
-         * Menu Text Color 
-         */
-        // Menu Text Color Setting
-        $wp_customize->add_setting( 'menu_text_color', array(
-            'default'           => '#777777',
-            'type'              => 'theme_mod',
-            'sanitize_callback' => 'sanitize_hex_color',
-            'transport'         => 'postMessage'
-        ) );
-        
-        // Menu Text Color Control
-        $wp_customize->add_control( 
-                new WP_Customize_Color_Control(
-                        $wp_customize,
-                        'menu_text_color', array(
-                            'label'         => __( 'Menu Text Color', 'jin' ),
-                            'description'   => __( 'Change the text color of the menu.', 'jin' ),
-                            'section'       => 'colors',
-                        )
-        ) );
-        
         /*
          * Highlight Color
          */
@@ -85,6 +41,99 @@ function jin_customize_register( $wp_customize ) {
                             'section'       => 'colors',
                         )
         ) );
+        
+        /* ///////////////// GRADIENT ////////////////// */
+        
+        /** Add some LINES to separate the Gradient @link http://coreymckrill.com/blog/2014/01/09/adding-arbitrary-html-to-a-wordpress-theme-customizer-section/ */
+        
+        /*
+         * Use Gradient Checkbox
+         */
+        // Use Gradient Setting
+        $wp_customize->add_setting( 'use_gradient', array(
+            'default'           => 0,
+        ) );
+        
+        // Use Gradient Control
+        $wp_customize->add_control(
+                new WP_Customize_Control(
+                        $wp_customize,
+                        'use_gradient',
+                        array( 
+                            'label'         => __( 'Use Header Gradient?', 'jin' ),
+                            'type'          => 'checkbox',
+                            'section'       => 'header_image',
+                        )
+        ) );
+        
+        /* 
+         * Gradient Color #1 
+         */
+        // Gradient #1 Color Setting
+        $wp_customize->add_setting( 'grad1_color', array(
+            'default'           => '#085078',
+            'type'              => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        ) );
+        
+        // Gradient #1 Color Control
+        $wp_customize->add_control( 
+                new WP_Customize_Color_Control(
+                        $wp_customize,
+                        'grad1_color', array(
+                            'label'         => __( 'Header Gradient: Top-Left Color', 'jin' ),
+                            'description'   => __( 'Set or change the upper left gradient starting color.', 'jin' ),
+                            'section'       => 'header_image',
+                        )
+        ) );
+        
+        /* 
+         * Gradient Color #2 
+         */
+        // Gradient #2 Color Setting
+        $wp_customize->add_setting( 'grad2_color', array(
+            'default'           => '#85D8CE',
+            'type'              => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        ) );
+        
+        // Gradient #2 Color Control
+        $wp_customize->add_control( 
+                new WP_Customize_Color_Control(
+                        $wp_customize,
+                        'grad2_color', array(
+                            'label'         => __( 'Header Gradient: Center Color', 'jin' ),
+                            'description'   => __( 'Set or change the center gradient color.', 'jin' ),
+                            'section'       => 'header_image',
+                        )
+        ) );
+        
+        /* 
+         * Gradient Color #3 
+         */
+        // Gradient #3 Color Setting
+        $wp_customize->add_setting( 'grad3_color', array(
+            'default'           => '#F8FFF3',
+            'type'              => 'theme_mod',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'         => 'postMessage'
+        ) );
+        
+        // Gradient #2 Color Control
+        $wp_customize->add_control( 
+                new WP_Customize_Color_Control(
+                        $wp_customize,
+                        'grad3_color', array(
+                            'label'         => __( 'Header Gradient: Bottom-Right Color', 'jin' ),
+                            'description'   => __( 'Set or change the lower right gradient ending color.', 'jin' ),
+                            'section'       => 'header_image',
+                        )
+        ) );
+ 
+        
+        /* ///////////////// SIDEBAR LAYOUT ////////////////// */
         
         /* 
          * Select Sidebar Layout 
@@ -143,12 +192,20 @@ function jin_sanitize_layout ( $value ) {
  * Inject Customizer CSS when appropriate
  */
 function jin_customizer_css() {
-    $menu_color = get_theme_mod( 'menu_color' );
-    $menu_text_color = get_theme_mod( 'menu_text_color' );
     $highlight_color = get_theme_mod( 'highlight_color' );
+    
+    $gradient_color_1 = null !== get_theme_mod( 'grad1_color' ) ? get_theme_mod( 'grad1_color' ) : '#085078';
+    $gradient_color_2 = null !== get_theme_mod( 'grad2_color' ) ? get_theme_mod( 'grad2_color' ) : '#85D8CE';
+    $gradient_color_3 = null !== get_theme_mod( 'grad3_color' ) ? get_theme_mod( 'grad3_color' ) : '#F8FFF3';
     
     ?>
     <style>
+        .custom-header {
+            background: radial-gradient( ellipse farthest-side at 100% 100%,
+                <?php echo $gradient_color_3; ?> 10%,
+                <?php echo $gradient_color_2; ?> 50%,
+                <?php echo $gradient_color_1; ?> 120% );
+        }
         .split-navigation-menu {
             background: <?php echo $menu_color; ?>;
         }

@@ -145,7 +145,7 @@ function the_fancy_excerpt() {
         echo '</div>';
     } elseif ( @strpos ( $post->post_content, '<!--more-->' ) ) {
         the_content();
-    } elseif ( str_word_count ( $post->post_content ) < 200 ) {
+    } elseif ( str_word_count ( $post->post_content ) < 10 ) {
         the_content();
     } else {
         the_excerpt();

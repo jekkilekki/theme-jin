@@ -1326,6 +1326,11 @@ h6 {
   color: inherit;
 }
 
+.portfolio-title {
+  text-align: center;
+  margin-top: 0;
+}
+
 .admin-bar .site-header .fixed {
   /*    top: 32px;
     box-shadow: $color__header-box-shadow;*/
@@ -1569,12 +1574,18 @@ h6 {
   margin: 5rem auto 0 auto;
 }
 
+.archive {
+  padding: 2rem 0;
+}
+
 .archive-item {
+  -webkit-transition: all 0.5s ease-in;
+          transition: all 0.5s ease-in;
   float: left;
 }
 
 .archive-item .index-post-thumbnail {
-  height: 320px;
+  height: 380px;
   overflow: hidden;
   background: white;
 }
@@ -1584,18 +1595,33 @@ h6 {
 }
 
 .archive-item .hentry {
-  /*position: absolute;*/
-  top: 300px;
-  height: 320px;
+  position: relative;
+  height: 360px;
   overflow: hidden;
-  padding: 1rem;
+  padding: 0;
   background-size: cover !important;
   background-position: 50% 50% !important;
   background-repeat: no-repeat !important;
+  border: 0;
 }
 
 .archive-item .hentry .entry-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+}
+
+.archive-item .post-content {
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+  background: white;
+  padding: 2rem;
+  margin: 0;
+  height: 360px;
+  position: absolute;
+  top: 100%;
+}
+
+.archive-item:hover .post-content {
+  top: 0;
 }
 
 .hentry,
