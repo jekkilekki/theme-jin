@@ -12,6 +12,15 @@ jQuery( document ).ready( function( $ ) {
     $("*").find("p.comment-awaiting-moderation").each(function() {
         $(this).addClass("alert-box success radius");
     });        //add additional code here if needed    })}); 
+    
+    $( ".show-hide-author" ).click( function() {
+        $( ".author-box" ).toggle( 600, 'swing' );
+        if ( $( this ).html() == "Hide" ) {
+            $( this ).html( "Show" );
+        } else {
+            $( this ).html( "Hide" );
+        }
+    });
 });
 
 

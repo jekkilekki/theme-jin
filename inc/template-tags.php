@@ -36,6 +36,18 @@ function jin_posted_on() {
 
 	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
         
+        // Categories
+        if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( '</li><li>', 'jin' ) );
+		if ( $categories_list && jin_categorized_blog() ) {
+                        echo '<span class="cat-links">';
+                        _e( 'Filed under: ', 'jin' );
+			printf( '<ul><li>' . $categories_list . '</li></ul>', $categories_list ); // WPCS: XSS OK.
+                        echo '</span>';
+		}
+	}
+        
         if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) {
                 echo '<span class="comments-link">';
                 comments_popup_link( esc_html__( 'Comment', 'jin' ), esc_html__( '1 Comment', 'jin' ), esc_html__( '% Comments', 'jin' ) );
@@ -167,37 +179,60 @@ add_filter( 'excerpt_more', 'jin_excerpt_more' );
  * Add an author box below posts
  * @link http://www.wpbeginner.com/wp-tutorials/how-to-add-an-author-info-box-in-wordpress-posts/
  */
-function jin_author_box( /*$content*/ ) {
+function jin_author_box() {
     global $post;
     
-    // Detect if it is a single post with a post author
-    if ( is_single() && isset( $post->post_author ) ) {
+    // Detect if a post author is set
+    if ( isset( $post->post_author ) ) {
         
-        // Get the author's display name
-        $display_name = get_the_author_meta( 'display_name', $post->post_author );
-            // If display name is not available, use nickname
-            if ( empty ( $display_name ) ) $display_name = get_the_author_meta( 'nickname', $post->post_author );
-        // Get bio info
-        $user_desc = get_the_author_meta( 'user_description', $post->post_author );
-        // Website URL
-        $user_site = get_the_author_meta( 'url', $post->post_author );
-        // Link to author archive page
-        $user_posts = get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) );
+        /*
+         * Get Author info
+         */
+        $display_name = get_the_author_meta( 'display_name', $post->post_author );                  // Get the author's display name  
+            if ( empty ( $display_name ) ) $display_name = get_the_author_meta( 'nickname', $post->post_author ); // If display name is not available, use nickname
+        $user_desc =    get_the_author_meta( 'user_description', $post->post_author );              // Get bio info
+        $user_site =    get_the_author_meta( 'url', $post->post_author );                           // Website URL
+        $user_posts =   get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) );    // Link to author archive page
         
-        if ( ! empty( $display_name ) ) $author_details = '<p class="author_name">' . $display_name . '</p>';
-        if ( ! empty( $user_desc ) ) $author_details .= '<p class="author_details">' . get_avatar( get_the_author_meta( 'user_email' ), 90 ) . nl2br( $user_desc ) . '</p>';
+        /*
+         * Create the Author box
+         */
+        $author_details  = '<aside class="author_bio_section">';
+        $author_details .= '<h3 class="author-title"><span>About ';
+            if ( is_author() ) $author_details .= $display_name;    // If an author archive, just show the author name
+            else $author_details .= 'the Author';                   // If a regular page, show "About the Author"
+        $author_details .= '</span></h3>';
         
-        $author_details .= '<p class="author_links"><a href="' . $user_posts . '">View all posts by ' . $display_name . '</a>';
+        $author_details .= '<div class="author-box">';
+        $author_details .= '<section class="author-avatar">' . get_avatar( get_the_author_meta( 'user_email' ), 120 ) . '</section>';
+        $author_details .= '<section class="author-info">';
         
-        // Check if author has a website in their profile
-        if ( ! empty( $user_site ) ) $author_details .= ' | <a href="' . $user_site . '" target="_blank" rel="nofollow">Website</a></p>';
-        else $author_details .= '</p>';
+        if ( ! empty( $display_name ) && ! is_author() ) {          // Don't show this name on an author archive page
+            $author_details .= '<h3 class="author-name">';
+            $author_details .= '<a class="fn" href="' . $user_posts . '">' . $display_name . '</a>';
+            $author_details .= '</h3>';
+        }
+        if ( ! empty( $user_desc ) ) 
+            $author_details .= '<p class="author-description">' . $user_desc . '</p>';
         
-        echo '<footer class="author_bio_section">' . $author_details . '</footer>';
-        // Pass all this info to post content
-        //$content = $content . '<footer class="author_bio_section">' . $author_details . '</footer>';
+        if ( ! is_author() ) {  // Don't show the meta info on an author archive page
+            $author_details .= '<p class="author-links entry-meta"><span class="vcard">All posts by <a class="fn" href="' . $user_posts . '">' . $display_name . '</a></span>';
+
+            // Check if author has a website in their profile
+            if ( ! empty( $user_site ) ) 
+                $author_details .= '<a class="author-site" href="' . $user_site . '" target="_blank" rel="nofollow">Website</a></p>';
+            else $author_details .= '</p>';
+        }
+        
+        $author_details .= '</section>';
+        $author_details .= '</div>';
+        $author_details .= '<p class="show-hide-author label">Hide</p>';
+        $author_details .= '</aside>';
+        
+        echo $author_details;
+
     }
-    //return $content;
+    
 }
 
 if ( ! function_exists( 'jin_breadcrumbs' ) ) :

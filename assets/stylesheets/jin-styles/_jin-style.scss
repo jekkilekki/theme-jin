@@ -41,6 +41,9 @@
     content: "";
     clear: both;
 }
+img {
+    display: block;
+}
 
 @include body();
 
@@ -80,7 +83,9 @@
 /*--------------------------------------------------------------
 # Buttons
 --------------------------------------------------------------*/
+@include buttons();
 
+@include labels();
 
 /*--------------------------------------------------------------
 # Formattings
@@ -130,7 +135,12 @@
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-
+.single .hentry img {
+    border: 3px solid silver;
+}
+.single .hentry img:hover {
+    border-color: $color__link;
+}
 
 /*--------------------------------------------------------------
 # Jin
@@ -230,8 +240,10 @@ ul, ol {
     .nav-previous, .nav-next {
         padding-left: $post_l_padding;
         padding-right: $post_r_padding;
-        padding-top: $phi * 1rem;
-        padding-bottom: $phi * 1rem;
+        padding-top: $post_t_padding;
+        padding-bottom: $post_t_padding;
+/*        padding-top: $phi * 1rem;
+        padding-bottom: $phi * 1rem;*/
         margin: 0;
         h4 {
             font-size: 24*$px;
@@ -444,24 +456,64 @@ ul, ol {
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
     padding-top: $post_t_padding;
-    padding-bottom: $post_b_padding;
+    /*padding-bottom: $post_b_padding;*/
     margin: 0 0 $default_gutter * 1.5 0;
     border-top: 0.05rem solid gainsboro;
 }
+.single .hentry {
+    padding-top: $post_t_padding * 1.5;
+}
 .author_bio_section {
     @include sub_panel();
+    box-shadow: $color__box-shadow;
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
-    padding-top: $post_t_padding;
-    padding-bottom: $post_b_padding;
+    padding-top: $post_t_padding / 2;
+    padding-bottom: $post_b_padding / 2;
     margin: -$default-gutter * 1.5 0 0 0;
     border: 0;
     border-top: 1px solid gainsboro;
-}
-
-.hentry {
-    padding-bottom: 0;
-    /* margin-bottom: 0; */
+    text-align: center;
+    .author-avatar img {
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: $color__box-shadow;
+        border: 1px solid white;
+    }
+    .author-description {
+        text-align: left;
+        margin: 2em auto;
+        max-width: 400px;
+    }
+    .author-title {
+        position: relative;
+        cursor: pointer;
+        :hover {
+            color: $color__link;
+        }
+    }
+    .author-title span {
+        background: $color__background-sub-panel;
+        padding: 0 1rem;
+        z-index: 3;
+        position: relative;
+    }
+    .author-title:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px solid gainsboro;
+        left: 0;
+        top: 10px;
+        z-index: 2;
+    }
+    .author-box {
+        /*display: none;*/
+    }
+    .show-hide-author {
+        /*font-size: 16*$px;*/
+        /*display: inline-block;*/
+    }
 }
 
 // Centers category headers
@@ -551,13 +603,16 @@ ul, ol {
 
 .entry-meta {
     display: inline-block;
+    text-align: center;
+    line-height: 29px;
     font-size: 18*$px;
     font-weight: 300;
     padding: 0.25rem;
     width: 100%;
     @include entry_meta();
     .comments-link:before,
-    .edit-link:before {
+    .edit-link:before,
+    .author-site:before {
         padding: 0 0.5em;
         content: '\22c5';
         margin: 0;

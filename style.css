@@ -513,8 +513,7 @@ input[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
   border-radius: 3px;
-  background: -webkit-linear-gradient(top left, #00ACDF, #8EDCD2);
-  background: linear-gradient(to bottom right, #00ACDF, #8EDCD2);
+  background: #e6e6e6;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.8);
   font-size: 12px;
@@ -1150,6 +1149,10 @@ object {
   clear: both;
 }
 
+img {
+  display: block;
+}
+
 body {
   /*border-top: 2*$px solid $color__border-main-panel;*/
   background-color: #f1f1f1;
@@ -1230,6 +1233,7 @@ body {
   max-width: 100%;
   width: auto;
   margin-left: 1rem;
+  display: inline-block;
 }
 
 /*--------------------------------------------------------------
@@ -1354,6 +1358,24 @@ blockquote.alignleft {
 /*--------------------------------------------------------------
 # Buttons
 --------------------------------------------------------------*/
+button,
+.button,
+.submit,
+.reset,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  box-shadow: none;
+  line-height: inherit;
+  font-size: inherit;
+}
+
+.label {
+  background: silver;
+  border-radius: 3px;
+  padding: 0.3333rem 0.5rem 0;
+}
+
 /*--------------------------------------------------------------
 # Formattings
 --------------------------------------------------------------*/
@@ -1384,6 +1406,14 @@ blockquote.alignleft {
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
+.single .hentry img {
+  border: 3px solid silver;
+}
+
+.single .hentry img:hover {
+  border-color: #00ACDF;
+}
+
 /*--------------------------------------------------------------
 # Jin
 --------------------------------------------------------------*/
@@ -1482,8 +1512,10 @@ ul, ol {
 .site-main .post-navigation .nav-previous, .site-main .post-navigation .nav-next {
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
-  padding-top: 1.618rem;
-  padding-bottom: 1.618rem;
+  padding-top: 2.61792rem;
+  padding-bottom: 2.61792rem;
+  /*        padding-top: $phi * 1rem;
+        padding-bottom: $phi * 1rem;*/
   margin: 0;
 }
 
@@ -1749,9 +1781,13 @@ ul, ol {
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
-  padding-bottom: 2.61792rem;
+  /*padding-bottom: $post_b_padding;*/
   margin: 0 0 3.03375rem 0;
   border-top: 0.05rem solid gainsboro;
+}
+
+.single .hentry {
+  padding-top: 3.92689rem;
 }
 
 .author_bio_section {
@@ -1763,22 +1799,67 @@ ul, ol {
   /*width: 33.33333%;*/
   /*margin-left: .9375rem;*/
   /*margin-right: .9375rem;*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
-  padding-top: 2.61792rem;
-  padding-bottom: 2.61792rem;
+  padding-top: 1.30896rem;
+  padding-bottom: 1.30896rem;
   margin: -3.03375rem 0 0 0;
   border: 0;
   border-top: 1px solid gainsboro;
+  text-align: center;
 }
 
 .author_bio_section a, .author_bio_section a:visited, .author_bio_section a:active {
   color: inherit;
 }
 
-.hentry {
-  padding-bottom: 0;
-  /* margin-bottom: 0; */
+.author_bio_section .author-avatar img {
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
+}
+
+.author_bio_section .author-description {
+  text-align: left;
+  margin: 2em auto;
+  max-width: 400px;
+}
+
+.author_bio_section .author-title {
+  position: relative;
+  cursor: pointer;
+}
+
+.author_bio_section .author-title :hover {
+  color: #00ACDF;
+}
+
+.author_bio_section .author-title span {
+  background: #f9f9f9;
+  padding: 0 1rem;
+  z-index: 3;
+  position: relative;
+}
+
+.author_bio_section .author-title:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid gainsboro;
+  left: 0;
+  top: 10px;
+  z-index: 2;
+}
+
+.author_bio_section .author-box {
+  /*display: none;*/
+}
+
+.author_bio_section .show-hide-author {
+  /*font-size: 16*$px;*/
+  /*display: inline-block;*/
 }
 
 .page-header {
@@ -1871,6 +1952,8 @@ ul, ol {
 
 .entry-meta {
   display: inline-block;
+  text-align: center;
+  line-height: 29px;
   font-size: 0.9rem;
   font-weight: 300;
   padding: 0.25rem;
@@ -1886,7 +1969,8 @@ ul, ol {
 }
 
 .entry-meta .comments-link:before,
-.entry-meta .edit-link:before {
+.entry-meta .edit-link:before,
+.entry-meta .author-site:before {
   padding: 0 0.5em;
   content: '\22c5';
   margin: 0;

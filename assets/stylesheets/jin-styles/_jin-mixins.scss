@@ -116,6 +116,7 @@
         max-width: 100%;
         width: auto;
         margin-left: 1rem;
+        display: inline-block;
     }
 }
 
@@ -139,6 +140,28 @@
     }
     .main-navigation ul {
         padding-right: 4rem;
+    }
+}
+
+@mixin buttons() {
+    button,
+    .button,
+    .submit,
+    .reset,
+    input[type="button"], 
+    input[type="reset"], 
+    input[type="submit"] {
+        box-shadow: none;
+        line-height: inherit;
+        font-size: inherit;
+    }
+}
+
+@mixin labels() {
+    .label {
+        background: $color__entry-highlight;
+        border-radius: 3px;
+        padding: 0.3333rem 0.5rem 0;
     }
 }
 
