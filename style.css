@@ -1104,9 +1104,44 @@ object {
   font-size: 80%;
 }
 
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+        ## Accessibility
+        ## Alignments
+        ## Clearings
+        ## Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+# Jin
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
 * {
   box-sizing: border-box;
   word-wrap: break-word;
+  /*position: relative;*/
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  position: relative;
 }
 
 body {
@@ -1170,96 +1205,42 @@ body {
   text-shadow: 0 2px 0 rgba(0, 91, 103, 0.15);
 }
 
-.single #header-image {
+.single #header-image,
+.archive #header-image,
+.search #header-image,
+.error404 #header-image {
   max-height: 300px;
 }
 
-.single #header-image .site-title {
+.single #header-image .site-title,
+.archive #header-image .site-title,
+.search #header-image .site-title,
+.error404 #header-image .site-title {
   font-size: 3rem;
 }
 
 .custom-logo {
-  max-height: 66px;
-  max-width: 70px;
+  max-height: 40px;
+  max-width: 100%;
+  width: auto;
   margin-left: 1rem;
 }
 
-.row {
-  position: relative;
-}
-
-article,
-.not-found .hentry,
-.page .hentry {
-  margin-bottom: 2.0225rem;
-}
-
-.index-post {
-  border: 1px solid transparent;
-}
-
-.index-post:hover {
-  border: 1px solid #00ACDF;
-}
-
-.single-post .hentry {
-  border-top: 1px solid #00ACDF;
-}
-
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
 a {
   text-decoration: none;
   border-bottom: 1px dotted transparent;
-}
-
-blockquote {
-  padding: 1.01125rem 2.0225rem;
-  margin: 2.0225rem 1.01125rem;
-  font-size: 1.2rem;
-  font-weight: 300;
-  background-color: inherit;
-  border-left: 0.3rem solid gainsboro;
-  color: #9e9e9e;
-}
-
-blockquote a, blockquote a:visited, blockquote a:active {
-  color: inherit;
-}
-
-blockquote cite {
-  font-weight: 300;
-  font-size: 0.9rem;
-  text-align: right;
-  margin-left: 25%;
-  margin-top: 2.0225rem;
-}
-
-blockquote.alignright {
-  width: 50%;
-  float: right;
-  padding: 1em 2em 0 0;
-  margin-left: 2em;
-  border-left: none;
-  border-right: 0.3rem solid gainsboro;
-  margin-right: 0;
-}
-
-blockquote.alignright cite {
-  margin-left: 0;
-  margin-right: 25%;
-  text-align: left;
-}
-
-blockquote.alignleft {
-  width: 50%;
-  float: left;
-  padding: 1em 0 0 2em;
-  margin-right: 2em;
-  margin-left: 0;
-}
-
-ul, ol {
-  padding: 0;
-  margin: 0 0 1.618em 1.618em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1315,6 +1296,114 @@ h6 {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
+blockquote {
+  padding: 1.01125rem 2.0225rem;
+  margin: 2.0225rem 1.01125rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  background-color: inherit;
+  border-left: 0.3rem solid gainsboro;
+  color: #9e9e9e;
+}
+
+blockquote a, blockquote a:visited, blockquote a:active {
+  color: inherit;
+}
+
+blockquote cite {
+  font-weight: 300;
+  font-size: 0.9rem;
+  text-align: right;
+  margin-left: 25%;
+  margin-top: 2.0225rem;
+}
+
+blockquote.alignright {
+  width: 50%;
+  float: right;
+  padding: 1em 2em 0 0;
+  margin-left: 2em;
+  border-left: none;
+  border-right: 0.3rem solid gainsboro;
+  /*margin-right: 0;*/
+}
+
+blockquote.alignright cite {
+  margin-left: 0;
+  margin-right: 25%;
+  text-align: left;
+}
+
+blockquote.alignleft {
+  width: 50%;
+  float: left;
+  padding: 1em 0 0 2em;
+  margin-right: 2em;
+  /*margin-left: 0;*/
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Formattings
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Lists
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Tables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Links
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Jin
+--------------------------------------------------------------*/
+article,
+.not-found .hentry,
+.page .hentry {
+  margin-bottom: 2.0225rem;
+}
+
+.index-post {
+  border: 1px solid transparent;
+}
+
+.index-post:hover {
+  border: 1px solid #00ACDF;
+}
+
+.single-post .hentry {
+  border-top: 1px solid #00ACDF;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0 0 1.618em 1.618em;
+}
+
 .site-header {
   background-color: #f9f9f9;
   border: 0.05rem solid white;
@@ -1361,7 +1450,6 @@ h6 {
 
 .hentry,
 .comments-area,
-.page-header,
 .page-content,
 .site-main .posts-navigation,
 .paging-navigation li {
@@ -1622,6 +1710,9 @@ h6 {
   margin: 0;
   height: 360px;
   position: absolute;
+}
+
+.archive-item .post-content.post-thumbnail {
   top: 100%;
 }
 
@@ -1632,7 +1723,6 @@ h6 {
 .hentry,
 .read-comments,
 .write-comments,
-.page-header,
 .page-content,
 .site-main .posts-navigation {
   padding-left: 4.2358rem;
@@ -1640,6 +1730,7 @@ h6 {
   padding-top: 2.61792rem;
   padding-bottom: 2.61792rem;
   margin: 0 0 3.03375rem 0;
+  border-top: 0.05rem solid gainsboro;
 }
 
 .hentry {
@@ -1661,13 +1752,13 @@ h6 {
 
 .page-title {
   text-align: center;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: 2rem;
+  /*text-transform: uppercase;*/
+  font-weight: 400;
   margin: 0;
-  border-top: 1px solid gainsboro;
-  border-bottom: 1px solid gainsboro;
-  padding: 1rem 0 0.75rem;
+  /*border-top: 1px solid $color__light-border;*/
+  /*border-bottom: 1px solid $color__light-border;*/
+  /*padding: 1rem 0 0.75rem;*/
 }
 
 #content .sticky {
@@ -1868,7 +1959,7 @@ h6 {
   font-weight: 300;
   padding: 0.5rem 0;
   /*    line-height: 3em;*/
-  color: inherit;
+  color: #9e9e9e;
   border-bottom: none;
 }
 
@@ -1887,6 +1978,11 @@ h6 {
 
 .entry-footer span {
   border-top: none;
+}
+
+.entry-footer a {
+  color: inherit;
+  font-weight: 400;
 }
 
 /**

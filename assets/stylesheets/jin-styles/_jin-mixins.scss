@@ -44,8 +44,10 @@
 }
 
 @mixin body() {
-    /*border-top: 2*$px solid $color__border-main-panel;*/
-    background-color: $color__background-body;
+    body {
+        /*border-top: 2*$px solid $color__border-main-panel;*/
+        background-color: $color__background-body;
+    }
 }
 
 @mixin header_image() {
@@ -97,7 +99,10 @@
             text-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
         }
     }
-    .single #header-image {
+    .single #header-image,
+    .archive #header-image,
+    .search #header-image,
+    .error404 #header-image {
         max-height: 300px;
         .site-title {
             font-size: 60*$px;
@@ -107,8 +112,9 @@
 
 @mixin custom_logo() {
     .custom-logo {
-        max-height: 66px;
-        max-width: 70px;
+        max-height: 40px;
+        max-width: 100%;
+        width: auto;
         margin-left: 1rem;
     }
 }
@@ -177,11 +183,47 @@
 }
 
 @mixin blockquote() {
-    background-color: inherit;
-    border-left: 6*$px solid $color__light-border;
-    color: $color__text-sub-panel;
-    a, a:visited, a:active {
-        color: inherit;
+    blockquote {
+        padding: $default_gutter / 2 $default_gutter;
+        margin: $default_gutter $default_gutter / 2;
+        font-size: 24*$px;
+        //font-style: italic;
+        font-weight: 300;
+        background-color: inherit;
+        border-left: 6*$px solid $color__light-border;
+        color: $color__text-sub-panel;
+        
+        a, a:visited, a:active {
+            color: inherit;
+        }
+        cite {
+            font-weight: 300;
+            font-size: 18*$px;
+            text-align: right;
+            margin-left: 25%;
+            margin-top: $default_gutter;
+        }
+        &.alignright {
+            width: 50%;
+            float: right;
+            padding: 1em 2em 0 0;
+            margin-left: 2em;
+            border-left: none;
+            border-right: 6*$px solid $color__light-border;
+            /*margin-right: 0;*/
+        }
+        &.alignright cite {
+            margin-left: 0;
+            margin-right: 25%;
+            text-align: left;
+        }
+        &.alignleft {
+            width: 50%;
+            float: left;
+            padding: 1em 0 0 2em;
+            margin-right: 2em;
+            /*margin-left: 0;*/
+        }
     }
 }
 
@@ -236,10 +278,14 @@
 }
 
 @mixin entry_footer() {
-    color: inherit;
+    color: #9e9e9e;
     border-bottom: none;
     span {
         border-top: none;
+    }
+    a {
+        color: inherit;
+        font-weight: 400;
     }
 }
 @mixin comment() {
@@ -337,7 +383,9 @@
             margin: 0;
             height: 360px;
             position: absolute;
-            top: 100%;
+            &.post-thumbnail {
+                top: 100%;
+            }
         }
     }
     .archive-item:hover {

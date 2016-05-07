@@ -23,8 +23,10 @@
 			?>
 
 				<div class="portfolio-wrapper content-area archive large-12 columns">
-
-                                    <h2 class="portfolio-title"><?php _e( 'Projects', 'jin' ); ?></h2>
+                                    
+                                    <header class="page-header">
+                                        <h1 class="page-title"><?php _e( 'Projects', 'jin' ); ?></h1>
+                                    </header>
                                     
 					<?php /* Start the Loop */ ?>
 					<?php while ( $project_query -> have_posts() ) : $project_query -> the_post(); ?>

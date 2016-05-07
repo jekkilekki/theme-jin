@@ -1,18 +1,144 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+        ## Accessibility
+        ## Alignments
+        ## Clearings
+        ## Typography
+# Forms
+# Buttons
+# Formatting
+# Lists
+# Tables
+# Navigation
+# Links
+# Layout
+	## Posts
+	## Pages
+# Comments
+# Widgets
+# Infinite scroll
+# Media
+	## Galleries
+# Jin
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
 * {
     box-sizing: border-box;
     word-wrap: break-word;
+    /*position: relative;*/
+    margin: 0;
+    padding: 0;
 }
+// Foundation rows
+.row { position: relative; }
 
-body {
-    @include body();
-}
+@include body();
 
 @include header_image();
 
 @include custom_logo();
 
-// Foundation rows
-.row { position: relative; }
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@include links();
+
+@include htags();
+
+@include blockquote();
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Formattings
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Lists
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Tables
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Links
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# Jin
+--------------------------------------------------------------*/
+
+
+
+
+    
+
+
+
+
+
     
 article,
 .not-found .hentry,
@@ -30,44 +156,9 @@ article,
     border-top: 1px solid $color__link;
 }
 
-@include links();
 
-blockquote {
-    padding: $default_gutter / 2 $default_gutter;
-    margin: $default_gutter $default_gutter / 2;
-    font-size: 24*$px;
-    //font-style: italic;
-    font-weight: 300;
-    @include blockquote();
-    cite {
-        font-weight: 300;
-        font-size: 18*$px;
-        text-align: right;
-        margin-left: 25%;
-        margin-top: $default_gutter;
-    }
-    &.alignright {
-        width: 50%;
-        float: right;
-        padding: 1em 2em 0 0;
-        margin-left: 2em;
-        border-left: none;
-        border-right: 6*$px solid $color__light-border;
-        margin-right: 0;
-    }
-    &.alignright cite {
-        margin-left: 0;
-        margin-right: 25%;
-        text-align: left;
-    }
-    &.alignleft {
-        width: 50%;
-        float: left;
-        padding: 1em 0 0 2em;
-        margin-right: 2em;
-        margin-left: 0;
-    }
-}
+
+
 
 // Overridden from lists.scss
 ul, ol {
@@ -75,7 +166,7 @@ ul, ol {
     margin: 0 0 $phi*1em $phi*1em;
 }
 
-@include htags();
+
 
 // Layout colors
 
@@ -115,7 +206,7 @@ ul, ol {
 
 .hentry, 
 .comments-area, 
-.page-header, 
+/*.page-header,*/ 
 .page-content, 
 .site-main .posts-navigation,
 .paging-navigation li {
@@ -339,7 +430,7 @@ ul, ol {
 .hentry,
 .read-comments,
 .write-comments,
-.page-header,
+/*.page-header,*/
 .page-content,
 .site-main .posts-navigation {
     padding-left: $post_l_padding;
@@ -347,6 +438,7 @@ ul, ol {
     padding-top: $post_t_padding;
     padding-bottom: $post_b_padding;
     margin: 0 0 $default_gutter * 1.5 0;
+    border-top: 0.05rem solid gainsboro;
 }
 
 .hentry {
@@ -368,14 +460,14 @@ ul, ol {
 }
 .page-title {
     text-align: center;
-    font-size: 24*$px;
-    text-transform: uppercase;
-    font-weight: 700;
+    font-size: 40*$px;
+    /*text-transform: uppercase;*/
+    font-weight: 400;
     //margin-bottom: $default-gutter;
     margin: 0;
-    border-top: 1px solid $color__light-border;
-    border-bottom: 1px solid $color__light-border;
-    padding: 1rem 0 0.75rem;
+    /*border-top: 1px solid $color__light-border;*/
+    /*border-bottom: 1px solid $color__light-border;*/
+    /*padding: 1rem 0 0.75rem;*/
 }
 
 //**** Individual post styling

@@ -26,7 +26,7 @@
 
 <?php endif; ?>
         
-    <div class="post-content">
+    <div class="post-content <?php echo has_post_thumbnail() ? 'post-thumbnail' : ''; ?>">
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) {
@@ -35,13 +35,17 @@
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
 
-		if ( 'post' === get_post_type() ) : ?>
+		if ( 'post' === get_post_type() && ! is_archive() ) : ?>
 		<?php get_template_part( 'components/post/content', 'meta' ); ?>
 		<?php
 		endif; ?>
 	</header>
 	<div class="entry-content">
 		<?php
+                
+                if ( is_archive() ) {
+                    the_fancy_excerpt();
+                } else {
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jin' ), array( 'span' => array( 'class' => array() ) ) ),
@@ -52,8 +56,14 @@
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
 				'after'  => '</div>',
 			) );
+                }
 		?>
 	</div>
-	<?php get_template_part( 'components/post/content', 'footer' ); ?>
+	<?php 
+        if ( 'post' === get_post_type() && ! is_archive() ) :
+            get_template_part( 'components/post/content', 'footer' ); 
+        endif; 
+        ?>
+        
     </div>
 </article><!-- #post-## -->

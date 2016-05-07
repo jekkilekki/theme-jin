@@ -167,7 +167,8 @@ function jin_foundation_enqueue() {
         wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
         /* Add Custom Fonts */
-        wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
+        // wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
+        wp_enqueue_style( 'jin-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
         wp_enqueue_style( 'fawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
         
 }
