@@ -39,6 +39,7 @@ get_header(); ?>
 
 			get_template_part( 'components/post/content', get_post_format() );
 
+                        jin_author_box();
 			jin_post_navigation();
 
 			// If comments are open or we have at least one comment, load up the comment template.

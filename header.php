@@ -52,7 +52,7 @@
         
         <div data-sticky-container>
             
-	<header id="masthead" class="site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="content:bottom">
+	<header id="masthead" class="group site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="content:bottom">
             
             <div class="row"> <!-- Start Foundation row -->
                 

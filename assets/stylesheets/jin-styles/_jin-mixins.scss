@@ -238,6 +238,10 @@
     border: 1*$px solid $color__border-sub-panel;
     box-shadow: inset $color__box-shadow;
     color: $color__text-sub-panel;
+    /*float: left;*/
+    /*width: 33.33333%;*/
+    /*margin-left: .9375rem;*/
+    /*margin-right: .9375rem;*/
     a, a:visited, a:active {
         color: inherit;
     }
@@ -356,7 +360,7 @@
         transition: all 0.5s ease-in;
         float: left;
         .index-post-thumbnail {
-            height: 380px;
+            height: 340px;
             overflow: hidden;
             background: white;
             img {
@@ -365,12 +369,16 @@
         }
         .hentry {
             position: relative;
-            height: 360px;
+            height: 340px;
             overflow: hidden;
             padding: 0;
             background-size: cover!important;
             background-position: 50% 50%!important;
             background-repeat: no-repeat!important;
+                -webkit-box-shadow: 0 0 13px rgba(0, 0, 0, .07);
+                -moz-box-shadow: 0 0 13px rgba(0, 0, 0, .07);
+                -ms-box-shadow: 0 0 13px rgba(0, 0, 0, .07);
+                box-shadow: 0 0 13px rgba(0, 0, 0, .07); 
             border: 0;
             .entry-title {
                 font-size: 30*$px;
@@ -381,7 +389,7 @@
             background: white;
             padding: 2rem;
             margin: 0;
-            height: 360px;
+            height: 340px;
             position: absolute;
             &.post-thumbnail {
                 top: 100%;

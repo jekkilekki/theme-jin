@@ -24,7 +24,7 @@ get_header(); ?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-                            echo '<div class="archive-item small-12 medium-4 large-3 columns">';
+                            echo '<div class="archive-item index-post small-12 medium-6 large-3 columns">';
 				/*
 				 * Include the Post-Format-specific template for the content.
 				 * If you want to override this in a child theme, then include a file

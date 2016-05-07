@@ -155,6 +155,108 @@ function the_fancy_excerpt() {
     }
 }
 
+/*
+ * Customize the read-more indicator for excerpts
+ */
+function jin_excerpt_more( $more ) {
+    return " …";
+}
+add_filter( 'excerpt_more', 'jin_excerpt_more' );
+
+/**
+ * Add an author box below posts
+ * @link http://www.wpbeginner.com/wp-tutorials/how-to-add-an-author-info-box-in-wordpress-posts/
+ */
+function jin_author_box( /*$content*/ ) {
+    global $post;
+    
+    // Detect if it is a single post with a post author
+    if ( is_single() && isset( $post->post_author ) ) {
+        
+        // Get the author's display name
+        $display_name = get_the_author_meta( 'display_name', $post->post_author );
+            // If display name is not available, use nickname
+            if ( empty ( $display_name ) ) $display_name = get_the_author_meta( 'nickname', $post->post_author );
+        // Get bio info
+        $user_desc = get_the_author_meta( 'user_description', $post->post_author );
+        // Website URL
+        $user_site = get_the_author_meta( 'url', $post->post_author );
+        // Link to author archive page
+        $user_posts = get_author_posts_url( get_the_author_meta( 'ID', $post->post_author ) );
+        
+        if ( ! empty( $display_name ) ) $author_details = '<p class="author_name">' . $display_name . '</p>';
+        if ( ! empty( $user_desc ) ) $author_details .= '<p class="author_details">' . get_avatar( get_the_author_meta( 'user_email' ), 90 ) . nl2br( $user_desc ) . '</p>';
+        
+        $author_details .= '<p class="author_links"><a href="' . $user_posts . '">View all posts by ' . $display_name . '</a>';
+        
+        // Check if author has a website in their profile
+        if ( ! empty( $user_site ) ) $author_details .= ' | <a href="' . $user_site . '" target="_blank" rel="nofollow">Website</a></p>';
+        else $author_details .= '</p>';
+        
+        echo '<footer class="author_bio_section">' . $author_details . '</footer>';
+        // Pass all this info to post content
+        //$content = $content . '<footer class="author_bio_section">' . $author_details . '</footer>';
+    }
+    //return $content;
+}
+
+if ( ! function_exists( 'jin_breadcrumbs' ) ) :
+/**
+ * Display Post breadcrumbs when applicable.
+ *
+ * @since Jin 1.0
+ * 
+ * @link: https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
+ */
+function jin_breadcrumbs() {
+    
+    if (!is_home()) {
+        
+        // Settings
+        $separator          = '<span class="breadcrumb-separator">&raquo;</span>';
+        $breadcrumb_id      = 'breadcrumbs';
+        $breadcrumb_class   = 'entry-meta';
+        $post               = get_post();
+        
+        
+        echo "<div aria-label='You are here:' id='$breadcrumb_id' class='$breadcrumb_class'>Hello test";
+        if( is_category() || is_single() || ( is_page() && $post->post_parent ) ) {
+        // Build the breadcrumbs
+        
+		echo '<a aria-label="Home" title="Home" class="breadcrumb-home" href="';
+		echo home_url();
+		echo '"><span class="screen-reader-text">';
+		bloginfo('name');
+		echo "</span></a>$separator";
+		//if ( (is_category() || is_single()) ) {
+                
+                $categories = get_the_category(/* array(
+                    'orderby' => 'name',
+                    'parent'  => 0
+                ) */);
+                $categories = array_slice( $categories, 0, 5 );
+                
+                foreach ( $categories as $category ) {
+                    printf( '<a href="%1$s">%2$s</a>',
+                        esc_url( get_category_link( $category->term_id ) ),
+                        esc_html( $category->name )
+                    );
+                    echo $separator;
+                }
+			// the_category('<span class="breadcrumb-separator">&raquo;</span>');
+                        //if (is_single()) {
+			//	echo "$separator";
+				// the_title();
+			//}
+		} elseif (is_page()) {
+			echo the_title();
+		}
+        echo '</div>';
+        }
+    }
+
+endif;
+
 /**
  * Prints HTML with post navigation.
  */
@@ -163,7 +265,7 @@ function jin_post_navigation() {
     $previous   = ( is_attachment() ) ? get_post ( get_post() -> post_parent ) : get_adjacent_post( false, '', true );
     $next       = get_adjacent_post( false, '', false );
     
-    if ( ! $next && !previous ) {
+    if ( ! $next && ! $previous ) {
         return;
     }
     ?>
