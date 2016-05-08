@@ -1500,6 +1500,11 @@ ul, ol {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
+.main-navigation ul li ul {
+  right: 0;
+  left: initial;
+}
+
 .site-main .post-navigation {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -1970,7 +1975,8 @@ ul, ol {
 
 .entry-meta .comments-link:before,
 .entry-meta .edit-link:before,
-.entry-meta .author-site:before {
+.entry-meta .author-site:before,
+.entry-meta .cat-links:before {
   padding: 0 0.5em;
   content: '\22c5';
   margin: 0;
@@ -1988,6 +1994,47 @@ ul, ol {
 .entry-meta a:hover {
   color: #404040;
   text-decoration: underline;
+}
+
+.entry-meta .cat-links {
+  background: transparent;
+  position: relative;
+}
+
+.entry-meta .cat-links ul {
+  position: absolute;
+  z-index: 9999;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  background-color: #f9f9f9;
+  border: 0.05rem solid white;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  color: #9e9e9e;
+  /*float: left;*/
+  /*width: 33.33333%;*/
+  /*margin-left: .9375rem;*/
+  /*margin-right: .9375rem;*/
+  display: none;
+}
+
+.entry-meta .cat-links ul a, .entry-meta .cat-links ul a:visited, .entry-meta .cat-links ul a:active {
+  color: inherit;
+}
+
+.entry-meta .cat-links ul.childopen {
+  display: block;
+}
+
+.entry-meta .cat-links li {
+  list-style: none;
+  display: block;
+  padding: 0.75rem 1.5rem;
+}
+
+.entry-meta .cat-links a {
+  font-weight: 400;
+  padding: 0 5px 0 0;
 }
 
 .vcard {

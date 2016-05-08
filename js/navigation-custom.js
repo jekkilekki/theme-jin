@@ -4,11 +4,11 @@ jQuery(document).ready(function($){
 
   var menu_ul = $('.main-navigation').find('ul').first();
 
-  menu_ul.children('.menu-item-has-children').children('a').append('<span class="jin_menu_switch"><i class="fa fa-caret-right"></i></span>');
+  menu_ul.children('.menu-item-has-children').children('a').append('<span class="mytheme_menu_switch"><i class="fa fa-caret-right"></i></span>');
 
   // Touch friendly expanded nav
   // $(menu_ul + ' li span').click(function(event){
-  $('.jin_menu_switch').click(function(event){
+  $('.mytheme_menu_switch').click(function(event){
 
     event.preventDefault();
 
@@ -66,26 +66,6 @@ jQuery(document).ready(function($){
 
     }
 
-  });
-  
-  /*
-   * For Category List dropdown in Post meta
-   */
-  $( '.entry-meta .cat-links .jin_cat_switch' ).click( function( e ) {
-        e.preventDefault();
-        if( $( this ).next( 'ul' ).hasClass( 'childopen' ) ) {
-            $( this ).next( 'ul' ).removeClass( 'childopen' );
-        } else {
-            $( this ).next( 'ul' ).addClass( 'childopen' );
-        }
-  });
-  $( '.entry-meta .cat-links .first-cat-link' ).hover( function ( e ) {
-        e.preventDefault();
-        if( $( '.entry-meta .cat-links ul' ).hasClass( 'childopen' ) ) {
-            $( '.entry-meta .cat-links ul' ).removeClass( 'childopen' );
-        } else {
-            $( '.entry-meta .cat-links ul' ).addClass( 'childopen' );
-        }
   });
 
 });

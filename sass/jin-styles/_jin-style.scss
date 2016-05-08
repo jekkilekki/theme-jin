@@ -1,165 +1,16 @@
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Normalize
-        ## Accessibility
-        ## Alignments
-        ## Clearings
-        ## Typography
-# Forms
-# Buttons
-# Formatting
-# Lists
-# Tables
-# Navigation
-# Links
-# Layout
-	## Posts
-	## Pages
-# Comments
-# Widgets
-# Infinite scroll
-# Media
-	## Galleries
-# Jin
-
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
 * {
     box-sizing: border-box;
     word-wrap: break-word;
-    /*position: relative;*/
-    margin: 0;
-    padding: 0;
-}
-// Foundation rows
-.row { position: relative; }
-
-.group:after {
-    display: table;
-    content: "";
-    clear: both;
-}
-img {
-    display: block;
 }
 
-@include body();
-
-@include header_image();
-
-@include custom_logo();
-
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Clearings
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-@include links();
-
-@include htags();
-
-@include blockquote();
-
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Buttons
---------------------------------------------------------------*/
-@include buttons();
-
-@include labels();
-
-/*--------------------------------------------------------------
-# Formattings
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Lists
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Tables
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Navigation
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Links
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Layout
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Comments
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-.single .hentry img {
-    border: 3px solid silver;
-}
-.single .hentry img:hover {
-    border-color: $color__link;
+body {
+    @include body();
 }
 
-/*--------------------------------------------------------------
-# Jin
---------------------------------------------------------------*/
-
-
-
-
-    
-
-
-
-
-
-    
 article,
 .not-found .hentry,
 .page .hentry {
-    margin-bottom: $default_gutter * 1.5;
+    margin-bottom: $default_gutter;
 }
 
 .index-post {
@@ -172,9 +23,44 @@ article,
     border-top: 1px solid $color__link;
 }
 
+@include links();
 
-
-
+blockquote {
+    padding: $default_gutter / 2 $default_gutter;
+    margin: $default_gutter $default_gutter / 2;
+    font-size: 24*$px;
+    //font-style: italic;
+    font-weight: 300;
+    @include blockquote();
+    cite {
+        font-weight: 300;
+        font-size: 18*$px;
+        text-align: right;
+        margin-left: 25%;
+        margin-top: $default_gutter;
+    }
+    &.alignright {
+        width: 50%;
+        float: right;
+        padding: 1em 2em 0 0;
+        margin-left: 2em;
+        border-left: none;
+        border-right: 6*$px solid $color__light-border;
+        margin-right: 0;
+    }
+    &.alignright cite {
+        margin-left: 0;
+        margin-right: 25%;
+        text-align: left;
+    }
+    &.alignleft {
+        width: 50%;
+        float: left;
+        padding: 1em 0 0 2em;
+        margin-right: 2em;
+        margin-left: 0;
+    }
+}
 
 // Overridden from lists.scss
 ul, ol {
@@ -182,47 +68,24 @@ ul, ol {
     margin: 0 0 $phi*1em $phi*1em;
 }
 
-
+@include htags();
 
 // Layout colors
 
 .site-header {
-    //@include guide;
+    @include guide;
     @include sub_panel();
-    border: none;
-    margin: 0;
-    padding: 0;
     box-shadow: $color__header-box-shadow;
     background-color: $color__background-header;
 }
-.portfolio-title {
-    text-align: center;
-    margin-top: 0;
-}
 .admin-bar .site-header .fixed {
-/*    top: 32px;
-    box-shadow: $color__header-box-shadow;*/
-}
-
-.top-bar, .top-bar ul {
-    padding: 0;
-    background: $color__background-header;
-    min-height: 4.375rem;
-    line-height: 4.375rem;
-    position: relative;
-    border: none;
-    z-index: 2;
-}
-.top-bar.sticky {
-    border: none;
-}
-.admin-bar .top-bar.sticky.is-stuck {
-    top: 32px!important;
+    top: 32px;
+    box-shadow: $color__header-box-shadow;
 }
 
 .hentry, 
 .comments-area, 
-/*.page-header,*/ 
+.page-header, 
 .page-content, 
 .site-main .posts-navigation,
 .paging-navigation li {
@@ -230,12 +93,6 @@ ul, ol {
     @include main_panel();
     box-shadow: $color__box-shadow;
 }
-
-.main-navigation ul li ul {
-    right: 0;
-    left: initial;
-}
-
 .site-main .post-navigation {
     box-shadow: $color__box-shadow;
     background-color: $color__background-main-panel;
@@ -246,10 +103,8 @@ ul, ol {
     .nav-previous, .nav-next {
         padding-left: $post_l_padding;
         padding-right: $post_r_padding;
-        padding-top: $post_t_padding;
-        padding-bottom: $post_t_padding;
-/*        padding-top: $phi * 1rem;
-        padding-bottom: $phi * 1rem;*/
+        padding-top: $phi * 1rem;
+        padding-bottom: $phi * 1rem;
         margin: 0;
         h4 {
             font-size: 24*$px;
@@ -341,7 +196,7 @@ ul, ol {
 
 // content of layout/content-sidebar pasted here for easier modification
 
-/*.content-area {
+.content-area {
     //float: left;
     margin: 0 (-$size__site-sidebar) 0 0;
     //width: $size__site-main;
@@ -349,7 +204,7 @@ ul, ol {
 
 .site-main {
     margin: 0 $size__site-sidebar 0 0;
-}*/
+}
 
 .site-content .widget-area {
     //float: right;
@@ -374,7 +229,7 @@ ul, ol {
 // Header
 .site-header {
     //max-width: total_site_width();
-    //margin: 0 auto $default_gutter auto;
+    margin: 0 auto $default_gutter auto;
 }
 
 .site-branding {
@@ -383,6 +238,14 @@ ul, ol {
     //padding-bottom: $phi * 1rem;
     //font-size: 0.5em;
     //float: left;
+}
+
+.site-title {
+    margin-top: 0.2rem!important;
+    text-transform: uppercase;
+    &:hover {
+        text-shadow: $color__box-shadow;
+    }
 }
 
 .site-title, .site-description {
@@ -404,35 +267,28 @@ ul, ol {
 #search-container {
     display: none;
     // margin-left: -82*$px;
-    height: 4.375rem;
+    height: 88*$px;
     background: $color__background-main-panel;
     position: absolute;
-    width: calc( 100% - 4rem );
-    margin-right: 4rem;
-    z-index: 99;
+    width: 94%;
+    margin-right: 82*$px;
+    // z-index: 99;
 }
 .search-box {
     padding: 1em;
 }
-.search-box .search-field {
+.search-box .search-field,
+.hentry .search-field {
     padding: 1rem 1rem 0.5rem 1.5rem;
     font-size: 24*$px;
     color: $color__text-sub-panel;
-    /*margin-top: -25*$px;*/
-    /*height: 45*$px;*/
-    max-width: 100%;
-    width: 50%;
-    float: right;
+    margin-top: -25*$px;
+    height: 45*$px;
+    
 }
-.hentry .search-field,
-.widget .search-field {
-    /*margin-top: $phi * 1rem;*/
-    /*margin-bottom: 1rem;*/
-    width: 100%;
-/*    height: 45*$px;*/
-    padding: 1rem 1rem 0.5rem 1.5rem;
-    font-size: 24*$px;
-    color: $color__text-sub-panel;
+.hentry .search-field {
+    margin-top: $phi * 1rem;
+    margin-bottom: 1rem;
 }
 .error404 .search-submit,
 .search .search-submit,
@@ -446,80 +302,25 @@ ul, ol {
     margin: 100*$px auto 0 auto;
 }
 
-@include archive_item();
-
-//** Posts and pages
+//*** Posts and pages
 
 // (hentry class covers both) plus their internal elements
 .hentry,
-.comments-area,
 .read-comments,
 .write-comments,
-/*.page-header,*/
+.page-header,
 .page-content,
 .site-main .posts-navigation {
-    @include main_panel();
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
     padding-top: $post_t_padding;
-    /*padding-bottom: $post_b_padding;*/
-    margin: 0 0 $default_gutter * 1.5 0;
-    border-top: 0.05rem solid gainsboro;
+    padding-bottom: $post_b_padding;
+    margin: 0 0 $default_gutter 0;
 }
-.single .hentry {
-    padding-top: $post_t_padding * 1.5;
-}
-.author_bio_section {
-    @include sub_panel();
-    box-shadow: $color__box-shadow;
-    padding-left: $post_l_padding;
-    padding-right: $post_r_padding;
-    padding-top: $post_t_padding / 2;
-    padding-bottom: $post_b_padding / 2;
-    margin: -$default-gutter * 1.5 0 0 0;
-    border: 0;
-    border-top: 1px solid gainsboro;
-    text-align: center;
-    .author-avatar img {
-        border-radius: 50%;
-        display: inline-block;
-        box-shadow: $color__box-shadow;
-        border: 1px solid white;
-    }
-    .author-description {
-        text-align: left;
-        margin: 2em auto;
-        max-width: 400px;
-    }
-    .author-title {
-        position: relative;
-        cursor: pointer;
-        :hover {
-            color: $color__link;
-        }
-    }
-    .author-title span {
-        background: $color__background-sub-panel;
-        padding: 0 1rem;
-        z-index: 3;
-        position: relative;
-    }
-    .author-title:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        border-bottom: 1px solid gainsboro;
-        left: 0;
-        top: 10px;
-        z-index: 2;
-    }
-    .author-box {
-        /*display: none;*/
-    }
-    .show-hide-author {
-        /*font-size: 16*$px;*/
-        /*display: inline-block;*/
-    }
+
+.hentry {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 // Centers category headers
@@ -536,25 +337,24 @@ ul, ol {
 }
 .page-title {
     text-align: center;
-    font-size: 40*$px;
-    /*text-transform: uppercase;*/
-    font-weight: 400;
+    font-size: 24*$px;
+    text-transform: uppercase;
+    font-weight: 700;
     //margin-bottom: $default-gutter;
     margin: 0;
-    /*border-top: 1px solid $color__light-border;*/
-    /*border-bottom: 1px solid $color__light-border;*/
-    /*padding: 1rem 0 0.75rem;*/
+    border-top: 1px solid $color__light-border;
+    border-bottom: 1px solid $color__light-border;
+    padding: 1rem 0 0.75rem;
 }
 
-//** Individual post styling
-#content .sticky {
+//**** Individual post styling
+.sticky {
     @include sticky_post();
 }
 
 // Featured Images
 // Index pages
 .index-post-thumbnail {
-    box-shadow: $color__box-shadow;
     img {
         min-width: 100%;
         vertical-align: bottom;
@@ -609,17 +409,13 @@ ul, ol {
 
 .entry-meta {
     display: inline-block;
-    text-align: center;
-    line-height: 29px;
     font-size: 18*$px;
     font-weight: 300;
     padding: 0.25rem;
     width: 100%;
     @include entry_meta();
     .comments-link:before,
-    .edit-link:before,
-    .author-site:before,
-    .cat-links:before {
+    .edit-link:before {
         padding: 0 0.5em;
         content: '\22c5';
         margin: 0;
@@ -635,31 +431,6 @@ ul, ol {
     a:hover {
         color: $color__text-main;
         text-decoration: underline;
-    }
-    .cat-links {
-        background: transparent;
-        position: relative;
-        ul {
-            position: absolute;
-            z-index: 9999;
-            top: 100%;
-            right: 0;
-            margin-top: 6px;
-            @include sub_panel();
-            display: none;
-        }
-        ul.childopen {
-            display: block;
-        }
-        li {
-            list-style: none;
-            display: block;
-            padding: 15*$px 30*$px;
-        }
-        a {
-            font-weight: 400;
-            padding: 0 5px 0 0;
-        }
     }
 }
 .vcard {
@@ -909,9 +680,6 @@ POST FORMATS
     padding-bottom: $widget_b_padding;
     margin-left: 0;
     margin-bottom: $default-gutter;
-    a {
-        color: #404040!important;
-    }
 }
 
 .widget-title {
