@@ -21,4 +21,7 @@ jQuery( document ).ready( function( $ ){
       $( 'html, body' ).animate( { scrollTop:0 }, speed);
       return false;
    });
+   
+   // Wrap centered images in a new figure element
+   $( 'img.alignnone, img.aligncenter, figure.alignnone, figure.aligncenter' ).wrap( '<figure class="centered-image"></figure>' );
 });

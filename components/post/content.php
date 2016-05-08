@@ -46,6 +46,14 @@
                 if ( is_archive() ) {
                     the_fancy_excerpt();
                 } else {
+                    
+                        // Add the Excerpt as a "Lead-in" on Posts/Pages that contain it
+                        if( has_excerpt( $post->ID ) ) {
+                            echo '<div class="lead-in">';
+                            echo '<p>' . get_the_excerpt() . '</p>';
+                            echo '</div><!-- .lead-in -->';
+                        }
+                        
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jin' ), array( 'span' => array( 'class' => array() ) ) ),

@@ -90,13 +90,13 @@ $color__background-body: #f1f1f1; //radial-gradient(ellipse farthest-side at 100
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6; // linear-gradient(to bottom right, #00ACDF, #0085B9, #8EDCD2);
-$color__background-pre: #eee;
+$color__background-pre: #f7faff; //#eee;
 $color__background-ins: #fff9c0;
 
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: #00ACDF;
+$color__link: #00ACDF;  // #1BB3D7; unilang color 
 $color__link-visited: darken($color__link, 5%);
 $color__link-hover: lighten($color__link, 3%); // darker rgba(40, 57, 77, 1);
 $color__text-main: #404040;
@@ -111,8 +111,11 @@ $color__border-abbr: #666;
 
 // custom colors
 $color__background-header: #f9f9f9;
-$color__box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+
+$color__box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 $color__header-box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+$color__site-title-shadow: 0 2px 0 rgba( 0, 91, 103, 0.15 );
+
 $color__light-border: gainsboro;
 
 $color__background-main-panel: #fff;

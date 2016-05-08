@@ -392,7 +392,7 @@ address {
 }
 
 pre {
-  background: #eee;
+  background: #f7faff;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -759,7 +759,7 @@ table {
     background-color: #f7f6f6;
     border: 0.05rem solid white;
     border-bottom: 0;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
   .main-navigation ul li ul li {
     float: none;
@@ -1303,7 +1303,7 @@ h6 {
 }
 
 .site-title:hover {
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 blockquote {
@@ -1350,6 +1350,10 @@ blockquote.alignleft {
   padding: 1em 0 0 2em;
   margin-right: 2em;
   /*margin-left: 0;*/
+}
+
+pre {
+  border: 1px solid #deeaff;
 }
 
 /*--------------------------------------------------------------
@@ -1417,6 +1421,18 @@ input[type="submit"] {
 /*--------------------------------------------------------------
 # Jin
 --------------------------------------------------------------*/
+.lead-in {
+  font-size: 1.2rem;
+}
+
+.lead-in p:first-child:first-letter {
+  float: left;
+  color: #00ACDF;
+  font-size: 3.3rem;
+  padding-right: 6px;
+  line-height: 1.1;
+}
+
 article,
 .not-found .hentry,
 .page .hentry {
@@ -1435,6 +1451,10 @@ article,
   border-top: 1px solid #00ACDF;
 }
 
+.single-post .hentry.has-post-thumbnail {
+  border-top: 1px solid gainsboro;
+}
+
 ul, ol {
   padding: 0;
   margin: 0 0 1.618em 1.618em;
@@ -1443,7 +1463,7 @@ ul, ol {
 .site-header {
   background-color: #f9f9f9;
   border: 0.05rem solid white;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
   /*float: left;*/
   /*width: 33.33333%;*/
@@ -1496,8 +1516,8 @@ ul, ol {
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .main-navigation ul li ul {
@@ -1506,12 +1526,12 @@ ul, ol {
 }
 
 .site-main .post-navigation {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   background-color: #fff;
   border: 0.05rem solid transparent;
   border-top: 0.05rem solid gainsboro;
   margin-top: 0;
-  margin-bottom: 2.0225rem;
+  margin-bottom: 5rem;
 }
 
 .site-main .post-navigation .nav-previous, .site-main .post-navigation .nav-next {
@@ -1568,7 +1588,7 @@ ul, ol {
 
 .site-main .comment-navigation {
   border-top: 1px solid gainsboro;
-  border-bottom: 1px solid gainsboro;
+  /*border-bottom: 1px solid $color__light-border;*/
   box-shadow: none;
 }
 
@@ -1604,28 +1624,23 @@ ul, ol {
   background: #ffffff;
   background-color: #f9f9f9;
   border: 0.05rem solid white;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
   /*float: left;*/
   /*width: 33.33333%;*/
   /*margin-left: .9375rem;*/
   /*margin-right: .9375rem;*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .widget a, .widget a:visited, .widget a:active {
   color: inherit;
 }
 
-.site-footer {
-  background: #ffffff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-}
-
 #supplementary .widget {
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   border: none;
   box-shadow: none;
   float: left;
@@ -1640,10 +1655,6 @@ ul, ol {
 .site-main {
     margin: 0 $size__site-sidebar 0 0;
 }*/
-.site-footer {
-  clear: both;
-}
-
 .site-description {
   font-style: italic;
   display: none;
@@ -1782,7 +1793,7 @@ ul, ol {
 .site-main .posts-navigation {
   background-color: #fff;
   border: 0.05rem solid transparent;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
@@ -1798,13 +1809,13 @@ ul, ol {
 .author_bio_section {
   background-color: #f9f9f9;
   border: 0.05rem solid white;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
   /*float: left;*/
   /*width: 33.33333%;*/
   /*margin-left: .9375rem;*/
   /*margin-right: .9375rem;*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 1.30896rem;
@@ -1822,7 +1833,7 @@ ul, ol {
 .author_bio_section .author-avatar img {
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   border: 1px solid white;
 }
 
@@ -1894,10 +1905,22 @@ ul, ol {
   border-top: 0.05rem solid #00ACDF;
   border-bottom: 0.25rem solid #00ACDF;
   position: relative;
+  position: relative;
+}
+
+#content .sticky:before {
+  content: "Featured";
+  position: absolute;
+  background: #1A3547;
+  color: white;
+  padding: 0.25rem 1.25rem 0.125rem;
+  top: 1.5rem;
+  left: 0;
+  font-size: 0.9rem;
 }
 
 .index-post-thumbnail {
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .index-post-thumbnail img {
@@ -2009,7 +2032,7 @@ ul, ol {
   margin-top: 6px;
   background-color: #f9f9f9;
   border: 0.05rem solid white;
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
   /*float: left;*/
   /*width: 33.33333%;*/
@@ -2108,22 +2131,41 @@ ul, ol {
 }
 
 .entry-content img.alignright, .entry-content figure.alignright {
-  margin: 1.5rem 0 1.5rem 1.5rem;
+  margin: 0.25rem 0 1.5rem 1.5rem;
 }
 
 .entry-content img.alignleft, .entry-content figure.alignleft {
-  margin: 1.5rem 1.5rem 1.5rem 0;
+  margin: 0.25rem 1.5rem 1.5rem 0;
+}
+
+.entry-content img.aligncenter, .entry-content figure.aligncenter {
+  margin: 1.5rem auto;
+}
+
+.entry-content .centered-image {
+  max-width: -webkit-calc( 100% + 8.4716rem);
+  max-width: calc( 100% + 8.4716rem);
+  margin: 1.5rem -4.2358rem;
 }
 
 .entry-content .wp-caption-text, .entry-content .gallery-caption {
   font-size: 0.9rem;
-  font-weight: 300;
+  /*font-weight: 300;*/
   margin-top: -1.5rem;
   padding: 0.5rem;
   line-height: 1.618rem;
   margin-bottom: 2rem;
   color: #9e9e9e;
   background: #f9f9f9;
+}
+
+.gallery {
+  margin-top: 1.5rem;
+}
+
+.gallery-item,
+.gallery img {
+  margin: 0 auto 1.5rem !important;
 }
 
 .entry-footer {
@@ -2146,7 +2188,9 @@ ul, ol {
 .entry-footer li {
   display: inline-block;
   list-style-type: none;
-  background: #f1f1f1;
+  color: #9e9e9e;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  background: #fff;
   margin-right: 0.5em;
 }
 
@@ -2174,6 +2218,7 @@ POST FORMATS
 
 .comments-area {
   border-top: 1px solid #00ACDF;
+  margin-bottom: 0;
 }
 
 .comment-navigation, .read-comments {
@@ -2209,19 +2254,29 @@ POST FORMATS
 }
 
 .comment-list .comment-meta {
-  position: relative;
+  /*position: relative;*/
+}
+
+.comment-list .comment-author {
+  display: inline;
 }
 
 .comment-list .comment-author .avatar {
-  border-radius: 100px;
+  border-radius: 50%;
   display: block;
   float: left;
-  box-shadow: 0px 1px 3px rgba(190, 190, 190, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 .comment-list .comment-author .fn {
   font-weight: 600;
+  font-size: 1.3rem;
   margin-left: 20px;
+  color: #404040;
+}
+
+.comment-list .comment-author .fn a {
+  color: inherit;
 }
 
 .comment-list .comment-author span {
@@ -2229,16 +2284,28 @@ POST FORMATS
 }
 
 .comment-list .comment-metadata {
+  display: inline;
+  float: right;
   font-weight: 300;
   font-size: 0.9rem;
-  margin-left: 100px;
-  position: absolute;
-  top: 30px;
+  padding-top: 0.25rem;
+  color: #9e9e9e;
+}
+
+.comment-list .comment-metadata a {
+  color: inherit;
+}
+
+.comment-list .comment-metadata .edit-link:before {
+  padding: 0 0.5em;
+  content: '\22c5';
+  margin: 0;
 }
 
 .comment-list .comment-content {
-  font-size: 90%;
+  font-size: 95%;
   margin-left: 100px;
+  margin-top: 1.01125rem;
 }
 
 .comment-list .comment-body {
@@ -2254,7 +2321,7 @@ POST FORMATS
 .comment-list .reply:before {
   font-family: "FontAwesome";
   font-size: 70%;
-  margin-right: 0.5em;
+  margin-right: 0.75em;
   content: '\f112';
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
@@ -2264,7 +2331,42 @@ POST FORMATS
 .bypostauthor .comment-body {
   background: #f9f9f9;
   padding: 1.618rem;
-  border: none;
+  margin-left: -1.618rem;
+  margin-right: -1.618rem;
+  border-top: 1px solid #00ACDF;
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: -1px !important;
+}
+
+.bypostauthor .comment-author {
+  display: inline;
+}
+
+.bypostauthor .comment-author .avatar {
+  box-shadow: 0 2px 0 rgba(0, 91, 103, 0.15);
+}
+
+.comment-reply-form,
+.comments-closed {
+  margin-bottom: 5rem;
+}
+
+.comment-respond {
+  background: #f9f9f9;
+  color: #9e9e9e;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  padding-left: 4.2358rem;
+  padding-right: 4.2358rem;
+  padding-top: 1.30896rem;
+  padding-bottom: 1.30896rem;
+  border: 0;
+  border-top: 1px solid gainsboro;
+  margin-top: -1px;
+}
+
+.comment-respond .comment-reply-title,
+.comment-respond .comment-notes {
+  text-align: center;
 }
 
 /* Comments responsive */
@@ -2420,6 +2522,9 @@ input.search-field {
 }
 
 .site-footer {
+  background: #ffffff;
+  clear: both;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   padding-top: 1.618em;
   margin: 0 auto;
 }
@@ -2429,7 +2534,7 @@ input.search-field {
 }
 
 .site-info {
-  background-color: #404040;
+  background-color: #1A3547;
   color: #fff;
 }
 
@@ -2539,7 +2644,7 @@ input.search-field {
     margin-left: 1rem;
   }
   .site-title:hover {
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
   /*    // redeclare variables to be smaller
     $default_h_padding: $phi * $phi * 1rem;
@@ -2616,7 +2721,7 @@ input.search-field {
     margin-left: 1rem;
   }
   .site-title:hover {
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -2662,7 +2767,7 @@ input.search-field {
     margin-left: 1rem;
   }
   .site-title:hover {
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
 }
 

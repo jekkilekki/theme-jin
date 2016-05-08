@@ -75,6 +75,10 @@ img {
 
 @include blockquote();
 
+pre {
+    border: 1px solid darken(saturate($color__background-pre, 5%), 5%);
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -145,7 +149,7 @@ img {
 /*--------------------------------------------------------------
 # Jin
 --------------------------------------------------------------*/
-
+@include lead_in();
 
 
 
@@ -170,6 +174,9 @@ article,
 }
 .single-post .hentry {
     border-top: 1px solid $color__link;
+}
+.single-post .hentry.has-post-thumbnail {
+    border-top: 1px solid $color__light-border;
 }
 
 
@@ -242,7 +249,7 @@ ul, ol {
     border: 1*$px solid $color__border-main-panel;
     border-top: 1*$px solid $color__light-border;
     margin-top: 0;
-    margin-bottom: $default_gutter;
+    margin-bottom: 5rem;
     .nav-previous, .nav-next {
         padding-left: $post_l_padding;
         padding-right: $post_r_padding;
@@ -294,7 +301,7 @@ ul, ol {
 
 .site-main .comment-navigation {
     border-top: 1px solid $color__light-border;
-    border-bottom: 1px solid $color__light-border;
+    /*border-bottom: 1px solid $color__light-border;*/
     box-shadow: none;
     span a {
         color: $color__text-sub-panel;
@@ -326,11 +333,6 @@ ul, ol {
     box-shadow: $color__box-shadow;
 }
 
-.site-footer {
-    @include guide;
-    box-shadow: $color__box-shadow;
-}
-
 // Styles for footer widgets
 #supplementary .widget {
     @include main_panel();
@@ -355,11 +357,6 @@ ul, ol {
     //float: right;
     //overflow: hidden;
     //width: $size__site-sidebar;
-}
-
-.site-footer {
-    clear: both;
-    //width: $size__site-main;
 }
 
 // **-----
@@ -549,6 +546,17 @@ ul, ol {
 //** Individual post styling
 #content .sticky {
     @include sticky_post();
+    position: relative;
+    &:before {
+        content: "Featured";
+        position: absolute;
+        background: #1A3547;
+        color: white;
+        padding: 0.25rem 1.25rem 0.125rem;
+        top: 1.5rem;
+        left: 0;
+        font-size: 0.9rem;
+    }
 }
 
 // Featured Images
@@ -715,21 +723,35 @@ ul, ol {
             margin: 1.5rem 0;
         }
         &.alignright {
-            margin: 1.5rem 0 1.5rem 1.5rem;
+            margin: 0.25rem 0 1.5rem 1.5rem;
         }
         &.alignleft {
-            margin: 1.5rem 1.5rem 1.5rem 0;
+            margin: 0.25rem 1.5rem 1.5rem 0;
         }
+        &.aligncenter {
+            margin: 1.5rem auto;
+        }
+    }
+    .centered-image {
+        max-width: calc( 100% + 8.4716rem );
+        margin: 1.5rem -4.2358rem;
     }
     .wp-caption-text, .gallery-caption {
         font-size: 18*$px;
-        font-weight: 300;
+        /*font-weight: 300;*/
         margin-top: -1.5rem;
         padding: 0.5rem;
         line-height: $phi * 1rem;
         margin-bottom: 2rem;
         @include img_caption();
     }
+}
+.gallery {
+    margin-top: 1.5rem;
+}
+.gallery-item,
+.gallery img {
+    margin: 0 auto 1.5rem!important;
 }
 
 .entry-footer {
@@ -749,7 +771,9 @@ ul, ol {
     li {
         display: inline-block;
         list-style-type: none;
-        background: $color__background-body;
+        color: $color__text-sub-panel;
+        box-shadow: $color__box-shadow;
+        background: $color__background-main-panel;
         margin-right: 0.5em;
     }
     @include entry_footer();
@@ -773,6 +797,7 @@ POST FORMATS
 
 .comments-area {
     border-top: 1px solid $color__link;
+    margin-bottom: 0;
 }
 .comment-navigation, /*.write-comments,*/ .read-comments { margin: 0!important; }
 .comments-title, .comment-reply-title {
@@ -799,35 +824,51 @@ POST FORMATS
     .comment-list ol {
         margin-left: $default_gutter * 2;
     }
-    .comment-meta { position: relative; }
+    .comment-meta { /*position: relative;*/ }
     
     .comment-author {
+        display: inline;
         .avatar {
-            border-radius: 100px;
+            border-radius: 50%;
             display: block;
             float: left;
             //margin-right: $phi * 1rem;
-            box-shadow: $color__header-box-shadow;
+            box-shadow: $color__box-shadow;
         }
         .fn {
             font-weight: 600;
-            //font-size: 24*$px;
+            font-size: 26*$px;
             margin-left: 20px;
+            color: $color__text-main;
+            a {
+                color: inherit;
+            }
         }
         span {
             text-transform: lowercase;
         }
     }
     .comment-metadata {
+        display: inline;
+        float: right;
         font-weight: 300;
         font-size: 18*$px;
-        margin-left: 100px;
-        position: absolute;
-        top: 30px;
-    }
+        //margin-left: 100px;
+        padding-top: 0.25rem;
+        color: $color__text-sub-panel;
+        a {
+            color: inherit;
+        }
+        .edit-link:before {
+            padding: 0 0.5em;
+            content: '\22c5';
+            margin: 0;
+        }
+    } 
     .comment-content {
-        font-size: 90%;
+        font-size: 95%;
         margin-left: 100px;
+        margin-top: $default_gutter / 2;
     }
     .comment-body {
         padding-top: $default_gutter;
@@ -839,7 +880,7 @@ POST FORMATS
         &:before {
             font-family: "FontAwesome";
             font-size: 70%;
-            margin-right: 0.5em;
+            margin-right: 0.75em;
             content: '\f112';
             transform: rotate(180deg);
             
@@ -850,9 +891,41 @@ POST FORMATS
     .comment-body {
         background: $color__background-sub-panel;
         padding: $phi * 1rem;
-        border: none;
+        margin-left: -$phi * 1rem;
+        margin-right: -$phi * 1rem;
+        border-top: 1px solid $color__link;
+        border-bottom: 1px solid $color__light-border;
+        margin-bottom: -1px!important;
     }  
+    .comment-author {
+        display: inline;
+        .avatar {
+            box-shadow: $color__site-title-shadow;
+        }
+    }
 }
+.comment-reply-form,
+.comments-closed {
+        margin-bottom: 5rem;
+}
+.comment-respond {
+    background: $color__background-sub-panel;
+    color: $color__text-sub-panel;
+    box-shadow: $color__box-shadow;
+    padding-left: $post_l_padding;
+    padding-right: $post_r_padding;
+    padding-top: $post_t_padding / 2;
+    padding-bottom: $post_b_padding / 2;
+    border: 0;
+    border-top: 1px solid $color__light-border;
+    margin-top: -1px;
+    .comment-reply-title,
+    .comment-notes {
+        text-align: center;
+    }
+}
+
+
 /* Comments responsive */
 @media screen and (max-width: 600px) {
     .comment-list ol { margin-left: 0; }
@@ -1015,6 +1088,9 @@ input.search-field {
 
 // Footer
 .site-footer {
+    @include guide;
+    clear: both;
+    box-shadow: $color__box-shadow;
     padding-top: $phi * 1em;
     //padding-bottom: $phi * 1em;
     //max-width: total_site_width();
@@ -1023,7 +1099,7 @@ input.search-field {
 }
 
 .site-info {
-    background-color: $color__text-main;
+    background-color: #1A3547;
     color: $color__background-main-panel;
     .site-links {
         padding: $phi * 1rem 0;

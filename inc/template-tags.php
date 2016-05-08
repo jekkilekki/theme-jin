@@ -49,8 +49,11 @@ function jin_posted_on() {
 		if ( $categories_list && jin_categorized_blog() ) {
                         echo '<span class="cat-links">';
                         _e( 'Filed under: ', 'jin' );
-                        echo $replaced . '<span class="jin_cat_switch"><i class="fa fa-angle-down"></i></span>';
-			printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.
+                        echo $replaced;
+                        if( ! empty( $the_rest ) ) {
+                            echo '<span class="jin_cat_switch"><i class="fa fa-angle-down"></i></span>';
+                            printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.
+                        }
                         echo '</span>';
 		}
 	}

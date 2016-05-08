@@ -20,7 +20,10 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<?php 
+// If there are no comments at all, don't even show this area
+if ( have_comments() ) : ?>
+<div id="comments" class="comments-area <?php echo ! comments_open() ? 'comments-closed' : ''; ?>">
 
 	<?php
 	// You can start editing here -- including this comment!
@@ -28,7 +31,7 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'jin' ) ),
+					esc_html( _nx( 'One thought', '%1$s thoughts', get_comments_number(), 'jin' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -79,7 +82,14 @@ if ( post_password_required() ) {
 	<?php
 	endif;
 
-	comment_form();
+	
 	?>
 
 </div><!-- #comments -->
+<?php endif; ?>
+
+<?php if ( comments_open() ) { ?>
+    <div class="comment-reply-form">
+        <?php comment_form(); ?>
+    </div><!-- .comment-reply-form -->
+<?php } ?>
