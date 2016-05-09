@@ -124,8 +124,8 @@ function jin_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'jin' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
+		'before_widget' => '<div id="%1$s" class="widget small-6 medium-4 columns %2$s ">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -134,8 +134,8 @@ function jin_widgets_init() {
                 'name'          => esc_html__( 'Footer Widgets', 'jin' ),
                 'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jin' ),
                 'id'            => 'sidebar-footer',
-                'before_widget' => '<aside id="%1$s" class="widget small-6 medium-4 large-3 %2$s">',
-                'after_widget'  => '</aside>',
+                'before_widget' => '<div id="%1$s" class="widget small-6 medium-4 large-3 columns %2$s">',
+                'after_widget'  => '</div>',
                 'before_title'  => '<h2 class="widget-title">',
                 'after_title'   => '</h2>',
         ) );

@@ -22,6 +22,4 @@ jQuery( document ).ready( function( $ ){
       return false;
    });
    
-   // Wrap centered images in a new figure element
-   $( 'img.alignnone, img.aligncenter, figure.alignnone, figure.aligncenter' ).wrap( '<figure class="centered-image"></figure>' );
 });

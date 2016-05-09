@@ -67,25 +67,5 @@ jQuery(document).ready(function($){
     }
 
   });
-  
-  /*
-   * For Category List dropdown in Post meta
-   */
-  $( '.entry-meta .cat-links .jin_cat_switch' ).click( function( e ) {
-        e.preventDefault();
-        if( $( this ).next( 'ul' ).hasClass( 'childopen' ) ) {
-            $( this ).next( 'ul' ).removeClass( 'childopen' );
-        } else {
-            $( this ).next( 'ul' ).addClass( 'childopen' );
-        }
-  });
-  $( '.entry-meta .cat-links .first-cat-link' ).hover( function ( e ) {
-        e.preventDefault();
-        if( $( '.entry-meta .cat-links ul' ).hasClass( 'childopen' ) ) {
-            $( '.entry-meta .cat-links ul' ).removeClass( 'childopen' );
-        } else {
-            $( '.entry-meta .cat-links ul' ).addClass( 'childopen' );
-        }
-  });
 
 });

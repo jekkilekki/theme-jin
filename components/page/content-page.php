@@ -9,6 +9,14 @@
 
 ?>
 
+<?php if ( '' != get_the_post_thumbnail() ) : ?>
+    <div class="index-post-thumbnail">
+            <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+            </a>
+    </div>
+<?php endif; ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

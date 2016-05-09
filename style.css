@@ -280,7 +280,7 @@ th {
 }
 
 .screen-reader-text:focus {
-  background-color: #f1f1f1;
+  background-color: #f1f1f3;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
   clip: auto !important;
@@ -756,7 +756,7 @@ table {
     top: 100%;
     left: 0;
     margin-top: 1px;
-    background-color: #f7f6f6;
+    background-color: #f7f7f9;
     border: 0.05rem solid white;
     border-bottom: 0;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -776,7 +776,7 @@ table {
     border-top: 0.05rem solid #fafafa;
   }
   .main-navigation ul li ul li a:hover {
-    background-color: #faf9f9;
+    background-color: #fbfbfc;
   }
 }
 
@@ -807,19 +807,19 @@ table {
   }
   .main-navigation ul li a:hover {
     border-bottom-color: transparent;
-    background-color: #f7f6f6;
+    background-color: #f7f7f9;
   }
   .main-navigation ul ul {
     position: relative;
     left: 0;
-    background-color: #f5f3f3;
+    background-color: #f4f4f7;
   }
   .main-navigation ul ul li a {
     border-top: 0.05rem solid darkent(white, 2%);
   }
   .main-navigation ul ul li a:hover {
     border-bottom-color: transparent;
-    background-color: #f2f0f0;
+    background-color: #f1f1f5;
   }
 }
 
@@ -912,7 +912,7 @@ html {
 }
 
 body {
-  background: #f1f1f1;
+  background: #f1f1f3;
   /* Fallback for when there is no custom background color defined. */
 }
 
@@ -1153,9 +1153,21 @@ img {
   display: block;
 }
 
+table thead th,
+table thead td,
+table tbody th,
+table tbody td {
+  padding: 0.625rem 0.3rem 0.5rem;
+}
+
+table tfoot th,
+table tfoot td {
+  padding: 0.625rem 0.625rem 0.5rem;
+}
+
 body {
   /*border-top: 2*$px solid $color__border-main-panel;*/
-  background-color: #f1f1f1;
+  background-color: #f1f1f3;
 }
 
 #header-image {
@@ -1312,7 +1324,7 @@ blockquote {
   font-size: 1.2rem;
   font-weight: 300;
   background-color: inherit;
-  border-left: 0.3rem solid gainsboro;
+  border-left: 0.3rem solid #e2e2e5;
   color: #9e9e9e;
 }
 
@@ -1334,7 +1346,7 @@ blockquote.alignright {
   padding: 1em 2em 0 0;
   margin-left: 2em;
   border-left: none;
-  border-right: 0.3rem solid gainsboro;
+  border-right: 0.3rem solid #e2e2e5;
   /*margin-right: 0;*/
 }
 
@@ -1410,7 +1422,11 @@ input[type="submit"] {
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-.single .hentry img {
+.single .hentry a img {
+  border: 3px solid transparent;
+}
+
+.single .hentry img.border {
   border: 3px solid silver;
 }
 
@@ -1447,12 +1463,19 @@ article,
   border: 1px solid #00ACDF;
 }
 
-.single-post .hentry {
+.single-post .hentry,
+.page.hentry {
   border-top: 1px solid #00ACDF;
 }
 
-.single-post .hentry.has-post-thumbnail {
-  border-top: 1px solid gainsboro;
+.single-post .hentry.has-post-thumbnail,
+.page.hentry.has-post-thumbnail {
+  border-top: 1px solid #e2e2e5;
+}
+
+.single .hentry,
+.page.hentry {
+  padding-top: 3.92689rem;
 }
 
 ul, ol {
@@ -1461,7 +1484,7 @@ ul, ol {
 }
 
 .site-header {
-  background-color: #f9f9f9;
+  background-color: #fafafb;
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
@@ -1529,7 +1552,7 @@ ul, ol {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   background-color: #fff;
   border: 0.05rem solid transparent;
-  border-top: 0.05rem solid gainsboro;
+  border-top: 0.05rem solid #e2e2e5;
   margin-top: 0;
   margin-bottom: 5rem;
 }
@@ -1583,11 +1606,11 @@ ul, ol {
 }
 
 .paging-navigation li:hover {
-  background-color: #f9f9f9;
+  background-color: #fafafb;
 }
 
 .site-main .comment-navigation {
-  border-top: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
   /*border-bottom: 1px solid $color__light-border;*/
   box-shadow: none;
 }
@@ -1622,7 +1645,7 @@ ul, ol {
 
 .widget {
   background: #ffffff;
-  background-color: #f9f9f9;
+  background-color: #fafafb;
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
@@ -1635,6 +1658,13 @@ ul, ol {
 
 .widget a, .widget a:visited, .widget a:active {
   color: inherit;
+}
+
+#secondary.no-sidebar .widget {
+  margin-left: 0.625em;
+  margin-right: 0.625em;
+  width: -webkit-calc( 33.3333% - 1.25em);
+  width: calc( 33.3333% - 1.25em);
 }
 
 #supplementary .widget {
@@ -1802,12 +1832,8 @@ ul, ol {
   border-top: 0.05rem solid gainsboro;
 }
 
-.single .hentry {
-  padding-top: 3.92689rem;
-}
-
 .author_bio_section {
-  background-color: #f9f9f9;
+  background-color: #fafafb;
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
@@ -1853,7 +1879,7 @@ ul, ol {
 }
 
 .author_bio_section .author-title span {
-  background: #f9f9f9;
+  background: #fafafb;
   padding: 0 1rem;
   z-index: 3;
   position: relative;
@@ -1873,9 +1899,10 @@ ul, ol {
   /*display: none;*/
 }
 
-.author_bio_section .show-hide-author {
+.archive .show-hide-author {
   /*font-size: 16*$px;*/
   /*display: inline-block;*/
+  margin-top: 2.0225rem !important;
 }
 
 .page-header {
@@ -1885,7 +1912,7 @@ ul, ol {
 
 .page-header .taxonomy-description p {
   color: #9e9e9e;
-  margin: 1.618rem 0 0;
+  margin: 1.618rem 0;
   font-weight: 300;
   text-align: center;
 }
@@ -1915,7 +1942,7 @@ ul, ol {
   color: white;
   padding: 0.25rem 1.25rem 0.125rem;
   top: 1.5rem;
-  left: 0;
+  left: -1px;
   font-size: 0.9rem;
 }
 
@@ -1944,7 +1971,7 @@ ul, ol {
 
 .entry-header .cat-links {
   margin-top: 1rem;
-  background-color: #f1f1f1;
+  background-color: #f1f1f3;
 }
 
 .entry-header .cat-links a {
@@ -1973,7 +2000,7 @@ ul, ol {
 }
 
 .not-found ins {
-  background: #f9f9f9;
+  background: #fafafb;
   font-weight: 300;
   padding: 0.2rem 0.5rem 0;
 }
@@ -1988,8 +2015,8 @@ ul, ol {
   width: 100%;
   background-color: transparent;
   color: #9e9e9e;
-  border-top: 1px solid gainsboro;
-  border-bottom: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
+  border-bottom: 1px solid #e2e2e5;
 }
 
 .entry-meta a, .entry-meta a:visited, .entry-meta a:active {
@@ -2030,7 +2057,7 @@ ul, ol {
   top: 100%;
   right: 0;
   margin-top: 6px;
-  background-color: #f9f9f9;
+  background-color: #fafafb;
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
@@ -2080,7 +2107,7 @@ ul, ol {
 }
 
 .entry-content a:hover, .entry-content a:active {
-  background-color: #f9f9f9;
+  background-color: #fafafb;
 }
 
 .entry-content a img {
@@ -2096,7 +2123,7 @@ ul, ol {
   padding: 0.75em 1.618em 0.5em;
   margin: 0 0 2em 0;
   background: none;
-  border: 1px solid gainsboro;
+  border: 1px solid #e2e2e5;
   color: #9e9e9e;
 }
 
@@ -2115,7 +2142,7 @@ ul, ol {
 }
 
 .entry-content a.more-link:hover {
-  background-color: #f9f9f9;
+  background-color: #fafafb;
 }
 
 .entry-content p {
@@ -2156,7 +2183,7 @@ ul, ol {
   line-height: 1.618rem;
   margin-bottom: 2rem;
   color: #9e9e9e;
-  background: #f9f9f9;
+  background: #fafafb;
 }
 
 .gallery {
@@ -2170,7 +2197,7 @@ ul, ol {
 
 .entry-footer {
   margin-top: 2.61792rem;
-  border-top: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
   font-size: 0.9rem;
   font-weight: 300;
   padding: 0.5rem 0;
@@ -2201,6 +2228,11 @@ ul, ol {
 .entry-footer a {
   color: inherit;
   font-weight: 400;
+}
+
+.page .entry-footer {
+  /*margin: 0;*/
+  border: none;
 }
 
 /**
@@ -2311,7 +2343,7 @@ POST FORMATS
 .comment-list .comment-body {
   padding-top: 2.0225rem;
   margin-bottom: 2.0225rem;
-  border-top: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
 }
 
 .comment-list .reply {
@@ -2329,12 +2361,12 @@ POST FORMATS
 }
 
 .bypostauthor .comment-body {
-  background: #f9f9f9;
+  background: #fafafb;
   padding: 1.618rem;
   margin-left: -1.618rem;
   margin-right: -1.618rem;
   border-top: 1px solid #00ACDF;
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 1px solid #e2e2e5;
   margin-bottom: -1px !important;
 }
 
@@ -2352,7 +2384,7 @@ POST FORMATS
 }
 
 .comment-respond {
-  background: #f9f9f9;
+  background: #fafafb;
   color: #9e9e9e;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   padding-left: 4.2358rem;
@@ -2360,7 +2392,7 @@ POST FORMATS
   padding-top: 1.30896rem;
   padding-bottom: 1.30896rem;
   border: 0;
-  border-top: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
   margin-top: -1px;
 }
 
@@ -2450,7 +2482,8 @@ POST FORMATS
 
 .widget ul li {
   padding: 0.75em 0 0.5em 2em;
-  border-bottom: 1px solid gainsboro;
+  display: block;
+  border-bottom: 1px solid #e2e2e5;
 }
 
 .widget ul li.page_item_has_children,
@@ -2471,10 +2504,14 @@ POST FORMATS
   padding-left: 0;
 }
 
+.widget ul li a {
+  display: inline;
+}
+
 .widget ul .children li:first-of-type,
 .widget ul .sub-menu li:first-of-type {
   margin-top: 0.5em;
-  border-top: 1px solid gainsboro;
+  border-top: 1px solid #e2e2e5;
 }
 
 .widget ul li:last-child {
@@ -2509,11 +2546,52 @@ POST FORMATS
   content: "\f105";
 }
 
-.widget_rss .rss-date,
-.widget_rss cite {
+.widget_rss .rss-date {
   display: block;
   font-size: 90%;
   padding: 0.4045rem 0;
+}
+
+.widget_rss cite {
+  display: block;
+  font-size: 90%;
+  padding: 0.809rem 0;
+}
+
+.widget_rss .rss-date {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.widget_rss .rss-widget-icon {
+  float: left;
+  padding-top: 4px;
+}
+
+.widget_calendar table,
+.widget_calendar thead th {
+  text-align: center;
+}
+
+.widget_calendar #prev {
+  text-align: left;
+}
+
+.widget_calendar #next {
+  text-align: right;
+}
+
+.widget_calendar thead,
+.widget_calendar tfoot,
+.widget_calendar tfoot a {
+  color: #404040;
+}
+
+/* On large screens */
+.large-3.widget_calendar th,
+.large-3.widget_calendar td {
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }
 
 input.search-field {
@@ -2564,7 +2642,7 @@ input.search-field {
 }
 
 .site-info a {
-  color: gainsboro;
+  color: #e2e2e5;
 }
 
 .site-info a:hover {

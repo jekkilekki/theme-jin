@@ -44,6 +44,16 @@
 img {
     display: block;
 }
+table thead th,
+table thead td,
+table tbody th,
+table tbody td {
+    padding: 0.625rem 0.3rem 0.5rem;
+}
+table tfoot th,
+table tfoot td {
+    padding: 0.625rem 0.625rem 0.5rem;
+}
 
 @include body();
 
@@ -139,7 +149,10 @@ pre {
 /*--------------------------------------------------------------
 # Media
 --------------------------------------------------------------*/
-.single .hentry img {
+.single .hentry a img {
+    border: 3px solid transparent;
+}
+.single .hentry img.border {
     border: 3px solid silver;
 }
 .single .hentry img:hover {
@@ -172,13 +185,18 @@ article,
 .index-post:hover {
     border: 1px solid $color__link;
 }
-.single-post .hentry {
+.single-post .hentry,
+.page.hentry {
     border-top: 1px solid $color__link;
 }
-.single-post .hentry.has-post-thumbnail {
+.single-post .hentry.has-post-thumbnail,
+.page.hentry.has-post-thumbnail {
     border-top: 1px solid $color__light-border;
 }
-
+.single .hentry,
+.page.hentry {
+    padding-top: $post_t_padding * 1.5;
+}
 
 
 
@@ -333,6 +351,13 @@ ul, ol {
     box-shadow: $color__box-shadow;
 }
 
+// Add margin for sidebar widgets under the main content
+#secondary.no-sidebar .widget {
+    margin-left: 0.625em;
+    margin-right: 0.625em;
+    width: calc( 33.3333% - 1.25em );
+}
+
 // Styles for footer widgets
 #supplementary .widget {
     @include main_panel();
@@ -463,9 +488,7 @@ ul, ol {
     margin: 0 0 $default_gutter * 1.5 0;
     border-top: 0.05rem solid gainsboro;
 }
-.single .hentry {
-    padding-top: $post_t_padding * 1.5;
-}
+
 .author_bio_section {
     @include sub_panel();
     box-shadow: $color__box-shadow;
@@ -513,10 +536,11 @@ ul, ol {
     .author-box {
         /*display: none;*/
     }
-    .show-hide-author {
-        /*font-size: 16*$px;*/
-        /*display: inline-block;*/
-    }
+}
+.archive .show-hide-author {
+    /*font-size: 16*$px;*/
+    /*display: inline-block;*/
+    margin-top: $default_gutter!important;
 }
 
 // Centers category headers
@@ -525,7 +549,7 @@ ul, ol {
     padding-bottom: $phi * 1rem;
     .taxonomy-description p {
         color: $color__text-sub-panel;
-        margin: $phi * 1rem 0 0;
+        margin: $phi * 1rem 0;
         font-weight: 300;
         text-align: center;
         //font-size: 18*$px;
@@ -554,7 +578,7 @@ ul, ol {
         color: white;
         padding: 0.25rem 1.25rem 0.125rem;
         top: 1.5rem;
-        left: 0;
+        left: -1px;
         font-size: 0.9rem;
     }
 }
@@ -777,6 +801,10 @@ ul, ol {
         margin-right: 0.5em;
     }
     @include entry_footer();
+}
+.page .entry-footer {
+    /*margin: 0;*/
+    border: none;
 }
 
 /**
@@ -1001,6 +1029,7 @@ POST FORMATS
     padding: 0;
     li {
         padding: 0.75em 0 0.5em 2em;
+        display: block;
         @include widget-divider;
         &.page_item_has_children,
         &.menu-item-has-children {
@@ -1020,6 +1049,9 @@ POST FORMATS
         // Prevent excessive, layout breaking nesting indentation levels
         li li li {
             padding-left: 0;
+        }
+        a {
+            display: inline;
         }
     }
     .children li:first-of-type, 
@@ -1074,11 +1106,45 @@ POST FORMATS
 }
 
 .widget_rss li {  }
-.widget_rss .rss-date,
-.widget_rss cite {
+.widget_rss .rss-date {
     display: block;
     font-size: 90%;
     padding: $phi * 0.25rem 0;
+}
+.widget_rss cite {
+    display: block;
+    font-size: 90%;
+    padding: $phi * 0.5rem 0;
+}
+.widget_rss .rss-date {
+    font-weight: 600;
+    font-style: italic;
+}
+.widget_rss .rss-widget-icon {
+    float: left;
+    padding-top: 4px;
+}
+
+.widget_calendar table,
+.widget_calendar thead th {
+    text-align: center;
+}
+.widget_calendar #prev {
+    text-align: left;
+}
+.widget_calendar #next {
+    text-align: right;
+}
+.widget_calendar thead,
+.widget_calendar tfoot,
+.widget_calendar tfoot a {
+    color: $color__text-main;
+}
+/* On large screens */
+.large-3.widget_calendar th,
+.large-3.widget_calendar td {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
 }
 
 input.search-field {
