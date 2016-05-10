@@ -72,6 +72,6 @@
             get_template_part( 'components/post/content', 'footer' ); 
         endif; 
         ?>
-        
+                        
     </div>
 </article><!-- #post-## -->

@@ -27,6 +27,8 @@ get_header(); ?>
 			</header>
 			<?php
 			/* Start the Loop */
+                        echo '<section class="group">';
+                        
 			while ( have_posts() ) : the_post();
                             echo '<div class="archive-item index-post small-12 medium-6 large-3 columns">';
 				/*
@@ -37,6 +39,8 @@ get_header(); ?>
 				get_template_part( 'components/post/content', get_post_format() );
                             echo '</div>';
 			endwhile;
+                        
+                        echo '</section>';
 
                         jin_paging_nav();
 			// the_posts_navigation();

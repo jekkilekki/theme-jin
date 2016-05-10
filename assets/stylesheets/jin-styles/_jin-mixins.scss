@@ -154,6 +154,20 @@
         box-shadow: none;
         line-height: inherit;
         font-size: inherit;
+        padding: 10px 20px 5px;
+        border: 1px solid rgba(26,53,71,0.11);
+        border-top-color: rgba(26,53,71,0.2);
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 20*$px;
+        color: $color__text-main;
+        box-shadow: 0 1px 0 #fff, 0 -1px 0 rgba(26,53,71,.015), inset 0 1px 0 #fff;
+        background: $color__background-button;
+        background-origin: border-box;
+        &:hover, &:focus, &:active {
+            background: $color__background-button-hover;
+            color: $color__link;
+        }
     }
 }
 
@@ -175,7 +189,7 @@
         z-index: 2;
         font-family: "FontAwesome";
         color: white;
-        background: lighten($color__link, 5%);
+        background: $color__link;
         display: none;
         font-size: 24*$px;
         opacity: 0.5;
@@ -389,7 +403,7 @@
 }
 
 @mixin archive_item() {
-    .archive {
+    .content .archive {
         padding: 2rem 0;
     }
     .archive-item {
@@ -426,6 +440,7 @@
             padding: 2rem;
             margin: 0;
             height: 340px;
+            width: 100%;
             position: absolute;
             &.post-thumbnail {
                 top: 100%;

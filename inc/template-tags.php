@@ -160,14 +160,18 @@ add_action( 'save_post',     'jin_category_transient_flusher' );
  */
 function the_fancy_excerpt() {
     global $post;
-    if ( has_excerpt() ) {
+    if( is_archive() ) {
+        echo '<div class="continue-reading">';
+        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '</div>';
+    } elseif ( has_excerpt() ) {
         the_excerpt();
         echo '<div class="continue-reading">';
         echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     } elseif ( @strpos ( $post->post_content, '<!--more-->' ) ) {
         the_content();
-    } elseif ( str_word_count ( $post->post_content ) < 10 ) {
+    } elseif ( str_word_count ( $post->post_content ) < 200 ) {
         the_content();
     } else {
         the_excerpt();
@@ -364,11 +368,11 @@ function jin_paging_nav() {
 		'format'   => $format,
 		'total'    => $wp_query->max_num_pages,
 		'current'  => $paged,
-		'mid_size' => 2,
+		'mid_size' => 3,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '<i class="fa fa-caret-left"></i>&ensp;Previous', 'jin' ),
-		'next_text' => __( 'Next&ensp;<i class="fa fa-caret-right"></i>', 'jin' ),
-                'type'      => 'list'
+		'prev_text' => __( '<i class="fa fa-caret-left"></i> Previous', 'jin' ),
+		'next_text' => __( 'Next <i class="fa fa-caret-right"></i>', 'jin' ),
+                'type'      => 'list',
 	) );
 
 	if ( $links ) :
@@ -376,14 +380,13 @@ function jin_paging_nav() {
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
 		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'jin' ); ?></h1>
-		<div class="pagination loop-pagination">
-			<?php echo $links; ?>
-		</div><!-- .pagination -->
+                <?php echo $links; ?>
 	</nav><!-- .navigation -->
 	<?php
 	endif;
 }
 endif;
+
 
 if ( ! function_exists( 'jin_copyright' ) ) :
 /** 
