@@ -1933,6 +1933,16 @@ ul, ol {
   border-top: 0.05rem solid gainsboro;
 }
 
+.comments-area {
+  padding-top: 2.0225rem;
+  padding-bottom: 2.0225rem;
+  border-bottom: 1px solid #f2f2f5;
+}
+
+.comment-reply-form {
+  border-top: 1px solid white;
+}
+
 .author_bio_section {
   background-color: #fafafb;
   border: 0.05rem solid white;
@@ -2531,7 +2541,6 @@ POST FORMATS
   padding-top: 1.30896rem;
   padding-bottom: 1.30896rem;
   border: 0;
-  border-top: 1px solid #e2e2e5;
   margin-top: -1px;
 }
 

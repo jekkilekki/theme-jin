@@ -254,6 +254,16 @@ function jin_nav_menu( $menu ) {
 }
 add_filter( 'wp_nav_menu', 'jin_nav_menu' );
 
+/**
+ * Add Post Type Support for JetPack Custom Post Types
+ */
+function jin_add_jetpack_testimonial_taxonomies() {
+    //if( ) {
+        register_taxonomy_for_object_type( 'category', 'jetpack-testimonial' );
+    //}
+}
+add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
+
 
 /**
  * Walker Menu for Front Page nav

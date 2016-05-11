@@ -542,6 +542,14 @@ ul, ol {
     margin: 0 0 $default_gutter * 1.5 0;
     border-top: 0.05rem solid gainsboro;
 }
+.comments-area {
+    padding-top: $default_gutter;
+    padding-bottom: $default_gutter;
+    border-bottom: 1px solid $color__lighter-border;
+}
+.comment-reply-form {
+    border-top: 1px solid white;
+}
 
 .author_bio_section {
     @include sub_panel();
@@ -1031,7 +1039,7 @@ POST FORMATS
     padding-top: $post_t_padding / 2;
     padding-bottom: $post_b_padding / 2;
     border: 0;
-    border-top: 1px solid $color__light-border;
+    // border-top: 1px solid $color__light-border;
     margin-top: -1px;
     .comment-reply-title,
     .comment-notes {

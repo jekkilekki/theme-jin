@@ -45,7 +45,7 @@ function jin_posted_on() {
                 if( 'post' === get_post_type() ) {
                     $categories_list = get_the_category_list( __( '</li><li>', 'jin' ) );
                 } elseif ( 'jetpack-portfolio' === get_post_type() ) {
-                    $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', esc_html_x('</li><li>', 'Used between list items, there is a space after the comma.', 'jin' ), '' );
+                    $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', '</li><li>', '' );
                 }
                 $first = strpos( $categories_list, '</a>' );
                 $first_cat = substr( $categories_list, 0, ( $first + 4 ) );
@@ -62,7 +62,7 @@ function jin_posted_on() {
                         echo $replaced;
                         if( ! empty( $the_rest ) ) {
                             echo '<span class="jin_cat_switch"><i class="fa fa-angle-down"></i></span>';
-                            printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.
+                            printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.     
                         }
                         echo '</span>';
 		}
@@ -110,7 +110,7 @@ function jin_entry_footer() {
                 if ( 'post' === get_post_type() ) {
                     $tags_list = get_the_tag_list( '<li class="label radius">', '</li><li class="label radius">', '</li>' );
                 } elseif ( 'jetpack-portfolio' === get_post_type() ) {
-                    $tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '<li class="label radius">', esc_html__( '</li><li class="label radius">', 'jin' ), '</li>' );
+                    $tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '<li class="label radius">', '</li><li class="label radius">', '</li>' );
                 }
 		if ( $tags_list ) {
 			echo '<ul class="tags-links">' . $tags_list . '</ul>'; // WPCS: XSS OK.
