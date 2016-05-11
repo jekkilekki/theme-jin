@@ -124,7 +124,7 @@ function jin_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'jin' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="widget small-6 medium-4 columns %2$s ">',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',

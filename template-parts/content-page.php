@@ -32,9 +32,10 @@
 		?>
 	</div><!-- .entry-content -->
 
+        <?php if ( is_user_logged_in() ) : ?>
 	<footer class="entry-footer">
 		<?php
-			edit_post_link(
+                        edit_post_link(
 				sprintf(
 					/* translators: %s: Name of current post */
 					esc_html__( 'Edit %s', 'jin' ),
@@ -45,5 +46,6 @@
 			);
 		?>
 	</footer><!-- .entry-footer -->
+        <?php endif; ?>
 </article><!-- #post-## -->
 

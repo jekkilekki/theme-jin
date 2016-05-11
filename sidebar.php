@@ -21,11 +21,11 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
         
 <?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) ) { ?>
         
-    <aside id="secondary" class="widget-area medium-12 columns" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
+    <aside id="secondary" class="widget-area medium-12 columns no-sidebar" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         
 <?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
         
-    <aside id="secondary" class="widget-area medium-12 columns" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
+    <aside id="secondary" class="widget-area medium-12 columns no-sidebar full-width" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         
 <?php } else { ?>   
         

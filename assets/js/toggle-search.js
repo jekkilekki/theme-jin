@@ -56,6 +56,11 @@ jQuery( document ).ready( function( $ ) {
     * Add 'end' class to the last-child of articles on an index page to "fix" Foundation's random float
     */
    $( '.archive .archive-item:last-child' ).addClass( 'end' );
+   
+   /*
+    * Add Foundation classes to widgets on pages without a sidebar
+    */
+   $( '.no-sidebar .widget' ).addClass( 'small-6 medium-4 columns' );
 });
 
 

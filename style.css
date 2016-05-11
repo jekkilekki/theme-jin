@@ -1257,14 +1257,16 @@ body {
 .single #header-image,
 .archive #header-image,
 .search #header-image,
-.error404 #header-image {
+.error404 #header-image,
+.page #header-image {
   max-height: 300px;
 }
 
 .single #header-image .site-title,
 .archive #header-image .site-title,
 .search #header-image .site-title,
-.error404 #header-image .site-title {
+.error404 #header-image .site-title,
+.page #header-image .site-title {
   font-size: 3rem;
 }
 
@@ -1641,6 +1643,7 @@ ul, ol {
 .site-main .post-navigation .nav-previous:hover, .site-main .post-navigation .nav-next:hover {
   background: -webkit-linear-gradient(#FFF, #FBFBFC);
   background: linear-gradient(#FFF, #FBFBFC);
+  cursor: pointer;
 }
 
 .site-main .post-navigation .nav-previous h4:before {
@@ -2190,8 +2193,19 @@ ul, ol {
 }
 
 .entry-meta .cat-links a {
+  font-weight: 600;
+}
+
+.entry-meta .cat-links .jin_cat_switch {
+  padding: 0 0 0 5px;
+}
+
+.entry-meta .breadcrumb-separator {
+  margin: 0 0.5em;
+}
+
+.entry-meta .current {
   font-weight: 400;
-  padding: 0 5px 0 0;
 }
 
 .vcard {
@@ -2353,11 +2367,6 @@ ul, ol {
 .entry-footer a {
   color: inherit;
   font-weight: 400;
-}
-
-.page .entry-footer {
-  /*margin: 0;*/
-  border: none;
 }
 
 /**
@@ -2584,8 +2593,8 @@ POST FORMATS
 }
 
 .widget {
-  padding-left: 2.61792rem;
-  padding-right: 2.61792rem;
+  padding-left: 2.01379rem;
+  padding-right: 2.01379rem;
   padding-top: 1.618rem;
   padding-bottom: 1.618rem;
   margin-left: 0;
@@ -2793,15 +2802,11 @@ input.search-field {
   background: #00ACDF;
   display: none;
   font-size: 1.2rem;
-  opacity: 0.5;
-}
-
-.topbutton:hover {
   opacity: 1;
 }
 
-.topbutton:hover:before,
-.topbutton:before:hover {
+.topbutton:hover {
+  opacity: 0.5;
   color: white;
 }
 

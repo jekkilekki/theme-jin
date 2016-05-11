@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 columns" data-equalizer-watch>
+	<div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
 		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>

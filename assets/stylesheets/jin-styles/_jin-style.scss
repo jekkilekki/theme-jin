@@ -316,6 +316,7 @@ ul, ol {
         }
         &:hover {
             background: $color__background-header;
+            cursor: pointer;
         }
     }
     .nav-previous h4:before {
@@ -749,9 +750,18 @@ ul, ol {
             padding: 15*$px 30*$px;
         }
         a {
-            font-weight: 400;
-            padding: 0 5px 0 0;
+            font-weight: 600;
+            // padding: 0 5px 0 0;
         }
+        .jin_cat_switch {
+            padding: 0 0 0 5px;
+        }
+    }
+    .breadcrumb-separator {
+        margin: 0 0.5em;
+    }
+    .current {
+        font-weight: 400;
     }
 }
 .vcard {
@@ -878,10 +888,6 @@ ul, ol {
         margin-right: 0.5em;
     }
     @include entry_footer();
-}
-.page .entry-footer {
-    /*margin: 0;*/
-    border: none;
 }
 
 /**
@@ -1084,8 +1090,8 @@ POST FORMATS
 
 //**** Widgets
 .widget {
-    padding-left: $widget_l_padding;
-    padding-right: $widget_r_padding;
+    padding-left: $widget_l_padding / 1.3;
+    padding-right: $widget_r_padding / 1.3;
     padding-top: $widget_t_padding;
     padding-bottom: $widget_b_padding;
     margin-left: 0;

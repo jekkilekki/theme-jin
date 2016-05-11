@@ -12,6 +12,8 @@ if ( ! function_exists( 'jin_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function jin_posted_on() {
+        global $post;
+    
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -38,9 +40,13 @@ function jin_posted_on() {
         echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
         
         // Categories
-        if ( 'post' === get_post_type() ) {
+        if ( 'post' === get_post_type() || 'jetpack-portfolio' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( '</li><li>', 'jin' ) );
+                if( 'post' === get_post_type() ) {
+                    $categories_list = get_the_category_list( __( '</li><li>', 'jin' ) );
+                } elseif ( 'jetpack-portfolio' === get_post_type() ) {
+                    $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', esc_html_x('</li><li>', 'Used between list items, there is a space after the comma.', 'jin' ), '' );
+                }
                 $first = strpos( $categories_list, '</a>' );
                 $first_cat = substr( $categories_list, 0, ( $first + 4 ) );
                 $replaced = str_replace( '<a ', '<a class="first-cat-link" ', $first_cat );
@@ -48,7 +54,11 @@ function jin_posted_on() {
 
 		if ( $categories_list && jin_categorized_blog() ) {
                         echo '<span class="cat-links">';
-                        _e( 'Filed under: ', 'jin' );
+                        if( 'post' === get_post_type() ) {
+                            _e( 'Filed under: ', 'jin' );
+                        } elseif( 'jetpack-portfolio' === get_post_type() ) {
+                            _e( 'Project type: ', 'jin' );
+                        }
                         echo $replaced;
                         if( ! empty( $the_rest ) ) {
                             echo '<span class="jin_cat_switch"><i class="fa fa-angle-down"></i></span>';
@@ -82,16 +92,26 @@ if ( ! function_exists( 'jin_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function jin_entry_footer() {
+    global $post;
+    
 	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
+	if ( 'post' === get_post_type() || 'jetpack-portfolio' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
+            if( 'post' === get_post_type() ) {
 		$categories_list = get_the_category_list( esc_html__( ', ', 'jin' ) );
+            } elseif( 'jetpack-portfolio' === get_post_type() ) {
+                $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', esc_html_x(', ', 'Used between list items, there is a space after the comma.', 'jin' ), '');
+            }
 		if ( $categories_list && jin_categorized_blog() ) {
 			printf( '<span class="cat-links">' . $categories_list . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '<li class="label radius">', '</li><li class="label radius">', '</li>' );
+                if ( 'post' === get_post_type() ) {
+                    $tags_list = get_the_tag_list( '<li class="label radius">', '</li><li class="label radius">', '</li>' );
+                } elseif ( 'jetpack-portfolio' === get_post_type() ) {
+                    $tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '<li class="label radius">', esc_html__( '</li><li class="label radius">', 'jin' ), '</li>' );
+                }
 		if ( $tags_list ) {
 			echo '<ul class="tags-links">' . $tags_list . '</ul>'; // WPCS: XSS OK.
 		}
@@ -255,53 +275,43 @@ if ( ! function_exists( 'jin_breadcrumbs' ) ) :
  *
  * @since Jin 1.0
  * 
- * @link: https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
+ * @link: https://www.branded3.com/blog/creating-a-really-simple-breadcrumb-function-for-pages-in-wordpress/
  */
 function jin_breadcrumbs() {
     
-    if (!is_home()) {
+    global $post;
+    
+    $output = '';
+    $breadcrumbs = array();
+    $separator = '<span class="breadcrumb-separator">&raquo;</span>';
+    $breadcrumb_id = 'breadcrumbs';
+    $breadcrumb_class = 'entry-meta';
+    
+    $page_title = '<span class="current">' . get_the_title( $post->ID ) . '</span>';
+    $home_link = '<a aria-label="Home" title="Home" class="breadcrumb-home" href="' . home_url() . '"><i class="fa fa-home"></i></a>' . $separator;
+    
+    $output .= "<div aria-label='You are here:' id='$breadcrumb_id' class='$breadcrumb_class'>";
+    $output .= $home_link;
+    
+    if( $post->post_parent ) {
+        $parent_id = $post->post_parent;
         
-        // Settings
-        $separator          = '<span class="breadcrumb-separator">&raquo;</span>';
-        $breadcrumb_id      = 'breadcrumbs';
-        $breadcrumb_class   = 'entry-meta';
-        $post               = get_post();
-        
-        
-        echo "<div aria-label='You are here:' id='$breadcrumb_id' class='$breadcrumb_class'>Hello test";
-        if( is_category() || is_single() || ( is_page() && $post->post_parent ) ) {
-        // Build the breadcrumbs
-        
-		echo '<a aria-label="Home" title="Home" class="breadcrumb-home" href="';
-		echo home_url();
-		echo '"><span class="screen-reader-text">';
-		bloginfo('name');
-		echo "</span></a>$separator";
-		//if ( (is_category() || is_single()) ) {
-                
-                $categories = get_the_category(/* array(
-                    'orderby' => 'name',
-                    'parent'  => 0
-                ) */);
-                $categories = array_slice( $categories, 0, 5 );
-                
-                foreach ( $categories as $category ) {
-                    printf( '<a href="%1$s">%2$s</a>',
-                        esc_url( get_category_link( $category->term_id ) ),
-                        esc_html( $category->name )
-                    );
-                    echo $separator;
-                }
-			// the_category('<span class="breadcrumb-separator">&raquo;</span>');
-                        //if (is_single()) {
-			//	echo "$separator";
-				// the_title();
-			//}
-		} elseif (is_page()) {
-			echo the_title();
-		}
-        echo '</div>';
+        while( $parent_id ) {
+            $page = get_page( $parent_id );
+            $breadcrumbs[] = '<a href="' . get_permalink( $page->ID ) . '">' . get_the_title( $page->ID ) . '</a>';
+            $parent_id = $page->post_parent;
         }
+        
+        $breadcrumbs = array_reverse( $breadcrumbs );
+        $breadcrumbs_str = implode( $separator, $breadcrumbs ); 
+        $output .= $breadcrumbs_str . $separator;
+    }
+    
+    $output .= $page_title;
+    $output .= "</div>";
+    
+    echo $output;
+    
     }
 
 endif;

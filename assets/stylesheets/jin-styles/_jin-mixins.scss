@@ -102,7 +102,8 @@
     .single #header-image,
     .archive #header-image,
     .search #header-image,
-    .error404 #header-image {
+    .error404 #header-image,
+    .page #header-image {
         max-height: 300px;
         .site-title {
             font-size: 60*$px;
@@ -192,13 +193,10 @@
         background: $color__link;
         display: none;
         font-size: 24*$px;
-        opacity: 0.5;
-    }
-    .topbutton:hover {
         opacity: 1;
     }
-    .topbutton:hover:before,
-    .topbutton:before:hover {
+    .topbutton:hover {
+        opacity: 0.5;
         color: white;
     }
     .topbutton:before {
