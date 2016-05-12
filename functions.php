@@ -273,10 +273,10 @@ add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
 global $current_class;
 $current_class = 'odd';
 function jin_odd_even_post_class( $classes ) {
-    if( get_post_type() === 'jetpack-testimonial' ) {
-    global $current_class;
-    $classes[] = $current_class;
-    $current_class = ( $current_class == 'odd' ) ? 'even' : 'odd';
+    if( get_post_type( get_the_ID() ) === 'jetpack-testimonial' ) {
+        global $current_class;
+        $classes[] = $current_class;
+        $current_class = ( $current_class == 'odd' ) ? 'even' : 'odd';
     }
     return $classes;
 }

@@ -269,6 +269,34 @@ function jin_author_box() {
     
 }
 
+function jin_portfolio_index_footer() {
+    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+    if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+    }
+
+    $time_string = sprintf( $time_string,
+            esc_attr( get_the_date( 'c' ) ),
+            esc_html( get_the_date() ),
+            esc_attr( get_the_modified_date( 'c' ) ),
+            esc_html( get_the_modified_date() )
+    );
+
+    $posted_on = sprintf(
+            esc_html_x( '%s', 'post date', 'jin' ),
+            '<span><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>'
+    );
+    
+    $project_type = get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '<span class="portfolio-entry-meta cat-links">', esc_html_x( ', ', 'Used between list items, there is a space after the comma.', 'jin' ), '</span>' );
+
+    $output = '<footer class="entry-footer">';
+    $output .= $posted_on;
+    $output .= $project_type;
+    $output .= '</footer>';
+    
+    echo $output;
+}
+
 if ( ! function_exists( 'jin_breadcrumbs' ) ) :
 /**
  * Display Post breadcrumbs when applicable.

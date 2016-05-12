@@ -195,12 +195,13 @@ pre {
 
 
 
-
+.error404 .hentry,
+.page .hentry {
+    margin-bottom: 5rem;
+}
 
     
-article,
-.not-found .hentry,
-.page .hentry {
+article {
     margin-bottom: $default_gutter * 1.5;
 }
 
@@ -938,6 +939,7 @@ POST FORMATS
     .comment {
         @include comment();
         box-shadow: none;
+        background: transparent;
     }
     .comments-area > ol {
         padding: 0;

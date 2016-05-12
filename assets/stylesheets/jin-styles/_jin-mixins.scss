@@ -444,6 +444,30 @@
                 top: 100%;
             }
         }
+        .entry-footer {
+                position: absolute;
+                width: 100%;
+                background: white;
+                bottom: 0;
+                padding: $default_gutter / 2 $default_gutter;
+                span {
+                    margin: 0;
+                    padding: 0;
+                }
+                span::after {
+                    content: '\22c5';
+                    margin-right: 0.5em;
+                    margin-left: 0.5em;
+                }
+                .cat-links a {
+                    font-weight: 600;
+                }
+                .cat-links::after,
+                .cat-links::before {
+                    content: '';
+                    margin: 0;
+                }
+        }
     }
     .archive-item:hover {
         .post-content {
@@ -454,6 +478,7 @@
 
 @mixin testimonial() {
     .archive-testimonials {
+        margin-bottom: $default_gutter * 1.5;
         border-top: 1px solid $color__link;
         .testimonial-thumbnail {
             width: 120px;
@@ -462,13 +487,13 @@
             float: left;
             margin-right: $post_r_padding;
             margin-left: -$default_gutter;
+            margin-top: $default_gutter / 2;
+            background-size: cover!important;
         }
     }
     .archive-testimonial {
-        margin-bottom: 5rem;
         .entry-title {
             font-size: 24*$px;
-            font-style: italic;
             font-weight: 600;
             color: $color__text-sub-panel;
             margin-bottom: 0;

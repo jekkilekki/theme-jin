@@ -17,12 +17,10 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php   
-                                        if ( is_author() ) {
-                                            jin_author_box();
-                                        } else {
-                                            the_archive_title( '<h1 class="page-title">', '</h1>' );
-                                            the_archive_description( '<div class="taxonomy-description">', '</div>' );
-                                        }
+                                    echo '<h1 class="page-title">';
+                                    post_type_archive_title( 'All ' );
+                                    echo '</h1>';
+                                    the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header>
 			<?php
@@ -36,7 +34,7 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'components/post/content', get_post_format() );
+				get_template_part( 'components/features/portfolio/content', 'portfolio' );
                             echo '</div>';
 			endwhile;
                         
