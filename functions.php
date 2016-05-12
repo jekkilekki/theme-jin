@@ -264,6 +264,23 @@ function jin_add_jetpack_testimonial_taxonomies() {
 }
 add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
 
+/**
+ * Add Even/Odd classes to various Posts
+ * 1. Testimonials
+ * 
+ * @link    http://www.wpbeginner.com/wp-themes/how-to-add-oddeven-class-to-your-post-in-wordpress-themes/
+ */
+global $current_class;
+$current_class = 'odd';
+function jin_odd_even_post_class( $classes ) {
+    if( get_post_type() === 'jetpack-testimonial' ) {
+    global $current_class;
+    $classes[] = $current_class;
+    $current_class = ( $current_class == 'odd' ) ? 'even' : 'odd';
+    }
+    return $classes;
+}
+add_filter( 'post_class', 'jin_odd_even_post_class' );
 
 /**
  * Walker Menu for Front Page nav

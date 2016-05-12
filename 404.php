@@ -9,51 +9,33 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+
+	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>-->
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'jin' ); ?></h1>
-				</header>
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'jin' ); ?></p>
-
-					<?php
-						get_search_form();
-
-						the_widget( 'WP_Widget_Recent_Posts' );
-
-						// Only show the widget if site has multiple categories.
-						if ( jin_categorized_blog() ) :
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'jin' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div>
-					<?php
-						endif;
-
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'jin' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div>
-			</section>
+                    <?php get_template_part( 'template-parts/content', 'none' ); ?>
+			
 		</main>
 	</div>
 <?php

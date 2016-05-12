@@ -453,10 +453,97 @@
 }
 
 @mixin testimonial() {
-    .testimonial-thumbnail {
-        max-width: 200px;
-        max-height: 200px;
-        overflow: hidden;
-        border-radius: 50%;
+    .archive-testimonials {
+        border-top: 1px solid $color__link;
+        .testimonial-thumbnail {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            float: left;
+            margin-right: $post_r_padding;
+            margin-left: -$default_gutter;
+        }
+    }
+    .archive-testimonial {
+        margin-bottom: 5rem;
+        .entry-title {
+            font-size: 24*$px;
+            font-style: italic;
+            font-weight: 600;
+            color: $color__text-sub-panel;
+            margin-bottom: 0;
+        }
+        .entry-content {
+            margin-top: 0;
+        }
+    }
+    .jetpack-testimonial {
+        padding-bottom: $post_b_padding;
+        padding-top: $post_t_padding!important;
+        border-top: 1px solid $color__lighter-border;
+        border-bottom: 1px solid white;
+        margin-bottom: 0;
+        .entry-content {
+            margin-top: 0;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        .entry-content:before {
+            font-family: "Dashicons";
+            content: '\f122';
+            font-size: 48*$px;
+            color: $color__light-border;
+            position: absolute;
+            top: -10px;
+            left: -50px;
+            z-index: -1;
+        }
+    }
+    .even {
+        background: $color__background-sub-panel;
+    }
+    .single-jetpack-testimonial {
+        .hentry {
+            border-top: 1px solid $color__link;
+        }
+        .author-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+        .author-title {
+            margin: -$default_gutter / 5 0 0;
+            text-align: center;
+            position: relative;
+            span {
+                padding-right: 0;
+                background: white;
+                padding: 0 1rem;
+                z-index: 3;
+                position: relative;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                border-bottom: 1px solid gainsboro;
+                left: 0;
+                top: 10px;
+                z-index: 2;
+            }
+        }
+        .testimonial-footer {
+            text-align: center;
+        }
+        .show-hide-author {
+            text-align: center;
+            margin: 1rem 0 0;
+            a {
+                border: 0;
+                color: white;
+            }
+        }
     }
 }

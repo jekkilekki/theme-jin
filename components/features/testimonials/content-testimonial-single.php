@@ -10,12 +10,14 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-
-		<?php // echo get_the_term_list( $post->ID, 'jetpack-portfolio-type', '<span class="portfolio-entry-meta">', esc_html_x(', ', 'Used between list items, there is a space after the comma.', 'jin' ), '</span>' ); ?>
-	</header>
+    
+            <?php if ( '' != get_the_post_thumbnail() ) : ?>
+    <div class="author-avatar" style="background: url( <?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
+                    </div>
+            <?php endif; ?>
+	
 	<div class="entry-content">
+            
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -24,20 +26,17 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 				'pagelink' => '<span class="page-link">%</span>',
 			) );
 		?>
-	</div>
-	<footer class="entry-meta">
-		<?php
+            
+        </div>
+    
+        <footer class="testimonial-footer">
+            <?php the_title( '<h3 class="author-title"><span>', '</span></h3>' );
 			/* translators: used between list items, there is a space after the comma */
 			//$tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '', esc_html__( ', ', 'jin' ) );
 			//if ( $tags_list ) :
 		?>
-			<!--<span class="tags-links"><?php printf( esc_html__( 'Tagged %1$s', 'jin' ), $tags_list ); ?></span>-->
-		<?php //endif; ?>
-
-		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-			<span class="comments-link"><?php comments_popup_link( esc_html__( 'Leave a comment', 'jin' ), esc_html__( '1 Comment', 'jin' ), esc_html__( '% Comments', 'jin' ) ); ?></span>
-		<?php endif; ?>
-
-		<?php edit_post_link( esc_html__( 'Edit', 'jin' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer>
+            
+            <?php edit_post_link( esc_html__( 'Edit', 'jin' ), '<p class="show-hide-author label">', '</p>' ); ?>
+        </footer>
+	
 </article><!-- #post-## -->

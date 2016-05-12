@@ -211,7 +211,8 @@ article,
     //border: 1px solid $color__link;
 }
 .single-post .hentry,
-.page.hentry {
+.page.hentry, 
+.error-404.hentry {
     border-top: 1px solid $color__link;
     border-bottom: 1px solid $color__lighter-border;
 }
@@ -541,6 +542,9 @@ ul, ol {
     /*padding-bottom: $post_b_padding;*/
     margin: 0 0 $default_gutter * 1.5 0;
     border-top: 0.05rem solid gainsboro;
+}
+.error-404.hentry {
+    padding-bottom: $post_b_padding;
 }
 .comments-area {
     padding-top: $default_gutter;
@@ -1290,6 +1294,8 @@ input.search-field {
         }
     }
 }
+
+@include testimonial();
 
 @include topbutton();
 

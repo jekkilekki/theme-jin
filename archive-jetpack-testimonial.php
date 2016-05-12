@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area archive archive-testimonial large-12 columns">
+	<div id="primary" class="content-area archive archive-testimonial large-10 large-push-1 columns">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -17,17 +17,13 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php   
-                                        if ( is_author() ) {
-                                            jin_author_box();
-                                        } else {
-                                            the_archive_title( '<h1 class="page-title">', '</h1>' );
-                                            the_archive_description( '<div class="taxonomy-description">', '</div>' );
-                                        }
+                                    the_archive_title( '<h1 class="page-title">', '</h1>' );
+                                    the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header>
 			<?php
 			/* Start the Loop */
-                        echo '<section class="group">';
+                        echo '<section class="archive-testimonials">';
                         
 			while ( have_posts() ) : the_post();
                             echo '<div class="archive-item-testimonial index-post small-12 group">';
