@@ -293,10 +293,10 @@ class jin_front_page_walker extends Walker_Nav_Menu {
         $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
         $display_depth = ( $depth + 1); // because it counts the first submenu as 0
         $classes = array(
-            'sub-menu',
-            ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
-            ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
-            'menu-depth-' . $display_depth
+                'sub-menu',
+                ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
+                ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
+                'menu-depth-' . $display_depth
             );
         $class_names = implode( ' ', $classes );
 
@@ -328,7 +328,7 @@ class jin_front_page_walker extends Walker_Nav_Menu {
          * Card Front
          */
         $foundationTouch = 'ontouchstart="this.classList.toggle(\'hover\');"';
-        $output .= $indent . '<li ' . $foundationTouch . ' id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+        $output .= $indent . '<li ' . $foundationTouch . ' id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . /* $class_names . */ '">';
         $output .= '<div class="large button card-front">';
 
         // link attributes

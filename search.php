@@ -9,38 +9,35 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+
+	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>-->
 		<main id="main" class="site-main" role="main">
 
-		<?php
-		if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'jin' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header>
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'components/post/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'components/post/content', 'none' );
-
-		endif; ?>
-
+                    <?php get_template_part( 'components/post/content', 'none' ); ?>
+			
 		</main>
-	</section>
+	</div>
 <?php
 get_sidebar();
 get_footer();

@@ -93,8 +93,8 @@
 	
 	</header>
         </div><!-- END data-sticky-container -->
-	<?php if ( !is_page_template( 'page-templates/page-landing.php' ) ) { ?>
+	<?php //if ( !is_page_template( 'page-templates/page-landing.php' ) ) { ?>
         
                 <div id="content" class="site-content row"> <!-- Foundation row start -->
                     
-        <?php } ?>
+        <?php //} ?>

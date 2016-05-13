@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page-front.php.
+ * Template part for displaying page content in page-landing.php.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *

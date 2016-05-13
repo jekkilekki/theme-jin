@@ -114,6 +114,67 @@ pre {
     border: 1px solid darken(saturate($color__background-pre, 5%), 5%);
 }
 
+/**
+ * Responsive Typography
+ */ 
+
+@media (max-width: 62.5em) {
+    
+    // Output headings at smaller size
+    @include htags(0.9);
+    
+/*    // redeclare variables to be smaller
+    $default_h_padding: $phi * $phi * 1rem;
+    $default_v_padding: $default_h_padding;
+
+    // Posts and widgets horizontal padding
+    $post_l_padding: $default_h_padding;
+    $post_r_padding: $post_l_padding;
+
+    // Posts and widgets vertical padding
+    $post_t_padding: $default_h_padding / $phi;
+    $post_b_padding: $post_t_padding;
+    
+    .hentry,
+    .comments-area, 
+    .page-header,
+    .site-main .posts-navigation,
+    .site-main .post-navigation,
+    .paging-navigation {
+        padding-left: $post_l_padding;
+        padding-right: $post_r_padding;
+        padding-top: $post_t_padding;
+        padding-bottom: $post_b_padding;
+    }
+    
+    .entry-title {
+        margin-bottom: $post_t_padding;
+    }
+    
+    .site-footer {
+        padding: $phi * 1em;
+    }*/
+}
+
+@media (max-width: 782*$px) {
+    
+    .admin-bar .site-header .fixed {
+        //top: 46px;
+    }
+    
+}
+
+@media (max-width: 600*$px) {
+    
+    @include htags(0.8);
+    
+}
+@media (max-width: 400*$px) {
+    
+    @include htags(0.7);
+    
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -649,6 +710,25 @@ ul, ol {
         left: -1px;
         font-size: 0.9rem;
     }
+}
+.post-password-required:before,
+.post-password-protected:before {
+    font-family: "Dashicons";
+    content: "\f160";
+    position: absolute;
+    background: $color__light-border;
+    width: 35px;
+    height: 35px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50%;
+    color: white;
+    top: 1.5rem;
+    left: $post_l_padding / 1.5;
+    font-size: 24*$px;
+}
+.post-password-protected:before {
+    font-family: "Dashicons";
+    content: "\f528";
 }
 
 // Featured Images
@@ -1302,61 +1382,76 @@ input.search-field {
 @include topbutton();
 
 
-//**** Responsive layout adjustments
+/*--------------------------------------------------------------
+# Page Templates
+--------------------------------------------------------------*/
 
-@media (max-width: 62.5em) {
-    
-    // Output headings at smaller size
-    @include htags(0.9);
-    
-/*    // redeclare variables to be smaller
-    $default_h_padding: $phi * $phi * 1rem;
-    $default_v_padding: $default_h_padding;
-
-    // Posts and widgets horizontal padding
-    $post_l_padding: $default_h_padding;
-    $post_r_padding: $post_l_padding;
-
-    // Posts and widgets vertical padding
-    $post_t_padding: $default_h_padding / $phi;
-    $post_b_padding: $post_t_padding;
-    
-    .hentry,
-    .comments-area, 
-    .page-header,
-    .site-main .posts-navigation,
-    .site-main .post-navigation,
-    .paging-navigation {
-        padding-left: $post_l_padding;
-        padding-right: $post_r_padding;
-        padding-top: $post_t_padding;
-        padding-bottom: $post_b_padding;
-    }
-    
-    .entry-title {
-        margin-bottom: $post_t_padding;
-    }
-    
-    .site-footer {
-        padding: $phi * 1em;
-    }*/
+/**
+ * Front Page Portfolio
+ */
+.front-page-portfolio .hentry {
+    margin-bottom: $default_gutter * 1.5;
+}
+.front-page-portfolio-section {
+    margin-bottom: 5rem;
 }
 
-@media (max-width: 782*$px) {
-    
-    .admin-bar .site-header .fixed {
-        //top: 46px;
-    }
-    
+/**
+ * Client Pages 
+ */
+.page-header-client {
+    padding-top: 0;
+}
+.page-title-pre {
+    display: block;
+    font-size: 18*$px;
+    color: $color__text-sub-panel;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+#primary-right {
+    padding-left: 0;
+}
+#primary-right article {
+    padding-top: $widget_t_padding;
+    padding-right: $widget_r_padding;
+    padding-left: $widget_l_padding;
+}
+#primary-left {
+    // margin-bottom: 5rem;
+    margin-bottom: $default_gutter * 1.5;
+}
+#primary-left article {
+    margin-bottom: $default_gutter * 1.5;
 }
 
-@media (max-width: 600*$px) {
-    
-    @include htags(0.8);
-    
+/**
+ * Show Child Pages
+ */
+.entry-list-main {
+    margin-left: -$post_l_padding;
+    margin-right: -$post_r_padding;
 }
-@media (max-width: 400*$px) {
-    
-    @include htags(0.7);
-    
+.entry-list-main li {
+    padding-left: $post_l_padding;
+    padding-right: $post_r_padding;
+    padding-bottom: $post_b_padding;
+    border-top: 1px solid $color__light-border;
+    border-bottom: 1px solid white;
+    list-style: none;
+    .list-link {
+        text-align: center;
+        h2 {
+            font-weight: 400;
+            color: $color__text-main;
+            font-size: 36*$px;
+        }
+        figure {
+            padding-top: $widget_t_padding;
+            padding-bottom: $widget_b_padding;
+            img {
+                margin: auto;
+            }
+        }
+    }
 }

@@ -34,9 +34,10 @@ get_header(); ?>
 	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>-->
 		<main id="main" class="site-main" role="main">
 
-                    <?php get_template_part( 'template-parts/content', 'none' ); ?>
+                    <?php get_template_part( 'components/post/content', 'none' ); ?>
 			
 		</main>
 	</div>
 <?php
+get_sidebar();
 get_footer();

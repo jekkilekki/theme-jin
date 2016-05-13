@@ -11,6 +11,8 @@
 				else :
 					$paged = 1;
 				endif;
+                                
+                                echo 'Paged: ' . $paged;
 
 				$posts_per_page = get_option( 'jetpack_portfolio_posts_per_page', '12' );
 				$args = array(
@@ -38,8 +40,10 @@
 					<?php endwhile; ?>
 
 				</div>
+
 				<?php
-                                        jin_post_navigation();
+
+                                        jin_paging_nav();
 					//the_posts_navigation();
 					wp_reset_postdata();
 				?>

@@ -8,13 +8,14 @@
  */
 
 ?>
-
+<?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
     <div class="index-post-thumbnail">
             <a href="<?php the_permalink(); ?>">
                     <?php the_post_thumbnail( 'jin-featured-image' ); ?>
             </a>
     </div>
+<?php endif; ?>
 <?php endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -32,6 +33,12 @@
 			) );
 		?>
 	</div>
+    
+    <?php 
+    // Don't end the article if we want to display child pages too
+    // "entry-footer" and </article> are present on that template
+    if ( ! is_page_template( 'page-templates/page-child-pages.php' ) ) { 
+    ?>
 	<footer class="entry-footer">
 		<?php
 			edit_post_link(
@@ -45,4 +52,6 @@
 			);
 		?>
 	</footer>
-</article><!-- #post-## -->
+    
+        </article><!-- #post-## -->
+    <?php } ?>
