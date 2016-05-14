@@ -42,32 +42,56 @@
         
         // Custom Customizer Functions
         // Header Gradient color
-//        wp.customize( 'grad1_color', function( value ) {
-//		value.bind( function( to ) {
-//			$( '.split-navigation-menu' ).css( {
-//                            'background-color': to 
-//                        } );
-//		} );
-//	} );
-//        wp.customize( 'grad2_color', function( value ) {
-//		value.bind( function( to ) {
-//			$( '#main-nav-left li a, #main-nav-right li a' ).css( {
-//                            'color': to 
-//                        } );
-//		} );
-//	} );
-//        
-//        // Highlight colors
-//        wp.customize( 'highlight_color', function( value ) {
-//		value.bind( function( to ) {
-//			$( 'a:visited, a:hover, a:focus, a:active, .entry-content a, .entry-summary a' ).css( {
-//                            'color': to 
-//                        } );
-//                        $( '.search-toggle, .search-box-wrapper' ).css( {
-//                            'background-color': to
-//                        } );
-//		} );
-//	} );
+        // Set default colors
+        grad1_color = '#085078';
+        grad2_color = '#85d8ce';
+        grad3_color = '#f8fff3';
+        
+        wp.customize( 'grad1_color', function( value ) {
+		value.bind( function( to ) {
+			grad1_color = to;
+                        $( '.custom-header' ).css( {
+                            'background': 'radial-gradient( ellipse farthest-side at 100% 100%, '
+                                    .concat( grad3_color ).concat( ' 10%, ' )
+                                    .concat( grad2_color ).concat( ' 50%, ' )
+                                    .concat( grad1_color ).concat( ' 120% )' )
+                        } );
+		} );
+	} );
+        wp.customize( 'grad2_color', function( value ) {
+		value.bind( function( to ) {
+			grad2_color = to;
+                        $( '.custom-header' ).css( {
+                            'background': 'radial-gradient( ellipse farthest-side at 100% 100%, '
+                                    .concat( grad3_color ).concat( ' 10%, ' )
+                                    .concat( grad2_color ).concat( ' 50%, ' )
+                                    .concat( grad1_color ).concat( ' 120% )' )
+                        } );
+		} );
+	} );
+        wp.customize( 'grad3_color', function( value ) {
+		value.bind( function( to ) {
+			grad3_color = to;
+                        $( '.custom-header' ).css( {
+                            'background': 'radial-gradient( ellipse farthest-side at 100% 100%, '
+                                    .concat( grad3_color ).concat( ' 10%, ' )
+                                    .concat( grad2_color ).concat( ' 50%, ' )
+                                    .concat( grad1_color ).concat( ' 120% )' )
+                        } );
+		} );
+	} );
+        
+        // Highlight colors
+        wp.customize( 'highlight_color', function( value ) {
+		value.bind( function( to ) {
+			$( 'a:visited, a:hover, a:focus, a:active, .entry-content a, .entry-summary a' ).css( {
+                            'color': to 
+                        } );
+                        $( '.search-toggle, .search-box-wrapper' ).css( {
+                            'background-color': to
+                        } );
+		} );
+	} );
         
         
         // Custome Layout (Sidebar) Options
@@ -75,20 +99,19 @@
 		value.bind( function( to ) {
 			$( '#page' ).removeClass( 'no-sidebar sidebar-right sidebar-left' ); 
                         $( '#page' ).addClass( to );
+                        $( '#primary' ).removeClass( 'medium-8 medium-push-4 medium-10 medium-push-1 large-8 large-push-2 no-sidebar sidebar-right sidebar-left' );
+                        $( '#secondary' ).removeClass( 'medium-4 medium-pull-8 medium-12 no-sidebar sidebar-right sidebar-left' );
+                        if( to === 'sidebar-right' ) {
+                            $( '#primary' ).addClass( 'medium-8 sidebar-right' );
+                            $( '#secondary' ).addClass( 'medium-4 sidebar-right' );
+                        } else if ( to === 'sidebar-left' ) {
+                            $( '#primary' ).addClass( 'medium-8 medium-push-4 sidebar-left' );
+                            $( '#secondary' ).addClass( 'medium-4 medium-pull-8 sidebar-left' );
+                        } else {
+                            $( '#primary' ).addClass( 'medium-10 medium-push-1 large-8 large-push-2 no-sidebar' );
+                            $( '#secondary' ).addClass( 'medium-12 no-sidebar' );
+                        }
 		} );
 	} );
            
-        $( '#primary' ).removeClass( 'small-12 medium-8 medium-push-4 medium-10 medium-push-1 large-8 large-push-2 columns' );
-        $( '#secondary' ).removeClass( 'small-12 medium-4 medium-pull-8 medium-12 columns' );
-    
-        if ( $( '#page' ).hasClass( 'sidebar-right' ) ) {
-            $( '#primary' ).addClass( 'small-12 medium-8 columns' );
-            $( '#secondary' ).addClass( 'small-12 medium-4 columns' );
-        } else if ( $( '#page' ).hasClass( 'sidebar-left' ) ) {
-            $( '#primary' ).addClass( 'small-12 medium-8 medium-push-4 columns' );
-            $( '#secondary' ).addClass( 'small-12 medium-4 medium-pull-8 columns' );
-        } else {
-            $( '#primary' ).addClass( 'small-12 medium-10 medium-push-1 large-8 large-push-2 columns' );
-            $( '#secondary' ).addClass( 'medium-12 columns' );
-        }
 } )( jQuery );

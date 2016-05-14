@@ -25,7 +25,7 @@ function jin_customize_register( $wp_customize ) {
          */
         // Highlight Color Setting
         $wp_customize->add_setting( 'highlight_color', array(
-            'default'           => 'green', // steelblue
+            'default'           => '#00adcf', // steelblue
             'type'              => 'theme_mod',
             'sanitize_callback' => 'sanitize_hex_color',
             'transport'         => 'postMessage'
