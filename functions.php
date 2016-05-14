@@ -255,34 +255,6 @@ function jin_nav_menu( $menu ) {
 add_filter( 'wp_nav_menu', 'jin_nav_menu' );
 
 /**
- * Add Post Type Support for JetPack Custom Post Types
- */
-function jin_add_jetpack_testimonial_taxonomies() {
-    //if( ) {
-        register_taxonomy_for_object_type( 'category', 'jetpack-testimonial' );
-    //}
-}
-add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
-
-/**
- * Add Even/Odd classes to various Posts
- * 1. Testimonials
- * 
- * @link    http://www.wpbeginner.com/wp-themes/how-to-add-oddeven-class-to-your-post-in-wordpress-themes/
- */
-global $current_class;
-$current_class = 'odd';
-function jin_odd_even_post_class( $classes ) {
-    if( get_post_type( get_the_ID() ) === 'jetpack-testimonial' ) {
-        global $current_class;
-        $classes[] = $current_class;
-        $current_class = ( $current_class == 'odd' ) ? 'even' : 'odd';
-    }
-    return $classes;
-}
-add_filter( 'post_class', 'jin_odd_even_post_class' );
-
-/**
  * Walker Menu for Front Page nav
  */
 class jin_front_page_walker extends Walker_Nav_Menu {

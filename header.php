@@ -24,15 +24,15 @@
 
 <?php // Add custom code to handle the sidebar - right, left, none, full-width-page ?>
     
-<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) ) { ?>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
     
     <div id="page" class="site sidebar-right">
         
-<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) ) { ?>
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
         
     <div id="page" class="site sidebar-left">
         
-<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) ) { ?>
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
         
     <div id="page" class="site no-sidebar">
         

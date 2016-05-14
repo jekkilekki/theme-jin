@@ -6,15 +6,15 @@
 
 get_header(); ?>
 
-<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) ) { ?>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
     
     <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
         
-<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) ) { ?>
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
         
     <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
         
-<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) ) { ?>
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
         
     <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
         
