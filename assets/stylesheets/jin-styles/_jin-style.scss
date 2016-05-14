@@ -584,7 +584,9 @@ ul, ol {
     //max-width: total_site_width();
     margin: 100*$px auto 0 auto;
 }
-
+.archive-list > li {
+    list-style: none;
+}
 @include archive_item();
 
 //** Posts and pages
@@ -1455,3 +1457,40 @@ input.search-field {
         }
     }
 }
+
+/**
+ * Front Page Portfolio
+ */
+.front-page {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    border-top: 1px solid #00adcf;
+}
+.front-page .hentry,
+.front-page section {
+     border-top: 1px solid white;
+     border-bottom: 1px solid #e2e2e5;
+     background: white;
+     margin: 0;
+     box-shadow: none;
+/*     width: 100vw;
+    padding: 0 calc(( 100vw - 75em ) / 2 );*/
+}
+.front-page section,
+.services-title {
+    text-align: center;
+}
+.front-page section .entry-content {
+    text-align: left;
+}
+#services, 
+#clients,
+#blog {
+    // background: #fafafb;
+}
+.front-page section {
+    padding-top: $post_t_padding;
+    padding-bottom: $post_b_padding;
+    padding-left: $post_l_padding;
+    padding-right: $post_r_padding;
+}
+

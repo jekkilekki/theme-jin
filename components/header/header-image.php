@@ -5,7 +5,7 @@ $use_gradient = get_theme_mod( 'use_gradient' );
 
 if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
 
-        <div id="header-image" class="custom-header">
+        <div id="header-image" class="custom-header <?php echo is_page_template( 'page-templates/frontpage-portfolio.php' ) ? 'frontpage-portfolio' : ''; ?>">
                 <div class="header-wrapper">
                         <div class="site-branding-header">
 
@@ -21,6 +21,23 @@ if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
                 
                 <?php if ( ! empty( $header_image ) ) { ?>
                     <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
+                <?php } ?>
+                    
+                <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { ?>
+                    <div class="front-menu-box group">
+            
+                        <?php wp_nav_menu( array( 
+                            'theme_location'    => 'front', 
+                            'menu'              => 'front',
+                            'menu_id'           => 'front-menu',
+                            'menu_class'        => 'small-block-grid-2 medium-block-grid-3 flip-cards',
+                            'fallback_cb'       => false,
+                            'walker'            => new jin_front_page_walker(),
+                            'depth' => 1 
+                            ) ); 
+                        ?>
+
+                    </div>
                 <?php } ?>
                     
         </div><!-- #header-image .custom-header -->

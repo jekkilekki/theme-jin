@@ -182,8 +182,14 @@ function jin_scripts() {
 	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
 
 	/* Conditional stylesheet only for Front Page Template */
-        if ( is_page_template( 'page-templates/page-landing.php' ) ) {
-            wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
+        if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+            // wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
+            wp_enqueue_script( 'jin-front-scripts', get_stylesheet_directory_uri() . '/assets/js/frontpage-functions.js', array( 'jquery' ), '20160515', true ); 
+
+            /* Slick Carousel */
+            wp_enqueue_script( 'slick_carousel', get_stylesheet_directory_uri() . '/assets/js/slick/slick.min.js', array( 'jquery' ), '20160515', true ); 
+            wp_enqueue_style( 'slick_style', get_stylesheet_directory_uri() . '/assets/js/slick/slick.css' );
+            wp_enqueue_style( 'slick_theme_style', get_stylesheet_directory_uri() . '/assets/js/slick/slick-theme.css' );
         }
 
         /* Custom navigation script */

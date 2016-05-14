@@ -1201,6 +1201,7 @@ body {
 #header-image {
   overflow: hidden;
   position: relative;
+  height: 600px;
 }
 
 #header-image .site-branding-header {
@@ -1212,6 +1213,23 @@ body {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
+}
+
+#header-image.frontpage-portfolio .site-branding-header {
+  position: relative;
+  margin: 100px auto;
+  left: auto;
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+}
+
+#header-image.frontpage-portfolio .site-branding-header .site-title {
+  font-size: 5.5rem !important;
+}
+
+#header-image.frontpage-portfolio .site-branding-header .site-title:after {
+  bottom: 30px !important;
 }
 
 #header-image a {
@@ -1268,6 +1286,11 @@ body {
 .error404 #header-image .site-title,
 .page #header-image .site-title {
   font-size: 3rem;
+}
+
+.page-template-frontpage-portfolio #header-image {
+  height: auto;
+  max-height: 100vh;
 }
 
 .custom-logo {
@@ -2034,6 +2057,10 @@ ul, ol {
 
 .site-content {
   margin: 5rem auto 0 auto;
+}
+
+.archive-list > li {
+  list-style: none;
 }
 
 .content .archive {
@@ -3244,6 +3271,41 @@ input.search-field {
 
 .entry-list-main li .list-link figure img {
   margin: auto;
+}
+
+/**
+ * Front Page Portfolio
+ */
+.front-page {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid #00adcf;
+}
+
+.front-page .hentry,
+.front-page section {
+  border-top: 1px solid white;
+  border-bottom: 1px solid #e2e2e5;
+  background: white;
+  margin: 0;
+  box-shadow: none;
+  /*     width: 100vw;
+    padding: 0 calc(( 100vw - 75em ) / 2 );*/
+}
+
+.front-page section,
+.services-title {
+  text-align: center;
+}
+
+.front-page section .entry-content {
+  text-align: left;
+}
+
+.front-page section {
+  padding-top: 2.61792rem;
+  padding-bottom: 2.61792rem;
+  padding-left: 4.2358rem;
+  padding-right: 4.2358rem;
 }
 
 /* Custom styles for this theme */

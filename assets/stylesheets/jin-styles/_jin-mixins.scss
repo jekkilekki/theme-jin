@@ -54,6 +54,7 @@
     #header-image {
         overflow: hidden;
         position: relative;
+        height: 600px;
         img {
         
         }
@@ -64,6 +65,18 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+        }
+        &.frontpage-portfolio .site-branding-header {
+            position: relative;
+            margin: 100px auto;
+            left: auto;
+            transform: none;
+            .site-title {
+                font-size: 110*$px!important;
+                &:after {
+                    bottom: 30px!important;
+                }
+            }
         }
         a {
             color: white;
@@ -108,6 +121,10 @@
         .site-title {
             font-size: 60*$px;
         }
+    }
+    .page-template-frontpage-portfolio #header-image {
+        height: auto;
+        max-height: 100vh;
     }
 }
 
