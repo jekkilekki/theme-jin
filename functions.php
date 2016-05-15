@@ -122,8 +122,28 @@ add_action( 'after_setup_theme', 'jin_content_width', 0 );
 function jin_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will appear throughout the site. It is the default sidebar if no others are in use.', 'jin' ),
 		'id'            => 'sidebar-1',
-		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+        
+        register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Pages', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on Pages. It replaces the standard sidebar.', 'jin' ),
+		'id'            => 'sidebar-page',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+        
+        register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Custom Post Types', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on JetPack Portfolio or Testimonial Posts. It replaces the standard sidebar.', 'jin' ),
+		'id'            => 'sidebar-custom',
 		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',

@@ -7,7 +7,21 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+<?php if ( get_theme_mod( 'layout_setting' ) === 'sidebar-right' && is_active_sidebar( 'sidebar-custom' ) ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( get_theme_mod( 'layout_setting' ) === 'sidebar-left' && is_active_sidebar( 'sidebar-custom' ) ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+
+	<!--<div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns">-->
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
@@ -28,5 +42,10 @@ get_header(); ?>
 
 		</main>
 	</div>
-<?php // get_sidebar(); ?>
+<?php 
+// Only get the sidebar if there is a custom one set
+if ( is_active_sidebar( 'sidebar-custom' ) ) {
+    get_sidebar(); 
+}
+?>
 <?php get_footer(); ?>

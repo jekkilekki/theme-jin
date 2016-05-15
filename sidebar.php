@@ -7,9 +7,8 @@
  * @package Jin
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
+if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-custom' ) || is_active_sidebar( 'sidebar-page' ) ) :
+	
 ?>
 <?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
     
@@ -34,5 +33,16 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 <?php } ?>
         
 <!--<aside id="secondary" class="widget-area small-12 medium-4 columns" role="complementary" data-equalizer-watch>-->
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<?php 
+if ( is_active_sidebar( 'sidebar-custom' ) && ( get_post_type( get_the_ID() ) === 'jetpack-testimonial' || get_post_type( get_the_ID() ) === 'jetpack-portfolio' ) ) {
+        dynamic_sidebar( 'sidebar-custom' );
+} elseif ( is_active_sidebar( 'sidebar-page' ) && is_page() ) {
+        dynamic_sidebar( 'sidebar-page' );
+} else {
+	dynamic_sidebar( 'sidebar-1' ); 
+} ?>
 </aside><!-- #secondary Foundation .columns end -->
+
+<?php else : 
+    return;
+endif;

@@ -19,6 +19,11 @@
 <?php endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    
+    <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+        echo '<div class="front-page-page row">';
+    } ?>
+    
 	<header class="entry-header">
             
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
@@ -58,5 +63,10 @@
 		?>
 	</footer>
     
-        </article><!-- #post-## -->
-    <?php } ?>
+    <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+        echo '</div><!-- .front-page-page .row -->';
+    }
+    ?>
+    
+</article><!-- #post-## -->
+<?php } ?>

@@ -31,23 +31,6 @@ $incomplete_section_ids = array();
 ?>
 
 	<div id="primary" class="content-area front-page<?php if (!(have_comments() || comments_open())) : ?> no-comments-area<?php endif; ?>">
-
-                    <?php
-        /**
-         * /////////////////////////////////////////////////////////////////////
-         * HOME SECTION ========================================================
-         * /////////////////////////////////////////////////////////////////////
-         */
-                    while ( have_posts() ) : the_post();
-
-                        get_template_part( 'components/page/content', 'page' );
-                    
-                    endwhile;
-                    
-                    // Restore original Post Data
-                    wp_reset_postdata();
-                    ?>
-                 
                     
                     <?php
         /**
@@ -67,14 +50,14 @@ $incomplete_section_ids = array();
                         <section id="services">
                         
                         <?php
-                        while ( $query->have_posts() ) {
-                            $query->the_post();
-                            $more = 0;      // Set (inside the loop) to display content above the more tag
-                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-                            echo '<div class="entry-content">';
-                            the_content('');
-                            echo '</div>';
-                        }
+//                        while ( $query->have_posts() ) {
+//                            $query->the_post();
+//                            $more = 0;      // Set (inside the loop) to display content above the more tag
+//                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+//                            echo '<div class="entry-content">';
+//                            the_content('');
+//                            echo '</div>';
+//                        }
                         // Restore original Post Data (FIRST LOOP)
                         wp_reset_postdata();
 
@@ -84,13 +67,14 @@ $incomplete_section_ids = array();
                         $args = array(
                             'post_type'     => 'page',
                             'post_parent'   => $services_id,
-                            'posts_per_page'=> 6,
+                            'posts_per_page'=> 3,
+                            'orderby'       => 'rand',
                         );
                         $services_query = new WP_Query( $args );
 
                         // The Loop
                         if ( $services_query->have_posts() ) {
-                            echo '<ul class="entry-content services-list archive-list">';
+                            echo '<ul class="row entry-content services-list archive-list">';
                             while ( $services_query->have_posts() ) {
                                 $services_query->the_post();
                                 
@@ -98,7 +82,7 @@ $incomplete_section_ids = array();
                                 $icon = get_post_meta( get_the_ID(), 'proto_fa_icon', true );
                                 
                                 
-                                echo '<li class="service equally widget medium-6 columns">';
+                                echo '<li class="service medium-4 columns">';
                                 echo '<div class="services-title">';
                                 echo '<a class="services-link" href="' . get_permalink() . '" title="Learn more about ' . get_the_title() . '">'; // @TODO sprintf here
                                 if ( $icon != '' ) {
@@ -110,7 +94,7 @@ $incomplete_section_ids = array();
                                 echo '</a>';
                                 echo '</div>';
                                 echo '<div class="services-lede">';
-                                the_fancy_excerpt();
+                                the_excerpt();
                                 echo '</div>';
                                 echo '</li>';
                             }
@@ -140,6 +124,66 @@ $incomplete_section_ids = array();
                     // Restore original Post Data (FIRST LOOP)
                     wp_reset_postdata();
                     ?>
+                        
+                        
+                    <?php
+        /**
+         * /////////////////////////////////////////////////////////////////////
+         * HOME SECTION ========================================================
+         * /////////////////////////////////////////////////////////////////////
+         */
+                    while ( have_posts() ) : the_post();
+                    
+                        get_template_part( 'components/page/content', 'page' );
+                    
+                    endwhile;
+                    
+                    // Restore original Post Data
+                    wp_reset_postdata();
+                    ?>
+                        
+                          
+                    <?php             
+        /**
+         * /////////////////////////////////////////////////////////////////////
+         * ABOUT SECTION =======================================================
+         * /////////////////////////////////////////////////////////////////////
+         */                    
+                    $query = new WP_Query( 'pagename=about' );
+
+                    // The Loop
+                    if ( $query->have_posts() ) {
+                        ?>
+
+                        <section id="about">         
+
+                        <?php
+                        while ( $query->have_posts() ) {
+                            $query->the_post();
+                            $more = 0;
+                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title(). '</a></h2>';
+                            echo '<figure class="front-right">';
+                            the_post_thumbnail( 'large' );
+                            echo '</figure>';
+                            echo '<div class="entry-content front-left row">';
+                            
+                            the_fancy_excerpt();
+                            
+                            echo '</div>';
+                        }
+                        ?>
+
+                        </section><!-- #about -->
+
+                    <?php 
+                    } else {
+
+                        $incomplete_sections++;
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: About', 'jin' ) . '</a>';
+                    }
+                    // Restore original Post Data
+                    wp_reset_postdata();
+                    ?>
                             
                         
                     <?php
@@ -161,7 +205,7 @@ $incomplete_section_ids = array();
                         echo '<section id="latest-projects" class="group">';
 
                         echo '<h2 class="page-title"><a href="/portfolio/">' . __( 'Latest Projects', 'jin' ) . '</a></h2>';
-                        echo '<div class="front-page-projects">';
+                        echo '<div class="front-page-projects row">';
                           
                         while ( $query->have_posts() ) : $query->the_post();
                             echo '<div class="archive-item index-post small-12 medium-6 large-3 columns">';
@@ -209,14 +253,14 @@ $incomplete_section_ids = array();
                     <section id="testimonials">
 
                     <?php
-                    while ( $query->have_posts() ) {
-                        $query->the_post();
-                        $more = 0;      // Set (inside the loop) to display content above the more tag
-                        echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-                        echo '<div class="entry-content">';
-                        the_content('');
-                        echo '</div>';
-                    }
+//                    while ( $query->have_posts() ) {
+//                        $query->the_post();
+//                        $more = 0;      // Set (inside the loop) to display content above the more tag
+//                        echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+//                        echo '<div class="entry-content row">';
+//                        the_content('');
+//                        echo '</div>';
+//                    }
                 
                     /*
                      * SECOND LOOP : Gets (up to) 8 individual testimonials
@@ -232,7 +276,7 @@ $incomplete_section_ids = array();
                     //The Loop
                     if ( $query->have_posts() ) {
 
-                        echo '<div class="testimonials entry-content">';
+                        echo '<div class="testimonials entry-content row">';
                         while ( $query->have_posts() ) {
                             $query->the_post();
                             $more = 0;
@@ -282,7 +326,7 @@ $incomplete_section_ids = array();
 
                     // The Loop
                     if ( $clients_query->have_posts() ) {
-                        echo '<ul class="clients-list entry-content">';
+                        echo '<ul class="clients-list entry-content row">';
                         while ( $clients_query->have_posts() ) {
                             $clients_query->the_post();
 
@@ -321,57 +365,16 @@ $incomplete_section_ids = array();
                 <?php
                 // Restore original Post Data
                 wp_reset_postdata();
-
-                
-        /**
-         * /////////////////////////////////////////////////////////////////////
-         * ABOUT SECTION =======================================================
-         * /////////////////////////////////////////////////////////////////////
-         */                    
-                    $query = new WP_Query( 'pagename=about' );
-
-                    // The Loop
-                    if ( $query->have_posts() ) {
-                        ?>
-
-                        <section id="about">         
-
-                        <?php
-                        while ( $query->have_posts() ) {
-                            $query->the_post();
-                            $more = 0;
-                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title(). '</a></h2>';
-                            echo '<figure class="front-right">';
-                            the_post_thumbnail( 'large' );
-                            echo '</figure>';
-                            echo '<div class="entry-content front-left">';
-                            
-                            the_fancy_excerpt();
-                            
-                            echo '</div>';
-                        }
-                        ?>
-
-                        </section><!-- #about -->
-
-                    <?php 
-                    } else {
-
-                        $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: About', 'jin' ) . '</a>';
-                    }
-                    // Restore original Post Data
-                    wp_reset_postdata();
-                    ?>
+                ?>
     
                         
-                    <?php
+                <?php
         /**
          * /////////////////////////////////////////////////////////////////////
          * BLOG SECTION ========================================================
          * /////////////////////////////////////////////////////////////////////
          */     
-                    ?>
+                ?>
                     
                     <section id="blog">
                             
@@ -391,7 +394,7 @@ $incomplete_section_ids = array();
                             // The Loop
                             if ( $query->have_posts() ) {
                                 echo '<h2 class="page-title"><a href="/blog/">' . __( 'Latest Articles', 'jin' ) . '</a></h2>';
-                                echo '<div class="front-page-blog">';
+                                echo '<div class="front-page-blog row">';
 				
                                 while( $query->have_posts() ) {
                                     $query->the_post();
@@ -433,7 +436,7 @@ $incomplete_section_ids = array();
                         while ( $query->have_posts() ) {
                             $query->the_post();
                             echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-                            echo '<div class="entry-content">';
+                            echo '<div class="entry-content row">';
                             
                             the_content();
                             
@@ -463,7 +466,7 @@ $incomplete_section_ids = array();
                         echo '<section id="warnings">';
                         
                         echo '<h2 class="page-title">' . __( 'Notifications', 'jin' ) . '</h2>';
-                        echo '<div class="entry-content">';
+                        echo '<div class="entry-content row">';
                         echo "<h4>You have $incomplete_sections incomplete Front Page sections.</h4>"; // @TODO sprintf here
                         echo '<p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a>:'; // @TODO sprintf here
                         echo '<ol>';

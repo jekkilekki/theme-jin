@@ -1,0 +1,430 @@
+/**
+ * Front Page Portfolio
+ */
+.page-template-frontpage-portfolio #header-image {
+    min-height: 600px;
+}
+.front-page-content {
+    margin-top: 0;
+}
+.front-page-portfolio .hentry {
+    margin-bottom: $default_gutter * 1.5;
+}
+.front-page-portfolio-section {
+    margin-bottom: 5rem;
+}
+
+.front-page > .site-content {
+    margin-top: 0;
+    //box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+    // border-top: 1px solid #00adcf;
+    //margin-bottom: 5rem;
+}
+.front-page .hentry,
+.front-page section {
+     border-top: 1px solid white;
+     border-bottom: 1px solid #e2e2e5;
+     background: white;
+     margin: 0;
+     box-shadow: none;
+/*     width: 100vw;
+    padding: 0 calc(( 100vw - 75em ) / 2 );*/
+}
+.front-page section,
+.services-title {
+    text-align: center;
+}
+.front-page .row {
+    margin: 0 auto;
+}
+.front-page section .entry-content {
+    text-align: left;
+}
+#services,
+#latest-projects,
+#clients,
+#blog {
+    background: transparent;
+}
+.front-page section {
+    padding-top: $post_t_padding;
+    padding-bottom: $post_b_padding;
+    padding-left: $post_l_padding;
+    padding-right: $post_r_padding;
+}
+.front-menu-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    float: none;
+    z-index: 0;
+}
+.button.large {
+        margin: 0;
+        padding: 3.25rem;
+}
+.button.large a {
+        //color: $color__text-main!important;
+        font-size: 1.75rem;
+        font-weight: 100;
+        margin-top: 2rem;
+}
+/* Buttons Card Flipper 
+* Source: http://cssdeck.com/labs/rxcleo5w
+*/
+.flip-cards,
+.flip-icons {
+       float: left;
+       width: 100%;
+       height: 100%;
+       //padding-left: 1rem;
+       margin: 0;
+       padding: 0;
+}
+.flip-cards {
+   margin-bottom: 100px;
+   .card-front {
+       border: none;
+   }
+   .card-back {
+       padding-top: $widget_t_padding;
+       padding-bottom: $widget_b_padding;
+       padding-left: $widget_l_padding;
+       padding-right: $widget_r_padding;
+       border-radius: 5px;
+   }
+   .card-icon {
+       display: block;
+   }
+}
+.flip-icons {
+       padding-left: 0;
+}
+.flip-cards li {
+       float: left;
+       width: 33.3%;
+       height: 180px;
+       position: relative;
+       padding: 0;
+       list-style: none;
+}
+.flip-icons li {
+       float: left;
+       width: 35px;
+       height: 25px;
+       position: relative;
+       padding: 0;
+}
+.flip-cards li:hover,
+.flip-icons li:hover {
+       cursor: pointer;
+}
+.flip-cards li:hover .card-front,
+.flip-icons li:hover .icon-front {
+       -webkit-transform: rotateY(180deg);
+               -moz-transform: rotateY(180deg);
+               -ms-transform: rotateY(180deg);
+               -o-transform: rotateY(180deg);
+               transform: rotateY(180deg);
+               -webkit-transform: perspective(1000) rotateY(180deg);
+               -moz-transform: perspective(1000) rotateY(180deg);
+               -ms-transform: perspective(1000) rotateY(180deg);
+               -o-transform: perspective(1000) rotateY(180deg);
+               transform: perspective(1000) rotateY(180deg);
+}
+.flip-cards li:hover .card-back,
+.flip-cards li:hover .icon-back {
+	z-index: 950;
+	        -webkit-transform: rotateY(0deg);
+	        -moz-transform: rotateY(0deg);
+	        -ms-transform: rotateY(0deg);
+	        -o-transform: rotateY(0deg);
+	        transform: rotateY(0deg);
+	        -webkit-transform: perspective(1000) rotateY(0deg);
+	        -moz-transform: perspective(1000) rotateY(0deg);
+	        -ms-transform: perspective(1000) rotateY(0deg);
+	        -o-transform: perspective(1000) rotateY(0deg);
+	        transform: perspective(1000) rotateY(0deg);
+}
+.flip-cards .card-front,
+.flip-cards .card-back,
+.flip-icons .icon-front,
+.flip-icons .icon-back {
+	-webkit-backface-visibility: hidden;
+	    -moz-backface-visibility: hidden;
+	    -ms-backface-visibility: hidden;
+	    -o-backface-visibility: hidden;
+	    backface-visibility: hidden;
+	    -webkit-transition: -webkit-transform 0.6s;
+	    -moz-transition: -moz-transform 0.6s;
+	    -o-transition: -o-transform 0.6s;
+	    transition: transform 0.6s;
+	    display: block;
+	    height: 100%;
+	    position: absolute;
+	    width: 100%;
+}
+.flip-cards .card-front,
+.flip-icons .icon-front {
+	-webkit-transform: perspective(1000) rotateY(0);
+	    -moz-transform: perspective(1000) rotateY(0);
+	    -ms-transform: perspective(1000) rotateY(0);
+	    -o-transform: perspective(1000) rotateY(0);
+	    transform: perspective(1000) rotateY(0);
+	    z-index: 900;
+}
+.flip-cards .card-back,
+.flip-icons .icon-back {
+	-webkit-transform: rotateY(-180deg);
+	    -moz-transform: rotateY(-180deg);
+	    -ms-transform: rotateY(-180deg);
+	    -o-transform: rotateY(-180deg);
+	    transform: rotateY(-180deg);
+	    z-index: 800;
+}
+/* Button Card Colors */
+.flip-cards .panel {
+	border: none;
+}
+.flip-cards .panel i,
+.flip-cards .panel p,
+.flip-cards .panel a,
+.flip-cards .panel small {
+	//color: white;
+}
+
+.flip-cards li:first-child > .button {
+	background: rgba(40, 57, 77, 0.8);
+}
+	.flip-cards li:first-child > .panel {
+		background: rgba(40, 57, 77, 1);
+	}
+	
+.flip-cards li:nth-child(2) > .button {
+	background: rgba(109, 193, 202, 0.8);
+}
+	.flip-cards li:nth-child(2) > .panel {
+		background: rgba(109, 193, 202, 1);
+	}
+	
+.flip-cards li:nth-child(3) > .button {
+	background: rgba(211, 81, 45, 0.8);
+}
+	.flip-cards li:nth-child(3) > .panel {
+		background: rgba(211, 81, 45, 1);
+	}
+	
+.flip-cards li:nth-child(4) > .button {
+	background: rgba(235, 167, 36, 0.8);
+}
+	.flip-cards li:nth-child(4) > .panel {
+		background: rgba(235, 167, 36, 1);
+	}
+	
+.flip-cards li:nth-child(5) > .button {
+	background: rgba(75, 135, 150, 0.8);
+}
+	.flip-cards li:nth-child(5) > .panel {
+		background: rgba(75, 135, 150, 1);
+	}
+	
+.flip-cards li:nth-child(6) > .button {
+	background: rgba(100, 66, 87, 0.8);
+}
+	.flip-cards li:nth-child(6) > .panel {
+		background: rgba(100, 66, 87, 1);
+		color: white;
+	}
+.front-menu {
+    margin: 0;
+    li {
+        list-style: none;
+    }
+}
+
+.panel,
+.panel.callout {
+	//border: none;
+        // STYLED LIKE THEME WIDGETS
+        border: 0.05rem solid silver;
+        //box-shadow: 0 0 2px rgba(0,0,0,0.15);
+        background-color: #f5f5f5;
+}
+.panel a {
+	color: #4d4d4d;
+}	
+.panel a:hover {
+	text-decoration: underline;
+	color: rgba(75, 135, 150, 1);
+}
+.panel i {
+	font-size: 2rem;
+	display: block;
+	float: left;
+	width: 20%;
+	opacity: 0.5;
+}
+.panel strong {
+	line-height: 2rem;
+	font-weight: bold;
+}
+.panel strong a {
+	color: #222;
+}
+.hub-info {
+	width: 80%;
+	float: right;
+}
+.hub-info p {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+	margin-bottom: 0.25rem;
+}
+.panel small {
+	font-size: 0.7rem;
+	margin-left: 20%;
+	font-style: oblique;
+        width: 80%;
+        float: right;
+        margin-top: 5px;
+}
+.hub-info ul {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.hub-info li, dd {
+	font-size: 0.9rem;
+}
+ul.follow {
+	list-style: none;
+	/*margin-top: 1rem;*/
+	text-align: center;
+	margin: 0.5rem 0 0;
+}
+ul.follow li {
+	display: inline;
+	
+}
+ul.follow li i {
+	font-size: 1rem;
+	width: 30px;
+	padding: 5px 7px;
+	margin-right: 5px;
+	background-color: silver;
+	border-radius: 5px;
+}
+ul.follow a,
+ul.follow a:hover {
+	color: white;
+}
+
+/* 
+ * 2.2 SERVICES ================================================================
+ */
+#services {
+    background: #1A3547;
+    color: white;
+}
+.services-list li:nth-child(3) {
+    background: #1A3547;
+}
+/*.services-list li:nth-child(3):after {
+    background-color: #1A3547;
+    content: " ";
+    height: 100%;
+    left: -16%;
+    position: absolute;
+    top: -20px;
+    -webkit-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    transform: rotate(15deg);
+    width: 40%;
+}*/
+.services-list li,
+.services-list li a,
+.services-list li h3 {
+    transition: all .5s ease;
+}
+.services-list li:hover {
+    //background: #00adcf;
+}
+.services-list li:hover,
+.services-list li:hover a h3 {
+    //color: hsl( 0, 0%, 100% )!important;
+}
+.services-list li:hover a {
+    //border-color: white!important;
+    //color: white!important;
+}
+.services-list li:hover a:hover {
+    //border-color: #363636!important;
+    //color: #363636!important;
+}
+
+/* 
+ * 2.4.2 CLIENTS ---------------------------------------------------------------
+ */
+#clients .entry-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.2;
+}
+.client-figure {
+    position: relative;
+    height: 200px;
+}
+.client-figure img {
+    position: absolute;
+    top: 50%;
+	left: 50%;
+    transform: translate(-50%, -50%);
+	max-height: 170px;
+	width: auto;
+}
+.desaturate {
+    -webkit-filter: grayscale( 100% );
+    filter: grayscale( 100% );
+    filter: gray;
+    filter: url( "data:image/svg+xml; utf8, <svg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' height=\'0\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\' /></filter></svg>#grayscale");
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+    max-height: 200px;
+    opacity: 0.75;
+}
+.desaturate:hover,
+.unsaturate {
+    -webkit-filter: grayscale( 0% );
+    filter: grayscale( 0% );
+    filter: none;
+    filter: url( "data:image/svg+xml; utf8, <svg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' height=\'0\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\' /></filter></svg>#grayscale" );
+    opacity: 1;
+}
+
+/* 
+ * 2.7 CONTACT =================================================================
+ */
+#contact form {
+    width: 60%;
+    float: right;
+    margin-left: 10%;
+}
+#contact form input:not([type="submit"]),
+#contact form textarea {
+    width: 100%;
+    text-align: left;
+}
+#contact form input[type="submit"] {
+    margin: 4rem auto;
+    display: block;
+}
+#contact form p {
+    margin: 0 0 1em;
+}
+@media screen and ( min-width: 750px ) {
+    #contact .front-right {
+        text-align: right;
+    }
+}

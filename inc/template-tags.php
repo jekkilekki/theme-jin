@@ -184,7 +184,7 @@ function the_fancy_excerpt() {
         echo '<div class="continue-reading">';
         echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
-    } elseif ( has_excerpt() ) {
+    } elseif ( has_excerpt() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
         the_excerpt();
         echo '<div class="continue-reading">';
         echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
