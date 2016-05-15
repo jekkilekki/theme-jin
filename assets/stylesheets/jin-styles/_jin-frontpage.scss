@@ -323,6 +323,7 @@ ul.follow a:hover {
 #services {
     background: #1A3547;
     color: white;
+    padding-top: $widget_t_padding;
 }
 .services-list li:nth-child(3) {
     background: #1A3547;
@@ -343,6 +344,37 @@ ul.follow a:hover {
 .services-list li a,
 .services-list li h3 {
     transition: all .5s ease;
+    color: white;
+}
+.service {
+    padding-left: $widget_l_padding;
+    padding-right: $widget_r_padding;
+    padding-top: $widget_t_padding;
+    position: relative;
+}
+.service:after {
+    content: "";
+    position: absolute;
+    background: #B5CBD8;
+    height: 200px;
+    border: 1px solid #B5CBD8;
+    top: 0;
+    transform: rotate(10deg);
+    left: -5px;
+    //width: 50px;
+}
+.service:first-child:after {
+    border: 0;
+}
+.services-title {
+    color: white;
+    span, h3 {
+        display: inline;
+        margin-right: 0.5rem;
+    }
+}
+.services-lede {
+    color: $color__text-on-blue;
 }
 .services-list li:hover {
     //background: #00adcf;

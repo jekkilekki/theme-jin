@@ -47,7 +47,7 @@
     <?php 
     // Don't end the article if we want to display child pages too
     // "entry-footer" and </article> are present on that template
-    if ( ! is_page_template( 'page-templates/page-child-pages.php' ) ) { 
+    if ( ! is_page_template( 'page-templates/page-child-pages.php' ) && is_user_logged_in() ) : 
     ?>
 	<footer class="entry-footer">
 		<?php
@@ -68,5 +68,5 @@
     }
     ?>
     
+    <?php endif; ?>
 </article><!-- #post-## -->
-<?php } ?>

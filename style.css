@@ -3607,6 +3607,7 @@ ul.follow a:hover {
 #services {
   background: #1A3547;
   color: white;
+  padding-top: 1.618rem;
 }
 
 .services-list li:nth-child(3) {
@@ -3630,6 +3631,44 @@ ul.follow a:hover {
 .services-list li h3 {
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease;
+  color: white;
+}
+
+.service {
+  padding-left: 2.61792rem;
+  padding-right: 2.61792rem;
+  padding-top: 1.618rem;
+  position: relative;
+}
+
+.service:after {
+  content: "";
+  position: absolute;
+  background: #B5CBD8;
+  height: 200px;
+  border: 1px solid #B5CBD8;
+  top: 0;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+  left: -5px;
+}
+
+.service:first-child:after {
+  border: 0;
+}
+
+.services-title {
+  color: white;
+}
+
+.services-title span, .services-title h3 {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.services-lede {
+  color: #B5CBD8;
 }
 
 /* 
