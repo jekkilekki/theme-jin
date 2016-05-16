@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page-landing.php.
+ * Template part for displaying page content in page.php.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -8,70 +8,54 @@
  */
 
 ?>
-
-<section class="hero-unit" <?php if ( get_header_image() ) { ?> style="background: url(<?php header_image(); ?>)" <?php } ?>>
-    
-    <div class="row">
-        <div class="large-12 columns front-title-box">
-                <h1 class="front-title">
-                    <?php if ( false ) { // In Customizer, ask if user wants Page Title or Blog Title
-                        echo bloginfo(); 
-                    } else {
-                        echo get_the_title();
-                    } ?>
-                </h1>
-                <h3 class="front-subtitle"><?php echo bloginfo( 'description' ); ?></h3>
-        </div>
-        
-        <div class="large-12 columns front-menu-box group">
-            
-            <?php wp_nav_menu( array( 
-                'theme_location'    => 'front', 
-                'menu'              => 'front',
-                'menu_id'           => 'front-menu',
-                'menu_class'        => 'small-block-grid-2 medium-block-grid-3 flip-cards',
-                'fallback_cb'       => false,
-                'walker'            => new jin_front_page_walker()
-                /*, 'depth' => 2*/ 
-                ) ); 
-            ?>
-            
-        </div>
-        
-        <?php if ( true ) { // In Customizer, allow to set the bottom link ?>
-        <div class="small-12 small-centered medium-6 medium-centered large-3 large-centered columns clients">
-            <a href="">
-                <h6 class="action-link text-center">CUSTOMIZE OPTION
-                    <span class="fa-stack">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-angle-right fa-inverse fa-stack-1x"></i>
-                    </span>
-                </h6>
+<?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
+<?php if ( '' != get_the_post_thumbnail() ) : ?>
+    <div class="index-post-thumbnail">
+            <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail( 'jin-featured-image' ); ?>
             </a>
-        </div>
-        <?php } ?>
     </div>
+<?php endif; ?>
+<?php endif; ?>
 
-</section>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
-<!-- Original "site-content" div in header.php -->
-<div id="content" class="site-content row hub" data-equalizer> <!-- Foundation row start -->
+    <?php 
+//    if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+//        echo '<div class="front-page-page row">';
+//    } ?>
     
-    <div id="primary" class="content-area" data-equalizer-watch>
-	<main id="main" class="site-main" role="main">
-
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-	<div class="entry-content large-12 columns">
-		<?php the_content(); ?>
+	<header class="entry-header">
+            
+                <?php
+		if ( is_single() ) {
+                        the_title( '<h1 class="entry-title">', '</h1>' );
+                } else {
+                        the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+                }
+                ?>
+            
+                <?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
+                    <?php jin_breadcrumbs(); ?>
+                <?php endif; ?>
+            
+	</header>
+	<div class="entry-content">
 		<?php
+			the_content();
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
-
+	</div>
+    
+    <?php 
+    // Don't end the article if we want to display child pages too
+    // "entry-footer" and </article> are present on that template
+    if ( ! is_page_template( 'page-templates/page-child-pages.php' ) && is_user_logged_in() ) : 
+    ?>
 	<footer class="entry-footer">
 		<?php
 			edit_post_link(
@@ -84,9 +68,13 @@
 				'</span>'
 			);
 		?>
-	</footer><!-- .entry-footer -->
-        
-        </article><!-- #post-## -->
-
-        </main><!-- #main -->
-    </div><!-- #primary -->
+	</footer>
+    
+    <?php 
+//    if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+//        echo '</div><!-- .front-page-page .row -->';
+//    }
+    ?>
+    
+    <?php endif; ?>
+</article><!-- #post-## -->

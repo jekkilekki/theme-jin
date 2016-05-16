@@ -16,7 +16,21 @@
 			padding: 0;
 			a {
 				display: inline-block;
+                                line-height: 4.375rem;
 			}
+                        &:hover,
+                        .active {
+                            box-shadow: inset 0px -5px 0px $color__link;
+                            color: $color__link;
+                            li {
+                                a {
+                                    color: $color__text-sub-panel;
+                                    &:hover {
+                                        color: $color__link;
+                                    }
+                                }
+                            }
+                        }
 			/* switch symbol for showing child */
 			span {
 				display: inline-block;

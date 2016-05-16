@@ -38,41 +38,26 @@ $incomplete_section_ids = array();
          * SERVICES SECTION ====================================================
          * /////////////////////////////////////////////////////////////////////
          */
-                    /*
-                     * FIRST LOOP : Get Services Page
-                     */
-                    $query = new WP_Query( 'pagename=services' );
-                    $services_id = $query->queried_object->ID;
-
-                    // The Loop
-                    if ( $query->have_posts() ) { ?>
-                    
-                        <section id="services">
+                    ?>
+                    <section id="services">
                         
-                        <?php
-//                        while ( $query->have_posts() ) {
-//                            $query->the_post();
-//                            $more = 0;      // Set (inside the loop) to display content above the more tag
-//                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-//                            echo '<div class="entry-content">';
-//                            the_content('');
-//                            echo '</div>';
-//                        }
-                        // Restore original Post Data (FIRST LOOP)
-                        wp_reset_postdata();
-
+                    <?php
                         /*
-                         * SECOND LOOP : Get the Children of the Services page
+                         * FIRST LOOP : Get (random) Children of the Services page
                          */
+                        $query = new WP_Query( 'pagename=services' );
+                        $services_id = $query->queried_object->ID;
+                    
                         $args = array(
                             'post_type'     => 'page',
                             'post_parent'   => $services_id,
-                            'posts_per_page'=> 3,
+                            'posts_per_page'=> 2,
                             'orderby'       => 'rand',
                         );
                         $services_query = new WP_Query( $args );
 
                         // The Loop
+                        // Only displays 2 random Services
                         if ( $services_query->have_posts() ) {
                             echo '<ul class="row entry-content services-list archive-list">';
                             while ( $services_query->have_posts() ) {
@@ -98,32 +83,119 @@ $incomplete_section_ids = array();
                                 echo '</div>';
                                 echo '</li>';
                             }
+                            
+                            // (if) Restore original Post Data (FIRST LOOP)
+                            wp_reset_postdata();
+                            
+                            /*
+                             * SECOND LOOP : Get Services Page
+                             */
+                            // Link to the full page of Services
+                            $query = new WP_Query( 'pagename=services' );
+                            $services_id = $query->queried_object->ID;
+
+                            // The Loop
+                            if ( $query->have_posts() ) { ?>
+                                
+                                <li class="service medium-4 columns">
+
+                                <?php
+                                while ( $query->have_posts() ) {
+                                    $query->the_post();
+                                    echo '<div class="services-title">';
+                                    echo '<a href="' . get_permalink() . '"><h3 class="entry-title">' . get_the_title() . '</h3></a>';
+                                    echo '</div>';
+                                    echo '<div class="services-lede">';
+                                    the_excerpt();
+                                    echo '</div>';
+                                    echo '<a class="button more-link" role="button" href="/services/">' . __( 'View all Services &rarr;', 'jin' ) . '</a>';
+                                } 
+                                
+                                ?>
+                            
+                                </li>
+                                
+                            <?php 
+                            } else {
+                                // get_template_part( 'content-none', 'front' );
+
+                                $incomplete_sections++;
+                                $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Services', 'jin' ) . '</a>';
+                            }
+                            
+                            // Restore original Post Data (SECOND LOOP)
+                            wp_reset_postdata();
                             echo '</ul>';
                             
                         } else {
+                            // (else) Restore original Post Data (FIRST LOOP)
+                            wp_reset_postdata();
+                            
                             echo '<h4 class="warning-title">' . __( 'No Services Found', 'jin' ) . '</h4>';
                             echo '<p class="warning-message"><a href="#">Create some Service pages here</a> or <a href="#">learn how to here.</a></p>'; // @TODO sprintf here
                         
                             $incomplete_sections++;
                             $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Service Pages', 'jin' ) . '</a>';
                         } 
-                        // Restore original Post Data (SECOND LOOP)
-                        wp_reset_postdata();
+
                         ?>
                  
-                        
-                        <a class="button more-link" role="button" href="/services/"><?php _e( 'See all Services &rarr;', 'jin' ); ?></a>
                         </section><!-- #services -->
+                        
+                        
+                    <?php             
+        /**
+         * /////////////////////////////////////////////////////////////////////
+         * CLIENTS SECTION =====================================================
+         * /////////////////////////////////////////////////////////////////////
+         */                 
+                    ?>
+                    <section id="clients">
+                    <?php
+                    /*
+                     * THIRD LOOP : Get (up to 6) individual Client Pages
+                     */
+                    $query = new WP_Query( 'pagename=clients' );
+                    $clients_id = $query->queried_object->ID;
                     
-                    <?php } else {
-                        // get_template_part( 'content-none', 'front' );
+                    // Get the children of the clients page
+                    $args = array(
+                        'post_type'     => 'page',
+                        'post_parent'   => $clients_id,
+                        'posts_per_page'=> 6,
+                        'order_by'      => 'rand'
+                    );
+                    $clients_query = new WP_Query( $args );
+
+                    // The Loop
+                    if ( $clients_query->have_posts() ) {
+                        echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . __( 'Clients', 'jin' ) . '</a></h3>';
+                        echo '<ul class="clients-list entry-content row">';
+                        while ( $clients_query->have_posts() ) {
+                            $clients_query->the_post();
+
+                            echo '<li class="clear small-4 medium-3 large-2 columns">';
+                            echo '<a class="clients-link" href="' . get_permalink() . '" title="See all Projects for ' . get_the_title() . '">'; // @TODO sprintf here
+                            echo '<figure class="client-figure">';
+                            the_post_thumbnail( 'medium', array( 'class' => 'desaturate' ) );
+                            echo '</figure>';
+                            echo '<h3 class="entry-title">' . get_the_title() . '</h3>';
+                            echo '</a>';
+                            echo '</li>';
+                        }
+                        echo '</ul>';
+
+                    } else {
                         
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Services', 'jin' ) . '</a>';
-                    } 
-                    // Restore original Post Data (FIRST LOOP)
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Client Pages', 'jin' ) . '</a>';
+                    }
+                    // Restore original Post Data
                     wp_reset_postdata();
                     ?>
+
+                    <!--<a class="button more-link" role="button" href="/clients/"><?php // _e( 'View full list of Clients &rarr;', 'jin' ); ?></a>-->
+                    </section><!-- #clients -->
                         
                         
                     <?php
@@ -132,10 +204,15 @@ $incomplete_section_ids = array();
          * HOME SECTION ========================================================
          * /////////////////////////////////////////////////////////////////////
          */
+                    ?>
+        <!-- BEGIN main page content -->
+        <div class="front-page-page row">
+                        
+                    <?php
                     while ( have_posts() ) : the_post();
-                    
+
                         get_template_part( 'components/page/content', 'page' );
-                    
+
                     endwhile;
                     
                     // Restore original Post Data
@@ -160,20 +237,22 @@ $incomplete_section_ids = array();
                         <?php
                         while ( $query->have_posts() ) {
                             $query->the_post();
-                            $more = 0;
-                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title(). '</a></h2>';
-                            echo '<figure class="front-right">';
-                            the_post_thumbnail( 'large' );
-                            echo '</figure>';
-                            echo '<div class="entry-content front-left row">';
                             
-                            the_fancy_excerpt();
-                            
-                            echo '</div>';
+                            get_template_part( 'components/page/content', 'landing' );
+//                            $more = 0;
+//                            echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title(). '</a></h2>';
+//                            echo '<figure class="front-right">';
+//                            the_post_thumbnail( 'large' );
+//                            echo '</figure>';
+//                            echo '<div class="entry-content front-left row">';
+//                            
+//                            the_content();
+//                            
+//                            echo '</div>';
                         }
                         ?>
 
-                        </section><!-- #about -->
+                        </section><!-- #about -->       
 
                     <?php 
                     } else {
@@ -184,7 +263,9 @@ $incomplete_section_ids = array();
                     // Restore original Post Data
                     wp_reset_postdata();
                     ?>
-                            
+                        
+        </div>
+        <!-- END main page content -->        
                         
                     <?php
         /**
@@ -204,7 +285,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) {
                         echo '<section id="latest-projects" class="group">';
 
-                        echo '<h2 class="page-title"><a href="/portfolio/">' . __( 'Latest Projects', 'jin' ) . '</a></h2>';
+                        echo '<h2 class="widget-title front-page-title"><a href="/portfolio/">' . __( 'Latest Projects', 'jin' ) . '</a></h2>';
                         echo '<div class="front-page-projects row">';
                           
                         while ( $query->have_posts() ) : $query->the_post();
@@ -235,7 +316,7 @@ $incomplete_section_ids = array();
                     <?php
         /**
          * /////////////////////////////////////////////////////////////////////
-         * CLIENTS + TESTIMONIALS SECTION ======================================
+         * TESTIMONIALS SECTION ======================================
          * /////////////////////////////////////////////////////////////////////
          */        
                     
@@ -308,49 +389,6 @@ $incomplete_section_ids = array();
                     wp_reset_postdata();
                     ?>
                     
-                    <?php
-                    /*
-                     * THIRD LOOP : Get (up to 6) individual Client Pages
-                     */
-                    $query = new WP_Query( 'pagename=clients' );
-                    $clients_id = $query->queried_object->ID;
-                    
-                    // Get the children of the clients page
-                    $args = array(
-                        'post_type'     => 'page',
-                        'post_parent'   => $clients_id,
-                        'posts_per_page'=> 6,
-                        'order_by'      => 'rand'
-                    );
-                    $clients_query = new WP_Query( $args );
-
-                    // The Loop
-                    if ( $clients_query->have_posts() ) {
-                        echo '<ul class="clients-list entry-content row">';
-                        while ( $clients_query->have_posts() ) {
-                            $clients_query->the_post();
-
-                            echo '<li class="clear">';
-                            echo '<a class="clients-link" href="' . get_permalink() . '" title="See all Projects for ' . get_the_title() . '">'; // @TODO sprintf here
-                            echo '<figure class="client-figure">';
-                            the_post_thumbnail( 'medium', array( 'class' => 'desaturate' ) );
-                            echo '</figure>';
-                            echo '<h3 class="entry-title">' . get_the_title() . '</h3>';
-                            echo '</a>';
-                            echo '</li>';
-                        }
-                        echo '</ul>';
-
-                    } else {
-                        
-                        $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Client Pages', 'jin' ) . '</a>';
-                    }
-                    // Restore original Post Data
-                    wp_reset_postdata();
-                    ?>
-
-                    <a class="button more-link" role="button" href="/clients/"><?php _e( 'View full list of Clients &rarr;', 'jin' ); ?></a>
                     </section><!-- #testimonials -->
                     
                 <?php else : ?>
@@ -393,7 +431,7 @@ $incomplete_section_ids = array();
                             
                             // The Loop
                             if ( $query->have_posts() ) {
-                                echo '<h2 class="page-title"><a href="/blog/">' . __( 'Latest Articles', 'jin' ) . '</a></h2>';
+                                echo '<h2 class="widget-title front-page-title"><a href="/blog/">' . __( 'Latest Articles', 'jin' ) . '</a></h2>';
                                 echo '<div class="front-page-blog row">';
 				
                                 while( $query->have_posts() ) {

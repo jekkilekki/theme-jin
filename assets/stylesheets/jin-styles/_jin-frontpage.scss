@@ -22,11 +22,11 @@
 }
 .front-page .hentry,
 .front-page section {
-     border-top: 1px solid white;
-     border-bottom: 1px solid #e2e2e5;
+     // border-top: 1px solid white;
+     // border-bottom: 1px solid #e2e2e5;
      background: white;
      margin: 0;
-     box-shadow: none;
+     // box-shadow: none;
 /*     width: 100vw;
     padding: 0 calc(( 100vw - 75em ) / 2 );*/
 }
@@ -317,6 +317,21 @@ ul.follow a:hover {
 	color: white;
 }
 
+/*
+ * BASIC STYLES 
+ */
+.front-page-title {
+    margin: 0;
+    letter-spacing: 2px;
+    color: $color__text-sub-panel;
+    a {
+        color: inherit!important;
+        &:hover {
+            color: $color__link;
+        }
+    }
+}
+
 /* 
  * 2.2 SERVICES ================================================================
  */
@@ -324,9 +339,16 @@ ul.follow a:hover {
     background: #1A3547;
     color: white;
     padding-top: $widget_t_padding;
+    padding-bottom: $widget_b_padding;
+}
+.services-list li {
+    text-align: center;
+    a {
+        border: none!important;
+    }
 }
 .services-list li:nth-child(3) {
-    background: #1A3547;
+    // background: $color__background-main-panel;
 }
 /*.services-list li:nth-child(3):after {
     background-color: #1A3547;
@@ -345,6 +367,7 @@ ul.follow a:hover {
 .services-list li h3 {
     transition: all .5s ease;
     color: white;
+    border: none;
 }
 .service {
     padding-left: $widget_l_padding;
@@ -375,6 +398,7 @@ ul.follow a:hover {
 }
 .services-lede {
     color: $color__text-on-blue;
+    text-align: left;
 }
 .services-list li:hover {
     //background: #00adcf;
@@ -395,16 +419,30 @@ ul.follow a:hover {
 /* 
  * 2.4.2 CLIENTS ---------------------------------------------------------------
  */
+#clients {
+    padding-top: $post_l_padding;
+    padding-bottom: $post_r_padding;
+}
 #clients .entry-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 20*$px;
     font-weight: normal;
     text-align: center;
     line-height: 1.2;
+    a {
+        color: $color__text-main;
+        &:hover {
+            color: $color__link;
+        }
+    }
+}
+.clients-list li {
+    list-style: none;
 }
 .client-figure {
     position: relative;
     height: 200px;
+    margin: 0 0 0.5rem!important;
 }
 .client-figure img {
     position: absolute;
@@ -413,6 +451,7 @@ ul.follow a:hover {
     transform: translate(-50%, -50%);
 	max-height: 170px;
 	width: auto;
+        margin: 0;
 }
 .desaturate {
     -webkit-filter: grayscale( 100% );
@@ -434,6 +473,26 @@ ul.follow a:hover {
     filter: url( "data:image/svg+xml; utf8, <svg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' height=\'0\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\' /></filter></svg>#grayscale" );
     opacity: 1;
 }
+
+/*
+ * ABOUT ==========
+ */
+.front-page-page {
+    box-shadow: $color__box-shadow;
+}
+.front-page-page article {
+    box-shadow: none;
+    border: none!important;
+    padding-bottom: $post_b_padding;
+}
+#about {
+    padding: 0;
+    border-top: 1px solid $color__light-border;
+}
+#about .entry-title {
+    // font-size: 42*$px;
+}
+
 
 /* 
  * 2.7 CONTACT =================================================================
