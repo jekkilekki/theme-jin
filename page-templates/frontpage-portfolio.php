@@ -69,7 +69,9 @@ $incomplete_section_ids = array();
                                 $icon = get_post_meta( get_the_ID(), 'proto_fa_icon', true );
                                 
                                 
-                                echo '<li class="service medium-4 columns">';
+                                echo '<li class="service medium-4 equally columns">';
+                                echo '<div class="service-item group">';
+                                if( has_post_thumbnail() ) echo '<div class="service-background desaturate" style="background: url( ' . get_the_post_thumbnail_url( $services_query->post, 'large' ) . ' );"></div>';
                                 echo '<div class="services-title">';
                                 echo '<a class="services-link" href="' . get_permalink() . '" title="Learn more about ' . get_the_title() . '">'; // @TODO sprintf here
                                 if ( $icon != '' ) {
@@ -77,12 +79,13 @@ $incomplete_section_ids = array();
                                 } else {
                                     the_post_thumbnail( 'thumb' );
                                 }
-                                echo '<h3 class="entry-title">' . get_the_title() . '</h3>';
+                                echo '<h2 class="entry-title">' . get_the_title() . '</h2>';
                                 echo '</a>';
                                 echo '</div>';
                                 echo '<div class="services-lede">';
                                 the_excerpt();
                                 echo '</div>';
+                                echo '</div><!-- .service-item .group -->';
                                 echo '</li>';
                             }
                             
@@ -100,13 +103,14 @@ $incomplete_section_ids = array();
                             //if ( $query->have_posts() ) { 
                             ?>
                                 
-                                <li class="service medium-4 columns">
+                                <li class="service medium-4 columns equally">
 
                                 <?php
                                 while ( $query->have_posts() ) {
                                     $query->the_post();
+                                    if( has_post_thumbnail() ) echo '<div class="service-background desaturate" style="background: url( ' . get_the_post_thumbnail_url( $query->post, 'large' ) . ' );"></div>';
                                     echo '<div class="services-title">';
-                                    echo '<a href="' . get_permalink() . '"><h3 class="entry-title">' . get_the_title() . '</h3></a>';
+                                    echo '<a href="' . get_permalink() . '"><h2 class="entry-title">' . get_the_title() . '</h2></a>';
                                     echo '</div>';
                                     echo '<div class="services-lede">';
                                     the_excerpt();
@@ -182,7 +186,7 @@ $incomplete_section_ids = array();
                             echo '<li class="clear small-4 medium-3 large-2 columns">';
                             echo '<a class="clients-link" href="' . get_permalink() . '" title="See all Projects for ' . get_the_title() . '">'; // @TODO sprintf here
                             echo '<figure class="client-figure">';
-                            the_post_thumbnail( 'medium', array( 'class' => 'desaturate' ) );
+                            if ( has_post_thumbnail() ) the_post_thumbnail( 'medium', array( 'class' => 'desaturate' ) );
                             echo '</figure>';
                             echo '<h3 class="entry-title">' . get_the_title() . '</h3>';
                             echo '</a>';
@@ -367,24 +371,26 @@ $incomplete_section_ids = array();
                         echo '<div class="testimonials entry-content row">';
                         while ( $query->have_posts() ) {
                             $query->the_post();
+                            
+                            get_template_part( 'components/features/testimonials/content', 'testimonial' );
 
-                            echo '<div class="testimonial equally clear widget medium-6 columns">';
-                            echo '<figure class="testimonial-thumb">';
-                            //echo '<div class="los1">';
-                            the_post_thumbnail( 'thumbnail' );
-                            //echo '</div>';
-                            echo '</figure>';
-                            echo '<aside class="testimonial-text">';
-                            echo '<div class="testimonial-excerpt">';
-                          
-                            the_fancy_excerpt();
-
-                            echo '<a href="' . get_the_permalink() . '">';
-                            echo '<h3 class="testimonial-name">' . get_the_title() . '</h3>';
-                            echo '</a>';
-                            echo '</div>';
-                            echo '</aside>';
-                            echo '</div>';
+//                            echo '<div class="testimonial equally clear widget medium-6 columns">';
+//                            echo '<figure class="testimonial-thumb">';
+//                            //echo '<div class="los1">';
+//                            the_post_thumbnail( 'thumbnail' );
+//                            //echo '</div>';
+//                            echo '</figure>';
+//                            echo '<aside class="testimonial-text">';
+//                            echo '<div class="testimonial-excerpt">';
+//                          
+//                            the_fancy_excerpt();
+//
+//                            echo '<a href="' . get_the_permalink() . '">';
+//                            echo '<h3 class="testimonial-name">' . get_the_title() . '</h3>';
+//                            echo '</a>';
+//                            echo '</div>';
+//                            echo '</aside>';
+//                            echo '</div>';
                         }
                         echo '</div>';
                     } else {

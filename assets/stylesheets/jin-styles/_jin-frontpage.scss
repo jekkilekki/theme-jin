@@ -321,7 +321,7 @@ ul.follow a:hover {
  * BASIC STYLES 
  */
 .front-page-title {
-    // margin: 0;
+    margin-top: $widget_t_padding;
     letter-spacing: 2px;
     color: $color__text-sub-panel;
     a {
@@ -337,19 +337,68 @@ ul.follow a:hover {
  */
 #services {
     background: #1A3547;
+    background: linear-gradient( to right, #1A3547 50%, white 50%);
     color: white;
     padding-top: $widget_t_padding;
     padding-bottom: $widget_b_padding;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: $color__box-shadow;
 }
 .services-list li {
     text-align: center;
+    background: #1A3547;
     a {
         border: none!important;
     }
+    .desaturate {
+        opacity: 0.1;
+        max-height: 100%;
+        height: 100%;
+        &:hover {
+            opacity: 0.1;
+        }
+    }
 }
-.services-list li:nth-child(3) {
-    // background: $color__background-main-panel;
+.services-list li:last-child {
+    background: white;
+    .services-title, .services-title a, .services-lede {
+        color: $color__text-main;
+    }
+    .more-link {
+        margin-top: -$widget_b_padding;
+        border: 1px solid $color__light-border!important;
+    }
 }
+.service-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.1;
+    background-size: cover!important;
+}
+/*.services-list li:nth-child(1) .service-background:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: -webkit-linear-gradient(transparent 10%, white 70%);
+    background: linear-gradient(to left, transparent 85%, #1A3547 100%);
+}
+.services-list li:nth-child(3) .service-background:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: -webkit-linear-gradient(transparent 10%, white 70%);
+    background: linear-gradient(to right, transparent 85%, #1A3547 100%);
+}*/
 /*.services-list li:nth-child(3):after {
     background-color: #1A3547;
     content: " ";
@@ -378,25 +427,29 @@ ul.follow a:hover {
 .service:after {
     content: "";
     position: absolute;
-    background: #B5CBD8;
-    height: 200px;
+    height: 100%;
     border: 1px solid #B5CBD8;
     top: 0;
-    transform: rotate(10deg);
-    left: -5px;
+    /*margin-top: -25%;*/
+    //transform: rotate(10deg);
+    left: 0;
+    opacity: 0.2;
     //width: 50px;
 }
 .service:first-child:after {
     border: 0;
 }
 .services-title {
+    padding-top: $post_t_padding;
     color: white;
-    span, h3 {
-        display: inline;
-        margin-right: 0.5rem;
+    span {
+        display: block;
+        margin-bottom: $widget_b_padding;
+        font-size: 72*$px;
     }
 }
 .services-lede {
+    padding-bottom: $widget_b_padding;
     color: $color__text-on-blue;
     text-align: left;
 }
@@ -420,8 +473,11 @@ ul.follow a:hover {
  * 2.4.2 CLIENTS ---------------------------------------------------------------
  */
 #clients {
-    padding-top: $post_l_padding;
-    padding-bottom: $post_r_padding;
+    padding-top: $post_t_padding;
+    padding-bottom: $post_t_padding;
+}
+#clients .front-page-title {
+    margin-bottom: 0;
 }
 #clients .entry-title {
     margin: 0;
@@ -429,12 +485,7 @@ ul.follow a:hover {
     font-weight: normal;
     text-align: center;
     line-height: 1.2;
-    a {
-        color: $color__text-main!important;
-        &:hover {
-            color: $color__link;
-        }
-    }
+    display: none;
 }
 .clients-list li {
     list-style: none;
@@ -442,7 +493,7 @@ ul.follow a:hover {
 .client-figure {
     position: relative;
     height: 200px;
-    margin: 0 0 0.5rem!important;
+    margin: 0!important;
 }
 .client-figure img {
     position: absolute;
@@ -452,6 +503,12 @@ ul.follow a:hover {
 	max-height: 170px;
 	width: auto;
         margin: 0;
+}
+.clients-link {
+    color: $color__text-main!important;
+    &:hover {
+        color: $color__link;
+    }
 }
 .desaturate {
     -webkit-filter: grayscale( 100% );
@@ -500,15 +557,68 @@ ul.follow a:hover {
 #about .entry-title {
     // font-size: 42*$px;
 }
+/*
+ * LATEST PROJECTS 
+ */
+.slick-slider button {
+    box-shadow: none;
+}
+.slick-dots {
+    position: relative!important;
+    bottom: 0!important;
+    margin: $widget_t_padding 0;
+}
+.slick-dots li button:before {
+    font-size: 24*$px!important;
+}
+
+/*
+ * TESTIMONIALS ====
+ */
+#testimonials article {
+    border: none;
+    box-shadow: none;
+    padding-top: 0!important;
+    padding-bottom: 0;
+    text-align: center;
+    .continue-reading {
+        right: 0;
+        left: auto;
+    }
+    .testimonial-thumbnail {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        display: block;
+        /*float: left;*/
+        margin: $default_gutter / 2 auto;
+        background-size: cover!important;
+        box-shadow: $color__box-shadow;
+    }
+    .entry-content {
+        margin-left: 0;
+        font-size: 150%;
+    }
+    a:not(.more-link) {
+        border: none;
+    }
+    h2 {
+        font-size: 120%;
+        a {
+            color: $color__text-sub-panel!important;
+        }
+    }
+}
 
 /*
  * BLOG ====
  */
-#blog {
+#blog,
+#latest-projects {
     padding-left: 0;
     padding-right: 0;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    //padding-top: 5rem;
+    //padding-bottom: 5rem;
 }
 .front-page-blog {
     margin-bottom: $default_gutter;
@@ -542,4 +652,12 @@ ul.follow a:hover {
     #contact .front-right {
         text-align: right;
     }
+}
+
+/*
+ * NOTIFICATIONS ====
+ */
+#warnings { 
+    background: $color__text-main;
+    color: white;
 }

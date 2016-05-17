@@ -23,6 +23,6 @@
         
     </div>
     
-    <?php jin_portfolio_index_footer(); ?>
+    <?php // jin_portfolio_index_footer(); ?>
     
 </article>

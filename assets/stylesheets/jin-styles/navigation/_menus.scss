@@ -13,6 +13,7 @@
 			list-style: none;
 			display: block;
 			position: relative;
+                        max-height: 4.375rem;
 			padding: 0;
 			a {
 				display: inline-block;
@@ -21,6 +22,7 @@
                         &:hover,
                         .active {
                             box-shadow: inset 0px -5px 0px $color__link;
+                            //border-bottom: 1px solid $color__link;
                             color: $color__link;
                             li {
                                 a {
