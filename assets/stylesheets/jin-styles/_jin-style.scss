@@ -872,6 +872,10 @@ ul, ol {
 .entry-content {
     .continue-reading {
         text-align: center;
+        position: absolute;
+        bottom: $default_gutter;
+        left: 50%;
+        margin-left: -25%;
     }
     @include content_link;
     a img {
@@ -950,6 +954,12 @@ ul, ol {
         line-height: $phi * 1rem;
         margin-bottom: 2rem;
         @include img_caption();
+    }
+}
+a.more-link {
+    color: $color__link;
+    &:hover {
+        color: $color__text-main;
     }
 }
 .gallery {

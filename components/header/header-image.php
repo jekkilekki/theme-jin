@@ -8,14 +8,14 @@ $use_gradient = get_theme_mod( 'use_gradient' );
 if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
 
         <div id="header-image" class="custom-header <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-            echo 'frontpage-portfolio';
-            if ( has_post_thumbnail() ) echo ' desaturate" style="background: url( ' . get_the_post_thumbnail_url( $post, 'full' ) . ' ); background-size: cover;"'; 
+            if ( has_nav_menu( 'front' ) ) echo 'frontpage-portfolio';
+            if ( has_post_thumbnail() ) echo ' de-desaturate" style="background: url( ' . get_the_post_thumbnail_url( $post, 'full' ) . ' ); background-size: cover;"'; 
             else echo '"';
         } ?>>
                 <div class="header-wrapper">
                         <div class="site-branding-header">
 
-                                <?php if ( is_front_page() || is_home() ) : ?>
+                                <?php if ( is_front_page() || is_home() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
                                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                                 <?php else : ?>
                                     <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>

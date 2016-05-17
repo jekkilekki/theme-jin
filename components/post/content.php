@@ -8,7 +8,7 @@
  */
 
 ?>
-<?php if ( ! is_archive() ) : // Display the Featured Image ABOVE the Posts on Index Pages ?> 
+<?php if ( ! is_archive() && ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : // Display the Featured Image ABOVE the Posts on Index Pages ?> 
     <?php if ( '' != get_the_post_thumbnail() ) : ?>
         <div class="index-post-thumbnail">
                 <a href="<?php the_permalink(); ?>">
@@ -35,7 +35,7 @@
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
 
-		if ( 'post' === get_post_type() && ! is_archive() ) : ?>
+		if ( 'post' === get_post_type() && ! is_archive() && ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
 		<?php get_template_part( 'components/post/content', 'meta' ); ?>
 		<?php
 		endif; ?>
@@ -43,7 +43,7 @@
 	<div class="entry-content">
 		<?php
                 
-                if ( is_archive() || is_home() || is_front_page() ) { // Makes EVERY Post on an index page an excerpt
+                if ( is_archive() || is_home() || is_front_page() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { // Makes EVERY Post on an index page an excerpt
                     the_fancy_excerpt();
                 } else {
                     
@@ -68,7 +68,7 @@
 		?>
 	</div>
 	<?php 
-        if ( 'post' === get_post_type() && ! is_archive() ) :
+        if ( 'post' === get_post_type() && ! is_archive() && ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) :
             get_template_part( 'components/post/content', 'footer' ); 
         endif; 
         ?>

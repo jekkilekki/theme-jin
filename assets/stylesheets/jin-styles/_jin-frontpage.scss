@@ -321,7 +321,7 @@ ul.follow a:hover {
  * BASIC STYLES 
  */
 .front-page-title {
-    margin: 0;
+    // margin: 0;
     letter-spacing: 2px;
     color: $color__text-sub-panel;
     a {
@@ -430,7 +430,7 @@ ul.follow a:hover {
     text-align: center;
     line-height: 1.2;
     a {
-        color: $color__text-main;
+        color: $color__text-main!important;
         &:hover {
             color: $color__link;
         }
@@ -478,12 +478,20 @@ ul.follow a:hover {
  * ABOUT ==========
  */
 .front-page-page {
-    box-shadow: $color__box-shadow;
-}
-.front-page-page article {
-    box-shadow: none;
-    border: none!important;
-    padding-bottom: $post_b_padding;
+    box-shadow: $color__box-shadow; 
+    article {
+        box-shadow: none;
+        border: none!important;
+        padding-bottom: $post_b_padding;
+    }
+    .entry-title,
+    .entry-content {
+        margin: 0!important;
+    }
+    .entry-footer {
+        margin-bottom: -$post_b_padding;
+        text-align: left;
+    }
 }
 #about {
     padding: 0;
@@ -491,6 +499,22 @@ ul.follow a:hover {
 }
 #about .entry-title {
     // font-size: 42*$px;
+}
+
+/*
+ * BLOG ====
+ */
+#blog {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.front-page-blog {
+    margin-bottom: $default_gutter;
+}
+.front-page-blog .hentry {
+    margin-bottom: $default_gutter;
 }
 
 
