@@ -348,13 +348,13 @@ endif;
  * Post Icon - can be set in any Post or Page with Custom Fields meta value 'post_icon'
  * Accepts BOTH Dashicons and FontAwesome icons - or returns nothing if neither fa- nor dashicons- precedes the String
  */
-function get_post_icon( $post_id ) {
+function get_post_icon() {
     
     $output = '';
     
     // Get the Page icon (if any - Set in Custom Fields for the Page)
     $icon = '';
-    $icon = get_post_meta( $post_id, 'post_icon', true ); // Set in the Custom Meta of the Post
+    $icon = get_post_meta( get_the_ID(), 'post_icon', true ); // Set in the Custom Meta of the Post
     if( strstr( $icon, 'dashicons-' ) ) {
         $icon_class = 'dashicons ' . $icon;
     } else if( strstr( $icon, 'fa-' ) ) {
@@ -368,6 +368,10 @@ function get_post_icon( $post_id ) {
     
     return $output;
     
+}
+
+function the_post_icon() {
+    echo get_post_icon();
 }
 
 /**

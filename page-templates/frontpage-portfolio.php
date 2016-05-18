@@ -70,41 +70,47 @@ $incomplete_section_ids = array();
                         <?php
                         while ( $services_query->have_posts() ) : $services_query->the_post();
 
+                            echo '<li class="service large-4 medium-6 columns">';
                             get_template_part( 'components/features/frontpage/front', 'services' ); 
+                            echo '</li>';
 
                         endwhile; // END looping through 'Service' Child Pages
 
                         // wp_reset_postdata();
 
                         // If we had less than 3 services total (there are empty slots)
-                        if ( $num_services < 3 ) {
-
-                            // Create the THIRD (final) list item
-                            //$output .= '<li class="service equally';
-                            //$output .= 'medium-4 columns">'; // Here I want to determine if it should be 1/3, 2/3, or 3/3 spread
-
-                            // This is our original Query - the 'Services' Page
-                            while ( $query->have_posts() ) : $query->the_post();
-                            
-                                get_template_part( 'components/features/frontpage/front', 'services' );
-
-                            endwhile; 
-
-                            //$output .= '</li>';
-
-                        } // END third (final) list item
+//                        if ( $num_services < 3 ) {
+//
+//                            // Create the THIRD (final) list item
+//                            //$output .= '<li class="service equally';
+//                            //$output .= 'medium-4 columns">'; // Here I want to determine if it should be 1/3, 2/3, or 3/3 spread
+//
+//                            //$output .= '</li>';
+//
+//                        } // END third (final) list item
 
                     } else { // No Posts in the Services Child Pages query
 
                         // Get the 'Services' Page
                         $query->the_post();
                         
+                        echo '<li class="service large-12 columns">';
                         get_template_part( 'components/features/frontpage/front', 'services' );
+                        echo '</li>';
 
                         $incomplete_sections++;
                         $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Service Pages', 'jin' ) . '</a>';
 
                     }
+                    
+                    // This is our original Query - the 'Services' Page
+                    while ( $query->have_posts() ) : $query->the_post();
+                        
+                        echo '<li class="service large-4 medium-12 columns">';
+                        get_template_part( 'components/features/frontpage/front', 'services' );
+                        echo '</li>';
+                        
+                    endwhile; 
 
                     // Restore original Post Data (SECOND LOOP)
                     wp_reset_postdata();
@@ -319,12 +325,33 @@ $incomplete_section_ids = array();
                         
                         <section id="testimonials">
                             <div class="testimonials entry-content row">
+                            <ul class="testimonial-thumbnails">
+                                        <li class="testimonial-thumb">
+                            <?php
+                            while ( $query->have_posts() ) : $query->the_post();
+                            
+                                if ( '' != get_the_post_thumbnail() ) : ?>
+                                    
+                                            <a href="<?php the_permalink(); ?>" class="<?php echo is_page_template( 'page-templates/frontpage-portfolio.php' ) ? 'medium-12 columns' : 'medium-3 columns'; ?>">
+                                                <div class="testimonial-thumbnail" style="background: url( <?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
+                                                        <?php echo the_title( '<span class="screen-reader-text">', '</span>', false ); ?>
+                                                </div>
+                                            </a>
+                                        
+                                <?php
+                                endif;
+
+                            endwhile; ?>
+                                            
+                                            </li>
+                                    </ul>
+                                
                             
                             <?php
                             while ( $query->have_posts() ) : $query->the_post();
-
-                                get_template_part( 'components/features/testimonials/content', 'testimonial' );
-
+                            
+                                get_template_part( 'components/features/frontpage/front', 'testimonials' );
+                                
                             endwhile;
                             ?>
                                 
