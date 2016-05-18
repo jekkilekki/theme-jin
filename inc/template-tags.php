@@ -344,6 +344,32 @@ function jin_breadcrumbs() {
 
 endif;
 
+/*
+ * Post Icon - can be set in any Post or Page with Custom Fields meta value 'post_icon'
+ * Accepts BOTH Dashicons and FontAwesome icons - or returns nothing if neither fa- nor dashicons- precedes the String
+ */
+function get_post_icon( $post_id ) {
+    
+    $output = '';
+    
+    // Get the Page icon (if any - Set in Custom Fields for the Page)
+    $icon = '';
+    $icon = get_post_meta( $post_id, 'post_icon', true ); // Set in the Custom Meta of the Post
+    if( strstr( $icon, 'dashicons-' ) ) {
+        $icon_class = 'dashicons ' . $icon;
+    } else if( strstr( $icon, 'fa-' ) ) {
+        $icon_class = 'fa ' . $icon;
+    } else {
+        $icon_class = '';
+    }
+    if ( $icon_class != '' ) {
+        $output .= "<span class='$icon_class'></span>";
+    }
+    
+    return $output;
+    
+}
+
 /**
  * Prints HTML with post navigation.
  */
