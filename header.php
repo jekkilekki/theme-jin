@@ -62,7 +62,7 @@
                     <div class="title-bar-title">Menu</div>
                     </div>-->
                     <?php 
-                    if ( has_site_logo() || jetpack_has_site_logo() /* function_exists( 'the_custom_logo' ) || function_exists( 'jetpack_the_site_logo' )*/ ) {
+                    if ( has_site_logo() || /* jetpack_has_site_logo() /* function_exists( 'the_custom_logo' ) || */ function_exists( 'jetpack_the_site_logo' ) ) {
                         jin_the_site_logo(); 
                     } else { ?>
                     <div class="site-branding">
