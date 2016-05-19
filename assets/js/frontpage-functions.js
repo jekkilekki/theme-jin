@@ -198,10 +198,10 @@ jQuery( document ).ready( function($) {
    });
    
        /* Slick Slider */
-    $('.testimonials').slick({
+    $('.testimonial-quotes').slick({
        // All the defaults
 //       accessibility: true,
-//       adaptiveHeight: true,
+       adaptiveHeight: true,
          autoplay: true,
        autoplaySpeed: 10000,
         arrows: true,
@@ -212,8 +212,11 @@ jQuery( document ).ready( function($) {
 //       centerMode: true,
 //       centerPadding: '50px',
         cssEase: 'ease',
-//       customPaging: '',
-//       dots: true,
+        customPaging : function(slider, i) {
+            var thumb = $(slider.$slides[i]).data('thumb');
+            return '<a class="thumb-link"><img class="thumb" src="'+thumb+'"></a>';
+        },
+       dots: true,
 //       draggable: true,
 //       fade: false,
 //      focusOnSelect: true,
@@ -223,8 +226,8 @@ jQuery( document ).ready( function($) {
 //       initialSlide: 0,
 //       lazyLoad: 'ondemand',
 //       mobileFirst: false,
-//       pauseOnHover: true,
-//       pauseOnDotsHover: false,
+       pauseOnHover: true,
+       pauseOnDotsHover: true,
 //       respondTo: 'window',
 //       responsive: none,
 //       slide: '',
@@ -239,6 +242,9 @@ jQuery( document ).ready( function($) {
 //       variableWidth: false,
 //       vertical: false,
 //       rtl: false,
+   });
+   $( '.quote' ).each( function() {
+       //if ( $(this).hasClass( 'slick-active' ) ) { alert( "Found it!" ); }
    });
    
        /* Slick Slider */

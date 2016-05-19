@@ -310,7 +310,7 @@ $incomplete_section_ids = array();
                  */
                     
                     /*
-                     * LOOP : Gets (up to) 8 individual testimonials
+                     * LOOP : Gets (up to) 8 individual testimonials (images ONLY)
                      */
                     $args = array(
                         'posts_per_page'    => 10,
@@ -325,36 +325,38 @@ $incomplete_section_ids = array();
                         
                         <section id="testimonials">
                             <div class="testimonials entry-content row">
-                            <ul class="testimonial-thumbnails">
-                                        <li class="testimonial-thumb">
+<!--                            <ul class="thumbnails">
+                                        
                             <?php
-                            while ( $query->have_posts() ) : $query->the_post();
+//                            while ( $query->have_posts() ) : $query->the_post();
+//                            
+//                                if ( '' != get_the_post_thumbnail() ) : ?>
+                                    <li class="testimonial-image image-//<?php //echo get_the_ID(); ?>" style="background: url( <?php //echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
+                                            <a href="//<?php //the_permalink(); ?>" class="testimonial-thumb">
+                                                        //<?php //echo the_title( '<span class="screen-reader-text">', '</span>', false ); ?>
+                                            </a>
+                                    </li>    
+                                //<?php
+//                                endif;
+//
+//                            endwhile; ?>
+                                            
+                            </ul>-->
+                                
+                            <ul class="testimonial-quotes">
+                            <?php
+                            while ( $query->have_posts() ) : $query->the_post(); 
                             
                                 if ( '' != get_the_post_thumbnail() ) : ?>
-                                    
-                                            <a href="<?php the_permalink(); ?>" class="<?php echo is_page_template( 'page-templates/frontpage-portfolio.php' ) ? 'medium-12 columns' : 'medium-3 columns'; ?>">
-                                                <div class="testimonial-thumbnail" style="background: url( <?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
-                                                        <?php echo the_title( '<span class="screen-reader-text">', '</span>', false ); ?>
-                                                </div>
-                                            </a>
-                                        
+                                    <li class="quote quote-<?php echo get_the_ID(); ?>" data-thumb="<?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?>">
+                                    <?php get_template_part( 'components/features/frontpage/front', 'testimonials' ); ?>
+                                    </li>
                                 <?php
                                 endif;
 
-                            endwhile; ?>
-                                            
-                                            </li>
-                                    </ul>
-                                
-                            
-                            <?php
-                            while ( $query->have_posts() ) : $query->the_post();
-                            
-                                get_template_part( 'components/features/frontpage/front', 'testimonials' );
-                                
                             endwhile;
                             ?>
-                                
+                            </ul>    
                             </div>
                         </section><!-- #testimonials -->
                         

@@ -337,6 +337,16 @@ ul.follow a:hover {
         }
     }
 }
+.slick-prev,
+.slick-next {
+    width: 35px!important;
+    height: 35px!important;
+    background: $color__light-border!important;
+    border-radius: 50%;
+    &:hover {
+        background: $color__text-sub-panel!important;
+    }
+}
 
 /* 
  * 2.2 SERVICES ================================================================
@@ -595,6 +605,10 @@ ul.follow a:hover {
 .slick-slider button {
     box-shadow: none;
 }
+.slick-next,
+.slick-prev {
+    top: 40%!important;
+}
 .slick-dots {
     position: relative!important;
     bottom: 0!important;
@@ -617,16 +631,6 @@ ul.follow a:hover {
         right: 0;
         left: auto;
     }
-    .testimonial-thumbnail {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        display: block;
-        /*float: left;*/
-        margin: $default_gutter / 2 auto;
-        background-size: cover!important;
-        box-shadow: $color__box-shadow;
-    }
     .entry-content {
         margin-left: 0;
         font-size: 150%;
@@ -638,6 +642,68 @@ ul.follow a:hover {
         font-size: 120%;
         a {
             color: $color__text-sub-panel!important;
+        }
+    }
+}
+#testimonials {
+    box-shadow: $color__box-shadow;
+    .thumbnails {
+        list-style: none;
+        display: flex;
+    }
+    .testimonial-image {
+        height: 150px;
+        background-size: cover!important;
+        background-color: $color__link;
+        flex: 1;
+        margin: 3px;
+        opacity: 1.0;
+        position: relative;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .testimonial-thumb {
+        width: 100%;
+        height: 100%;
+        background: $color__link;
+        position: absolute;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        &:hover {
+            opacity: 0;
+        }
+    }
+    .slick-prev,
+    .slick-next {
+        margin-top: 0!important;
+        top: 60%!important;
+    }
+}
+.testimonial-quotes {
+    padding-top: 220px;
+    position: relative;
+    .slick-dots {
+        position: absolute!important;
+        top: $post_t_padding;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        max-height: 180px;
+        overflow: hidden;
+        li {
+            flex: 1 1 auto;
+            width: auto;
+            height: auto;
+            opacity: 0.5;
+            &.slick-active {
+                opacity: 1;
+            }
+            .thumb {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
         }
     }
 }
