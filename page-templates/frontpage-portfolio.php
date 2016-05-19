@@ -313,7 +313,7 @@ $incomplete_section_ids = array();
                      * LOOP : Gets (up to) 8 individual testimonials
                      */
                     $args = array(
-                        'posts_per_page'    => 8,
+                        'posts_per_page'    => 10,
                         'orderby'           => 'rand',
                         'post_type'         => 'jetpack-testimonial',
                     );

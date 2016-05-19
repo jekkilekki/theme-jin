@@ -57,13 +57,17 @@
             <div class="row"> <!-- Start Foundation row -->
                 
                 <div class="top-bar-title">
+<!--                    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="large">
+                    <button class="menu-icon" type="button" data-toggle></button>
+                    <div class="title-bar-title">Menu</div>
+                    </div>-->
                     <?php 
-                    if ( function_exists( 'the_custom_logo' ) || function_exists( 'jetpack_the_site_logo' ) ) {
+                    if ( has_site_logo() || jetpack_has_site_logo() /* function_exists( 'the_custom_logo' ) || function_exists( 'jetpack_the_site_logo' )*/ ) {
                         jin_the_site_logo(); 
                     } else { ?>
                     <div class="site-branding">
 
-                                <?php if ( is_front_page() || is_home() ) : ?>
+                                <?php if ( is_front_page() || is_home() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
                                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                                 <?php else : ?>
                                     <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
