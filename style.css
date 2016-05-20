@@ -3944,18 +3944,18 @@ ul.follow a:hover {
   text-align: left;
 }
 
-#about {
+#about, #contact, .frontpage-subpage {
   padding: 0;
   border-top: 1px solid #e2e2e5;
 }
 
-#about .index-post-thumbnail {
+#about .index-post-thumbnail, #contact .index-post-thumbnail, .frontpage-subpage .index-post-thumbnail {
   max-height: 300px;
   border-bottom: #f2f2f5;
   overflow: hidden;
 }
 
-#about .index-post-thumbnail img {
+#about .index-post-thumbnail img, #contact .index-post-thumbnail img, .frontpage-subpage .index-post-thumbnail img {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -4020,6 +4020,11 @@ ul.follow a:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
+#testimonials article .entry-content {
+  margin-left: 2.0225rem;
+  margin-right: 2.0225rem;
+}
+
 #testimonials .thumbnails {
   list-style: none;
   display: -webkit-box;
@@ -4047,16 +4052,10 @@ ul.follow a:hover {
 
 #testimonials .testimonial-thumb {
   width: 100%;
-  height: 100%;
   background: #00ACDF;
   position: absolute;
-  opacity: 0.5;
   -webkit-transition: all 0.3s ease;
           transition: all 0.3s ease;
-}
-
-#testimonials .testimonial-thumb:hover {
-  opacity: 0;
 }
 
 #testimonials .slick-prev,
@@ -4068,18 +4067,23 @@ ul.follow a:hover {
 .testimonial-quotes {
   padding-top: 220px;
   position: relative;
+  margin: 0;
+}
+
+.testimonial-quotes.slick-slider {
+  margin: 0;
 }
 
 .testimonial-quotes .slick-dots {
   position: absolute !important;
-  top: 2.61792rem;
+  top: 2.0225rem;
   margin: 0 auto;
   padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-height: 180px;
+  max-height: 160px;
   overflow: hidden;
 }
 
@@ -4088,19 +4092,48 @@ ul.follow a:hover {
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   width: auto;
   height: auto;
+  background: #1A3547;
   opacity: 0.5;
-}
-
-.testimonial-quotes .slick-dots li.slick-active {
-  opacity: 1;
 }
 
 .testimonial-quotes .slick-dots li .thumb {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: auto;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-filter: gray;
+          filter: gray;
+  filter: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#grayscale");
+}
+
+.testimonial-quotes .slick-dots li.slick-active,
+.testimonial-quotes .slick-dots li:hover {
+  background: transparent;
+  opacity: 1;
+}
+
+.testimonial-quotes .slick-dots li.slick-active .thumb,
+.testimonial-quotes .slick-dots li:hover .thumb {
+  opacity: 1;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  -webkit-filter: none;
+          filter: none;
+  filter: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0' /></filter></svg>#grayscale");
 }
 
 /*

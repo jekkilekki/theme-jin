@@ -224,7 +224,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) {
                         ?>
 
-                        <section id="about">         
+                        <section id="about" class="frontpage-subpage">         
 
                         <?php
                         while ( $query->have_posts() ) {
@@ -348,7 +348,7 @@ $incomplete_section_ids = array();
                             while ( $query->have_posts() ) : $query->the_post(); 
                             
                                 if ( '' != get_the_post_thumbnail() ) : ?>
-                                    <li class="quote quote-<?php echo get_the_ID(); ?>" data-thumb="<?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?>">
+                                    <li class="quote quote-<?php echo get_the_ID(); ?>" data-thumb="<?php echo get_the_post_thumbnail_url( $post, 'medium' ); ?>">
                                     <?php get_template_part( 'components/features/frontpage/front', 'testimonials' ); ?>
                                     </li>
                                 <?php
@@ -427,22 +427,19 @@ $incomplete_section_ids = array();
 
                     // The Loop
                     if ( $query->have_posts() ) { ?>
-
-                        <section id="contact">
+                        <div class="front-page-page row">
+                        <section id="contact" class="frontpage-subpage">
                         
                             <?php
                             while ( $query->have_posts() ) : $query->the_post();
-                                echo '<h2 class="page-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-                                echo '<div class="entry-content row">';
 
                                 get_template_part( 'components/features/frontpage/front', 'subpage' );
 
-                                echo '</div>';
                             endwhile;
                             ?>
                         
                         </section><!-- #contact -->
-                    
+                        </div>
                     <?php
                     } else {
 

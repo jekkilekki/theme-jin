@@ -214,7 +214,7 @@ jQuery( document ).ready( function($) {
         cssEase: 'ease',
         customPaging : function(slider, i) {
             var thumb = $(slider.$slides[i]).data('thumb');
-            return '<a class="thumb-link"><img class="thumb" src="'+thumb+'"></a>';
+            return '<img class="thumb" src="'+thumb+'">';
         },
        dots: true,
 //       draggable: true,
@@ -242,9 +242,6 @@ jQuery( document ).ready( function($) {
 //       variableWidth: false,
 //       vertical: false,
 //       rtl: false,
-   });
-   $( '.quote' ).each( function() {
-       //if ( $(this).hasClass( 'slick-active' ) ) { alert( "Found it!" ); }
    });
    
        /* Slick Slider */
