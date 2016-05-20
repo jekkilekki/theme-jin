@@ -3,6 +3,13 @@
 JIN
 ===
 
+#### GOM Colors
+
+1. Light blue: #69CBCF;
+2. Light-mid blue: #2ABBBA;
+3. Mid blue: #00ADAC;
+4. Dark blue: #0072B4;
+
 JIN is a simple, modern Portfolio theme with great fonts (Khula) developed by Aaron Snowberger specifically for http://aaronsnowberger.com
 
 ## Features
