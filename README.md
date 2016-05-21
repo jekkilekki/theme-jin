@@ -5,6 +5,7 @@ JIN
 
 #### GOM Colors
 
+0. Light blue-green: #c2ebef;
 1. Light blue: #69CBCF;
 2. Light-mid blue: #2ABBBA;
 3. Mid blue: #00ADAC;
