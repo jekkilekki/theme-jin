@@ -584,6 +584,11 @@ ul, ol {
     //max-width: total_site_width();
     margin: 100*$px auto 0 auto;
 }
+@media screen and (max-width: 60em) {
+    .site-content {
+        margin-top: $post_t_padding * 1.5;
+    }
+}
 .archive-list > li {
     list-style: none;
 }
@@ -875,7 +880,7 @@ ul, ol {
         position: absolute;
         bottom: $default_gutter;
         left: 50%;
-        margin-left: -25%;
+        transform: translateX(-50%);
     }
     @include content_link;
     a img {
@@ -1352,35 +1357,27 @@ input.search-field {
     @include guide;
     clear: both;
     box-shadow: $color__box-shadow;
-    padding-top: $phi * 1em;
+    padding-top: $post_t_padding;
     //padding-bottom: $phi * 1em;
     //max-width: total_site_width();
     margin: 0 auto;
     @include site_footer();
 }
+@media screen and (max-width: 30em) {
+    .footer-widgets .widget {
+        width: 100%;
+    }
+}
 
 .site-info {
-    background-color: #1A3547;
-    color: $color__background-main-panel;
-    .site-links {
-        padding: $phi * 1rem 0;
-        border-bottom: 1px solid $color__text-sub-panel;
-        .menu {
-            float: right;
-            ul {
-                margin: 0;
-            }
-            li {
-                display: inline-block;
-                margin: 0 1em;
-            }
-        }
-    }
+    background-color: $color__background-blue;
+    color: $color__text-on-blue;
     .theme-info {
-        font-size: 14*$px;
+        font-size: 16*$px;
         font-weight: 300;
         padding: $phi * 0.5rem 0;
-        opacity: 0.5;
+        //opacity: 0.5;
+        border-top: 1px solid #677f8f;
     }
     a {
         color: $color__light-border;

@@ -98,6 +98,7 @@ function jin_the_site_logo() {
 	}
 }
 
+if( !function_exists( 'jin_social_menu' ) ) :
 function jin_social_menu() {
 	if ( ! function_exists( 'jetpack_social_menu' ) ) {
 		return;
@@ -105,6 +106,7 @@ function jin_social_menu() {
 		jetpack_social_menu();
 	}
 }
+endif;
 
 /**
  * Add Post Type Support for JetPack Custom Post Types

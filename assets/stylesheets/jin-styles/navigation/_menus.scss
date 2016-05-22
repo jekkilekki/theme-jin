@@ -60,7 +60,7 @@
 @media (min-width: 1200*$px) {
 
 	.navicon {
-		display: none;
+		//display: none;
 	}
 
 	.navmenu {
@@ -102,17 +102,80 @@
 }
 
 /* collapsed nav menu */
-@media (max-width: 1200*$px) {
+@media (max-width: 60em) {
 
+    .top-bar-title {
+        margin-left: 3rem;
+    }
+    .top-bar-right {
+        position: absolute;
+        //top: 4.375rem;
+    }
+    .top-bar-menu {
+            margin-top: 4.41rem;
+            box-shadow: $color__box-shadow;
+            background: $color__background-sub-panel;
+            width: calc(100vw / 3);
+            height: 100%;
+    }
+    .main-navigation ul {
+        padding-right: 0!important;
+        overflow-y: scroll;
+        li {
+            display: block;
+            width: 100%;
+            ul {
+                width: calc(100vw / 3);
+                position: relative;
+                top: 4.375rem;
+                left: 0!important;
+                border-top: 1px solid $color__lighter-border;
+            }
+        }
+    }
 	.navicon {
-		float: right;
-		font-size: 1.65rem;
-		line-height: 2.8125rem;
+		//float: right;
+		//font-size: 1.65rem;
+		//line-height: 2.8125rem;
+                box-shadow: none;
 		text-align: center;
-		width: 54*$px;
-		margin: 15*$px;
+                display: block;
+                max-height: 4.375rem;
+                height: 4.35rem;
+                line-height: 1.3;
+                border: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+		//width: 54*$px;
+		//margin: 15*$px;
 		cursor: pointer;
+                .fa-bars {
+                    font-size: 1.5rem;
+                    color: $color__light-border;
+                }
+                span {
+                    color: $color__text-sub-panel;
+                    font-size: 12*$px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    display: block;
+                }
+                &:focus,
+                &:active {
+                    border: none;
+                    background: white;
+                    outline: none;
+                    box-shadow: none;
+                    height: 4.375rem;
+                    .fa-bars {
+                        color: $color__text-sub-panel;
+                    }
+                }
 	}
+        .search-toggle {
+            right: 60px;
+        }
 
 	.main-navigation ul {
 		clear: left;
@@ -141,6 +204,13 @@
 
 }
 
+@media (max-width: 40em) {
+    .top-bar-menu,
+    .main-navigation ul li ul {
+        width: calc(100vw / 2);
+    }
+}
+
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
@@ -161,3 +231,148 @@
 		width: 50%;
 	}
 }
+
+@media (max-width: 30em) {
+    .top-bar-menu,
+    .main-navigation ul li ul {
+        width: 100vw;
+    }
+    .comment-navigation,
+    .posts-navigation,
+    .post-navigation {
+        .nav-previous,
+        .nav-next {
+            float: none;
+            width: 100%;
+            //text-align: left;
+        }
+        .nav-next {
+            border-top: 1px solid $color__light-border;
+        }
+    } 
+}
+
+.footer-menu {
+        padding: $phi * 1rem 0;
+        // border-bottom: 1px solid $color__text-sub-panel;
+            ul {
+                margin: 0;
+            }
+            li {
+                display: inline-block;
+                margin: 0 0.25em;
+            }
+            a {
+                color: $color__text-on-blue;
+            }
+    }
+    
+    
+
+/*--------------------------------------------------------------
+## Social Menu
+--------------------------------------------------------------*/
+
+.menu-social {
+    z-index: 2;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.menu-social,
+#menu-social-items {
+    margin-left: 0px;
+}
+.menu-social ul {
+    text-align: right;
+    margin-bottom: 0;
+    margin-right: 1rem;
+}
+.menu-social ul li {
+    display: inline-block;
+    margin: 0;
+}
+.menu-social-items li:hover {
+    //background-color: #000;
+}
+.menu-social li a:before {
+    display: inline-block;
+    padding: 0 5px;
+    vertical-align: top;
+    font-family: 'FontAwesome';
+    font-size: 1.35em;
+    color: $color__text-on-blue;
+    -webkit-font-smoothing: antialiased;
+    content: '\f0c0';
+    font-style: normal;
+    background: transparent;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+}
+
+.menu-social li a[href*="facebook.com"]::before { content: '\f09a'; }
+.menu-social li a[href*="twitter.com"]::before { content: '\f099'; }
+.menu-social li a[href*="github.com"]::before { content: '\f09b'; }
+.menu-social li a[href*="linkedin.com"]::before { content: '\f0e1'; }
+.menu-social li a[href*="wordpress.com"]::before, 
+.menu-social li a[href*="wordpress.org"]::before { content: '\f19a'; }
+.menu-social li a[href*="tumblr.com"]::before { content: '\f173'; }
+.menu-social li a[href*="plus.google.com"]::before { content: '\f0d5'; }
+.menu-social li a[href*="dribbble.com"]::before { content: '\f17d'; }
+.menu-social li a[href*="instagram.com"]::before { content: '\f16d'; }
+.menu-social li a[href*="vimeo.com"]::before { content: '\f194'; }
+.menu-social li a[href*="youtube.com"]::before { content: '\f167'; }
+.menu-social li a[href*="pinterest.com"]::before { content: '\f0d2'; }
+.menu-social li a[href*="flickr.com"]::before { content: '\f16e'; }
+.menu-social li a[href*="bitbucket.com"]::before { content: '\f171'; }
+.menu-social li a[href*="digg.com"]::before { content: '\f1a6'; }
+.menu-social li a[href*="reddit.com"]::before { content: '\f1a1'; }
+.menu-social li a[href*="codepen.io"]::before { content: '\f1cb'; }
+.menu-social li a[href*="behance.com"]::before { content: '\f1b4'; }
+.menu-social li a[href*="slideshare.net"]::before { content: '\f1e7'; }
+.menu-social li a[href*="/feed"]::before { content: '\f413'; }
+.menu-social li a[href*="subscribe"]::before { content: '\f410'; }
+
+/* TODO: Fix the hover colors here */
+.menu-social li a[href*="facebook.com"]:hover::before { background: #3b5998; color: white; }
+.menu-social li a[href*="twitter.com"]:hover::before { background: #33ccff; color: white; }
+.menu-social li a[href*="github.com"]:hover::before { background: #171515; color: white; }
+.menu-social li a[href*="linkedin.com"]:hover::before { background: #0e76a8; color: white; }
+.menu-social li a[href*="wordpress.com"]:hover::before, 
+.menu-social li a[href*="wordpress.org"]:hover::before { background: #21759b; color: white; }
+.menu-social li a[href*="tumblr.com"]:hover::before { background: #34526f; color: white; }
+.menu-social li a[href*="plus.google.com"]:hover::before { background: #dd4b39; color: white; }
+.menu-social li a[href*="dribbble.com"]:hover::before { background: #ea4c89; color: white; }
+.menu-social li a[href*="instagram.com"]:hover::before { background: #3f729b; color: white; }
+.menu-social li a[href*="vimeo.com"]:hover::before { background: #1AB7EA; color: white; }
+.menu-social li a[href*="youtube.com"]:hover::before { background: #c4302b; color: white; }
+.menu-social li a[href*="pinterest.com"]:hover::before { background: #c8232c; color: white; }
+.menu-social li a[href*="flickr.com"]:hover::before { background: #ff0084; color: white; }
+.menu-social li a[href*="bitbucket.com"]:hover::before { background: #1f5182; color: white; }
+.menu-social li a[href*="digg.com"]:hover::before { background: #2169A8; color: white; }
+.menu-social li a[href*="reddit.com"]:hover::before { background: #fff; color: black; }
+.menu-social li a[href*="codepen.io"]:hover::before { background: #fff; color: black; }
+.menu-social li a[href*="behance.com"]:hover::before { background: #005cff; color: white; }
+.menu-social li a[href*="slideshare.net"]:hover::before { background: #00a8aa; color: white; }
+
+.menu-social li a span::before {
+    width: 20px;
+    height: 20px;
+    color: #999;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 39.9375em) {
+        .footer-menu {
+            text-align: center;
+        }
+        .social-links-menu {
+            padding-top: 0;
+        }
+        .menu-social ul {
+            margin-right: 0;
+            padding-top: 0;
+            text-align: center;
+        }
+    }

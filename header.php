@@ -52,7 +52,7 @@
         
         <div data-sticky-container>
             
-	<header id="masthead" class="group site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="content:bottom">
+	<header id="masthead" class="group site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="colophon:bottom">
             
             <div class="row"> <!-- Start Foundation row -->
                 
@@ -80,7 +80,7 @@
 	
                 <div class="top-bar-right">
                     <?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
-                    <?php jin_social_menu(); ?>
+                    <?php // jin_social_menu(); ?>
                 </div>
                 
                 <div id="search-container">

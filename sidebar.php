@@ -10,19 +10,19 @@
 if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-custom' ) || is_active_sidebar( 'sidebar-page' ) ) :
 	
 ?>
-<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
+<?php if ( !is_archive() && ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) ) { ?>
     
     <aside id="secondary" class="widget-area small-12 medium-4 columns sidebar-right" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         
-<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
+<?php } else if ( !is_archive() && ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) ) { ?>
         
     <aside id="secondary" class="widget-area small-12 medium-4 medium-pull-8 columns sidebar-left" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         
-<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
+<?php } else if ( is_archive() || ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) ) { ?>
         
     <aside id="secondary" class="widget-area medium-12 columns no-sidebar" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         
-<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+<?php } else if ( !is_archive() && is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
         
     <aside id="secondary" class="widget-area medium-12 columns no-sidebar full-width" role="complementary" data-equalizer-watch> <!-- Foundation .columns start -->
         

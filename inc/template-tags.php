@@ -344,6 +344,30 @@ function jin_breadcrumbs() {
 
 endif;
 
+/**
+ * Social Menu
+ */
+function jin_social_menu() {
+    
+    if ( has_nav_menu( 'social' ) ) {
+        wp_nav_menu(
+                array(
+                    'theme_location'    => 'social',
+                    'container'         => 'div',
+                    'container_id'      => 'menu-social-container',
+                    'container_class'   => 'menu-social',
+                    'menu_id'           => 'menu-social-items',
+                    'menu_class'        => 'menu-items',
+                    'depth'             => 1,
+                    'link_before'       => '<span class="screen-reader-text">',
+                    'link_after'        => '</span>',
+                    'fallback_cb'       => '',
+                )
+        );
+    }
+    
+}
+
 /*
  * Post Icon - can be set in any Post or Page with Custom Fields meta value 'post_icon'
  * Accepts BOTH Dashicons and FontAwesome icons - or returns nothing if neither fa- nor dashicons- precedes the String
