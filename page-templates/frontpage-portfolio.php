@@ -454,7 +454,7 @@ $incomplete_section_ids = array();
          * WARNINGS SECTION ====================================================
          * /////////////////////////////////////////////////////////////////////
          */   
-                    if ( $incomplete_sections > 0 ) {
+                    if ( $incomplete_sections > 0 && is_user_logged_in() ) {
                         echo '<section id="warnings">';
                         
                         echo '<h2 class="page-title">' . __( 'Notifications', 'jin' ) . '</h2>';

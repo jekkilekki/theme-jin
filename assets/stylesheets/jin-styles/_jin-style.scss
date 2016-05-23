@@ -1368,7 +1368,7 @@ input.search-field {
     @include guide;
     clear: both;
     box-shadow: $color__box-shadow;
-    padding-top: $post_t_padding;
+    //padding-top: $post_t_padding;
     //padding-bottom: $phi * 1em;
     //max-width: total_site_width();
     margin: 0 auto;
@@ -1396,6 +1396,13 @@ input.search-field {
             text-transform: underline;
         }
     }
+}
+
+#wpstats {
+    text-align: center;
+    width: auto;
+    margin: -10px auto;
+    color: white;
 }
 
 @include testimonial();

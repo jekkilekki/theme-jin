@@ -3412,7 +3412,6 @@ input.search-field {
   background: #ffffff;
   clear: both;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-  padding-top: 2.61792rem;
   margin: 0 auto;
 }
 
@@ -3444,6 +3443,13 @@ input.search-field {
 
 .site-info a:hover {
   text-transform: underline;
+}
+
+#wpstats {
+  text-align: center;
+  width: auto;
+  margin: -10px auto;
+  color: white;
 }
 
 .archive-testimonials {
