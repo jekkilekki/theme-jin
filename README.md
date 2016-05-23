@@ -52,10 +52,10 @@ Fonts used include:
 * Rebuilt with Underscores Components Portfolio template
 * Update to Foundation 6 (from 5.5)
 * Include local fonts
-* Add author box
-* Add support for Jetpack Portfolio CPT
-* Add support for Jetpack Testimonials
-* Add support for custom icon and custom logo
+* Added author box
+* Added support for Jetpack Portfolio CPT
+* Added support for Jetpack Testimonials
+* Added support for custom icon and custom logo
 
 ### 1.0.0
 

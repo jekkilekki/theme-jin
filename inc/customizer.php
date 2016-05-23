@@ -42,6 +42,26 @@ function jin_customize_register( $wp_customize ) {
                         )
         ) );
         
+        /*
+         * Show Logo with Sitename Checkbox
+         */
+        // Show Logo with Sitename Setting
+        $wp_customize->add_setting( 'show_logo_sitename', array(
+            'default'           => 0,
+        ) );
+        
+        // Show Logo with Sitename Control
+        $wp_customize->add_control(
+                new WP_Customize_Control(
+                        $wp_customize,
+                        'show_logo_sitename',
+                        array( 
+                            'label'         => __( 'Show sitename after the logo?', 'jin' ),
+                            'type'          => 'checkbox',
+                            'section'       => 'title_tagline',
+                        )
+        ) );
+        
         /* ///////////////// GRADIENT ////////////////// */
         
         /** Add some LINES to separate the Gradient @link http://coreymckrill.com/blog/2014/01/09/adding-arbitrary-html-to-a-wordpress-theme-customizer-section/ */

@@ -1649,6 +1649,10 @@ body {
   font-size: 5.5rem;
 }
 
+.custom-logo-link {
+  float: left;
+}
+
 .custom-logo {
   max-height: 40px;
   max-width: 100%;
@@ -2349,6 +2353,7 @@ ul, ol {
 }*/
 .site-title {
   margin-bottom: 0;
+  display: inline-block;
 }
 
 .site-description {

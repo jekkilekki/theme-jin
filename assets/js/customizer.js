@@ -101,6 +101,7 @@
                         $( '#page' ).addClass( to );
                         $( '#primary' ).removeClass( 'medium-8 medium-push-4 medium-10 medium-push-1 large-8 large-push-2 no-sidebar sidebar-right sidebar-left' );
                         $( '#secondary' ).removeClass( 'medium-4 medium-pull-8 medium-12 no-sidebar sidebar-right sidebar-left' );
+                        $( '#secondary .widget' ).removeClass( 'small-6 medium-4' );
                         if( to === 'sidebar-right' ) {
                             $( '#primary' ).addClass( 'medium-8 sidebar-right' );
                             $( '#secondary' ).addClass( 'medium-4 sidebar-right' );
@@ -110,6 +111,7 @@
                         } else {
                             $( '#primary' ).addClass( 'medium-10 medium-push-1 large-8 large-push-2 no-sidebar' );
                             $( '#secondary' ).addClass( 'medium-12 no-sidebar' );
+                            $( '#secondary .widget' ).addClass( 'small-6 medium-4 columns' );
                         }
 		} );
 	} );

@@ -90,12 +90,13 @@ function jin_setup() {
 	) ) );
         
         // Add Custom Logo support (WordPress defaults)
+        // @link https://make.wordpress.org/core/2016/03/10/custom-logo/
         add_theme_support( 'custom-logo', array(
                 'height'        => 66,
                 'width'         => 66,
                 'flex-height'   => true,
                 'flex-width'    => true,
-                'header-text'   => array( 'site-title', 'site-description' ),
+                'header-text'   => array( 'site-title', 'site-description' ), // class names to replace with the logo
         ) );
         
 }

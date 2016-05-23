@@ -132,6 +132,9 @@
 }
 
 @mixin custom_logo() {
+    .custom-logo-link {
+        float: left; 
+    }
     .custom-logo {
         max-height: 40px;
         max-width: 100%;
