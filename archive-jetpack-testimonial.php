@@ -25,10 +25,10 @@ get_header(); ?>
 			</header>
 			<?php
 			/* Start the Loop */
-                        echo '<section class="archive-testimonials">';
+                        echo '<section id="post-archives" class="archive-testimonials">';
                         
 			while ( have_posts() ) : the_post();
-                            echo '<div class="archive-item-testimonial index-post small-12 group">';
+                            echo '<div class="archive-item-testimonial index-post small-12 group end">';
 				/*
 				 * Include the Post-Format-specific template for the content.
 				 * If you want to override this in a child theme, then include a file

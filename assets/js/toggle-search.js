@@ -54,8 +54,9 @@ jQuery( document ).ready( function( $ ) {
    
    /*
     * Add 'end' class to the last-child of articles on an index page to "fix" Foundation's random float
+    * UPDATE: Now, just every single .archive-item has this class as a default - on every page
     */
-   $( '.archive .archive-item:last-child, #secondary.no-sidebar .widget:last-child' ).addClass( 'end' );
+   // $( '.archive-item:last-child, #secondary.no-sidebar .widget:last-child' ).addClass( 'end' );
    
    /*
     * Add Foundation classes to widgets on pages without a sidebar

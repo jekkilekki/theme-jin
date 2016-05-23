@@ -174,7 +174,8 @@
     .reset,
     input[type="button"], 
     input[type="reset"], 
-    input[type="submit"] {
+    input[type="submit"],
+    #infinite-handle span {
         box-shadow: none;
         line-height: inherit;
         font-size: inherit;
@@ -454,6 +455,7 @@
             border: 1px solid $color__light-border;
             .entry-title {
                 font-size: 30*$px;
+                text-align: center;
             }
         }
         .post-content {

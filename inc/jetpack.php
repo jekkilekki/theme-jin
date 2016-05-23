@@ -16,9 +16,11 @@
 function jin_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'main',
+		'footer_widgets'=> 'sidebar-1',
+                'container'     => 'post-archives',
 		'render'	=> 'jin_infinite_scroll_render',
-		'footer'	=> 'page',
+		'footer'	=> 'colophon',
+                'post_per_page' => 8,
 	) );
 
 	// Add theme support for Responsive Videos.
@@ -78,9 +80,11 @@ function jin_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
-			get_template_part( 'components/post/content', 'search' );
+			get_template_part( 'components/post/content', 'none' );
 		else :
+                    echo '<div class="archive-item index-post small-12 medium-6 large-3 columns end">';
 			get_template_part( 'components/post/content', get_post_format() );
+                    echo '</div>';
 		endif;
 	}
 }

@@ -230,7 +230,29 @@ pre {
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
-
+/* Hides navigation links and site footer when infinite scroll is active */
+.infinite-scroll .paging-navigation,
+.infinite-scroll.neverending #footer {
+    display: none;
+}
+/* Shows the footer again in case all posts have been loaded */
+.infinity-end.neverending #footer {
+    display: block;
+}
+.infinite-loader {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+#infinite-handle {
+    clear: both;
+    margin: 5rem auto;
+    display: block;
+    text-align: center;
+}
+#infinite-handle span button {
+    color: $color__link;
+}
 
 /*--------------------------------------------------------------
 # Media
@@ -510,10 +532,6 @@ ul, ol {
     //overflow: hidden;
     //width: $size__site-sidebar;
 }
-
-// **-----
-// CUSTOM STYLES
-// **-----
 
 // Site wrapper
 .site {
