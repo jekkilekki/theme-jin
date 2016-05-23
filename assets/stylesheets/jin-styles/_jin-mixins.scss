@@ -299,6 +299,7 @@
     background-color: $color__background-main-panel;
     border: 1*$px solid $color__border-main-panel;
     box-shadow: $color__box-shadow;
+    position: relative;
 }
 
 @mixin sub_panel() {
@@ -471,6 +472,9 @@
                 left:0;
                 bottom:0;
                 background:linear-gradient(transparent 10%, white 70%);
+            }
+            .continue-reading {
+                bottom: $default_gutter;
             }
         }
         .entry-footer {

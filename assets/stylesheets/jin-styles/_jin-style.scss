@@ -474,6 +474,16 @@ ul, ol {
     margin-right: 0.625em;
     width: calc( 33.3333% - 1.25em );
 }
+@media screen and (max-width: 60em) {
+    #secondary.no-sidebar .widget {
+        width: calc(50% - 1.25em);
+    }
+}
+@media screen and (max-width: 39.9375em) {
+    #secondary.no-sidebar .widget {
+        width: calc(100% - 1.25em);
+    }
+}
 
 // Styles for footer widgets
 #supplementary .widget {
@@ -878,7 +888,7 @@ ul, ol {
     .continue-reading {
         text-align: center;
         position: absolute;
-        bottom: $default_gutter;
+        bottom: $post_b_padding * 2;
         left: 50%;
         transform: translateX(-50%);
     }

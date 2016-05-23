@@ -56,19 +56,16 @@ get_header(); ?>
                            while ( $query->have_posts() ) {
                                $query->the_post();
                                
-                               $icon = '';
-                               $icon = get_post_meta( get_the_ID(), 'proto_fa_icon', true );
-                               
                                echo '<li class="clear archive-item group">';
                                echo '<a class="list-link" href="' . get_permalink() . '" title="See more info about ' . get_the_title() . '">';
                                
-                               if ( $icon != '' || has_post_thumbnail() ) {
+                               if ( get_post_icon() ) {
                                     echo '<figure class="list-figure">';
-                                    if ( $icon != '' ) {
-                                         echo "<span class='fa $icon'></span>";
-                                     } else {
-                                         the_post_thumbnail( 'medium' );
-                                     }
+                                    the_post_icon();
+                                    echo '</figure>';
+                               } elseif( has_post_thumbnail() ) {
+                                    echo '<figure class="list-figure">';
+                                    the_post_thumbnail( 'medium' );
                                     echo '</figure>';
                                }
                                
