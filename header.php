@@ -21,68 +21,84 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+<?php // Add custom code to handle the sidebar - right, left, none, full-width-page ?>
+    
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
+    
+    <div id="page" class="site sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
+        
+    <div id="page" class="site sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
+        
+    <div id="page" class="site no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="page" class="site no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="page" class="site <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?>">
+        
+<?php } ?>
+    
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
+        
+        <?php get_template_part( 'components/header/header', 'image' ); ?>
+        
+        <div data-sticky-container>
+            
+	<header id="masthead" class="group site-header title-bar top-bar" role="banner" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="masthead" data-btm-anchor="colophon:bottom">
             
             <div class="row"> <!-- Start Foundation row -->
                 
-                <!-- Changed from original Underscores to fit Foundation's classes
-		<div class="site-branding">
-		
-		</div><!-- .site-branding -->
-                <div class="fixed contain-to-grid large-12 columns">
-		<nav id="site-navigation" class="main-navigation top-bar" role="navigation" data-topbar>
-                    <ul class="site-branding title-area">
-                        <li class="name">
-                            <?php if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                            <?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-                            <?php endif; ?>
-                            <p class="site-description"><?php bloginfo( 'description' ); ?></p>
-                        </li>
-                        
-                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                    </ul>
+                <div class="top-bar-title">
+<!--                    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="large">
+                    <button class="menu-icon" type="button" data-toggle></button>
+                    <div class="title-bar-title">Menu</div>
+                    </div>-->
+                    <div class="site-branding">
+                    <?php 
+                    if ( has_custom_logo() || jetpack_has_site_logo() ) {
+                        jin_the_site_logo(); 
+                    }
+                    if ( !has_custom_logo() && !jetpack_has_site_logo() || ( has_custom_logo() && get_theme_mod( 'show_logo_sitename' ) === true ) ) { ?>
                     
-                    <section class="top-bar-section">
-                        
-                        <!-- Right Nav Section -->
-                        <ul class="right">
-                            <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu'/*, 'depth' => 2*/ ) ); ?>
-                            <div id="search-container">
-                                <div class="search-box clear">
-                                    <?php get_search_form(); ?>
-                        
-                                </div>
-                            </div>
-                            <div class="search-toggle">
-                                <i class="fa fa-search"></i>
-                                <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jin' ); ?></a>
-                            </div>
-                        </ul>
-                
-                
-                        
-                    </section>
+                                <?php if ( is_front_page() || is_home() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
+                                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                <?php else : ?>
+                                    <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                                <?php endif; ?>
+                                <p class="site-description"><?php bloginfo( 'description' ); ?></p>
                     
-                        <!-- Original Underscores stuff - menu was here originally too
-                        <h1 class="screen-reader-text">Main Navigation</h1>
-                        <div class=""navicon closed"><i class=""fa fa-navicon"></i></div>
-                        -->
-                        
-		</nav><!-- #site-navigation -->
+                    <?php } // endif ?>
+                    </div><!-- .site-branding -->
+                </div>
+	
+                <div class="top-bar-right">
+                    <?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
+                    <?php // jin_social_menu(); ?>
+                </div>
+                
+                <div id="search-container">
+                    <div class="search-box clear">
+                        <?php get_search_form(); ?> 
+                    </div>
+                </div>
+                <div class="search-toggle">
+                    <i class="fa fa-search"></i>
+                    <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jin' ); ?></a>
                 </div>
                 
             </div> <!-- End Foundation row -->
-            
-	</header><!-- #masthead -->
+	
+	</header>
+        </div><!-- END data-sticky-container -->
         
         
-        <?php if ( !is_page_template( 'page-templates/page-landing.php' ) ) { ?>
-        
-                <div id="content" class="site-content row" data-equalizer> <!-- Foundation row start -->
+        <div id="content" class="site-content <?php echo ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ? 'row' : 'front-page-content'; ?>"> <!-- Foundation row start -->
                     
-        <?php } ?>

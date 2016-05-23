@@ -1,6 +1,6 @@
 <?php
 /**
- * Jin functions and definitions.
+ * components functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -11,7 +11,7 @@ if ( ! function_exists( 'jin_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
- * Note that this function is hooked into the after_setup_theme hook, which
+ * Note that this function is hooked into the aftercomponentsetup_theme hook, which
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
@@ -24,7 +24,7 @@ function jin_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Jin, use a find and replace
+	 * If you're building a theme based on components, use a find and replace
 	 * to change 'jin' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'jin', get_template_directory() . '/languages' );
@@ -46,9 +46,9 @@ function jin_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-        // Set the post thumbnail default size to suit the theme layout
-        set_post_thumbnail_size( 770, 400, true );
-        add_image_size( 'index-thumb', 770, 400, true );
+
+	add_image_size( 'jin-featured-image', 640, 9999 ); /** @TODO: or maybe 770px */
+	add_image_size( 'jin-portfolio-featured-image', 800, 9999 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -76,23 +76,31 @@ function jin_setup() {
 	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
-                'gallery',
 		'image',
 		'video',
 		'quote',
 		'link',
-                'status',
-                'audio',
-                'chat'
+                'gallery',
 	) );
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'jin_custom_background_args', array(
-		'default-color' => 'f0f0f0',
+		'default-color' => 'f1f1f1',
 		'default-image' => '',
 	) ) );
+        
+        // Add Custom Logo support (WordPress defaults)
+        // @link https://make.wordpress.org/core/2016/03/10/custom-logo/
+        add_theme_support( 'custom-logo', array(
+                'height'        => 66,
+                'width'         => 66,
+                'flex-height'   => true,
+                'flex-width'    => true,
+                'header-text'   => array( 'site-title', 'site-description' ), // class names to replace with the logo
+        ) );
+        
 }
-endif; // jin_setup
+endif;
 add_action( 'after_setup_theme', 'jin_setup' );
 
 /**
@@ -103,7 +111,7 @@ add_action( 'after_setup_theme', 'jin_setup' );
  * @global int $content_width
  */
 function jin_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'jin_content_width', 770 );
+	$GLOBALS['content_width'] = apply_filters( 'jin_content_width', 640 ); /** @TODO: or maybe 770px */
 }
 add_action( 'after_setup_theme', 'jin_content_width', 0 );
 
@@ -115,10 +123,30 @@ add_action( 'after_setup_theme', 'jin_content_width', 0 );
 function jin_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will appear throughout the site. It is the default sidebar if no others are in use.', 'jin' ),
 		'id'            => 'sidebar-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+        
+        register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Pages', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on Pages. It replaces the standard sidebar.', 'jin' ),
+		'id'            => 'sidebar-page',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+        
+        register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Custom Post Types', 'jin' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on JetPack Portfolio or Testimonial Posts. It replaces the standard sidebar.', 'jin' ),
+		'id'            => 'sidebar-custom',
+		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -127,8 +155,8 @@ function jin_widgets_init() {
                 'name'          => esc_html__( 'Footer Widgets', 'jin' ),
                 'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jin' ),
                 'id'            => 'sidebar-footer',
-                'before_widget' => '<aside id="%1$s" class="widget small-6 medium-4 large-3 %2$s">',
-                'after_widget'  => '</aside>',
+                'before_widget' => '<div id="%1$s" class="widget small-6 medium-4 large-3 columns %2$s">',
+                'after_widget'  => '</div>',
                 'before_title'  => '<h2 class="widget-title">',
                 'after_title'   => '</h2>',
         ) );
@@ -145,22 +173,23 @@ add_action( 'widgets_init', 'jin_widgets_init' );
  */
 function jin_foundation_enqueue() {
     
-        /* Add Foundation 5.5 CSS */
-        wp_enqueue_style( 'foundation-normalize', get_stylesheet_directory_uri() . '/foundation/css/normalize.css' );           // Underscores has its own normalize.css, so this is layered on top
-        wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/foundation/css/foundation.css' );    // This is the Foundation CSS
+        /* Add Foundation 6.2 CSS */
+        wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/assets/foundation/css/foundation.min.css' );    // This is the Foundation CSS
         
         /* Add Custom CSS 
         wp_enqueue_style( 'jin-custom-style', get_stylesheet_directory_uri() . '/jin.css' );
         
         /* Add Foundation JS */
-        wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/foundation/js/foundation.min.js', array( 'jquery' ), true );
-        wp_enqueue_script( 'foundation-modernizr-js', get_template_directory_uri() . '/foundation/js/vendor/modernizr.js', array( 'jquery' ), true );     // This specifically enqueues modernizr.js which had been unenqueued when doing this using Foundation 5.2
+        wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/assets/foundation/js/foundation.min.js', array( 'jquery' ), true );
+        // wp_enqueue_script( 'foundation-modernizr-js', get_template_directory_uri() . '/foundation/js/vendor/modernizr.js', array( 'jquery' ), true );     // This specifically enqueues modernizr.js which had been unenqueued when doing this using Foundation 5.2
+        wp_enqueue_script( 'foundation-what-input', get_template_directory_uri() . '/assets/foundation/js/what-input.js', array( 'jquery' ), true );
         
         /* Foundation Init JS */
         wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
         /* Add Custom Fonts */
-        wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
+        // wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
+        wp_enqueue_style( 'jin-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
         wp_enqueue_style( 'fawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
         
 }
@@ -168,28 +197,35 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
 
 /**
  * Enqueue scripts and styles.
+ * @TODO: double-check all these scripts/styles and functionality
  */
 function jin_scripts() {
 	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
-        
-        /* Conditional stylesheet only for Front Page Template */
-        if ( is_page_template( 'page-templates/page-landing.php' ) ) {
-            wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
+
+	/* Conditional stylesheet only for Front Page Template */
+        if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+            // wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
+            wp_enqueue_script( 'jin-front-scripts', get_stylesheet_directory_uri() . '/assets/js/frontpage-functions.js', array( 'jquery' ), '20160515', true ); 
+
+            /* Slick Carousel */
+            wp_enqueue_script( 'slick_carousel', get_stylesheet_directory_uri() . '/assets/js/slick/slick.min.js', array( 'jquery' ), '20160515', true ); 
+            wp_enqueue_style( 'slick_style', get_stylesheet_directory_uri() . '/assets/js/slick/slick.css' );
+            wp_enqueue_style( 'slick_theme_style', get_stylesheet_directory_uri() . '/assets/js/slick/slick-theme.css' );
         }
 
         /* Custom navigation script */
-	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/js/navigation-custom.js', array(), '20120206', true );
+	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/assets/js/navigation-custom.js', array(), '20120206', true );
         
         /* Toggle Main Search script */
-        wp_enqueue_script( 'jin-toggle-search', get_template_directory_uri() . '/js/toggle-search.js', array( 'jquery' ), '20150925', true );
+        wp_enqueue_script( 'jin-toggle-search', get_template_directory_uri() . '/assets/js/toggle-search.js', array( 'jquery' ), '20150925', true );
 
         /* Masonry for Footer widgets */
-        wp_enqueue_script( 'jin-masonry', get_template_directory_uri() . '/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
+        wp_enqueue_script( 'jin-masonry', get_template_directory_uri() . '/assets/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
         
         /* Add dynamic back to top button */
-        wp_enqueue_script( 'jin-topbutton', get_template_directory_uri(). '/js/topbutton.js', array( 'jquery' ), '20150926', true );
-        
-	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+        wp_enqueue_script( 'jin-topbutton', get_template_directory_uri(). '/assets/js/topbutton.js', array( 'jquery' ), '20150926', true );
+
+	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -197,12 +233,10 @@ function jin_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'jin_scripts' );
 
-
 /**
  * Implement the Custom Header feature.
  */
-// Unneccessary in this design
-require get_template_directory() . '/inc/custom-header.php'; 
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -223,7 +257,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
 
 /**
  * -----------------------------------------------------------------------------
@@ -248,7 +281,6 @@ function jin_nav_menu( $menu ) {
 }
 add_filter( 'wp_nav_menu', 'jin_nav_menu' );
 
-
 /**
  * Walker Menu for Front Page nav
  */
@@ -260,10 +292,10 @@ class jin_front_page_walker extends Walker_Nav_Menu {
         $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
         $display_depth = ( $depth + 1); // because it counts the first submenu as 0
         $classes = array(
-            'sub-menu',
-            ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
-            ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
-            'menu-depth-' . $display_depth
+                'sub-menu',
+                ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
+                ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
+                'menu-depth-' . $display_depth
             );
         $class_names = implode( ' ', $classes );
 
@@ -295,7 +327,7 @@ class jin_front_page_walker extends Walker_Nav_Menu {
          * Card Front
          */
         $foundationTouch = 'ontouchstart="this.classList.toggle(\'hover\');"';
-        $output .= $indent . '<li ' . $foundationTouch . ' id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+        $output .= $indent . '<li ' . $foundationTouch . ' id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . /* $class_names . */ '">';
         $output .= '<div class="large button card-front">';
 
         // link attributes

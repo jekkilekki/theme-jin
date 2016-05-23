@@ -20,20 +20,35 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<?php 
+// If there are no comments at all, don't even show this area
+if ( have_comments() ) : ?>
+<div id="comments" class="comments-area <?php echo ! comments_open() ? 'comments-closed' : ''; ?>">
 
-	<?php // You can start editing here -- including this comment! ?>
-
-	<?php if ( have_comments() ) : ?>
-        <div class="read-comments">
+	<?php
+	// You can start editing here -- including this comment!
+	if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One comment:', '%1$s comments:', get_comments_number(), 'comments title', 'jin' ) ),
-					number_format_i18n( get_comments_number() )
+					esc_html( _nx( 'One thought', '%1$s thoughts', get_comments_number(), 'jin' ) ),
+					number_format_i18n( get_comments_number() ),
+					'<span>' . get_the_title() . '</span>'
 				);
 			?>
 		</h2>
+
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jin' ); ?></h2>
+			<div class="nav-links">
+
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jin' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jin' ) ); ?></div>
+
+			</div>
+		</nav>
+		<?php endif; // Check for comment navigation. ?>
 
 		<ol class="comment-list">
 			<?php
@@ -43,35 +58,38 @@ if ( post_password_required() ) {
                                         'avatar_size'=> 80,
 				) );
 			?>
-		</ol><!-- .comment-list -->
-        </div><!-- .read-comments -->
-        
-        <!-- Comment navigation -->
+		</ol>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jin' ); ?></h2>
-			<div class="nav-links" data-equalizer>
+			<div class="nav-links">
 
-                            <div class="nav-previous" data-equalizer-watch><span class="nav-indicator"><?php previous_comments_link( __( '<i class="fa fa-caret-left"></i>Older Comments', 'jin' ) ); ?></span></div>
-                            <div class="nav-next" data-equalizer-watch><span class="nav-indicator"><?php next_comments_link( __( 'Newer Comments<i class="fa fa-caret-right"></i>', 'jin' ) ); ?></span></div>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jin' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jin' ) ); ?></div>
 
-			</div><!-- .nav-links -->
-		</nav><!-- #comment-nav-below -->
-		<?php endif; // Check for comment navigation. ?>
+			</div>
+		</nav>
+		<?php
+		endif; // Check for comment navigation.
 
-	<?php endif; // Check for have_comments(). ?>
+	endif; // Check for have_comments().
 
-	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
+
+	// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'jin' ); ?></p>
-	<?php endif; ?>
-        
-        <div class="write-comments">
-            
-                <?php comment_form(); ?>
-            
-        </div><!-- .write-comments -->
+	<?php
+	endif;
+
+	
+	?>
 
 </div><!-- #comments -->
+<?php endif; ?>
+
+<?php if ( comments_open() ) { ?>
+    <div class="comment-reply-form">
+        <?php comment_form(); ?>
+    </div><!-- .comment-reply-form -->
+<?php } ?>

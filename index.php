@@ -14,52 +14,64 @@
 
 get_header(); ?>
 
-<!-- <div class="row post-listing-padding" data-equalizer> <!-- Foundation .row start -->
-
-	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch> <!-- Foundation .columns start -->
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+        
+	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch> Foundation .columns start -->
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+		<?php
+		if ( have_posts() ) :
 
-			<?php if ( is_home() && ! is_front_page() ) : ?>
+			if ( is_home() && ! is_front_page() ) : ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
-			<?php endif; ?>
-                    
-                        <!--<ul> Possible to put Foundation block grid here, messes up spacing -->
+			<?php
+			endif;
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-                                
-                            <!-- <li> Foundation block grid item start -->
-				<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content', get_post_format() );
-				?>
-                            <!-- </li> Foundation block grid item end -->
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'components/post/content', get_post_format() );
 
-			<?php endwhile; ?>
-                            
-                        </ul> <!-- Foundation block grid end -->
+			endwhile;
 
-			<?php jin_paging_nav(); ?>
+                        jin_paging_nav();
+			// the_posts_navigation();
 
-		<?php else : ?>
+		else :
 
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
+			get_template_part( 'components/post/content', 'none' );
 
-		<?php endif; ?>
+		endif; ?>
 
-		</main><!-- #main -->
+		</main>
 	</div><!-- #primary Foundation .columns end -->
-
-<!-- </div> <!-- Foundation .row end -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php
+get_sidebar();
+get_footer();

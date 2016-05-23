@@ -9,39 +9,35 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+
+	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>-->
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'jin' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-				?>
-
-			<?php endwhile; ?>
-
-			<?php the_posts_navigation(); ?>
-
-		<?php else : ?>
-
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
-
-		<?php endif; ?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+                    <?php get_template_part( 'components/post/content', 'none' ); ?>
+			
+		</main>
+	</div>
+<?php
+get_sidebar();
+get_footer();

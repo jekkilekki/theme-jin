@@ -9,43 +9,50 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+	<div id="primary" class="content-area archive large-12 columns">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+		<?php
+		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+				<?php   
+                                        if ( is_author() ) {
+                                            jin_author_box();
+                                        } else {
+                                            the_archive_title( '<h1 class="page-title">', '</h1>' );
+                                            the_archive_description( '<div class="taxonomy-description">', '</div>' );
+                                        }
 				?>
-			</header><!-- .page-header -->
+			</header>
+			<?php
+			/* Start the Loop */
+                        echo '<section id="post-archives" class="group">';
+                        
+			while ( have_posts() ) : the_post();
+                            echo '<div class="archive-item index-post small-12 medium-6 large-3 columns end">';
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'components/post/content', get_post_format() );
+                            echo '</div>';
+			endwhile;
+                        
+                        echo '</section>';
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+                        jin_paging_nav();
+			// the_posts_navigation();
 
-				<?php
+		else :
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content', get_post_format() );
-				?>
+			get_template_part( 'components/post/content', 'none' );
 
-			<?php endwhile; ?>
+		endif; ?>
 
-			<?php the_posts_navigation(); ?>
-
-		<?php else : ?>
-
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
-
-		<?php endif; ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+		</main>
+	</div>
+<?php
+get_sidebar();
+get_footer();

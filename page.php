@@ -14,24 +14,46 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>
+<?php if ( is_page_template( 'page-templates/page-sidebar-right.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-right' ) { ?>
+    
+    <div id="primary" class="content-area small-12 medium-8 columns sidebar-right">
+        
+<?php } else if ( is_page_template( 'page-templates/page-sidebar-left.php' ) || get_theme_mod( 'layout_setting' ) === 'sidebar-left' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-8 medium-push-4 columns sidebar-left">
+        
+<?php } else if ( is_page_template( 'page-templates/page-no-sidebar.php' ) || get_theme_mod( 'layout_setting' ) === 'no-sidebar' ) { ?>
+        
+    <div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns no-sidebar">
+        
+<?php } else if ( is_page_template( 'page-templates/page-full-width.php' ) ) { ?>
+        
+    <div id="primary" class="content-area medium-12 columns no-sidebar page-full-width">
+        
+<?php } else { ?>   
+        
+    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+        
+<?php } ?>
+
+	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch>-->
 		<main id="main" class="site-main" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) : the_post();
 
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				get_template_part( 'components/page/content', 'page' );
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
 
-			<?php endwhile; // End of the loop. ?>
+			endwhile; // End of the loop.
+			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+		</main>
+	</div>
+<?php
+get_sidebar();
+get_footer();
