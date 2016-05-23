@@ -56,6 +56,7 @@ Fonts used include:
 * Added support for Jetpack Portfolio CPT
 * Added support for Jetpack Testimonials
 * Added support for custom icon and custom logo
+* Added support for Jetpack Infinite Scroll
 
 ### 1.0.0
 
