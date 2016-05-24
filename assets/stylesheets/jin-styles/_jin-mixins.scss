@@ -432,6 +432,7 @@
     .archive-item {
         transition: all 0.5s ease-in;
         float: left;
+        position: relative;
         .index-post-thumbnail {
             height: 340px;
             overflow: hidden;
@@ -506,6 +507,9 @@
                     margin: 0;
                 }
         }
+        .continue-reading {
+            bottom: $default_gutter!important;
+        }
     }
     .archive-item:hover {
         .post-content {
@@ -546,7 +550,7 @@
         padding-top: $post_t_padding!important;
         border-top: 1px solid $color__lighter-border;
         border-bottom: 1px solid white;
-        margin-bottom: 0;
+        margin-bottom: 0!important;
         .entry-content {
             margin-top: 0;
             font-style: italic;

@@ -91,33 +91,38 @@ get_header(); ?>
                         // Figure out how to get JUST the Testimonial(s) related to THIS particular Client
                         $testimonial = get_post_meta( get_the_ID(), 'client_testimonial', true );
 
-                        $args = array (
-                            'post_type'     => 'jetpack-testimonial',
-                            'category_name' => $testimonial,
-                            //'meta_key'      => 'client_testimonial',
-                            //'meta_value'    => $testimonial,
-                        );
-                        
-                        $query = new WP_Query( $args );
-                        
-                        // The Loop (load the Testimonial with a Custom Field tag for this particular Jetpack-Portfolio-Tag)
-                        if ( $query->have_posts() ) {
-                            echo '<div id="client-testimonial-container" class="clear">';
-                                while ( $query->have_posts() ) {
-                                    $query->the_post();
-                                    echo '<div class="archive-item-testimonial index-post small-12 columns group end">';
-                                        /*
-                                         * Include the Post-Format-specific template for the content.
-                                         * If you want to override this in a child theme, then include a file
-                                         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-                                         */
-                                        get_template_part( 'components/features/testimonials/content', 'testimonial' );
-                                    echo '</div>';
-                                }
+                        // Check to be sure we actually HAVE testimonials set for this Page, otherwise, we get ALL testimonials from everywhere
+                        if( $testimonial != '' ) {
+                            $args = array (
+                                'post_type'     => 'jetpack-testimonial',
+                                'category_name' => $testimonial,
+                                //'meta_key'      => 'client_testimonial',
+                                //'meta_value'    => $testimonial,
+                            );
+
+                            $query = new WP_Query( $args );
+
+                            // The Loop (load the Testimonial with a Custom Field tag for this particular Jetpack-Portfolio-Tag)
+                            if ( $query->have_posts() ) {
+                                echo '<section id="client-testimonial-container" class="archive-testimonial small-12 columns">';
+                                echo '<div class="archive-testimonials">';
+                                    while ( $query->have_posts() ) {
+                                        $query->the_post();
+                                        echo '<div class="archive-item-testimonial index-post group">';
+                                            /*
+                                             * Include the Post-Format-specific template for the content.
+                                             * If you want to override this in a child theme, then include a file
+                                             * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                                             */
+                                            get_template_part( 'components/features/testimonials/content', 'testimonial' );
+                                        echo '</div>';
+                                    }
                                 echo '</div>';
-                        }
-                        // Restore original Post Data
-                        wp_reset_postdata();
+                                echo '</section>';
+                            }
+                            // Restore original Post Data
+                            wp_reset_postdata();
+                        } // END $testimonial check
                         ?>
 			
 		

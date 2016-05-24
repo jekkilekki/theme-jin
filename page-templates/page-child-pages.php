@@ -32,7 +32,14 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
                     
                     <?php while ( have_posts() ) : the_post(); ?>
-                    
+                        <?php if ( '' != get_the_post_thumbnail() ) : ?>
+                            <div class="index-post-thumbnail">
+                                    <a href="<?php the_permalink(); ?>">
+                                            <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                                    </a>
+                            </div>
+                        <?php endif; ?>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<?php get_template_part( 'components/page/content', 'page' ); ?>                
                                                     
                        <?php
@@ -56,26 +63,8 @@ get_header(); ?>
                            while ( $query->have_posts() ) {
                                $query->the_post();
                                
-                               echo '<li class="clear archive-item group">';
-                               echo '<a class="list-link" href="' . get_permalink() . '" title="See more info about ' . get_the_title() . '">';
+                               get_template_part( 'components/page/content', 'child-page' ); 
                                
-                               if ( get_post_icon() ) {
-                                    echo '<figure class="list-figure">';
-                                    the_post_icon();
-                                    echo '</figure>';
-                               } elseif( has_post_thumbnail() ) {
-                                    echo '<figure class="list-figure">';
-                                    the_post_thumbnail( 'medium' );
-                                    echo '</figure>';
-                               }
-                               
-                               echo '<h2 class="entry-list-title">' . get_the_title() . '</h2>';
-                               echo '</a>';
-                               the_excerpt();
-                                echo '<div class="continue-reading">';
-                                echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
-                                echo '</div>';
-                               echo '</li>';
                            }
                            echo '</ul>';
 

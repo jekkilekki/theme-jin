@@ -8,7 +8,7 @@
  */
 
 ?>
-<?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
+<?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) && ! is_page_template( 'page-templates/page-child-pages.php' ) ) : ?>
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
     <div class="index-post-thumbnail">
             <a href="<?php the_permalink(); ?>">
@@ -18,7 +18,9 @@
 <?php endif; ?>
 <?php endif; ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php if( ! is_page_template( 'page-templates/page-child-pages.php' ) ) { ?>
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php } ?>
     
     <?php 
 //    if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
@@ -71,4 +73,7 @@
     ?>
     
     <?php endif; ?>
-</article><!-- #post-## -->
+        
+<?php if( ! is_page_template( 'page-templates/page-child-pages.php' ) ) { ?>
+    </article><!-- #post-## -->
+<?php } ?>

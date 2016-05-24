@@ -48,6 +48,7 @@ function jin_customize_register( $wp_customize ) {
         // Show Logo with Sitename Setting
         $wp_customize->add_setting( 'show_logo_sitename', array(
             'default'           => 0,
+            'sanitize_callback' => 'jin_sanitize_checkbox',
         ) );
         
         // Show Logo with Sitename Control
@@ -72,6 +73,7 @@ function jin_customize_register( $wp_customize ) {
         // Use Gradient Setting
         $wp_customize->add_setting( 'use_gradient', array(
             'default'           => 0,
+            'sanitize_callback' => 'jin_sanitize_checkbox',
         ) );
         
         // Use Gradient Control
@@ -206,6 +208,21 @@ function jin_sanitize_layout ( $value ) {
         $value = 'no-sidebar';
     }
     return $value;
+}
+
+/**
+ * Checkbox sanitization callback
+ * @link    https://github.com/WPTRT/code-examples/blob/master/customizer/sanitization-callbacks.php
+ * 
+ * Sanitization callback for 'checkbox' type controls. This callback sanitizes `$checked`
+ * as a boolean value, either TRUE or FALSE.
+ * 
+ * @param   bool    $checked    Whether the checkbox is checked.
+ * @return  bool                Whether the checkbox is checked.
+ */
+function jin_sanitize_checkbox( $checked ) {
+    // Boolean check
+    return ( ( isset( $checked ) && true == $checked ) ? true : false );
 }
 
 /*
