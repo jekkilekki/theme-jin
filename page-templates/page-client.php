@@ -92,7 +92,7 @@ get_header(); ?>
                         $testimonial = get_post_meta( get_the_ID(), 'client_testimonial', true );
 
                         // Check to be sure we actually HAVE testimonials set for this Page, otherwise, we get ALL testimonials from everywhere
-                        if( $testimonial != '' ) {
+                        if( has_category( $testimonial ) ) {
                             $args = array (
                                 'post_type'     => 'jetpack-testimonial',
                                 'category_name' => $testimonial,

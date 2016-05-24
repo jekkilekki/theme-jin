@@ -733,6 +733,11 @@ table {
   color: #00ACDF;
 }
 
+.main-navigation ul li:hover a,
+.main-navigation ul li .active a {
+  border-bottom: 1px solid #00ACDF;
+}
+
 .main-navigation ul li span {
   display: inline-block;
   text-align: right;
@@ -3709,6 +3714,7 @@ input.search-field {
   border-top: 1px solid #e2e2e5;
   border-bottom: 1px solid white;
   list-style: none;
+  position: relative;
 }
 
 .entry-list-main li .list-link {
