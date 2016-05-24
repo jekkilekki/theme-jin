@@ -139,3 +139,29 @@ function jin_odd_even_post_class( $classes ) {
     return $classes;
 }
 add_filter( 'post_class', 'jin_odd_even_post_class' );
+
+/**
+ * Move JetPack Share and Like buttons
+ * @link https://jetpack.com/2013/06/10/moving-sharing-icons/
+ *
+function jptweak_remove_share() {
+    remove_filter( 'the_content', 'sharing_display',19 );
+    remove_filter( 'the_excerpt', 'sharing_display',19 );
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
+}
+add_action( 'loop_start', 'jptweak_remove_share' );
+
+/*
+ * Add this in the files where you want Sharing Buttons to appear
+ *
+if ( function_exists( 'sharing_display' ) ) {
+    sharing_display( '', true );
+}
+ 
+if ( class_exists( 'Jetpack_Likes' ) ) {
+    $custom_likes = new Jetpack_Likes;
+    echo $custom_likes->post_likes( '' );
+}
+ */

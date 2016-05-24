@@ -72,7 +72,7 @@ get_header(); ?>
                             while ( $query->have_posts() ) {
                                 $query->the_post();
                                 
-                                echo '<div class="archive-item small-12 medium-6 large-4 columns">';
+                                echo '<div class="archive-item small-12 medium-6 large-4 columns end">';
                                     get_template_part( 'components/features/portfolio/content', 'portfolio' );
                                 echo '</div>';
                                 
@@ -89,12 +89,13 @@ get_header(); ?>
                         // @TODO Write this as a function that will run anywhere - currently only works on singular() pages
                         
                         // Figure out how to get JUST the Testimonial(s) related to THIS particular Client
-                        $testimonial = get_the_title();
+                        $testimonial = get_post_meta( get_the_ID(), 'client_testimonial', true );
 
                         $args = array (
                             'post_type'     => 'jetpack-testimonial',
-                            'meta_key'  => 'proto_testimonial',
-                            'meta_value'=> $testimonial,
+                            'category_name' => $testimonial,
+                            //'meta_key'      => 'client_testimonial',
+                            //'meta_value'    => $testimonial,
                         );
                         
                         $query = new WP_Query( $args );
@@ -102,33 +103,17 @@ get_header(); ?>
                         // The Loop (load the Testimonial with a Custom Field tag for this particular Jetpack-Portfolio-Tag)
                         if ( $query->have_posts() ) {
                             echo '<div id="client-testimonial-container" class="clear">';
-                            echo '<div id="client-testimonial" class="entry-content client-page">';
                                 while ( $query->have_posts() ) {
                                     $query->the_post();
-                                    //$more = 0;
-                                    
-                                    echo '<div class="testimonial clear">';
-                                    echo '<figure class="testimonial-thumb">';
-                                    the_post_thumbnail( 'thumbnail' );
-                                    echo '</figure>';
-                                    echo '<aside class="testimonial-text">';
-                                    echo '<div class="testimonial-excerpt">';
-                                    
-                                    if ( $post->post_excerpt ) {
-                                        the_excerpt();
-                                        echo '<a class="more-link" href="' . get_permalink() . '">Read More &rarr;</a>';
-                                    } else {
-                                        the_content();
-                                    }
-                                    //the_content('Read all &rarr;');
-                                    echo '</div>';
-                                    echo '<a href="' . get_the_permalink() . '">';
-                                    echo '<h3 class="testimonial-name">' . get_the_title() . '</h3>';
-                                    echo '</a>';
-                                    echo '</aside>';
+                                    echo '<div class="archive-item-testimonial index-post small-12 columns group end">';
+                                        /*
+                                         * Include the Post-Format-specific template for the content.
+                                         * If you want to override this in a child theme, then include a file
+                                         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                                         */
+                                        get_template_part( 'components/features/testimonials/content', 'testimonial' );
                                     echo '</div>';
                                 }
-                                echo '</div>';
                                 echo '</div>';
                         }
                         // Restore original Post Data
