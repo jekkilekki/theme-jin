@@ -149,13 +149,14 @@ $incomplete_section_ids = array();
                     
                         <?php
                         $clients_id = $query->queried_object->ID;
-
+                        
+                        //remove_all_filters( 'posts_orderby' );
                         // Get the children of the clients page
                         $args = array(
                             'post_type'     => 'page',
                             'post_parent'   => $clients_id,
-                            'posts_per_page'=> 6,
-                            'order_by'      => 'rand'
+                            'posts_per_page'=> -1,
+                            'orderby'       => 'rand'
                         );
                         $clients_query = new WP_Query( $args );
 
