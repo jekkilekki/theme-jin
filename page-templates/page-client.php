@@ -33,12 +33,12 @@ get_header(); ?>
 	
 						<div class="entry-content">
 							<?php the_content(); ?>
-							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'portfolio' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jin' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
                                                         <?php jin_jetpack_sharing(); ?>
                                                 </div><!-- .entry-content -->
 	
 						<footer class="entry-footer">
-							<?php edit_post_link( __( 'Edit', 'portfolio' ), '<span class="edit-link">', '</span>' ); ?>
+							<?php edit_post_link( __( 'Edit', 'jin' ), '<span class="edit-link">', '</span>' ); ?>
 						</footer><!-- .entry-meta -->
 					</div>
 				</article><!-- #post -->
