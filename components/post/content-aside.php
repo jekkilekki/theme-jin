@@ -40,6 +40,7 @@
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
                     }
+                    jin_jetpack_sharing();
                     
 		?>
 	</div><!-- .entry-content -->

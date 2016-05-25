@@ -64,6 +64,8 @@
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
 				'after'  => '</div>',
 			) );
+                        
+                        jin_jetpack_sharing();
                 }
 		?>
 	</div>

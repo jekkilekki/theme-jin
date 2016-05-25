@@ -26,6 +26,7 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 				'pagelink' => '<span class="page-link">%</span>',
 			) );
 		?>
+                <?php jin_jetpack_sharing(); ?>
             
         </div>
     

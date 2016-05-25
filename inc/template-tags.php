@@ -399,6 +399,20 @@ function the_post_icon() {
 }
 
 /**
+ * Function to show the Jetpack sharing and Likes only at the designated locations in Posts and Pages
+ */
+function jin_jetpack_sharing() {
+    if ( function_exists( 'sharing_display' ) ) {
+        sharing_display( '', true );
+    }
+
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        $custom_likes = new Jetpack_Likes;
+        echo $custom_likes->post_likes( '' );
+    }
+}
+
+/**
  * Prints HTML with post navigation.
  */
 function jin_post_navigation() {
