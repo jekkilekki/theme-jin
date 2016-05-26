@@ -200,8 +200,10 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
  * @TODO: double-check all these scripts/styles and functionality
  */
 function jin_scripts() {
+	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
+        
         /* Include Dashicons for the front-end too */
-	wp_enqueue_style( 'jin-style', get_stylesheet_uri(), 'dashicons' );
+        wp_enqueue_style( 'dashicons' );
 
 	/* Conditional stylesheet only for Front Page Template */
         if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {

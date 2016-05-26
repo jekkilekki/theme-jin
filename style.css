@@ -4287,6 +4287,10 @@ ul.follow a:hover {
   opacity: 0.8;
 }
 
+.services-lede:first-line {
+  font-weight: 600;
+}
+
 .services-list li:hover .services-lede, .services-list li:hover .services-title span {
   opacity: 1;
 }

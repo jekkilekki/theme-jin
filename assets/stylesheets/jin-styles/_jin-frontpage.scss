@@ -485,6 +485,9 @@ ul.follow a:hover {
     color: $color__text-on-blue;
     text-align: left;
     opacity: 0.8;
+    &:first-line {
+        font-weight: 600;
+    }
 }
 .services-list li:hover {
     //background: #00adcf;
