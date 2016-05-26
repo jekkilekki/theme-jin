@@ -143,7 +143,7 @@ add_filter( 'post_class', 'jin_odd_even_post_class' );
 /**
  * Move JetPack Share and Like buttons
  * @link https://jetpack.com/2013/06/10/moving-sharing-icons/
- *
+ */
 function jptweak_remove_share() {
     remove_filter( 'the_content', 'sharing_display',19 );
     remove_filter( 'the_excerpt', 'sharing_display',19 );
