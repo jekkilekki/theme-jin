@@ -200,7 +200,8 @@ add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
  * @TODO: double-check all these scripts/styles and functionality
  */
 function jin_scripts() {
-	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
+        /* Include Dashicons for the front-end too */
+	wp_enqueue_style( 'jin-style', get_stylesheet_uri(), 'dashicons' );
 
 	/* Conditional stylesheet only for Front Page Template */
         if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
@@ -268,6 +269,14 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load Theme Options file that includes the Theme Customizer and the Theme Options page
  */
 //require get_template_directory() . '/inc/theme-options.php';
+
+/*
+ * Add Excerpts to Pages
+ */
+function jin_add_excerpt_to_pages() {
+    add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'jin_add_excerpt_to_pages' );
 
 /**
  * Modify Underscores nav menus to work with Foundation
