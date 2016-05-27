@@ -61,7 +61,7 @@ jQuery( document ).ready( function( $ ) {
    /*
     * Add Foundation classes to widgets on pages without a sidebar
     */
-   $( '.no-sidebar .widget' ).addClass( 'small-6 medium-4 columns' );
+   $( '.no-sidebar #secondary .widget, .page-template-page-client #secondary .widget' ).addClass( 'small-6 medium-4 columns' );
 });
 
 

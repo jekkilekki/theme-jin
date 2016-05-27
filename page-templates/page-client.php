@@ -52,7 +52,7 @@ get_header(); ?>
                         <?php
                         echo '<div id="client-projects-container" class="clear">';
                         
-                        $client = get_post_meta( $post->ID, 'proto_client', true );
+                        $client = get_post_meta( $post->ID, 'client', true );
                         
                         $args = array (
                             'order_by'  => 'desc',
