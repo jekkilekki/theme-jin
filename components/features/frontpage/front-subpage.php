@@ -9,9 +9,9 @@
 
 ?>
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
-    <div class="index-post-thumbnail">
+    <div class="index-post-thumbnail" style="background: url( <?php the_post_thumbnail_url( 'full' ); ?> )">
             <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                    <?php //the_post_thumbnail( 'jin-featured-image' ); ?>
             </a>
     </div>
 <?php endif; ?>

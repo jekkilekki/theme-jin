@@ -3758,6 +3758,14 @@ input.search-field {
   margin-top: 2.0225rem;
 }
 
+.jp-relatedposts-post-img {
+  margin-left: 0;
+}
+
+.jp-relatedposts-post-a {
+  border-bottom: none;
+}
+
 /* Custom styles for this theme */
 /**
  * Front Page Portfolio
@@ -4394,18 +4402,16 @@ ul.follow a:hover {
 #about, #contact, .frontpage-subpage {
   padding: 0;
   border-top: 1px solid #e2e2e5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-#about .index-post-thumbnail, #contact .index-post-thumbnail, .frontpage-subpage .index-post-thumbnail {
-  max-height: 300px;
+#about .index-post-thumbnail, #about article.has-post-thumbnail, #contact .index-post-thumbnail, #contact article.has-post-thumbnail, .frontpage-subpage .index-post-thumbnail, .frontpage-subpage article.has-post-thumbnail {
+  width: 50%;
   border-bottom: #f2f2f5;
-  overflow: hidden;
-}
-
-#about .index-post-thumbnail img, #contact .index-post-thumbnail img, .frontpage-subpage .index-post-thumbnail img {
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  background-size: cover !important;
 }
 
 /*
@@ -4418,6 +4424,7 @@ ul.follow a:hover {
 .slick-next,
 .slick-prev {
   top: 40% !important;
+  padding: 0 !important;
 }
 
 .slick-dots {
@@ -4511,6 +4518,16 @@ ul.follow a:hover {
   top: 60% !important;
 }
 
+#testimonials .testimonial-entry .more-link {
+  display: block;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  text-align: center;
+  color: #9e9e9e;
+}
+
 .testimonial-quotes {
   padding-top: 220px;
   position: relative;
@@ -4545,7 +4562,7 @@ ul.follow a:hover {
           align-items: stretch;
   width: auto;
   height: auto;
-  background: #1A3547;
+  /*background: $color__background-blue;*/
   opacity: 0.5;
 }
 

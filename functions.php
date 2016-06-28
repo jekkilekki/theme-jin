@@ -47,7 +47,7 @@ function jin_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'jin-featured-image', 640, 9999 ); /** @TODO: or maybe 770px */
+	add_image_size( 'jin-featured-image', 800, 9999 ); /** @TODO: or maybe 770px */
 	add_image_size( 'jin-portfolio-featured-image', 800, 9999 );
 
 	// This theme uses wp_nav_menu() in one location.

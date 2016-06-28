@@ -592,13 +592,11 @@ ul.follow a:hover {
 #about, #contact, .frontpage-subpage {
     padding: 0;
     border-top: 1px solid $color__light-border;
-    .index-post-thumbnail {
-        max-height: 300px;
+    display: flex;
+    .index-post-thumbnail, article.has-post-thumbnail {
+        width: 50%;
         border-bottom: $color__lighter-border;
-        overflow: hidden;
-        img {
-            transform: translateY(-50%);
-        }
+        background-size: cover!important;
     }
 }
 
@@ -611,6 +609,7 @@ ul.follow a:hover {
 .slick-next,
 .slick-prev {
     top: 40%!important;
+    padding: 0!important;
 }
 .slick-dots {
     position: relative!important;
@@ -681,6 +680,15 @@ ul.follow a:hover {
         margin-top: 0!important;
         top: 60%!important;
     }
+    .testimonial-entry .more-link {
+        display: block;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+        text-align: center;
+        color: $color__text-sub-panel;
+    }
 }
 .testimonial-quotes {
     padding-top: 220px;
@@ -702,7 +710,7 @@ ul.follow a:hover {
             align-items: stretch;
             width: auto;
             height: auto;
-            background: $color__background-blue;
+            /*background: $color__background-blue;*/
             opacity: 0.5;
             .thumb {
                 margin: 0;

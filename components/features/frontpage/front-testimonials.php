@@ -12,7 +12,7 @@
 
                     <div class="entry-content">
 
-                        <?php the_excerpt(); ?>
+                        <?php the_content( 'Read more…' ); ?>
 
                     </div>
                     
