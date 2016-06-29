@@ -362,6 +362,44 @@ ul.follow a:hover {
     box-shadow: $color__box-shadow;
     margin-top: -5rem;
 }
+.rotating-services, 
+.rotating-services-div {
+    padding: 0;
+    margin: 0!important;
+}
+.rotating-services-div {
+    display: flex;
+    flex-direction: column;
+    .slick-prev {
+        width: 35px!important;
+        height: 70px!important;
+        left: 0;
+        border-radius: 0 50px 50px 0;
+        background: rgba(181, 203, 216, 0.2)!important;
+        &:before {
+            color: $color__text-on-blue;
+        }
+    }
+    .slick-next {
+        width: 35px!important;
+        height: 70px!important;
+        right: 0;
+        border-radius: 50px 0 0 50px;
+        background: rgba(181, 203, 216, 0.2)!important;
+        &:before {
+            color: $color__text-on-blue;
+        }
+    }
+    .slick-next,
+    .slick-prev {
+        top: 50%!important;
+        margin-top: -35px;
+    }
+}
+.rotating-services-div li {
+    flex: 1;
+    list-style: none;
+}
 .services-list {
     display: flex;
 
@@ -392,7 +430,7 @@ ul.follow a:hover {
         background: transparent;
     }
 }
-.services-list li:last-child {
+.services-list > li:last-child {
     background: white;
     .services-title, .services-title a, .services-lede {
         color: $color__text-main;
@@ -597,6 +635,7 @@ ul.follow a:hover {
         width: 50%;
         border-bottom: $color__lighter-border;
         background-size: cover!important;
+        background-position: center;
     }
 }
 
@@ -710,12 +749,14 @@ ul.follow a:hover {
             align-items: stretch;
             width: auto;
             height: auto;
-            /*background: $color__background-blue;*/
+            /*background: $color__link;*/
             opacity: 0.5;
             .thumb {
                 margin: 0;
                 padding: 0;
-                width: auto;
+                width: 160px;
+                height: 160px;
+                object-fit: cover;
                 opacity: 0.5;
                 position: absolute;
                 top: 50%;

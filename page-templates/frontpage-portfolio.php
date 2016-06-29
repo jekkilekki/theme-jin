@@ -55,7 +55,7 @@ $incomplete_section_ids = array();
                     $args = array(
                         'post_type'     => 'page',
                         'post_parent'   => $services_id,
-                        'posts_per_page'=> 2, // This is the parameter passed in to tell how many Service Child Pages to display
+                        'posts_per_page'=> -1, // This is the parameter passed in to tell how many Service Child Pages to display
                         'orderby'       => 'rand',
                     );
                     $services_query = new WP_Query( $args );
@@ -66,7 +66,8 @@ $incomplete_section_ids = array();
 
                         <!-- Start the 'Services' list -->
                         <ul class="row entry-content services-list archive-list">
-
+                            <li class="rotating-services large-8 medium-12 columns">
+                            <ul class="rotating-services-div">
                         <?php
                         while ( $services_query->have_posts() ) : $services_query->the_post();
 
@@ -75,6 +76,11 @@ $incomplete_section_ids = array();
                             echo '</li>';
 
                         endwhile; // END looping through 'Service' Child Pages
+                        ?>
+                            </ul><!-- .rotating-services -->
+                            </li>
+                            
+                        <?php
 
                         // wp_reset_postdata();
 
@@ -94,7 +100,7 @@ $incomplete_section_ids = array();
                         // Get the 'Services' Page
                         $query->the_post();
                         
-                        echo '<li class="service large-12 columns">';
+                        echo '<li class="service services-page large-12 columns">';
                         get_template_part( 'components/features/frontpage/front', 'services' );
                         echo '</li>';
 
@@ -106,7 +112,7 @@ $incomplete_section_ids = array();
                     // This is our original Query - the 'Services' Page
                     while ( $query->have_posts() ) : $query->the_post();
                         
-                        echo '<li class="service large-4 medium-12 columns">';
+                        echo '<li class="service services-page large-4 medium-12 columns">';
                         get_template_part( 'components/features/frontpage/front', 'services' );
                         echo '</li>';
                         
@@ -140,7 +146,7 @@ $incomplete_section_ids = array();
          */                 
                     
                 /*
-                 * CLIENTS LOOP : Get (up to 6) individual Client Pages
+                 * CLIENTS LOOP : Get ALL individual Client Pages
                  */
                 $query = new WP_Query( 'pagename=clients' );
 

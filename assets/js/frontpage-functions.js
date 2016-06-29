@@ -133,7 +133,7 @@ jQuery( document ).ready( function($) {
 //           scrollTop: $(id).offset().top - nav_height
 //       }, 500 );
 //    });
-    
+
     /* Slick Slider */
     $('.front-page-projects').slick({
        // All the defaults
@@ -192,6 +192,69 @@ jQuery( document ).ready( function($) {
 //       touchMove: true,
 //       touchThreshold: 5,
 //       useCSS: true,
+//       variableWidth: false,
+//       vertical: false,
+//       rtl: false,
+   });
+    
+    /* Slick Slider */
+    $('.rotating-services-div').slick({
+       // All the defaults
+//       accessibility: true,
+       adaptiveHeight: false,
+         autoplay: true,
+       autoplaySpeed: 6000,
+        arrows: true,
+//       asNavFor: null,
+//       appendArrows: $(element),
+//       prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+//       nextArrow: '<button type="button" class="slick-next">Next</button>',
+//       centerMode: false,
+//       centerPadding: '50px',
+        cssEase: 'ease',
+//       customPaging: '',
+       dots: false,
+//       draggable: true,
+//       fade: false,
+//       focusOnSelect: false,
+//       easing: 'linear',
+//       edgeFriction: 0.15,
+        infinite: true,
+//       initialSlide: 0,
+//       lazyLoad: 'ondemand',
+//       mobileFirst: false,
+       pauseOnHover: true,
+//       pauseOnDotsHover: false,
+//       respondTo: 'window',
+//        responsive: [
+//            {
+//                breakpoint: 900,
+//                settings: {
+//                    slidesToShow: 2,
+//                    slidesToScroll: 2,
+//                    infinite: true,
+//                    dots: true
+//                }
+//            },
+//            {
+//                breakpoint: 480,
+//                settings: {
+//                    slidesToShow: 1,
+//                    slidesToScroll: 1,
+//                    infinite: true,
+//                    dots: true
+//                }
+//            }
+//        ],
+//       slide: '',
+        slidesToShow: 2,
+        slidesToScroll: 2,
+//       speed: 300,
+//       swipe: true,
+//       swipeToSlide: false,
+//       touchMove: true,
+//       touchThreshold: 5,
+       useCSS: true,
 //       variableWidth: false,
 //       vertical: false,
 //       rtl: false,
@@ -318,5 +381,26 @@ jQuery( document ).ready( function($) {
 //       vertical: false,
 //       rtl: false,
    });
+   
+      /* Get & Set height for Services slides */
+//    var serviceHeight = $('.services-list').height();
+//    $('.rotating-services-div .slick-slide').css('height',serviceHeight + 'px' );
+    //var servicesPageHeight = $('.services-page').height();
+    
+    $('.rotating-services-div').on('setPosition', function () {
+    $(this).find('.slick-slide').height('auto');
+    var slickTrack = $(this).find('.slick-track');
+    var slickTrackHeight = $(slickTrack).height();
+    $(this).find('.slick-slide').css('height', slickTrackHeight + 60 + 'px');
+    });
+    
+//    var serviceSliderHeight = $('.rotating-services-div .slick-slide').height();
+//    var servicePageHeight = $('.services-page').height();
+//    
+//    if( serviceSliderHeight > servicePageHeight ) {
+//        $('.services-page').css('height', serviceSliderHeight + 'px');
+//    } else {
+//        $('.rotating-services-div .slick-slide').css('height', servicePageHeight + 'px');
+//    }
 
 });
