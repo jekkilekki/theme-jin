@@ -43,7 +43,7 @@
 	<div class="entry-content">
 		<?php
                 
-                if ( is_archive() || is_home() || is_front_page() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { // Makes EVERY Post on an index page an excerpt
+                if ( is_archive() || is_home() || is_404() || is_front_page() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { // Makes EVERY Post on an index page an excerpt
                     the_fancy_excerpt();
                 } else {
                     

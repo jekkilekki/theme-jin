@@ -294,6 +294,9 @@ article {
 .index-post:hover {
     //border: 1px solid $color__link;
 }
+.single .hentry {
+    margin-bottom: 0;
+}
 .single-post .hentry,
 .page.hentry, 
 .error-404.hentry {
@@ -385,7 +388,7 @@ ul, ol {
     border: 1*$px solid $color__border-main-panel;
     border-top: 1px solid white;
     margin-top: 0;
-    margin-bottom: 5rem;
+    margin-bottom: 0;
     .nav-previous, .nav-next {
         padding-left: $post_l_padding;
         padding-right: $post_r_padding;
@@ -660,7 +663,7 @@ ul, ol {
     padding-right: $post_r_padding;
     padding-top: $post_t_padding / 2;
     padding-bottom: $post_b_padding / 2;
-    margin: -$default-gutter * 1.5 0 0 0;
+    margin: 0;
     border: 0;
     border-top: 1px solid white;
     border-bottom: 1px solid $color__lighter-border;
@@ -905,11 +908,28 @@ ul, ol {
 
 .entry-content {
     .continue-reading {
-        text-align: center;
+        display: block;
+        margin: $default_gutter auto;
+        width: 120px;
+    }
+    .continue-reading-arrow {
+        width: 35px!important;
+        height: 70px!important;
+        right: -1px;
+        border-radius: 50px 0 0 50px;
+        background: gainsboro!important;
+        opacity: 0.5;
         position: absolute;
-        bottom: $post_b_padding * 2;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 50%;
+        margin-top: -35px;
+        padding: 22px 0;
+        font-size: 1.5rem;
+        text-align: right;
+        color: white;
+        border-bottom: none!important;
+        &:hover {
+            background: $color__link!important;
+        }
     }
     @include content_link;
     a img {
@@ -942,6 +962,7 @@ ul, ol {
         background-color: $color__background-sub-panel;
     }*/
     a.more-link {
+        width: 120px;
         margin: $default_gutter auto;
         padding: 10px 14px 7px;
         position: relative;
@@ -1162,6 +1183,7 @@ POST FORMATS
 .comment-reply-form,
 .comments-closed {
         margin-bottom: 5rem;
+        margin-top: 5rem;
 }
 .comment-respond {
     background: $color__background-sub-panel;
@@ -1472,7 +1494,7 @@ input.search-field {
     padding-top: $post_b_padding;
     padding-left: $post_l_padding;
     padding-right: $post_r_padding;
-    padding-bottom: $post_b_padding * 1.5;
+    padding-bottom: $post_b_padding;
     border-top: 1px solid $color__light-border;
     border-bottom: 1px solid white;
     list-style: none;

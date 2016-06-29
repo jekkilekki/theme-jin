@@ -30,7 +30,6 @@
     <a class="list-link" href="<?php echo get_permalink(); ?>" title="See more info about <?php echo get_the_title(); ?>">
         <h2 class="entry-list-title <?php echo !get_post_icon() ? 'text-center' : ''; ?>"><?php echo get_the_title(); ?></h2>
     </a>
-    <?php remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 ); ?>
     <?php the_fancy_excerpt(); ?>
     </div>
 

@@ -2131,6 +2131,10 @@ article {
   margin-bottom: 3.03375rem;
 }
 
+.single .hentry {
+  margin-bottom: 0;
+}
+
 .single-post .hentry,
 .page.hentry,
 .error-404.hentry {
@@ -2235,7 +2239,7 @@ ul, ol {
   border: 0.05rem solid transparent;
   border-top: 1px solid white;
   margin-top: 0;
-  margin-bottom: 5rem;
+  margin-bottom: 0;
 }
 
 .site-main .post-navigation .nav-previous, .site-main .post-navigation .nav-next {
@@ -2605,8 +2609,16 @@ ul, ol {
   bottom: 2.0225rem !important;
 }
 
+.archive-item .sharedaddy {
+  display: none;
+}
+
 .archive-item:hover .post-content {
   top: 0;
+}
+
+.archive-item:hover .continue-reading-arrow {
+  background: #00ACDF !important;
 }
 
 .hentry,
@@ -2655,7 +2667,7 @@ ul, ol {
   padding-right: 4.2358rem;
   padding-top: 1.30896rem;
   padding-bottom: 1.30896rem;
-  margin: -3.03375rem 0 0 0;
+  margin: 0;
   border: 0;
   border-top: 1px solid white;
   border-bottom: 1px solid #f2f2f5;
@@ -2977,13 +2989,30 @@ ul, ol {
 }
 
 .entry-content .continue-reading {
-  text-align: center;
+  display: block;
+  margin: 2.0225rem auto;
+  width: 120px;
+}
+
+.entry-content .continue-reading-arrow {
+  width: 35px !important;
+  height: 70px !important;
+  right: -1px;
+  border-radius: 50px 0 0 50px;
+  background: gainsboro !important;
+  opacity: 0.5;
   position: absolute;
-  bottom: 5.23585rem;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  top: 50%;
+  margin-top: -35px;
+  padding: 22px 0;
+  font-size: 1.5rem;
+  text-align: right;
+  color: white;
+  border-bottom: none !important;
+}
+
+.entry-content .continue-reading-arrow:hover {
+  background: #00ACDF !important;
 }
 
 .entry-content a, .entry-content a:link, .entry-content a:visited {
@@ -2999,6 +3028,7 @@ ul, ol {
 }
 
 .entry-content a.more-link {
+  width: 120px;
   margin: 2.0225rem auto;
   padding: 10px 14px 7px;
   position: relative;
@@ -3265,6 +3295,7 @@ POST FORMATS
 .comment-reply-form,
 .comments-closed {
   margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
 .comment-respond {
@@ -3710,7 +3741,7 @@ input.search-field {
   padding-top: 2.61792rem;
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
-  padding-bottom: 3.92689rem;
+  padding-bottom: 2.61792rem;
   border-top: 1px solid #e2e2e5;
   border-bottom: 1px solid white;
   list-style: none;
@@ -3770,6 +3801,14 @@ input.search-field {
 /**
  * Front Page Portfolio
  */
+a.topbutton,
+a.topbutton:visited,
+a.topbutton:hover,
+a.topbutton:focus,
+a.topbutton:active {
+  color: white !important;
+}
+
 .page-template-frontpage-portfolio #header-image {
   min-height: 600px;
 }
@@ -4127,9 +4166,9 @@ ul.follow a:hover {
 .slick-prev,
 .slick-next {
   width: 35px !important;
-  height: 35px !important;
+  height: 70px !important;
   background: #e2e2e5 !important;
-  border-radius: 50%;
+  opacity: 0.5;
 }
 
 .slick-prev:hover,
@@ -4176,7 +4215,7 @@ ul.follow a:hover {
   height: 70px !important;
   left: 0;
   border-radius: 0 50px 50px 0;
-  background: rgba(181, 203, 216, 0.1) !important;
+  background: rgba(181, 203, 216, 0.2) !important;
 }
 
 .rotating-services-div .slick-prev:before {
@@ -4188,7 +4227,7 @@ ul.follow a:hover {
   height: 70px !important;
   right: 0;
   border-radius: 50px 0 0 50px;
-  background: rgba(181, 203, 216, 0.1) !important;
+  background: rgba(181, 203, 216, 0.2) !important;
 }
 
 .rotating-services-div .slick-next:before {
@@ -4245,6 +4284,7 @@ ul.follow a:hover {
   border: 2px solid #00ACDF !important;
   box-shadow: none;
   background: transparent;
+  width: auto;
 }
 
 .services-list > li:last-child {
@@ -4355,7 +4395,7 @@ ul.follow a:hover {
   font-weight: 600;
 }
 
-.services-list li:hover .services-lede, .services-list li:hover .services-title span {
+.service:hover .services-lede, .service:hover .services-title span {
   opacity: 1;
 }
 
@@ -4474,13 +4514,23 @@ ul.follow a:hover {
 /*
  * LATEST PROJECTS 
  */
+#latest-projects .slick-next {
+  border-radius: 0 50px 50px 0;
+  right: -20px !important;
+}
+
+#latest-projects .slick-prev {
+  border-radius: 50px 0 0 50px;
+  left: -20px !important;
+}
+
 .slick-slider button {
   box-shadow: none;
 }
 
 .slick-next,
 .slick-prev {
-  top: 40% !important;
+  top: 35% !important;
   padding: 0 !important;
 }
 

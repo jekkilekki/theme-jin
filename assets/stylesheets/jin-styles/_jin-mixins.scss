@@ -510,10 +510,16 @@
         .continue-reading {
             bottom: $default_gutter!important;
         }
+        .sharedaddy {
+            display: none;
+        }
     }
     .archive-item:hover {
         .post-content {
             top: 0;
+        }
+        .continue-reading-arrow {
+            background: $color__link!important;
         }
     }
 }

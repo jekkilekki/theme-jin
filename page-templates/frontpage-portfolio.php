@@ -71,7 +71,7 @@ $incomplete_section_ids = array();
                         <?php
                         while ( $services_query->have_posts() ) : $services_query->the_post();
 
-                            echo '<li class="service large-4 medium-6 columns">';
+                            echo '<li class="service large-12 columns">';
                             get_template_part( 'components/features/frontpage/front', 'services' ); 
                             echo '</li>';
 

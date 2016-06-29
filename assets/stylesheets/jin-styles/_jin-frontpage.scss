@@ -1,6 +1,14 @@
 /**
  * Front Page Portfolio
  */
+a.topbutton, 
+a.topbutton:visited, 
+a.topbutton:hover, 
+a.topbutton:focus, 
+a.topbutton:active {
+    color: white!important;
+}
+
 .page-template-frontpage-portfolio #header-image {
     min-height: 600px;
 }
@@ -340,9 +348,9 @@ ul.follow a:hover {
 .slick-prev,
 .slick-next {
     width: 35px!important;
-    height: 35px!important;
+    height: 70px!important;
     background: $color__light-border!important;
-    border-radius: 50%;
+    opacity: 0.5;
     &:hover {
         background: $color__text-sub-panel!important;
     }
@@ -375,7 +383,7 @@ ul.follow a:hover {
         height: 70px!important;
         left: 0;
         border-radius: 0 50px 50px 0;
-        background: rgba(181, 203, 216, 0.1)!important;
+        background: rgba(181, 203, 216, 0.2)!important;
         &:before {
             color: $color__text-on-blue;
         }
@@ -385,7 +393,7 @@ ul.follow a:hover {
         height: 70px!important;
         right: 0;
         border-radius: 50px 0 0 50px;
-        background: rgba(181, 203, 216, 0.1)!important;
+        background: rgba(181, 203, 216, 0.2)!important;
         &:before {
             color: $color__text-on-blue;
         }
@@ -428,6 +436,7 @@ ul.follow a:hover {
         border: 2px solid $color__link!important;
         box-shadow: none;
         background: transparent;
+        width: auto;
     }
 }
 .services-list > li:last-child {
@@ -527,7 +536,7 @@ ul.follow a:hover {
         font-weight: 600;
     }
 }
-.services-list li:hover {
+.service:hover {
     //background: #00adcf;
     .services-lede, .services-title span {
         opacity: 1;
@@ -642,12 +651,22 @@ ul.follow a:hover {
 /*
  * LATEST PROJECTS 
  */
+#latest-projects {
+    .slick-next {
+        border-radius: 0 50px 50px 0;
+        right: -20px!important;
+    }
+    .slick-prev {
+        border-radius: 50px 0 0 50px;
+        left: -20px!important;
+    }
+}
 .slick-slider button {
     box-shadow: none;
 }
 .slick-next,
 .slick-prev {
-    top: 40%!important;
+    top: 35%!important;
     padding: 0!important;
 }
 .slick-dots {
