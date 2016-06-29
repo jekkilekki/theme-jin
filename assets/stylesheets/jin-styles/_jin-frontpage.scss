@@ -375,7 +375,7 @@ ul.follow a:hover {
         height: 70px!important;
         left: 0;
         border-radius: 0 50px 50px 0;
-        background: rgba(181, 203, 216, 0.2)!important;
+        background: rgba(181, 203, 216, 0.1)!important;
         &:before {
             color: $color__text-on-blue;
         }
@@ -385,7 +385,7 @@ ul.follow a:hover {
         height: 70px!important;
         right: 0;
         border-radius: 50px 0 0 50px;
-        background: rgba(181, 203, 216, 0.2)!important;
+        background: rgba(181, 203, 216, 0.1)!important;
         &:before {
             color: $color__text-on-blue;
         }
@@ -635,7 +635,7 @@ ul.follow a:hover {
         width: 50%;
         border-bottom: $color__lighter-border;
         background-size: cover!important;
-        background-position: center;
+        background-position: center!important;
     }
 }
 

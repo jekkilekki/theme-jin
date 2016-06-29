@@ -30,6 +30,8 @@
     <a class="list-link" href="<?php echo get_permalink(); ?>" title="See more info about <?php echo get_the_title(); ?>">
         <h2 class="entry-list-title <?php echo !get_post_icon() ? 'text-center' : ''; ?>"><?php echo get_the_title(); ?></h2>
     </a>
+    <?php remove_filter( 'the_content', 'sharing_display', 19 ); ?>
+    <?php remove_filter( 'the_excerpt', 'sharing_display', 19 ); ?>
     <?php the_fancy_excerpt(); ?>
     </div>
 
