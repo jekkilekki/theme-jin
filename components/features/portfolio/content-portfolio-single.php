@@ -11,7 +11,7 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
         <div class="index-post-thumbnail">
-                <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                <?php the_post_thumbnail( 'full' ); ?>
         </div>
 <?php endif; ?>
 
