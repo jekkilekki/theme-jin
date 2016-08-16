@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 get_header(); ?>
@@ -40,7 +40,7 @@ get_header(); ?>
                         
                         echo '</section>';
 
-                        jin_paging_nav();
+                        jinn_paging_nav();
 			// the_posts_navigation();
 
 		else :

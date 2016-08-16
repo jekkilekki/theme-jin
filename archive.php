@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 get_header(); ?>
@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<?php   
                                         if ( is_author() ) {
-                                            jin_author_box();
+                                            jinn_author_box();
                                         } else {
                                             the_archive_title( '<h1 class="page-title">', '</h1>' );
                                             the_archive_description( '<div class="taxonomy-description">', '</div>' );
@@ -42,7 +42,7 @@ get_header(); ?>
                         
                         echo '</section>';
 
-                        jin_paging_nav();
+                        jinn_paging_nav();
 			// the_posts_navigation();
 
 		else :

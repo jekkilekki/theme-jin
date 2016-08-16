@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 ?>
@@ -12,7 +12,7 @@
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
     <div class="index-post-thumbnail">
             <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                    <?php the_post_thumbnail( 'jinn-featured-image' ); ?>
             </a>
     </div>
 <?php endif; ?>
@@ -32,7 +32,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
             
                 <?php if ( ! is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
-                    <?php jin_breadcrumbs(); ?>
+                    <?php jinn_breadcrumbs(); ?>
                 <?php endif; ?>
             
 	</header>
@@ -41,11 +41,11 @@
 			the_content();
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jinn' ),
 				'after'  => '</div>',
 			) );
                         
-                        jin_jetpack_sharing();
+                        jinn_jetpack_sharing();
 		?>
 	</div>
     
@@ -59,7 +59,7 @@
 			edit_post_link(
 				sprintf(
 					/* translators: %s: Name of current post */
-					esc_html__( 'Edit %s', 'jin' ),
+					esc_html__( 'Edit %s', 'jinn' ),
 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
 				),
 				'<span class="edit-link">',

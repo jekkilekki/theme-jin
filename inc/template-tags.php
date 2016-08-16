@@ -4,14 +4,14 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Jin
+ * @package Jinn
  */
 
-if ( ! function_exists( 'jin_posted_on' ) ) :
+if ( ! function_exists( 'jinn_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function jin_posted_on() {
+function jinn_posted_on() {
         global $post;
     
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
@@ -27,12 +27,12 @@ function jin_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'jin' ),
+		esc_html_x( '%s', 'post date', 'jinn' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'By %s', 'post author', 'jin' ),
+		esc_html_x( 'By %s', 'post author', 'jinn' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -43,7 +43,7 @@ function jin_posted_on() {
         if ( 'post' === get_post_type() || 'jetpack-portfolio' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
                 if( 'post' === get_post_type() ) {
-                    $categories_list = get_the_category_list( __( '</li><li>', 'jin' ) );
+                    $categories_list = get_the_category_list( __( '</li><li>', 'jinn' ) );
                 } elseif ( 'jetpack-portfolio' === get_post_type() ) {
                     $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', '</li><li>', '' );
                 }
@@ -52,16 +52,16 @@ function jin_posted_on() {
                 $replaced = str_replace( '<a ', '<a class="first-cat-link" ', $first_cat );
                 $the_rest = substr( $categories_list, ( $first + 4 ) );
 
-		if ( $categories_list && jin_categorized_blog() ) {
+		if ( $categories_list && jinn_categorized_blog() ) {
                         echo '<span class="cat-links">';
                         if( 'post' === get_post_type() ) {
-                            _e( 'Filed under: ', 'jin' );
+                            _e( 'Filed under: ', 'jinn' );
                         } elseif( 'jetpack-portfolio' === get_post_type() ) {
-                            _e( 'Project type: ', 'jin' );
+                            _e( 'Project type: ', 'jinn' );
                         }
                         echo $replaced;
                         if( ! empty( $the_rest ) ) {
-                            echo '<span class="jin_cat_switch"><i class="fa fa-angle-down"></i></span>';
+                            echo '<span class="jinn_cat_switch"><i class="fa fa-angle-down"></i></span>';
                             printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.     
                         }
                         echo '</span>';
@@ -70,14 +70,14 @@ function jin_posted_on() {
         
         if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) {
                 echo '<span class="comments-link">';
-                comments_popup_link( esc_html__( 'Comment', 'jin' ), esc_html__( '1 Comment', 'jin' ), esc_html__( '% Comments', 'jin' ) );
+                comments_popup_link( esc_html__( 'Comment', 'jinn' ), esc_html__( '1 Comment', 'jinn' ), esc_html__( '% Comments', 'jinn' ) );
                 echo '</span>';
         }
         
         edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'jin' ),
+			esc_html__( 'Edit %s', 'jinn' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<span class="edit-link">',
@@ -87,22 +87,22 @@ function jin_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'jin_entry_footer' ) ) :
+if ( ! function_exists( 'jinn_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function jin_entry_footer() {
+function jinn_entry_footer() {
     global $post;
     
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() || 'jetpack-portfolio' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
             if( 'post' === get_post_type() ) {
-		$categories_list = get_the_category_list( esc_html__( ', ', 'jin' ) );
+		$categories_list = get_the_category_list( esc_html__( ', ', 'jinn' ) );
             } elseif( 'jetpack-portfolio' === get_post_type() ) {
-                $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', esc_html_x(', ', 'Used between list items, there is a space after the comma.', 'jin' ), '');
+                $categories_list = get_the_term_list( $post->ID, 'jetpack-portfolio-type', '', esc_html_x(', ', 'Used between list items, there is a space after the comma.', 'jinn' ), '');
             }
-		if ( $categories_list && jin_categorized_blog() ) {
+		if ( $categories_list && jinn_categorized_blog() ) {
 			printf( '<span class="cat-links">' . $categories_list . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
@@ -119,7 +119,7 @@ function jin_entry_footer() {
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'jin' ), esc_html__( '1 Comment', 'jin' ), esc_html__( '% Comments', 'jin' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'jinn' ), esc_html__( '1 Comment', 'jinn' ), esc_html__( '% Comments', 'jinn' ) );
 		echo '</span>';
 	}
 }
@@ -130,8 +130,8 @@ endif;
  *
  * @return bool
  */
-function jin_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'jin_categories' ) ) ) {
+function jinn_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'jinn_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -143,35 +143,35 @@ function jin_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'jin_categories', $all_the_cool_cats );
+		set_transient( 'jinn_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so jin_categorized_blog should return true.
+		// This blog has more than 1 category so jinn_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so jin_categorized_blog should return false.
+		// This blog has only 1 category so jinn_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in jin_categorized_blog.
+ * Flush out the transients used in jinn_categorized_blog.
  */
-function jin_category_transient_flusher() {
+function jinn_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'jin_categories' );
+	delete_transient( 'jinn_categories' );
 }
-add_action( 'edit_category', 'jin_category_transient_flusher' );
-add_action( 'save_post',     'jin_category_transient_flusher' );
+add_action( 'edit_category', 'jinn_category_transient_flusher' );
+add_action( 'save_post',     'jinn_category_transient_flusher' );
 
 
 
 /*==============================================================================
- * JIN CUSTOM TAGS BELOW
+ * JINN CUSTOM TAGS BELOW
  =============================================================================*/
 /**
  * Fancy excerpts
@@ -182,15 +182,15 @@ function the_fancy_excerpt() {
     global $post;
     if( is_archive() ) {
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     } elseif ( is_page_template( 'page-templates/page-child-pages.php' ) ) {
         the_excerpt();
-        echo '<a class="continue-reading-arrow" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">&rarr;</a>'; 
+        echo '<a class="continue-reading-arrow" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">&rarr;</a>'; 
     } elseif ( has_excerpt() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     } elseif ( @strpos ( $post->post_content, '<!--more-->' ) ) {
         the_content();
@@ -199,7 +199,7 @@ function the_fancy_excerpt() {
     } else {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jin' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     }
 }
@@ -207,16 +207,16 @@ function the_fancy_excerpt() {
 /*
  * Customize the read-more indicator for excerpts
  */
-function jin_excerpt_more( $more ) {
+function jinn_excerpt_more( $more ) {
     return " …";
 }
-add_filter( 'excerpt_more', 'jin_excerpt_more' );
+add_filter( 'excerpt_more', 'jinn_excerpt_more' );
 
 /**
  * Add an author box below posts
  * @link http://www.wpbeginner.com/wp-tutorials/how-to-add-an-author-info-box-in-wordpress-posts/
  */
-function jin_author_box() {
+function jinn_author_box() {
     global $post;
     
     // Detect if a post author is set
@@ -272,7 +272,7 @@ function jin_author_box() {
     
 }
 
-function jin_portfolio_index_footer() {
+function jinn_portfolio_index_footer() {
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
             $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -286,11 +286,11 @@ function jin_portfolio_index_footer() {
     );
 
     $posted_on = sprintf(
-            esc_html_x( '%s', 'post date', 'jin' ),
+            esc_html_x( '%s', 'post date', 'jinn' ),
             '<span><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>'
     );
     
-    $project_type = get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '<span class="portfolio-entry-meta cat-links">', esc_html_x( ', ', 'Used between list items, there is a space after the comma.', 'jin' ), '</span>' );
+    $project_type = get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '<span class="portfolio-entry-meta cat-links">', esc_html_x( ', ', 'Used between list items, there is a space after the comma.', 'jinn' ), '</span>' );
 
     $output = '<footer class="entry-footer">';
     $output .= $posted_on;
@@ -300,15 +300,15 @@ function jin_portfolio_index_footer() {
     echo $output;
 }
 
-if ( ! function_exists( 'jin_breadcrumbs' ) ) :
+if ( ! function_exists( 'jinn_breadcrumbs' ) ) :
 /**
  * Display Post breadcrumbs when applicable.
  *
- * @since Jin 1.0
+ * @since Jinn 1.0
  * 
  * @link: https://www.branded3.com/blog/creating-a-really-simple-breadcrumb-function-for-pages-in-wordpress/
  */
-function jin_breadcrumbs() {
+function jinn_breadcrumbs() {
     
     global $post;
     
@@ -350,7 +350,7 @@ endif;
 /**
  * Social Menu
  */
-function jin_social_menu() {
+function jinn_social_menu() {
     
     if ( has_nav_menu( 'social' ) ) {
         wp_nav_menu(
@@ -404,7 +404,7 @@ function the_post_icon() {
 /**
  * Function to show the Jetpack sharing and Likes only at the designated locations in Posts and Pages
  */
-function jin_jetpack_sharing() {
+function jinn_jetpack_sharing() {
     if ( function_exists( 'sharing_display' ) ) {
         sharing_display( '', true );
     }
@@ -418,7 +418,7 @@ function jin_jetpack_sharing() {
 /**
  * Prints HTML with post navigation.
  */
-function jin_post_navigation() {
+function jinn_post_navigation() {
     // Don't print empty makrup if there's nowhere to navigate.
     $previous   = ( is_attachment() ) ? get_post ( get_post() -> post_parent ) : get_adjacent_post( false, '', true );
     $next       = get_adjacent_post( false, '', false );
@@ -428,18 +428,18 @@ function jin_post_navigation() {
     }
     ?>
     <nav class="navigation post-navigation" role="navigation">
-        <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'jin' ); ?></h1>
+        <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'jinn' ); ?></h1>
         <div class="nav-links" data-equalizer>
                 <?php
-                        previous_post_link( '<div class="nav-previous" data-equalizer-watch><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'jin' ) . '</div><h4>%link</h4></div>', '%title' );
-                        next_post_link(     '<div class="nav-next" data-equalizer-watch><div class="nav-indicator">'     . _x( 'Next Post:', 'Next post', 'jin' ) . '</div><h4>%link</h4></div>', '%title' );
+                        previous_post_link( '<div class="nav-previous" data-equalizer-watch><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
+                        next_post_link(     '<div class="nav-next" data-equalizer-watch><div class="nav-indicator">'     . _x( 'Next Post:', 'Next post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
                 ?>
         </div> <!-- .nav-links -->
     </nav> <!-- .navigation -->
     <?php
 }
 
-if ( ! function_exists( 'jin_paging_nav' ) ) :
+if ( ! function_exists( 'jinn_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
@@ -448,7 +448,7 @@ if ( ! function_exists( 'jin_paging_nav' ) ) :
  * @global WP_Query   $wp_query   WordPress Query object.
  * @global WP_Rewrite $wp_rewrite WordPress Rewrite object.
  */
-function jin_paging_nav() {
+function jinn_paging_nav() {
 	global $wp_query, $wp_rewrite;
 
 	// Don't print empty markup if there's only one page.
@@ -479,8 +479,8 @@ function jin_paging_nav() {
 		'current'  => $paged,
 		'mid_size' => 3,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '<i class="fa fa-caret-left"></i> Previous', 'jin' ),
-		'next_text' => __( 'Next <i class="fa fa-caret-right"></i>', 'jin' ),
+		'prev_text' => __( '<i class="fa fa-caret-left"></i> Previous', 'jinn' ),
+		'next_text' => __( 'Next <i class="fa fa-caret-right"></i>', 'jinn' ),
                 'type'      => 'list',
 	) );
 
@@ -488,7 +488,7 @@ function jin_paging_nav() {
 
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'jin' ); ?></h1>
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'jinn' ); ?></h1>
                 <?php echo $links; ?>
 	</nav><!-- .navigation -->
 	<?php
@@ -497,12 +497,12 @@ function jin_paging_nav() {
 endif;
 
 
-if ( ! function_exists( 'jin_copyright' ) ) :
+if ( ! function_exists( 'jinn_copyright' ) ) :
 /** 
  * Dynamic Copyright as per WPBeginner.com
  * @source: http://www.wpbeginner.com/wp-tutorials/how-to-add-a-dynamic-copyright-date-in-wordpress-footer/
  */
-function jin_copyright() {
+function jinn_copyright() {
     
     global $wpdb;
     

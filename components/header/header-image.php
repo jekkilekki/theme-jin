@@ -38,7 +38,7 @@ if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
                             'menu_id'           => 'front-menu',
                             'menu_class'        => 'small-block-grid-2 medium-block-grid-3 flip-cards',
                             'fallback_cb'       => false,
-                            'walker'            => new jin_front_page_walker(),
+                            'walker'            => new jinn_front_page_walker(),
                             'depth' => 1 
                             ) ); 
                         ?>

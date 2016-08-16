@@ -4,11 +4,11 @@ jQuery(document).ready(function($){
 
   var menu_ul = $('.main-navigation').find('ul').first();
 
-  menu_ul.children('.menu-item-has-children').children('a').append('<span class="jin_menu_switch"><i class="fa fa-caret-right"></i></span>');
+  menu_ul.children('.menu-item-has-children').children('a').append('<span class="jinn_menu_switch"><i class="fa fa-caret-right"></i></span>');
 
   // Touch friendly expanded nav
   // $(menu_ul + ' li span').click(function(event){
-  $('.jin_menu_switch').click(function(event){
+  $('.jinn_menu_switch').click(function(event){
 
     event.preventDefault();
 

@@ -54,6 +54,6 @@
             <?php the_excerpt(); ?>
         </div>
         
-        <a class="button more-link" role="button" href="<?php the_permalink(); ?>"><?php _e( 'Learn More &rarr;', 'jin' ); ?></a>
+        <a class="button more-link" role="button" href="<?php the_permalink(); ?>"><?php _e( 'Learn More &rarr;', 'jinn' ); ?></a>
 
     </div><!-- .service-item .group -->

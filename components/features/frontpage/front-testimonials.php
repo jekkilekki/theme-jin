@@ -2,7 +2,7 @@
 /**
  * The template used for displaying testimonials on index view
  *
- * @package Jin
+ * @package Jinn
  */
 ?>
 

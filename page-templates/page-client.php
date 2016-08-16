@@ -33,12 +33,12 @@ get_header(); ?>
 	
 						<div class="entry-content">
 							<?php the_content(); ?>
-							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jin' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
-                                                        <?php jin_jetpack_sharing(); ?>
+							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jinn' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+                                                        <?php jinn_jetpack_sharing(); ?>
                                                 </div><!-- .entry-content -->
 	
 						<footer class="entry-footer">
-							<?php edit_post_link( __( 'Edit', 'jin' ), '<span class="edit-link">', '</span>' ); ?>
+							<?php edit_post_link( __( 'Edit', 'jinn' ), '<span class="edit-link">', '</span>' ); ?>
 						</footer><!-- .entry-meta -->
 					</div>
 				</article><!-- #post -->
@@ -127,7 +127,7 @@ get_header(); ?>
                         ?>
 			
 		
-		<?php jin_paging_nav(); ?>
+		<?php jinn_paging_nav(); ?>
 	</div><!-- #primary-left -->
 	
 	<?php /*comments_template();*/ ?>

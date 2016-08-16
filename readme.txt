@@ -1,4 +1,4 @@
-=== Jin ===
+=== Jinn ===
 
 Contributors: automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A custom starter theme called Jin.
+A custom starter theme called Jinn.
 
 == Description ==
 
@@ -25,7 +25,7 @@ A simple theme built with Sass and Foundation
 
 = Does this theme support any plugins? =
 
-Jin includes support for Jetpack's Infinite Scroll and Site Logos, as well as other features.
+Jinn includes support for Jetpack's Infinite Scroll and Site Logos, as well as other features.
 
 == Changelog ==
 
@@ -34,5 +34,5 @@ Jin includes support for Jetpack's Infinite Scroll and Site Logos, as well as ot
 
 == Credits ==
 
-* Based on Jin http://components.underscores.me/, (C) 2015-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* Based on Jinn http://components.underscores.me/, (C) 2015-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)

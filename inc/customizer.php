@@ -1,8 +1,8 @@
 <?php
 /**
- * Jin Theme Customizer.
+ * Jinn Theme Customizer.
  *
- * @package Jin
+ * @package Jinn
  */
 
 /**
@@ -10,7 +10,7 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function jin_customize_register( $wp_customize ) {
+function jinn_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -36,8 +36,8 @@ function jin_customize_register( $wp_customize ) {
                 new WP_Customize_Color_Control(
                         $wp_customize,
                         'highlight_color', array(
-                            'label'         => __( 'Highlight Color', 'jin' ),
-                            'description'   => __( 'Change the color of site highlights, inluding links.', 'jin' ),
+                            'label'         => __( 'Highlight Color', 'jinn' ),
+                            'description'   => __( 'Change the color of site highlights, inluding links.', 'jinn' ),
                             'section'       => 'colors',
                         )
         ) );
@@ -48,7 +48,7 @@ function jin_customize_register( $wp_customize ) {
         // Show Logo with Sitename Setting
         $wp_customize->add_setting( 'show_logo_sitename', array(
             'default'           => 0,
-            'sanitize_callback' => 'jin_sanitize_checkbox',
+            'sanitize_callback' => 'jinn_sanitize_checkbox',
         ) );
         
         // Show Logo with Sitename Control
@@ -57,7 +57,7 @@ function jin_customize_register( $wp_customize ) {
                         $wp_customize,
                         'show_logo_sitename',
                         array( 
-                            'label'         => __( 'Show sitename after the logo?', 'jin' ),
+                            'label'         => __( 'Show sitename after the logo?', 'jinn' ),
                             'type'          => 'checkbox',
                             'section'       => 'title_tagline',
                         )
@@ -73,7 +73,7 @@ function jin_customize_register( $wp_customize ) {
         // Use Gradient Setting
         $wp_customize->add_setting( 'use_gradient', array(
             'default'           => 0,
-            'sanitize_callback' => 'jin_sanitize_checkbox',
+            'sanitize_callback' => 'jinn_sanitize_checkbox',
         ) );
         
         // Use Gradient Control
@@ -82,7 +82,7 @@ function jin_customize_register( $wp_customize ) {
                         $wp_customize,
                         'use_gradient',
                         array( 
-                            'label'         => __( 'Use Header Gradient?', 'jin' ),
+                            'label'         => __( 'Use Header Gradient?', 'jinn' ),
                             'type'          => 'checkbox',
                             'section'       => 'header_image',
                         )
@@ -104,8 +104,8 @@ function jin_customize_register( $wp_customize ) {
                 new WP_Customize_Color_Control(
                         $wp_customize,
                         'grad1_color', array(
-                            'label'         => __( 'Header Gradient: Top-Left Color', 'jin' ),
-                            'description'   => __( 'Set or change the upper left gradient starting color.', 'jin' ),
+                            'label'         => __( 'Header Gradient: Top-Left Color', 'jinn' ),
+                            'description'   => __( 'Set or change the upper left gradient starting color.', 'jinn' ),
                             'section'       => 'header_image',
                         )
         ) );
@@ -126,8 +126,8 @@ function jin_customize_register( $wp_customize ) {
                 new WP_Customize_Color_Control(
                         $wp_customize,
                         'grad2_color', array(
-                            'label'         => __( 'Header Gradient: Center Color', 'jin' ),
-                            'description'   => __( 'Set or change the center gradient color.', 'jin' ),
+                            'label'         => __( 'Header Gradient: Center Color', 'jinn' ),
+                            'description'   => __( 'Set or change the center gradient color.', 'jinn' ),
                             'section'       => 'header_image',
                         )
         ) );
@@ -148,8 +148,8 @@ function jin_customize_register( $wp_customize ) {
                 new WP_Customize_Color_Control(
                         $wp_customize,
                         'grad3_color', array(
-                            'label'         => __( 'Header Gradient: Bottom-Right Color', 'jin' ),
-                            'description'   => __( 'Set or change the lower right gradient ending color.', 'jin' ),
+                            'label'         => __( 'Header Gradient: Bottom-Right Color', 'jinn' ),
+                            'description'   => __( 'Set or change the lower right gradient ending color.', 'jinn' ),
                             'section'       => 'header_image',
                         )
         ) );
@@ -161,10 +161,10 @@ function jin_customize_register( $wp_customize ) {
          * Select Sidebar Layout 
          */
         // Add Sidebar Layout Section
-        $wp_customize->add_section( 'jin-options', array(
-            'title'         => __( 'Theme Options', 'jin' ),
+        $wp_customize->add_section( 'jinn-options', array(
+            'title'         => __( 'Theme Options', 'jinn' ),
             'capability'    => 'edit_theme_options',
-            'description'   => __( 'Change the default display options for the theme.', 'jin' ),
+            'description'   => __( 'Change the default display options for the theme.', 'jinn' ),
         ) );
         
         // Sidebar Layout setting
@@ -172,7 +172,7 @@ function jin_customize_register( $wp_customize ) {
                 array(
                     'default'           => 'no-sidebar',
                     'type'              => 'theme_mod',
-                    'sanitize_callback' => 'jin_sanitize_layout',
+                    'sanitize_callback' => 'jinn_sanitize_layout',
                     'transport'         => 'postMessage'
                 ) );
         
@@ -181,29 +181,29 @@ function jin_customize_register( $wp_customize ) {
                 array(
                     'settings'          => 'layout_setting',
                     'type'              => 'radio',
-                    'label'             => __( 'Sidebar position', 'jin' ),
+                    'label'             => __( 'Sidebar position', 'jinn' ),
                     'choices'           => array(
-                            'no-sidebar'    => __( 'No sidebar (default)', 'jin' ),
-                            'sidebar-right' => __( 'Sidebar right', 'jin' ),
-                            'sidebar-left'  => __( 'Sidebar left', 'jin' ),
+                            'no-sidebar'    => __( 'No sidebar (default)', 'jinn' ),
+                            'sidebar-right' => __( 'Sidebar right', 'jinn' ),
+                            'sidebar-left'  => __( 'Sidebar left', 'jinn' ),
                     ),
-                    'section'           => 'jin-options'
+                    'section'           => 'jinn-options'
                 ) );
 }
-add_action( 'customize_register', 'jin_customize_register' );
+add_action( 'customize_register', 'jinn_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function jin_customize_preview_js() {
-	wp_enqueue_script( 'jin_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20160507', true );
+function jinn_customize_preview_js() {
+	wp_enqueue_script( 'jinn_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20160507', true );
 }
-add_action( 'customize_preview_init', 'jin_customize_preview_js' );
+add_action( 'customize_preview_init', 'jinn_customize_preview_js' );
 
 /*
  * Sanitize layout options
  */
-function jin_sanitize_layout ( $value ) {
+function jinn_sanitize_layout ( $value ) {
     if ( !in_array( $value, array( 'no-sidebar', 'sidebar-right', 'sidebar-left' ) ) ) {
         $value = 'no-sidebar';
     }
@@ -220,7 +220,7 @@ function jin_sanitize_layout ( $value ) {
  * @param   bool    $checked    Whether the checkbox is checked.
  * @return  bool                Whether the checkbox is checked.
  */
-function jin_sanitize_checkbox( $checked ) {
+function jinn_sanitize_checkbox( $checked ) {
     // Boolean check
     return ( ( isset( $checked ) && true == $checked ) ? true : false );
 }
@@ -228,7 +228,7 @@ function jin_sanitize_checkbox( $checked ) {
 /*
  * Inject Customizer CSS when appropriate
  */
-function jin_customizer_css() {
+function jinn_customizer_css() {
     $highlight_color = get_theme_mod( 'highlight_color' );
     
     $use_gradient = get_theme_mod( 'use_gradient' );
@@ -258,4 +258,4 @@ function jin_customizer_css() {
     </style>
     <?php
 }
-add_action( 'wp_head', 'jin_customizer_css' );
+add_action( 'wp_head', 'jinn_customizer_css' );

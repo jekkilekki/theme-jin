@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Jin
+ * @package Jinn
  */
 
 // Access global variable directly to adjust the content width for portfolio single page
@@ -26,18 +26,18 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 				'pagelink' => '<span class="page-link">%</span>',
 			) );
 		?>
-                <?php jin_jetpack_sharing(); ?>
+                <?php jinn_jetpack_sharing(); ?>
             
         </div>
     
         <footer class="testimonial-footer">
             <?php the_title( '<h3 class="author-title"><span>', '</span></h3>' );
 			/* translators: used between list items, there is a space after the comma */
-			//$tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '', esc_html__( ', ', 'jin' ) );
+			//$tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '', esc_html__( ', ', 'jinn' ) );
 			//if ( $tags_list ) :
 		?>
             
-            <?php edit_post_link( esc_html__( 'Edit', 'jin' ), '<p class="show-hide-author label">', '</p>' ); ?>
+            <?php edit_post_link( esc_html__( 'Edit', 'jinn' ), '<p class="show-hide-author label">', '</p>' ); ?>
         </footer>
 	
 </article><!-- #post-## -->

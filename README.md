@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
 
-JIN
+JINN
 ===
 
-JIN is a simple, modern Portfolio theme with great fonts (Khula) developed by Aaron Snowberger specifically for http://aaronsnowberger.com
+JINN is a simple, modern Portfolio theme with great fonts (Khula) developed by Aaron Snowberger specifically for http://aaronsnowberger.com
 
 ## Features
 
@@ -35,9 +35,9 @@ Blockquotes can be aligned left or right (in a similar way that images are) usin
 
 ### License
 
-JIN is licensed under the GPLv2 Open Source license.
+JINN is licensed under the GPLv2 Open Source license.
 
-JIN is derived from the _s Components Portfolio (http://underscores.me) theme developed by Automattic.
+JINN is derived from the _s Components Portfolio (http://underscores.me) theme developed by Automattic.
 
 Fonts used include:
 

@@ -17,7 +17,7 @@ jQuery( document ).ready( function( $ ) {
     /*
      * For Category List dropdown in Post meta
      */
-    $( '.entry-meta .cat-links .jin_cat_switch' ).click( function( e ) {
+    $( '.entry-meta .cat-links .jinn_cat_switch' ).click( function( e ) {
           e.preventDefault();
           if( $( this ).next( 'ul' ).hasClass( 'childopen' ) ) {
               $( this ).next( 'ul' ).removeClass( 'childopen' );

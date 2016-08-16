@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 ?>
@@ -12,7 +12,7 @@
     <?php if ( '' != get_the_post_thumbnail() ) : ?>
         <div class="index-post-thumbnail">
                 <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                        <?php the_post_thumbnail( 'jinn-featured-image' ); ?>
                 </a>
         </div>
     <?php endif; ?>
@@ -22,7 +22,7 @@
 <?php else : // Set the Featured Image as the Background Image on Archive Pages ?>
         
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
-            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jin-featured-image' ); ?>);" <?php } ?>>
+            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jinn-featured-image' ); ?>);" <?php } ?>>
 
 <?php endif; ?>
         
@@ -56,16 +56,16 @@
                         
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jin' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jinn' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jin' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jinn' ),
 				'after'  => '</div>',
 			) );
                         
-                        jin_jetpack_sharing();
+                        jinn_jetpack_sharing();
                 }
 		?>
 	</div>

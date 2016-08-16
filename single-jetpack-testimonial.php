@@ -2,7 +2,7 @@
 /**
  * The Template for displaying all single projects.
  *
- * @package Jin
+ * @package Jinn
  */
 
 get_header(); ?>
@@ -28,7 +28,7 @@ get_header(); ?>
 
 			<?php get_template_part( 'components/features/testimonials/content', 'testimonial-single' ); ?>
                     
-			<?php jin_post_navigation(); ?>
+			<?php jinn_post_navigation(); ?>
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template

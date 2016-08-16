@@ -4,10 +4,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Jin
+ * @package Jinn
  */
 
-if ( ! function_exists( 'jin_setup' ) ) :
+if ( ! function_exists( 'jinn_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,7 +15,7 @@ if ( ! function_exists( 'jin_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function jin_setup() {
+function jinn_setup() {
     
         // This theme styles the visual editor to resemble the theme style.
         $font_url = 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800';
@@ -25,9 +25,9 @@ function jin_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on components, use a find and replace
-	 * to change 'jin' to the name of your theme in all the template files.
+	 * to change 'jinn' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'jin', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'jinn', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -47,15 +47,15 @@ function jin_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'jin-featured-image', 800, 9999 ); /** @TODO: or maybe 770px */
-	add_image_size( 'jin-portfolio-featured-image', 800, 9999 );
+	add_image_size( 'jinn-featured-image', 800, 9999 ); /** @TODO: or maybe 770px */
+	add_image_size( 'jinn-portfolio-featured-image', 800, 9999 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'jin' ),
-                'social'  => esc_html__( 'Social Menu', 'jin' ),
-                'footer'  => esc_html__( 'Footer Menu', 'jin' ),
-                'front'   => esc_html__( 'Front Page Menu', 'jin' )
+		'primary' => esc_html__( 'Primary Menu', 'jinn' ),
+                'social'  => esc_html__( 'Social Menu', 'jinn' ),
+                'footer'  => esc_html__( 'Footer Menu', 'jinn' ),
+                'front'   => esc_html__( 'Front Page Menu', 'jinn' )
 	) );
 
 	/*
@@ -84,7 +84,7 @@ function jin_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'jin_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'jinn_custom_background_args', array(
 		'default-color' => 'f1f1f1',
 		'default-image' => '',
 	) ) );
@@ -101,7 +101,7 @@ function jin_setup() {
         
 }
 endif;
-add_action( 'after_setup_theme', 'jin_setup' );
+add_action( 'after_setup_theme', 'jinn_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -110,20 +110,20 @@ add_action( 'after_setup_theme', 'jin_setup' );
  *
  * @global int $content_width
  */
-function jin_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'jin_content_width', 640 ); /** @TODO: or maybe 770px */
+function jinn_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'jinn_content_width', 640 ); /** @TODO: or maybe 770px */
 }
-add_action( 'after_setup_theme', 'jin_content_width', 0 );
+add_action( 'after_setup_theme', 'jinn_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function jin_widgets_init() {
+function jinn_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'jin' ),
-                'description'   => esc_html__( 'Widgets in this sidebar will appear throughout the site. It is the default sidebar if no others are in use.', 'jin' ),
+		'name'          => esc_html__( 'Sidebar', 'jinn' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will appear throughout the site. It is the default sidebar if no others are in use.', 'jinn' ),
 		'id'            => 'sidebar-1',
 		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
 		'after_widget'  => '</div>',
@@ -132,8 +132,8 @@ function jin_widgets_init() {
 	) );
         
         register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar Pages', 'jin' ),
-                'description'   => esc_html__( 'Widgets in this sidebar will only appear on Pages. It replaces the standard sidebar.', 'jin' ),
+		'name'          => esc_html__( 'Sidebar Pages', 'jinn' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on Pages. It replaces the standard sidebar.', 'jinn' ),
 		'id'            => 'sidebar-page',
 		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
 		'after_widget'  => '</div>',
@@ -142,8 +142,8 @@ function jin_widgets_init() {
 	) );
         
         register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar Custom Post Types', 'jin' ),
-                'description'   => esc_html__( 'Widgets in this sidebar will only appear on JetPack Portfolio or Testimonial Posts. It replaces the standard sidebar.', 'jin' ),
+		'name'          => esc_html__( 'Sidebar Custom Post Types', 'jinn' ),
+                'description'   => esc_html__( 'Widgets in this sidebar will only appear on JetPack Portfolio or Testimonial Posts. It replaces the standard sidebar.', 'jinn' ),
 		'id'            => 'sidebar-custom',
 		'before_widget' => '<div id="%1$s" class="widget %2$s ">',
 		'after_widget'  => '</div>',
@@ -152,8 +152,8 @@ function jin_widgets_init() {
 	) );
         
         register_sidebar( array(
-                'name'          => esc_html__( 'Footer Widgets', 'jin' ),
-                'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jin' ),
+                'name'          => esc_html__( 'Footer Widgets', 'jinn' ),
+                'description'   => esc_html__( 'Widgets appearing above the footer of the site.', 'jinn' ),
                 'id'            => 'sidebar-footer',
                 'before_widget' => '<div id="%1$s" class="widget small-6 medium-4 large-3 columns %2$s">',
                 'after_widget'  => '</div>',
@@ -161,7 +161,7 @@ function jin_widgets_init() {
                 'after_title'   => '</h2>',
         ) );
 }
-add_action( 'widgets_init', 'jin_widgets_init' );
+add_action( 'widgets_init', 'jinn_widgets_init' );
 
 /**
  * Enqueue Foundation scripts and styles.
@@ -171,13 +171,13 @@ add_action( 'widgets_init', 'jin_widgets_init' );
  * @link: http://www.justinfriebel.com/wordpress-underscores-with-the-foundation-framework-09-23-2014/
  * 
  */
-function jin_foundation_enqueue() {
+function jinn_foundation_enqueue() {
     
         /* Add Foundation 6.2 CSS */
         wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/assets/foundation/css/foundation.min.css' );    // This is the Foundation CSS
         
         /* Add Custom CSS 
-        wp_enqueue_style( 'jin-custom-style', get_stylesheet_directory_uri() . '/jin.css' );
+        wp_enqueue_style( 'jinn-custom-style', get_stylesheet_directory_uri() . '/jinn.css' );
         
         /* Add Foundation JS */
         wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/assets/foundation/js/foundation.min.js', array( 'jquery' ), true );
@@ -189,26 +189,26 @@ function jin_foundation_enqueue() {
         
         /* Add Custom Fonts */
         // wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
-        wp_enqueue_style( 'jin-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
-        wp_enqueue_style( 'fawesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
+        wp_enqueue_style( 'jinn-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
+        wp_enqueue_style( 'jinn-fawesome', get_template_directory_uri() . '/assets/fonts/font-awesome.css' );  
         
 }
-add_action( 'wp_enqueue_scripts', 'jin_foundation_enqueue' );
+add_action( 'wp_enqueue_scripts', 'jinn_foundation_enqueue' );
 
 /**
  * Enqueue scripts and styles.
  * @TODO: double-check all these scripts/styles and functionality
  */
-function jin_scripts() {
-	wp_enqueue_style( 'jin-style', get_stylesheet_uri() );
+function jinn_scripts() {
+	wp_enqueue_style( 'jinn-style', get_stylesheet_uri() );
         
         /* Include Dashicons for the front-end too */
         wp_enqueue_style( 'dashicons' );
 
 	/* Conditional stylesheet only for Front Page Template */
         if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-            // wp_enqueue_style( 'jin-front-style', get_template_directory_uri() . '/landing.css' );
-            wp_enqueue_script( 'jin-front-scripts', get_stylesheet_directory_uri() . '/assets/js/frontpage-functions.js', array( 'jquery' ), '20160515', true ); 
+            // wp_enqueue_style( 'jinn-front-style', get_template_directory_uri() . '/landing.css' );
+            wp_enqueue_script( 'jinn-front-scripts', get_stylesheet_directory_uri() . '/assets/js/frontpage-functions.js', array( 'jquery' ), '20160515', true ); 
 
             /* Slick Carousel */
             wp_enqueue_script( 'slick_carousel', get_stylesheet_directory_uri() . '/assets/js/slick/slick.min.js', array( 'jquery' ), '20160515', true ); 
@@ -217,24 +217,24 @@ function jin_scripts() {
         }
 
         /* Custom navigation script */
-	wp_enqueue_script( 'jin-navigation', get_template_directory_uri() . '/assets/js/navigation-custom.js', array(), '20120206', true );
+	wp_enqueue_script( 'jinn-navigation', get_template_directory_uri() . '/assets/js/navigation-custom.js', array(), '20120206', true );
         
         /* Toggle Main Search script */
-        wp_enqueue_script( 'jin-toggle-search', get_template_directory_uri() . '/assets/js/toggle-search.js', array( 'jquery' ), '20150925', true );
+        wp_enqueue_script( 'jinn-toggle-search', get_template_directory_uri() . '/assets/js/toggle-search.js', array( 'jquery' ), '20150925', true );
 
         /* Masonry for Footer widgets */
-        wp_enqueue_script( 'jin-masonry', get_template_directory_uri() . '/assets/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
+        wp_enqueue_script( 'jinn-masonry', get_template_directory_uri() . '/assets/js/masonry-settings.js', array( 'masonry' ), '20150925', true );
         
         /* Add dynamic back to top button */
-        wp_enqueue_script( 'jin-topbutton', get_template_directory_uri(). '/assets/js/topbutton.js', array( 'jquery' ), '20150926', true );
+        wp_enqueue_script( 'jinn-topbutton', get_template_directory_uri(). '/assets/js/topbutton.js', array( 'jquery' ), '20150926', true );
 
-	wp_enqueue_script( 'jin-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'jinn-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'jin_scripts' );
+add_action( 'wp_enqueue_scripts', 'jinn_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -263,7 +263,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * -----------------------------------------------------------------------------
- * JIN custom functions below
+ * JINN custom functions below
  * -----------------------------------------------------------------------------
  */
 
@@ -275,27 +275,27 @@ require get_template_directory() . '/inc/jetpack.php';
 /*
  * Add Excerpts to Pages
  */
-function jin_add_excerpt_to_pages() {
+function jinn_add_excerpt_to_pages() {
     add_post_type_support( 'page', 'excerpt' );
 }
-add_action( 'init', 'jin_add_excerpt_to_pages' );
+add_action( 'init', 'jinn_add_excerpt_to_pages' );
 
 /**
  * Modify Underscores nav menus to work with Foundation
  */
-function jin_nav_menu( $menu ) {
+function jinn_nav_menu( $menu ) {
     
     $menu = str_replace( 'menu-item-has-children', 'menu-item-has-children has-dropdown', $menu );
     $menu = str_replace( 'sub-menu', 'sub-menu dropdown', $menu );
     return $menu;
     
 }
-add_filter( 'wp_nav_menu', 'jin_nav_menu' );
+add_filter( 'wp_nav_menu', 'jinn_nav_menu' );
 
 /**
  * Walker Menu for Front Page nav
  */
-class jin_front_page_walker extends Walker_Nav_Menu {
+class jinn_front_page_walker extends Walker_Nav_Menu {
   
     // add classes to ul sub-menus
     function start_lvl( &$output, $depth = 0, $args = array() ) {

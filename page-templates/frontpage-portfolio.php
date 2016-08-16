@@ -2,7 +2,7 @@
 /**
  * Template Name: Front Page
  *
- * @package Jin
+ * @package Jinn
  */
 ?>
 
@@ -16,7 +16,7 @@
  * @TODO: Add CONDITIONAL statements to test for the existence of each of the pages - OR add dummy content to tell people to fill those in
  */
 
-if ( get_theme_mod( 'jin_show_front_page_notifications', '1' ) == '0' ) { ?>
+if ( get_theme_mod( 'jinn_show_front_page_notifications', '1' ) == '0' ) { ?>
     <style>
         #warnings { display: none; }
     </style>
@@ -105,7 +105,7 @@ $incomplete_section_ids = array();
                         echo '</li>';
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Service Pages', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Service Pages', 'jinn' ) . '</a>';
 
                     }
                     
@@ -133,7 +133,7 @@ $incomplete_section_ids = array();
                     wp_reset_postdata();
 
                     $incomplete_sections++;
-                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Services', 'jin' ) . '</a>';
+                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Services', 'jinn' ) . '</a>';
 
                 } 
                 ?>
@@ -168,7 +168,7 @@ $incomplete_section_ids = array();
 
                         // The Loop
                         if ( $clients_query->have_posts() ) {
-                            echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . __( 'Clients', 'jin' ) . '</a></h3>';
+                            echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . __( 'Clients', 'jinn' ) . '</a></h3>';
                             echo '<ul class="clients-list entry-content row">';
                             while ( $clients_query->have_posts() ) : $clients_query->the_post();
 
@@ -180,17 +180,17 @@ $incomplete_section_ids = array();
                         } else {
                             // No 'Clients' Child Pages found
                             $incomplete_sections++;
-                            $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Client Pages', 'jin' ) . '</a>';
+                            $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Client Pages', 'jinn' ) . '</a>';
                         } ?>
                     
-                        <!--<a class="button more-link" role="button" href="/clients/"><?php // _e( 'View full list of Clients &rarr;', 'jin' ); ?></a>-->
+                        <!--<a class="button more-link" role="button" href="/clients/"><?php // _e( 'View full list of Clients &rarr;', 'jinn' ); ?></a>-->
                     </section><!-- #clients -->
                 
                 <?php
                 } else {
                     // No 'Clients' Page found
                     $incomplete_sections++;
-                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Clients', 'jin' ) . '</a>';
+                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Clients', 'jinn' ) . '</a>';
                 }
                 // Restore original Post Data
                 wp_reset_postdata();
@@ -248,7 +248,7 @@ $incomplete_section_ids = array();
                     } else {
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: About', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: About', 'jinn' ) . '</a>';
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -275,7 +275,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
                         <section id="latest-projects" class="group">
 
-                            <h2 class="widget-title front-page-title"><a href="/portfolio/"><?php _e( 'Latest Projects', 'jin' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="/portfolio/"><?php _e( 'Latest Projects', 'jinn' ); ?></a></h2>
                             <div class="front-page-projects archive row">
 
                             <?php  
@@ -292,13 +292,13 @@ $incomplete_section_ids = array();
                             ?>
 
                             </div>
-                            <a class="button more-link" role="button" href="/portfolio/"><?php _e( 'View Full Portfolio &rarr;', 'jin' ); ?></a>
+                            <a class="button more-link" role="button" href="/portfolio/"><?php _e( 'View Full Portfolio &rarr;', 'jinn' ); ?></a>
                         </section><!-- #latest-work -->
 
                     <?php
                     } else {
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Portfolio Projects', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Portfolio Projects', 'jinn' ) . '</a>';
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -371,7 +371,7 @@ $incomplete_section_ids = array();
                     } else {
                         
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Testimonials', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Testimonials', 'jinn' ) . '</a>';
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -398,7 +398,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
 
                         <section id="blog">
-                            <h2 class="widget-title front-page-title"><a href="/blog/"><?php _e( 'Latest Articles', 'jin' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="/blog/"><?php _e( 'Latest Articles', 'jinn' ); ?></a></h2>
                             <div class="front-page-blog archive row">
 
                             <?php
@@ -412,7 +412,7 @@ $incomplete_section_ids = array();
                             ?>
                                 
                             </div>
-                            <a class="button more-link" role="button" href="/blog/"><?php _e( 'See More Articles &rarr;', 'jin' ); ?></a>
+                            <a class="button more-link" role="button" href="/blog/"><?php _e( 'See More Articles &rarr;', 'jinn' ); ?></a>
                         </section><!-- #blog -->
 
                     <?php
@@ -420,7 +420,7 @@ $incomplete_section_ids = array();
                         get_template_part( 'components/post/content', 'none' );
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Blog', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Blog', 'jinn' ) . '</a>';
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -451,7 +451,7 @@ $incomplete_section_ids = array();
                     } else {
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Contact', 'jin' ) . '</a>';
+                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Contact', 'jinn' ) . '</a>';
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -464,7 +464,7 @@ $incomplete_section_ids = array();
                     if ( $incomplete_sections > 0 && is_user_logged_in() ) {
                         echo '<section id="warnings">';
                         
-                        echo '<h2 class="page-title">' . __( 'Notifications', 'jin' ) . '</h2>';
+                        echo '<h2 class="page-title">' . __( 'Notifications', 'jinn' ) . '</h2>';
                         echo '<div class="entry-content row">';
                         echo "<h4>You have $incomplete_sections incomplete Front Page sections.</h4>"; // @TODO sprintf here
                         echo '<p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a>:'; // @TODO sprintf here

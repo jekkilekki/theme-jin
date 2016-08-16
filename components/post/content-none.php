@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 ?>
@@ -13,9 +13,9 @@
 	<header class="entry-header">
 		<h1 class="entry-title">
                     <?php 
-                    if ( is_404() ) { esc_html_e( 'Nothing Found', 'jin' ); }
-                    else if ( is_search() ) { printf( _e( 'Nothing found for <ins>', 'jin' ) . get_search_query() . '</ins>' ); } 
-                    else { esc_html_e( 'Nothing found', 'jin' ); }
+                    if ( is_404() ) { esc_html_e( 'Nothing Found', 'jinn' ); }
+                    else if ( is_search() ) { printf( _e( 'Nothing found for <ins>', 'jinn' ) . get_search_query() . '</ins>' ); } 
+                    else { esc_html_e( 'Nothing found', 'jinn' ); }
                     ?>
                 </h1>
 	</header><!-- .page-header -->
@@ -23,21 +23,21 @@
 	<div class="entry-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-			<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'jin' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+			<p><?php printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'jinn' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 		<?php elseif ( is_404() ) : ?>
                         
-                        <p><?php printf( __( 'Are you lost? Try another search below or click one of the latest posts.', 'jin' ) ); ?></p>
+                        <p><?php printf( __( 'Are you lost? Try another search below or click one of the latest posts.', 'jinn' ) ); ?></p>
                         <?php get_search_form(); ?>
                              
                 <?php elseif ( is_search() ) : ?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'jin' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'jinn' ); ?></p>
 			<?php get_search_form(); ?>
 
 		<?php else : ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'jin' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'jinn' ); ?></p>
 			<?php get_search_form(); ?>
 
 		<?php endif; ?>

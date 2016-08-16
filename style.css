@@ -1,5 +1,5 @@
 /*
-Theme Name:         Jin
+Theme Name:         Jinn
 Theme URI:          https://github.com/jekkilekki/theme-jin
 Author:             Aaron Snowberger
 Author URI:         http://aaronsnowberger.com
@@ -7,15 +7,15 @@ Description:        A simple portfolio theme built with Sass and Foundation
 Version:            2.0.2
 License:            GNU General Public License v2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:        jin
-Tags:               white, blue, light, one-column, two-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain:        jinn
+Tags:               one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 GitHub Theme URI:   https://github.com/jekkilekki/theme-jin
 GitHub Branch:      master
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-Jin (Components) is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Jinn (Components) is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
@@ -44,7 +44,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Infinite scroll
 # Media
 	## Galleries
-# Jin
+# Jinn
 --------------------------------------------------------------*/
 /* Custom vars for this theme */
 /**
@@ -1463,7 +1463,7 @@ object {
 }
 
 /*--------------------------------------------------------------
-# Jin
+# Jinn
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Sliding panel
@@ -1500,7 +1500,7 @@ object {
 # Infinite scroll
 # Media
 	## Galleries
-# Jin
+# Jinn
 
 /*--------------------------------------------------------------
 # Normalize
@@ -2108,7 +2108,7 @@ input[type="submit"]:active,
 }
 
 /*--------------------------------------------------------------
-# Jin
+# Jinn
 --------------------------------------------------------------*/
 .lead-in {
   font-size: 1.2rem;
@@ -2937,7 +2937,7 @@ ul, ol {
   font-weight: 600;
 }
 
-.entry-meta .cat-links .jin_cat_switch {
+.entry-meta .cat-links .jinn_cat_switch {
   padding: 0 0 0 5px;
 }
 

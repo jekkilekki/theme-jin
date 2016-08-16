@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 ?>
@@ -12,7 +12,7 @@
     <?php if ( '' != get_the_post_thumbnail() ) : ?>
         <div class="index-post-thumbnail">
                 <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                        <?php the_post_thumbnail( 'jinn-featured-image' ); ?>
                 </a>
         </div>
     <?php endif; ?>
@@ -22,7 +22,7 @@
 <?php else : // Set the Featured Image as the Background Image on Archive Pages ?>
         
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
-            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jin-featured-image' ); ?>);" <?php } ?>>
+            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jinn-featured-image' ); ?>);" <?php } ?>>
 
 <?php endif; ?>
         
@@ -36,11 +36,11 @@
                     } else {
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jin' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'jinn' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
                     }
-                    jin_jetpack_sharing();
+                    jinn_jetpack_sharing();
                     
 		?>
 	</div><!-- .entry-content -->
@@ -52,13 +52,13 @@
                     <?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
                     <?php if ( 'post' === get_post_type() ) : ?>
                     <div class="entry-meta">
-                            <?php jin_posted_on(); ?>
+                            <?php jinn_posted_on(); ?>
                     </div><!-- .entry-meta -->
                     <?php endif; ?>
             </header><!-- .entry-header -->
 
             <footer class="entry-footer group">
-                    <?php jin_entry_footer(); ?>
+                    <?php jinn_entry_footer(); ?>
             </footer><!-- .entry-footer -->
         <?php 
             endif;

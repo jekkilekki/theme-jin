@@ -11,33 +11,33 @@
 	</a>
 	<?php endif; // End header image check. ?>
  *
- * @package Jin
+ * @package Jinn
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses jin_header_style()
+ * @uses jinn_header_style()
  */
-function jin_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'jin_custom_header_args', array(
+function jinn_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'jinn_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => 'ffffff',
 		'width'                  => 2000,
 		'height'                 => 600,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'jin_header_style',
+		'wp-head-callback'       => 'jinn_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'jin_custom_header_setup' );
+add_action( 'after_setup_theme', 'jinn_custom_header_setup' );
 
-if ( ! function_exists( 'jin_header_style' ) ) :
+if ( ! function_exists( 'jinn_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see jin_custom_header_setup().
+ * @see jinn_custom_header_setup().
  */
-function jin_header_style() {
+function jinn_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -70,4 +70,4 @@ function jin_header_style() {
 	</style>
 	<?php
 }
-endif; // jin_header_style
+endif; // jinn_header_style

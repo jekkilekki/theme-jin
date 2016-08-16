@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package Jin
+ * @package Jinn
  */
 
 get_header(); ?>
@@ -39,8 +39,8 @@ get_header(); ?>
 
 			get_template_part( 'components/post/content', get_post_format() );
 
-			jin_post_navigation();
-                        jin_author_box();
+			jinn_post_navigation();
+                        jinn_author_box();
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

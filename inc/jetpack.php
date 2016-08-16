@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.me/
  *
- * @package Jin
+ * @package Jinn
  */
 
 /**
@@ -13,12 +13,12 @@
  * See: https://jetpack.me/support/infinite-scroll/
  * See: https://jetpack.me/support/responsive-videos/
  */
-function jin_jetpack_setup() {
+function jinn_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'footer_widgets'=> 'sidebar-1',
                 'container'     => 'post-archives',
-		'render'	=> 'jin_infinite_scroll_render',
+		'render'	=> 'jinn_infinite_scroll_render',
 		'footer'	=> 'colophon',
                 'post_per_page' => 8,
 	) );
@@ -30,8 +30,8 @@ function jin_jetpack_setup() {
 	add_theme_support( 'jetpack-social-menu' );
 
 	// Add theme support for site logos
-	add_image_size( 'jin-logo', 200, 200 );
-	add_theme_support( 'site-logo', array( 'size' => 'jin-logo' ) );
+	add_image_size( 'jinn-logo', 200, 200 );
+	add_theme_support( 'site-logo', array( 'size' => 'jinn-logo' ) );
 
 	// Add theme support for JetPack Portfolio
 	add_theme_support( 'jetpack-portfolio' );
@@ -39,22 +39,22 @@ function jin_jetpack_setup() {
         // Add theme support for JetPack Testimonial
         add_theme_support( 'jetpack-testimonial' );
 }
-add_action( 'after_setup_theme', 'jin_jetpack_setup' );
+add_action( 'after_setup_theme', 'jinn_jetpack_setup' );
 
 /**
  * Add Custom Fields to JetPack Custom Content Types
  */
-function jin_jetpack_add_cf_support() {
+function jinn_jetpack_add_cf_support() {
     add_post_type_support( 'jetpack-portfolio', 'custom-fields' );
     add_post_type_support( 'jetpack-testimonial', 'custom-fields' );
 }
-add_action( 'init', 'jin_jetpack_add_cf_support' );
+add_action( 'init', 'jinn_jetpack_add_cf_support' );
 
 /**
  * Make Custom Fields hidden by default in JetPack Portfolios and Testimonials
  * @link    https://www.vanpattenmedia.com/2014/code-snippet-hide-post-meta-boxes-wordpress
  */
-function jin_jetpack_default_hide_cf( $hidden, $screen ) {
+function jinn_jetpack_default_hide_cf( $hidden, $screen ) {
     // Grab the current post type
     $post_type = $screen->post_type;
     
@@ -71,12 +71,12 @@ function jin_jetpack_default_hide_cf( $hidden, $screen ) {
     // If we are NOT on a JetPack Custom Content Type, use the original defaults
     return $hidden;
 }
-add_action( 'default_hidden_meta_boxes', 'jin_jetpack_default_hide_cf', 10, 2 );
+add_action( 'default_hidden_meta_boxes', 'jinn_jetpack_default_hide_cf', 10, 2 );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function jin_infinite_scroll_render() {
+function jinn_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
@@ -92,7 +92,7 @@ function jin_infinite_scroll_render() {
 /**
  * Return early if Site Logo is not available.
  */
-function jin_the_site_logo() {
+function jinn_the_site_logo() {
         if ( function_exists( 'the_custom_logo' ) ) {
                 the_custom_logo();
         } else if ( function_exists( 'jetpack_the_site_logo' ) ) {
@@ -102,8 +102,8 @@ function jin_the_site_logo() {
 	}
 }
 
-if( !function_exists( 'jin_social_menu' ) ) :
-function jin_social_menu() {
+if( !function_exists( 'jinn_social_menu' ) ) :
+function jinn_social_menu() {
 	if ( ! function_exists( 'jetpack_social_menu' ) ) {
 		return;
 	} else {
@@ -115,12 +115,12 @@ endif;
 /**
  * Add Post Type Support for JetPack Custom Post Types
  */
-function jin_add_jetpack_testimonial_taxonomies() {
+function jinn_add_jetpack_testimonial_taxonomies() {
     //if( ) {
         register_taxonomy_for_object_type( 'category', 'jetpack-testimonial' );
     //}
 }
-add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
+add_action( 'init', 'jinn_add_jetpack_testimonial_taxonomies' );
 
 /**
  * Add Even/Odd classes to various Posts
@@ -130,7 +130,7 @@ add_action( 'init', 'jin_add_jetpack_testimonial_taxonomies' );
  */
 global $current_class;
 $current_class = 'odd';
-function jin_odd_even_post_class( $classes ) {
+function jinn_odd_even_post_class( $classes ) {
     if( get_post_type( get_the_ID() ) === 'jetpack-testimonial' ) {
         global $current_class;
         $classes[] = $current_class;
@@ -138,7 +138,7 @@ function jin_odd_even_post_class( $classes ) {
     }
     return $classes;
 }
-add_filter( 'post_class', 'jin_odd_even_post_class' );
+add_filter( 'post_class', 'jinn_odd_even_post_class' );
 
 /**
  * Move JetPack Share and Like buttons

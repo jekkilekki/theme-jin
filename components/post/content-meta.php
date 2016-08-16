@@ -1,3 +1,3 @@
 		<div class="entry-meta">
-			<?php jin_posted_on(); ?>
+			<?php jinn_posted_on(); ?>
 		</div><!-- .entry-meta -->

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Jin
+ * @package Jinn
  */
 
 if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-custom' ) || is_active_sidebar( 'sidebar-page' ) ) :

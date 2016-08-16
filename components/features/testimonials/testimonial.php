@@ -1,7 +1,7 @@
 <?php
 /* The template for displaying portfolio items
  *
- * @package Jin
+ * @package Jinn
  */
 
 				if ( get_query_var( 'paged' ) ) :
@@ -33,7 +33,7 @@
 
 				</div>
 				<?php
-                                        jin_post_navigation();
+                                        jinn_post_navigation();
 					//the_posts_navigation();
 					wp_reset_postdata();
 				?>
@@ -42,16 +42,16 @@
 
 				<section class="no-results not-found">
 					<header class="page-header">
-						<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'jin' ); ?></h1>
+						<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'jinn' ); ?></h1>
 					</header>
 					<div class="page-content">
 						<?php if ( current_user_can( 'publish_posts' ) ) : ?>
 
-							<p><?php printf( wp_kses( __( 'Ready to add your first testimonial? <a href="%1$s">Get started here</a>.', 'jin' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php?post_type=jetpack-testimonial' ) ) ); ?></p>
+							<p><?php printf( wp_kses( __( 'Ready to add your first testimonial? <a href="%1$s">Get started here</a>.', 'jinn' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php?post_type=jetpack-testimonial' ) ) ); ?></p>
 
 						<?php else : ?>
 
-							<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'jin' ); ?></p>
+							<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'jinn' ); ?></p>
 							<?php get_search_form(); ?>
 
 						<?php endif; ?>

@@ -35,7 +35,7 @@ get_header(); ?>
                         <?php if ( '' != get_the_post_thumbnail() ) : ?>
                             <div class="index-post-thumbnail">
                                     <a href="<?php the_permalink(); ?>">
-                                            <?php the_post_thumbnail( 'jin-featured-image' ); ?>
+                                            <?php the_post_thumbnail( 'jinn-featured-image' ); ?>
                                     </a>
                             </div>
                         <?php endif; ?>
@@ -84,7 +84,7 @@ get_header(); ?>
                                         edit_post_link(
                                                 sprintf(
                                                         /* translators: %s: Name of current post */
-                                                        esc_html__( 'Edit %s', 'jin' ),
+                                                        esc_html__( 'Edit %s', 'jinn' ),
                                                         the_title( '<span class="screen-reader-text">"', '"</span>', false )
                                                 ),
                                                 '<span class="edit-link">',

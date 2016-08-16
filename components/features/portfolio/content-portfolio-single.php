@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Jin
+ * @package Jinn
  */
 
 // Access global variable directly to adjust the content width for portfolio single page
@@ -20,7 +20,7 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
            
                 <div class="entry-meta">
-                    <?php jin_posted_on(); ?>
+                    <?php jinn_posted_on(); ?>
                 </div>
         </header>
 	<div class="entry-content">
@@ -32,9 +32,9 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 				'pagelink' => '<span class="page-link">%</span>',
 			) );
 		?>
-                <?php jin_jetpack_sharing(); ?>
+                <?php jinn_jetpack_sharing(); ?>
 	</div>
 	<footer class="entry-footer">
-		<?php jin_entry_footer(); ?>
+		<?php jinn_entry_footer(); ?>
 	</footer>
 </article><!-- #post-## -->

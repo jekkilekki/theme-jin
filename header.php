@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Jin
+ * @package Jinn
  */
 
 ?><!DOCTYPE html>
@@ -46,7 +46,7 @@
         
 <?php } ?>
     
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jin' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'jinn' ); ?></a>
         
         <?php get_template_part( 'components/header/header', 'image' ); ?>
         
@@ -64,7 +64,7 @@
                     <div class="site-branding">
                     <?php 
                     if ( has_custom_logo() || jetpack_has_site_logo() ) {
-                        jin_the_site_logo(); 
+                        jinn_the_site_logo(); 
                     }
                     if ( !has_custom_logo() && !jetpack_has_site_logo() || ( has_custom_logo() && get_theme_mod( 'show_logo_sitename' ) === true ) ) { ?>
                     
@@ -81,7 +81,7 @@
 	
                 <div class="top-bar-right">
                     <?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
-                    <?php // jin_social_menu(); ?>
+                    <?php // jinn_social_menu(); ?>
                 </div>
                 
                 <div id="search-container">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="search-toggle">
                     <i class="fa fa-search"></i>
-                    <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jin' ); ?></a>
+                    <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jinn' ); ?></a>
                 </div>
                 
             </div> <!-- End Foundation row -->

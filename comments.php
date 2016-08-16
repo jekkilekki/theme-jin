@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Jin
+ * @package Jinn
  */
 
 /*
@@ -31,7 +31,7 @@ if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought', '%1$s thoughts', get_comments_number(), 'jin' ) ),
+					esc_html( _n( 'One thought', '%1$s thoughts', get_comments_number(), 'jinn' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -40,11 +40,11 @@ if ( have_comments() ) : ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jin' ); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jinn' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jin' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jin' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jinn' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jinn' ) ); ?></div>
 
 			</div>
 		</nav>
@@ -61,11 +61,11 @@ if ( have_comments() ) : ?>
 		</ol>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jin' ); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'jinn' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jin' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jin' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'jinn' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'jinn' ) ); ?></div>
 
 			</div>
 		</nav>
@@ -78,7 +78,7 @@ if ( have_comments() ) : ?>
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'jin' ); ?></p>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'jinn' ); ?></p>
 	<?php
 	endif;
 
