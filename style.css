@@ -806,7 +806,7 @@ table {
 /* collapsed nav menu */
 @media (max-width: 60em) {
   .top-bar-title {
-    margin-left: 3rem;
+    margin-left: 5rem;
   }
   .top-bar-right {
     position: absolute;
@@ -2218,8 +2218,7 @@ ul, ol {
 .hentry,
 .comments-area,
 .page-content,
-.site-main .posts-navigation,
-.paging-navigation li {
+.site-main .posts-navigation {
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
@@ -2283,26 +2282,45 @@ ul, ol {
 
 .paging-navigation {
   margin-bottom: 5rem;
-}
-
-.paging-navigation ul {
-  margin: 0;
   text-align: center;
 }
 
+.paging-navigation ul {
+  margin: 0 auto;
+  display: inline-block;
+  border: 0.05rem solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
 .paging-navigation li {
+  display: inline-block;
+  list-style: none;
+}
+
+.paging-navigation li a {
   background: -webkit-linear-gradient(#FFF, #FBFBFC);
   background: linear-gradient(#FFF, #FBFBFC);
   font-size: 0.9rem;
-  display: inline-block;
-  list-style: none;
+  color: inherit;
   margin: 0 -0.14rem;
   padding: 0.75rem 1.618rem 0.5rem;
+  border-bottom: 0;
 }
 
-.paging-navigation li:hover {
+.paging-navigation li a:hover {
+  color: #00ACDF;
   background: -webkit-linear-gradient(#FCFCFD, #F3F4F5);
   background: linear-gradient(#FCFCFD, #F3F4F5);
+}
+
+.paging-navigation li span.page-numbers {
+  background: -webkit-linear-gradient(#FFF, #FBFBFC);
+  background: linear-gradient(#FFF, #FBFBFC);
+  margin: 0 -0.14rem;
+  padding: 0.75rem 1.618rem 0.5rem;
+  font-size: 0.9rem;
+  display: inline-block;
+  color: #9e9e9e;
 }
 
 .paging-navigation li:first-child {
@@ -2311,14 +2329,6 @@ ul, ol {
 
 .paging-navigation li:last-child {
   border-radius: 0 5px 5px 0;
-}
-
-.paging-navigation li a {
-  color: inherit;
-}
-
-.paging-navigation li a:hover {
-  color: #00ACDF;
 }
 
 .paging-navigation .current {
@@ -2382,6 +2392,7 @@ ul, ol {
   margin-right: 0.625em;
   width: -webkit-calc( 33.3333% - 1.25em);
   width: calc( 33.3333% - 1.25em);
+  float: left;
 }
 
 @media screen and (max-width: 60em) {
@@ -2949,6 +2960,36 @@ ul, ol {
   font-weight: 400;
 }
 
+.entry-meta .tip {
+  position: relative;
+  color: gainsboro;
+  padding-right: 0.5em;
+}
+
+.entry-meta .tip .tooltip {
+  font-family: Khula, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-size: 0.9rem;
+  text-align: left;
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  width: 50vh;
+  max-width: 50vh !important;
+  z-index: 0;
+  background-color: transparent;
+  color: #9e9e9e;
+  padding: 0;
+  display: none;
+}
+
+.entry-meta .tip .tooltip:before {
+  display: none;
+}
+
+.entry-meta .tip:hover .tooltip {
+  display: block;
+}
+
 .vcard {
   border: none;
   padding: 0;
@@ -3016,7 +3057,17 @@ ul, ol {
 }
 
 .entry-content a, .entry-content a:link, .entry-content a:visited {
-  border-bottom: 1px solid #00ACDF;
+  position: relative;
+}
+
+.entry-content a:after, .entry-content a:link:after, .entry-content a:visited:after {
+  border-bottom: 1px solid #00acdf;
+  position: absolute;
+  display: block;
+  content: '';
+  width: 100%;
+  bottom: 3px;
+  left: 0;
 }
 
 .entry-content a:hover, .entry-content a:active {
@@ -3048,6 +3099,10 @@ ul, ol {
   background: -webkit-linear-gradient(#FCFCFD, #F3F4F5);
   background: linear-gradient(#FCFCFD, #F3F4F5);
   color: #0098c6;
+}
+
+.entry-content a.more-link:after {
+  display: none;
 }
 
 .entry-content p {
@@ -4765,5 +4820,3 @@ ul.follow a:hover {
 }
 
 /* Custom styles for the front page only */
-
-/*# sourceMappingURL=style.css.map */

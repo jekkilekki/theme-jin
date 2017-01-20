@@ -370,8 +370,8 @@ ul, ol {
 .comments-area, 
 /*.page-header,*/ 
 .page-content, 
-.site-main .posts-navigation,
-.paging-navigation li {
+.site-main .posts-navigation
+/* .paging-navigation li */ {
     @include guide;
     @include main_panel();
     box-shadow: $color__box-shadow;
@@ -426,31 +426,41 @@ ul, ol {
 
 .paging-navigation {
     margin-bottom: 5rem;
+    text-align: center;
     ul {
-        margin: 0;
-        text-align: center;
+        margin: 0 auto;
+        display: inline-block;
+        border: 0.05rem solid white;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
     }
     li {
-        background: $color__background-button;
-        font-size: 18*$px;
         display: inline-block;
         list-style: none;
-        margin: 0 -0.14rem;
-        padding: 0.75rem $phi * 1rem 0.5rem;
-        &:hover {
-            background: $color__background-button-hover;
+        a {
+            background: $color__background-button;
+            font-size: 18*$px;
+            color: inherit;
+            margin: 0 -0.14rem;
+            padding: 0.75rem $phi * 1rem 0.5rem;  
+            border-bottom: 0;
+            &:hover {
+                color: $color__link;
+                background: $color__background-button-hover;
+            }
+        }  
+        span.page-numbers {
+            background: $color__background-button;
+            margin: 0 -0.14rem;
+            padding: 0.75rem $phi * 1rem 0.5rem; 
+            font-size: 18*$px;
+            display: inline-block;
+            color: $color__text-sub-panel;
         }
         &:first-child {
             border-radius: 5px 0 0 5px;
         }
         &:last-child { 
             border-radius: 0 5px 5px 0;
-        }
-        a {
-            color: inherit;
-            &:hover {
-                color: $color__link;
-            }
         }
     }
     .current {
@@ -498,6 +508,7 @@ ul, ol {
     margin-left: 0.625em;
     margin-right: 0.625em;
     width: calc( 33.3333% - 1.25em );
+    float: left;
 }
 @media screen and (max-width: 60em) {
     #secondary.no-sidebar .widget {
@@ -895,6 +906,32 @@ ul, ol {
     .current {
         font-weight: 400;
     }
+    .tip {
+        position: relative;
+        color: gainsboro;
+        padding-right: 0.5em;
+        .tooltip {
+            font-family: $font__main;
+            font-size: 0.9rem;
+            text-align: left;
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            width: 50vh;
+            max-width: 50vh!important;
+            z-index: 0;
+            background-color: transparent;
+            color: $color__text-sub-panel;
+            padding: 0;
+            display: none;
+            &:before {
+                display: none;
+            }
+        }
+        &:hover .tooltip {
+            display: block;
+        }
+    }
 }
 .vcard {
     border: none;
@@ -978,6 +1015,9 @@ ul, ol {
         &:hover, &:focus, &:active {
             background: linear-gradient(#FCFCFD, #F3F4F5);
             color: $color__link-hover;
+        }
+        &:after {
+            display: none;
         }
     }
     p {

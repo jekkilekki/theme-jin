@@ -16,10 +16,11 @@ function jinn_posted_on() {
     
 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = esc_attr__( 'Posted: ', 'jinn' ) . 
-                        '<time class="entry-date published" datetime="%1$s">%2$s</time>' .
-                        esc_attr__( ' Updated: ', 'jinn' ) . 
-                        '<time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = '<i class="fa fa-refresh tip"><span class="tooltip">' .
+                            esc_attr__( 'First posted: ', 'jinn' ) .
+                            '<time class="entry-date published" datetime="%1$s">%2$s</time></span>' . 
+                        '</i>' . 
+                        '<time class="entry-date published updated" datetime="%3$s">%4$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
@@ -32,7 +33,11 @@ function jinn_posted_on() {
 	$posted_on = sprintf(
 		'<a href="%1$s" rel="bookmark">%2$s</a>',
                 esc_url( get_permalink() ),
-                wp_kses( $time_string, array( 'time' => array( 'class' => array(), 'datetime' => array() ) ) )
+                wp_kses( $time_string, array( 
+                    'i' => array( 'class' => array() ), 
+                    'span' => array( 'class' => array() ),
+                    'time' => array( 'class' => array(), 'datetime' => array() ) 
+                    ) )
 	);
 
 	$byline = sprintf(
@@ -281,7 +286,7 @@ function jinn_author_box() {
         $author_details .= '<p class="show-hide-author label">Hide</p>';
         $author_details .= '</aside>';
         
-        echo esc_html( $author_details );
+        echo wp_kses_post( $author_details );
 
     }
     
@@ -290,10 +295,11 @@ function jinn_author_box() {
 function jinn_portfolio_index_footer() {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
     if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-            $time_string = esc_attr__( 'Posted: ', 'jinn' ) . 
-                    '<time class="entry-date published" datetime="%1$s">%2$s</time>' .
-                    esc_attr__( ' Updated: ', 'jinn' ) . 
-                    '<time class="updated" datetime="%3$s">%4$s</time>';
+            $time_string = '<i class="fa fa-refresh tip"><span class="tooltip">' .
+                        esc_attr__( 'First posted: ', 'jinn' ) .
+                        '<time class="entry-date published" datetime="%1$s">%2$s</time></span>' . 
+                    '</i>' . 
+                    '<time class="entry-date published updated" datetime="%3$s">%4$s</time>';
     }
 
     $time_string = sprintf( $time_string,
@@ -306,7 +312,11 @@ function jinn_portfolio_index_footer() {
     $posted_on = sprintf(
             '<span><a href="%1$s" rel="bookmark">%2$s</a></span>',
             esc_url( get_permalink() ),
-            wp_kses( $time_string, array( 'time' => array( 'class' => array(), 'datetime' => array() ) ) )
+            wp_kses( $time_string, array( 
+                    'i' => array( 'class' => array() ), 
+                    'span' => array( 'class' => array() ),
+                    'time' => array( 'class' => array(), 'datetime' => array() ) 
+                    ) )
     );
     
     $project_type = get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '<span class="portfolio-entry-meta cat-links">', esc_html_x( ', ', 'Used between list items, there is a space after the comma.', 'jinn' ), '</span>' );
@@ -316,7 +326,7 @@ function jinn_portfolio_index_footer() {
     $output .= $project_type;
     $output .= '</footer>';
     
-    echo esc_html( $output );
+    echo wp_kses_post( $output );
 }
 
 if ( ! function_exists( 'jinn_breadcrumbs' ) ) :
@@ -360,7 +370,7 @@ function jinn_breadcrumbs() {
     $output .= $page_title;
     $output .= "</div>";
     
-    echo esc_html( $output );
+    echo wp_kses_post( $output );
     
     }
 
@@ -417,7 +427,7 @@ function jinn_post_icon() {
 }
 
 function jinn_the_post_icon() {
-    echo esc_html( jinn_post_icon() );
+    echo wp_kses( jinn_post_icon(), array( 'span' => array( 'class' => array() ) ) );
 }
 
 /**
@@ -503,12 +513,12 @@ function jinn_paging_nav() {
                 'type'      => 'list',
 	) );
 
-	if ( $links ) :
+	if ( $links ) : 
 
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
 		<h1 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'jinn' ); ?></h1>
-                <?php echo esc_html( $links ); ?>
+                <?php echo wp_kses_post( $links ); ?>
 	</nav><!-- .navigation -->
 	<?php
 	endif;

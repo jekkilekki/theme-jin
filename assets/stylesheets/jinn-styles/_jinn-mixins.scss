@@ -341,9 +341,18 @@
 }
 @mixin content_link() {
     a, a:link, a:visited {
-        border-bottom: 1px solid $color__link;
+       position: relative;
         // background-color: lighten($color__background-sub-panel, 2%);
         // color: $color__text-main;
+        &:after {
+            border-bottom: 1px solid #00acdf;
+            position: absolute;
+            display: block;
+            content: '';
+            width: 100%;
+            bottom: 3px;
+            left: 0;
+        }
     }
     a:hover, a:active {
         background-color: $color__background-sub-panel;
