@@ -116,9 +116,9 @@ endif;
  * Add Post Type Support for JetPack Custom Post Types
  */
 function jinn_add_jetpack_testimonial_taxonomies() {
-    //if( ) {
+
         register_taxonomy_for_object_type( 'category', 'jetpack-testimonial' );
-    //}
+
 }
 add_action( 'init', 'jinn_add_jetpack_testimonial_taxonomies' );
 
@@ -144,24 +144,11 @@ add_filter( 'post_class', 'jinn_odd_even_post_class' );
  * Move JetPack Share and Like buttons
  * @link https://jetpack.com/2013/06/10/moving-sharing-icons/
  */
-function jptweak_remove_share() {
+function jinn_jptweak_remove_share() {
     remove_filter( 'the_content', 'sharing_display',19 );
     remove_filter( 'the_excerpt', 'sharing_display',19 );
     if ( class_exists( 'Jetpack_Likes' ) ) {
         remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
     }
 }
-add_action( 'loop_start', 'jptweak_remove_share' );
-
-/*
- * Add this in the files where you want Sharing Buttons to appear
- *
-if ( function_exists( 'sharing_display' ) ) {
-    sharing_display( '', true );
-}
- 
-if ( class_exists( 'Jetpack_Likes' ) ) {
-    $custom_likes = new Jetpack_Likes;
-    echo $custom_likes->post_likes( '' );
-}
- */
+add_action( 'loop_start', 'jinn_jptweak_remove_share' );

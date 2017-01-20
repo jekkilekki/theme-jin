@@ -1,5 +1,5 @@
 <?php
-/* The template for displaying portfolio items
+/* The template for displaying testimonial items
  *
  * @package Jinn
  */
@@ -34,7 +34,6 @@
 				</div>
 				<?php
                                         jinn_post_navigation();
-					//the_posts_navigation();
 					wp_reset_postdata();
 				?>
 

@@ -124,45 +124,13 @@ jQuery( document ).ready( function($) {
                     }
             }
     });
-    
-//    nav.find( 'a' ).on( 'click', function() {
-//       var $el = $(this),
-//           id = $el.attr( 'href' );
-//           
-//       $( 'html, body' ).animate({
-//           scrollTop: $(id).offset().top - nav_height
-//       }, 500 );
-//    });
 
-    /* Slick Slider */
+    /* Slick Slider - Projects */
     $('.front-page-projects').slick({
-       // All the defaults
-//       accessibility: true,
-//       adaptiveHeight: true,
-//         autoplay: true,
-//       autoplaySpeed: 3000,
         arrows: true,
-//       asNavFor: null,
-//       appendArrows: $(element),
-//       prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-//       nextArrow: '<button type="button" class="slick-next">Next</button>',
-//       centerMode: false,
-//       centerPadding: '50px',
         cssEase: 'ease',
-//       customPaging: '',
-       dots: true,
-//       draggable: true,
-//       fade: false,
-//       focusOnSelect: false,
-//       easing: 'linear',
-//       edgeFriction: 0.15,
+        dots: true,
         infinite: true,
-//       initialSlide: 0,
-//       lazyLoad: 'ondemand',
-//       mobileFirst: false,
-//       pauseOnHover: true,
-//       pauseOnDotsHover: false,
-//       respondTo: 'window',
         responsive: [
             {
                 breakpoint: 900,
@@ -183,159 +151,49 @@ jQuery( document ).ready( function($) {
                 }
             }
         ],
-//       slide: '',
         slidesToShow: 4,
         slidesToScroll: 4,
-//       speed: 300,
-//       swipe: true,
-//       swipeToSlide: false,
-//       touchMove: true,
-//       touchThreshold: 5,
-//       useCSS: true,
-//       variableWidth: false,
-//       vertical: false,
-//       rtl: false,
    });
     
-    /* Slick Slider */
+    /* Slick Slider - Rotating Services */
     $('.rotating-services-div').slick({
-       // All the defaults
-//       accessibility: true,
-       adaptiveHeight: false,
-         autoplay: true,
-       autoplaySpeed: 6000,
+        adaptiveHeight: false,
+        autoplay: true,
+        autoplaySpeed: 6000,
         arrows: true,
-//       asNavFor: null,
-//       appendArrows: $(element),
-//       prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-//       nextArrow: '<button type="button" class="slick-next">Next</button>',
-//       centerMode: false,
-//       centerPadding: '50px',
         cssEase: 'ease',
-//       customPaging: '',
-       dots: false,
-//       draggable: true,
-//       fade: false,
-//       focusOnSelect: false,
-//       easing: 'linear',
-//       edgeFriction: 0.15,
+        dots: false,
         infinite: true,
-//       initialSlide: 0,
-//       lazyLoad: 'ondemand',
-//       mobileFirst: false,
-       pauseOnHover: true,
-//       pauseOnDotsHover: false,
-//       respondTo: 'window',
-//        responsive: [
-//            {
-//                breakpoint: 900,
-//                settings: {
-//                    slidesToShow: 2,
-//                    slidesToScroll: 2,
-//                    infinite: true,
-//                    dots: true
-//                }
-//            },
-//            {
-//                breakpoint: 480,
-//                settings: {
-//                    slidesToShow: 1,
-//                    slidesToScroll: 1,
-//                    infinite: true,
-//                    dots: true
-//                }
-//            }
-//        ],
-//       slide: '',
+        pauseOnHover: true,
         slidesToShow: 2,
         slidesToScroll: 2,
-//       speed: 300,
-//       swipe: true,
-//       swipeToSlide: false,
-//       touchMove: true,
-//       touchThreshold: 5,
-       useCSS: true,
-//       variableWidth: false,
-//       vertical: false,
-//       rtl: false,
+        useCSS: true,
    });
    
-       /* Slick Slider */
+       /* Slick Slider - Testimonial Quotes */
     $('.testimonial-quotes').slick({
-       // All the defaults
-//       accessibility: true,
-       adaptiveHeight: true,
-         autoplay: true,
-       autoplaySpeed: 10000,
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 10000,
         arrows: false,
-//       asNavFor: null,
-//       appendArrows: $(element),
-//       prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-//       nextArrow: '<button type="button" class="slick-next">Next</button>',
-//       centerMode: true,
-//       centerPadding: '50px',
         cssEase: 'ease',
         customPaging : function(slider, i) {
             var thumb = $(slider.$slides[i]).data('thumb');
             return '<img class="thumb" src="'+thumb+'">';
         },
-       dots: true,
-//       draggable: true,
-//       fade: false,
-//      focusOnSelect: true,
-//       easing: 'linear',
-//       edgeFriction: 0.15,
+        dots: true,
         infinite: true,
-//       initialSlide: 0,
-//       lazyLoad: 'ondemand',
-//       mobileFirst: false,
-       pauseOnHover: true,
-       pauseOnDotsHover: true,
-//       respondTo: 'window',
-//       responsive: none,
-//       slide: '',
+        pauseOnHover: true,
+        pauseOnDotsHover: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-//       speed: 300,
-//       swipe: true,
-//       swipeToSlide: false,
-//       touchMove: true,
-//       touchThreshold: 5,
-//       useCSS: true,
-//       variableWidth: false,
-//       vertical: false,
-//       rtl: false,
    });
    
-       /* Slick Slider */
+       /* Slick Slider - Clients */
     $('.clients-list').slick({
-       // All the defaults
-//       accessibility: true,
-//       adaptiveHeight: true,
-         //autoplay: true,
-//       autoplaySpeed: 3000,
         arrows: false,
-//       asNavFor: null,
-//       appendArrows: $(element),
-//       prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-//       nextArrow: '<button type="button" class="slick-next">Next</button>',
-//       centerMode: false,
-//       centerPadding: '50px',
-//        cssEase: 'ease',
-//       customPaging: '',
-       dots: true,
-//       draggable: true,
-//       fade: false,
-//       focusOnSelect: false,
-//       easing: 'linear',
-//       edgeFriction: 0.15,
+        dots: true,
         infinite: true,
-//       initialSlide: 0,
-//       lazyLoad: 'ondemand',
-//       mobileFirst: false,
-//       pauseOnHover: true,
-//       pauseOnDotsHover: false,
-//       respondTo: 'window',
         responsive: [
             {
                 breakpoint: 900,
@@ -368,39 +226,16 @@ jQuery( document ).ready( function($) {
                 }
             },
         ],
-//       slide: '',
         slidesToShow: 6,
         slidesToScroll: 6,
-//       speed: 300,
-//       swipe: true,
-//       swipeToSlide: false,
-//       touchMove: true,
-//       touchThreshold: 5,
-//       useCSS: true,
-//       variableWidth: false,
-//       vertical: false,
-//       rtl: false,
    });
    
-      /* Get & Set height for Services slides */
-//    var serviceHeight = $('.services-list').height();
-//    $('.rotating-services-div .slick-slide').css('height',serviceHeight + 'px' );
-    //var servicesPageHeight = $('.services-page').height();
     
-    $('.rotating-services-div').on('setPosition', function () {
-    $(this).find('.slick-slide').height('auto');
-    var slickTrack = $(this).find('.slick-track');
-    var slickTrackHeight = $(slickTrack).height();
-    $(this).find('.slick-slide').css('height', slickTrackHeight + 60 + 'px');
+    $('.rotating-services-div').on('setPosition', function() {
+        $(this).find('.slick-slide').height('auto');
+        var slickTrack = $(this).find('.slick-track');
+        var slickTrackHeight = $(slickTrack).height();
+        $(this).find('.slick-slide').css('height', slickTrackHeight + 60 + 'px');
     });
-    
-//    var serviceSliderHeight = $('.rotating-services-div .slick-slide').height();
-//    var servicePageHeight = $('.services-page').height();
-//    
-//    if( serviceSliderHeight > servicePageHeight ) {
-//        $('.services-page').css('height', serviceSliderHeight + 'px');
-//    } else {
-//        $('.rotating-services-div .slick-slide').css('height', servicePageHeight + 'px');
-//    }
 
 });

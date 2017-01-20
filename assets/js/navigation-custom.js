@@ -1,13 +1,10 @@
 jQuery(document).ready(function($){
 
-  // var menu_ul = '.main-navigation .menu';
-
   var menu_ul = $('.main-navigation').find('ul').first();
 
   menu_ul.children('.menu-item-has-children').children('a').append('<span class="jinn_menu_switch"><i class="fa fa-caret-right"></i></span>');
 
   // Touch friendly expanded nav
-  // $(menu_ul + ' li span').click(function(event){
   $('.jinn_menu_switch').click(function(event){
 
     event.preventDefault();
@@ -33,10 +30,8 @@ jQuery(document).ready(function($){
       // if it's closed, open it
 
       // hide any open child menus
-      // $(menu_ul + ' ul').removeClass('childopen');
       menu_ul.children('ul').removeClass('childopen');
       // set any open menu switch symbols back to +
-      // $(menu_ul + ' li span').html('+');
       menu_ul.children('li').children('span').html('<i class="fa fa-caret-right"></i>');
 
       // show correct child menu

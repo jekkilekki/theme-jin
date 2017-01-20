@@ -14,9 +14,12 @@ if ( ! function_exists( 'jinn_posted_on' ) ) :
 function jinn_posted_on() {
         global $post;
     
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = esc_attr__( 'Posted: ', 'jinn' ) . 
+                        '<time class="entry-date published" datetime="%1$s">%2$s</time>' .
+                        esc_attr__( ' Updated: ', 'jinn' ) . 
+                        '<time class="updated" datetime="%3$s">%4$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
@@ -27,8 +30,9 @@ function jinn_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'jinn' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		'<a href="%1$s" rel="bookmark">%2$s</a>',
+                esc_url( get_permalink() ),
+                wp_kses( $time_string, array( 'time' => array( 'class' => array(), 'datetime' => array() ) ) )
 	);
 
 	$byline = sprintf(
@@ -55,14 +59,25 @@ function jinn_posted_on() {
 		if ( $categories_list && jinn_categorized_blog() ) {
                         echo '<span class="cat-links">';
                         if( 'post' === get_post_type() ) {
-                            _e( 'Filed under: ', 'jinn' );
+                            esc_html_e( 'Filed under: ', 'jinn' );
                         } elseif( 'jetpack-portfolio' === get_post_type() ) {
-                            _e( 'Project type: ', 'jinn' );
+                            esc_html_e( 'Project type: ', 'jinn' );
                         }
-                        echo $replaced;
+                        echo wp_kses( $replaced, array( 
+                                            'a' => array( 
+                                                'href' => array(),
+                                                'class' => array(),
+                                                'rel' => array()
+                                            ) ) );
                         if( ! empty( $the_rest ) ) {
                             echo '<span class="jinn_cat_switch"><i class="fa fa-angle-down"></i></span>';
-                            printf( '<ul class="submenu dropdown">' . $the_rest . '</ul>', $the_rest ); // WPCS: XSS OK.     
+                            printf( '<ul class="submenu dropdown">' . wp_kses( $the_rest, array( 
+                                            'li' => array( 'class' => array() ),
+                                            'a' => array(
+                                                'href' => array(),
+                                                'class' => array(),
+                                                'rel' => array()
+                                            ) ) ) . '</ul>', $the_rest ); // WPCS: XSS OK.     
                         }
                         echo '</span>';
 		}
@@ -178,28 +193,28 @@ add_action( 'save_post',     'jinn_category_transient_flusher' );
  * 
  * @link: http://wptheming.com/2015/01/excerpt-versus-content-for-archives/
  */
-function the_fancy_excerpt() {
+function jinn_fancy_excerpt() {
     global $post;
     if( is_archive() ) {
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     } elseif ( is_page_template( 'page-templates/page-child-pages.php' ) ) {
         the_excerpt();
-        echo '<a class="continue-reading-arrow" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">&rarr;</a>'; 
+        echo '<a class="continue-reading-arrow" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">&rarr;</a>'; 
     } elseif ( has_excerpt() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
-    } elseif ( @strpos ( $post->post_content, '<!--more-->' ) ) {
+    } elseif ( strpos ( $post->post_content, '<!--more-->' ) ) {
         the_content();
     } elseif ( str_word_count ( $post->post_content ) < 200 ) {
         the_content();
     } else {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . get_permalink() . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
         echo '</div>';
     }
 }
@@ -208,7 +223,7 @@ function the_fancy_excerpt() {
  * Customize the read-more indicator for excerpts
  */
 function jinn_excerpt_more( $more ) {
-    return " …";
+    return " &hellip;";
 }
 add_filter( 'excerpt_more', 'jinn_excerpt_more' );
 
@@ -266,16 +281,19 @@ function jinn_author_box() {
         $author_details .= '<p class="show-hide-author label">Hide</p>';
         $author_details .= '</aside>';
         
-        echo $author_details;
+        echo esc_html( $author_details );
 
     }
     
 }
 
 function jinn_portfolio_index_footer() {
-    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+    $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
     if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+            $time_string = esc_attr__( 'Posted: ', 'jinn' ) . 
+                    '<time class="entry-date published" datetime="%1$s">%2$s</time>' .
+                    esc_attr__( ' Updated: ', 'jinn' ) . 
+                    '<time class="updated" datetime="%3$s">%4$s</time>';
     }
 
     $time_string = sprintf( $time_string,
@@ -286,8 +304,9 @@ function jinn_portfolio_index_footer() {
     );
 
     $posted_on = sprintf(
-            esc_html_x( '%s', 'post date', 'jinn' ),
-            '<span><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>'
+            '<span><a href="%1$s" rel="bookmark">%2$s</a></span>',
+            esc_url( get_permalink() ),
+            wp_kses( $time_string, array( 'time' => array( 'class' => array(), 'datetime' => array() ) ) )
     );
     
     $project_type = get_the_term_list( get_the_ID(), 'jetpack-portfolio-type', '<span class="portfolio-entry-meta cat-links">', esc_html_x( ', ', 'Used between list items, there is a space after the comma.', 'jinn' ), '</span>' );
@@ -297,7 +316,7 @@ function jinn_portfolio_index_footer() {
     $output .= $project_type;
     $output .= '</footer>';
     
-    echo $output;
+    echo esc_html( $output );
 }
 
 if ( ! function_exists( 'jinn_breadcrumbs' ) ) :
@@ -341,7 +360,7 @@ function jinn_breadcrumbs() {
     $output .= $page_title;
     $output .= "</div>";
     
-    echo $output;
+    echo esc_html( $output );
     
     }
 
@@ -375,7 +394,7 @@ function jinn_social_menu() {
  * Post Icon - can be set in any Post or Page with Custom Fields meta value 'post_icon'
  * Accepts BOTH Dashicons and FontAwesome icons - or returns nothing if neither fa- nor dashicons- precedes the String
  */
-function get_post_icon() {
+function jinn_post_icon() {
     
     $output = '';
     
@@ -397,8 +416,8 @@ function get_post_icon() {
     
 }
 
-function the_post_icon() {
-    echo get_post_icon();
+function jinn_the_post_icon() {
+    echo esc_html( jinn_post_icon() );
 }
 
 /**
@@ -411,7 +430,7 @@ function jinn_jetpack_sharing() {
 
     if ( class_exists( 'Jetpack_Likes' ) ) {
         $custom_likes = new Jetpack_Likes;
-        echo $custom_likes->post_likes( '' );
+        echo esc_html( $custom_likes->post_likes( '' ) );
     }
 }
 
@@ -428,11 +447,11 @@ function jinn_post_navigation() {
     }
     ?>
     <nav class="navigation post-navigation" role="navigation">
-        <h1 class="screen-reader-text"><?php _e( 'Post navigation', 'jinn' ); ?></h1>
+        <h1 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'jinn' ); ?></h1>
         <div class="nav-links" data-equalizer>
                 <?php
-                        previous_post_link( '<div class="nav-previous" data-equalizer-watch><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
-                        next_post_link(     '<div class="nav-next" data-equalizer-watch><div class="nav-indicator">'     . _x( 'Next Post:', 'Next post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
+                        previous_post_link( '<div class="nav-previous" data-equalizer-watch><div class="nav-indicator">' . esc_html_x( 'Previous Post:', 'Previous post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
+                        next_post_link(     '<div class="nav-next" data-equalizer-watch><div class="nav-indicator">'     . esc_html_x( 'Next Post:', 'Next post', 'jinn' ) . '</div><h4>%link</h4></div>', '%title' );
                 ?>
         </div> <!-- .nav-links -->
     </nav> <!-- .navigation -->
@@ -488,8 +507,8 @@ function jinn_paging_nav() {
 
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'jinn' ); ?></h1>
-                <?php echo $links; ?>
+		<h1 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'jinn' ); ?></h1>
+                <?php echo esc_html( $links ); ?>
 	</nav><!-- .navigation -->
 	<?php
 	endif;

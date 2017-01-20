@@ -26,9 +26,6 @@ get_header(); ?>
 							</div>
 							<?php endif; ?>
 	
-							<!--<h1 class="entry-title">
-								<a href="<?php //the_permalink(); ?>" rel="bookmark"><span><?php //the_title(); ?></span></a>
-							</h1>-->
 						</header><!-- .entry-header -->
 	
 						<div class="entry-content">
@@ -97,8 +94,6 @@ get_header(); ?>
                             $args = array (
                                 'post_type'     => 'jetpack-testimonial',
                                 'category_name' => $testimonial,
-                                //'meta_key'      => 'client_testimonial',
-                                //'meta_value'    => $testimonial,
                             );
 
                             $query = new WP_Query( $args );
@@ -129,11 +124,8 @@ get_header(); ?>
 		
 		<?php jinn_paging_nav(); ?>
 	</div><!-- #primary-left -->
-	
-	<?php /*comments_template();*/ ?>
         
         </main>
 </div>
 
-<?php // get_sidebar(); ?>
 <?php get_footer(); ?>

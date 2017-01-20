@@ -65,14 +65,12 @@ function jinn_customize_register( $wp_customize ) {
         
         /* ///////////////// GRADIENT ////////////////// */
         
-        /** Add some LINES to separate the Gradient @link http://coreymckrill.com/blog/2014/01/09/adding-arbitrary-html-to-a-wordpress-theme-customizer-section/ */
-        
         /*
          * Use Gradient Checkbox
          */
         // Use Gradient Setting
         $wp_customize->add_setting( 'use_gradient', array(
-            'default'           => 0,
+            'default'           => 1,
             'sanitize_callback' => 'jinn_sanitize_checkbox',
         ) );
         
@@ -84,7 +82,7 @@ function jinn_customize_register( $wp_customize ) {
                         array( 
                             'label'         => __( 'Use Header Gradient?', 'jinn' ),
                             'type'          => 'checkbox',
-                            'section'       => 'header_image',
+                            'section'       => 'colors',
                         )
         ) );
         
@@ -106,7 +104,7 @@ function jinn_customize_register( $wp_customize ) {
                         'grad1_color', array(
                             'label'         => __( 'Header Gradient: Top-Left Color', 'jinn' ),
                             'description'   => __( 'Set or change the upper left gradient starting color.', 'jinn' ),
-                            'section'       => 'header_image',
+                            'section'       => 'colors',
                         )
         ) );
         
@@ -128,7 +126,7 @@ function jinn_customize_register( $wp_customize ) {
                         'grad2_color', array(
                             'label'         => __( 'Header Gradient: Center Color', 'jinn' ),
                             'description'   => __( 'Set or change the center gradient color.', 'jinn' ),
-                            'section'       => 'header_image',
+                            'section'       => 'colors',
                         )
         ) );
         
@@ -150,7 +148,7 @@ function jinn_customize_register( $wp_customize ) {
                         'grad3_color', array(
                             'label'         => __( 'Header Gradient: Bottom-Right Color', 'jinn' ),
                             'description'   => __( 'Set or change the lower right gradient ending color.', 'jinn' ),
-                            'section'       => 'header_image',
+                            'section'       => 'colors',
                         )
         ) );
  
@@ -189,6 +187,38 @@ function jinn_customize_register( $wp_customize ) {
                     ),
                     'section'           => 'jinn-options'
                 ) );
+        
+        /**
+         * Show Theme Info
+         */
+        $wp_customize->add_setting( 'show_theme_info',
+                array(
+                    'default'           => 1,
+                    'sanitize_callback' => 'jinn_sanitize_checkbox'
+                ));
+        
+        $wp_customize->add_control( 'show_theme_info',
+                array(
+                    'label'             => __( 'Show theme info in Footer?', 'jinn' ),
+                    'type'              => 'checkbox',
+                    'section'           => 'jinn-options'
+                ));
+        
+        /**
+         * Show Copyright Date
+         */
+        $wp_customize->add_setting( 'show_copyright',
+                array(
+                    'default'           => 1,
+                    'sanitize_callback' => 'jinn_sanitize_checkbox'
+                ));
+        
+        $wp_customize->add_control( 'show_copyright',
+                array(
+                    'label'             => __( 'Show copyright dates in Footer?', 'jinn' ),
+                    'type'              => 'checkbox',
+                    'section'           => 'jinn-options'
+                ));
 }
 add_action( 'customize_register', 'jinn_customize_register' );
 
@@ -241,9 +271,9 @@ function jinn_customizer_css() {
     <style>
         .custom-header {
             background: radial-gradient( ellipse farthest-side at 100% 100%,
-                <?php echo $gradient_color_3; ?> 10%,
-                <?php echo $gradient_color_2; ?> 50%,
-                <?php echo $gradient_color_1; ?> 120% );
+                <?php echo esc_attr( $gradient_color_3 ); ?> 10%,
+                <?php echo esc_attr( $gradient_color_2 ); ?> 50%,
+                <?php echo esc_attr( $gradient_color_1 ); ?> 120% );
             <?php echo $use_gradient ? 'height: 600px;' : ''; ?>
         }
         a,
@@ -253,7 +283,7 @@ function jinn_customizer_css() {
         a:active,
         .entry-content a,
         .entry-summary a {
-            color: <?php echo $highlight_color; ?>;
+            color: <?php echo esc_attr( $highlight_color ); ?>;
         }
     </style>
     <?php

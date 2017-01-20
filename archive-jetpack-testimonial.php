@@ -41,7 +41,6 @@ get_header(); ?>
                         echo '</section>';
 
                         jinn_paging_nav();
-			// the_posts_navigation();
 
 		else :
 

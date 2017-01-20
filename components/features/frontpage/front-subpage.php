@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page.php.
+ * Template part for displaying subpage content in page.php.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,19 +9,10 @@
 
 ?>
 <?php if ( '' != get_the_post_thumbnail() ) : ?>
-    <div class="index-post-thumbnail" style="background: url( <?php the_post_thumbnail_url( 'full' ); ?> )">
-            <a href="<?php the_permalink(); ?>">
-                    <?php //the_post_thumbnail( 'jinn-featured-image' ); ?>
-            </a>
-    </div>
+    <div class="index-post-thumbnail" style="background: url( <?php the_post_thumbnail_url( 'full' ); ?> )"></div>
 <?php endif; ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    
-    <?php 
-//    if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-//        echo '<div class="front-page-page row">';
-//    } ?>
     
 	<header class="entry-header">
             
@@ -38,6 +29,7 @@
                 <?php endif; ?>
             
 	</header>
+    
 	<div class="entry-content">
 		<?php
 			the_content();
@@ -67,12 +59,6 @@
 			);
 		?>
 	</footer>
-    
-    <?php 
-//    if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-//        echo '</div><!-- .front-page-page .row -->';
-//    }
-    ?>
     
     <?php endif; ?>
 </article><!-- #post-## -->

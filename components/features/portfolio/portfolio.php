@@ -12,7 +12,7 @@
 					$paged = 1;
 				endif;
                                 
-                                echo 'Paged: ' . $paged;
+                                echo esc_html__( 'Paged: ', 'jinn' ) . esc_html( $paged );
 
 				$posts_per_page = get_option( 'jetpack_portfolio_posts_per_page', '12' );
 				$args = array(
@@ -27,7 +27,7 @@
 				<div class="portfolio-wrapper content-area archive large-12 columns">
                                     
                                     <header class="page-header">
-                                        <h1 class="page-title"><?php _e( 'Projects', 'jinn' ); ?></h1>
+                                        <h1 class="page-title"><?php esc_html_e( 'Projects', 'jinn' ); ?></h1>
                                     </header>
                                     
 					<?php /* Start the Loop */ ?>
@@ -44,7 +44,6 @@
 				<?php
 
                                         jinn_paging_nav();
-					//the_posts_navigation();
 					wp_reset_postdata();
 				?>
 

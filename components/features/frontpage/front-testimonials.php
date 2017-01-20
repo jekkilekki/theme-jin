@@ -12,7 +12,7 @@
 
                     <div class="entry-content">
 
-                        <?php the_content( 'Read more…' ); ?>
+                        <?php the_content( __( 'Read more&hellip;', 'jinn' ) ); ?>
 
                     </div>
                     

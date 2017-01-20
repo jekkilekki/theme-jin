@@ -9,7 +9,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'group' ); ?>>
 	<?php if ( '' != get_the_post_thumbnail() ) : ?>
                 <a href="<?php the_permalink(); ?>" class="<?php echo is_page_template( 'page-templates/frontpage-portfolio.php' ) ? 'medium-12 columns' : 'medium-3 columns'; ?>">
-                    <div class="testimonial-thumbnail" style="background: url( <?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
+                    <div class="testimonial-thumbnail" style="background: url( <?php echo esc_url( get_the_post_thumbnail_url( $post, 'thumbnail' ) ); ?> )">
                             <?php echo the_title( '<span class="screen-reader-text">', '</span>', false ); ?>
                     </div>
                 </a>
@@ -29,7 +29,7 @@
                         <?php 
                         
                         if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-                            the_fancy_excerpt();
+                            jinn_fancy_excerpt();
                         } else {
                         
                         the_content( sprintf(

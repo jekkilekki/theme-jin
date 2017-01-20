@@ -11,7 +11,7 @@ jQuery( document ).ready( function( $ ) {
     /* Add Foundation classes to Comment Awaiting Moderation box */
     $("*").find("p.comment-awaiting-moderation").each(function() {
         $(this).addClass("alert-box success radius");
-    });        //add additional code here if needed    })}); 
+    });
     
     
     /*
@@ -47,16 +47,10 @@ jQuery( document ).ready( function( $ ) {
     });
     
     /*
-     * Add classes to centered and "alignnone" images
+     * Add classes to centered images
      */
     // Wrap centered images in a new figure element
-   $( 'img.aligncenter, figure.aligncenter' /* img.alignnone, figure.alignnone, */  ).wrap( '<figure class="centered-image"></figure>' );
-   
-   /*
-    * Add 'end' class to the last-child of articles on an index page to "fix" Foundation's random float
-    * UPDATE: Now, just every single .archive-item has this class as a default - on every page
-    */
-   // $( '.archive-item:last-child, #secondary.no-sidebar .widget:last-child' ).addClass( 'end' );
+   $( 'img.aligncenter, figure.aligncenter' ).wrap( '<figure class="centered-image"></figure>' );
    
    /*
     * Add Foundation classes to widgets on pages without a sidebar

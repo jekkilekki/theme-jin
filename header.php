@@ -42,7 +42,7 @@
         
 <?php } else { ?>   
         
-    <div id="page" class="site <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?>">
+    <div id="page" class="site <?php echo esc_attr( get_theme_mod( 'layout_setting', 'no-sidebar' ) ); ?>">
         
 <?php } ?>
     
@@ -57,16 +57,13 @@
             <div class="row"> <!-- Start Foundation row -->
                 
                 <div class="top-bar-title">
-<!--                    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="large">
-                    <button class="menu-icon" type="button" data-toggle></button>
-                    <div class="title-bar-title">Menu</div>
-                    </div>-->
+
                     <div class="site-branding">
                     <?php 
-                    if ( has_custom_logo() || jetpack_has_site_logo() ) {
+                    if ( has_custom_logo() ) {
                         jinn_the_site_logo(); 
                     }
-                    if ( !has_custom_logo() && !jetpack_has_site_logo() || ( has_custom_logo() && get_theme_mod( 'show_logo_sitename' ) === true ) ) { ?>
+                    if ( ! has_custom_logo() || ( has_custom_logo() && get_theme_mod( 'show_logo_sitename' ) === true ) ) { ?>
                     
                                 <?php if ( is_front_page() || is_home() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
                                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -77,11 +74,11 @@
                     
                     <?php } // endif ?>
                     </div><!-- .site-branding -->
+                    
                 </div>
 	
                 <div class="top-bar-right">
                     <?php get_template_part( 'components/navigation/navigation', 'top' ); ?>
-                    <?php // jinn_social_menu(); ?>
                 </div>
                 
                 <div id="search-container">
@@ -91,7 +88,7 @@
                 </div>
                 <div class="search-toggle">
                     <i class="fa fa-search"></i>
-                    <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'jinn' ); ?></a>
+                    <a href="#search-container" class="screen-reader-text"><?php esc_html_e( 'Search', 'jinn' ); ?></a>
                 </div>
                 
             </div> <!-- End Foundation row -->

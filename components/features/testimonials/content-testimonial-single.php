@@ -12,7 +12,7 @@ if ( isset( $GLOBALS['content_width'] ) ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
             <?php if ( '' != get_the_post_thumbnail() ) : ?>
-    <div class="author-avatar" style="background: url( <?php echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
+    <div class="author-avatar" style="background: url( <?php echo esc_url( get_the_post_thumbnail_url( $post, 'thumbnail' ) ); ?> )">
                     </div>
             <?php endif; ?>
 	
@@ -31,12 +31,7 @@ if ( isset( $GLOBALS['content_width'] ) ) {
         </div>
     
         <footer class="testimonial-footer">
-            <?php the_title( '<h3 class="author-title"><span>', '</span></h3>' );
-			/* translators: used between list items, there is a space after the comma */
-			//$tags_list = get_the_term_list( $post->ID, 'jetpack-portfolio-tag', '', esc_html__( ', ', 'jinn' ) );
-			//if ( $tags_list ) :
-		?>
-            
+            <?php the_title( '<h3 class="author-title"><span>', '</span></h3>' ); ?>
             <?php edit_post_link( esc_html__( 'Edit', 'jinn' ), '<p class="show-hide-author label">', '</p>' ); ?>
         </footer>
 	

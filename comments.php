@@ -30,11 +30,13 @@ if ( have_comments() ) : ?>
 	if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _n( 'One thought', '%1$s thoughts', get_comments_number(), 'jinn' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
+				$comment_number = get_comments_number();
+                                $comment_locale = number_format_i18n( $comment_number );
+                                if ( 1 === $comment_number ) {
+                                        printf( esc_html__( 'One thought', 'jinn' ), $comment_locale ); // WPCS: XSS OK.
+                                } else {
+                                        printf( esc_html( _n( '%s thought', '% thoughts', $comment_locale, 'jinn' ) ), $comment_locale ); // WPCS: XSS OK.
+                                }
 			?>
 		</h2>
 

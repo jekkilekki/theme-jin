@@ -28,12 +28,10 @@ if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-custom' ) |
         
 <?php } else { ?>   
         
-    <aside id="secondary" class="widget-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> medium-12 columns">
+    <aside id="secondary" class="widget-area <?php echo esc_attr( get_theme_mod( 'layout_setting', 'no-sidebar' ) ); ?> medium-12 columns">
         
-<?php } ?>
-        
-<!--<aside id="secondary" class="widget-area small-12 medium-4 columns" role="complementary" data-equalizer-watch>-->
-<?php 
+<?php } 
+
 if ( is_active_sidebar( 'sidebar-custom' ) && ( get_post_type( get_the_ID() ) === 'jetpack-testimonial' || get_post_type( get_the_ID() ) === 'jetpack-portfolio' ) ) {
         dynamic_sidebar( 'sidebar-custom' );
 } elseif ( is_active_sidebar( 'sidebar-page' ) && is_page() ) {

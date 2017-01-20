@@ -82,19 +82,6 @@ $incomplete_section_ids = array();
                             
                         <?php
 
-                        // wp_reset_postdata();
-
-                        // If we had less than 3 services total (there are empty slots)
-//                        if ( $num_services < 3 ) {
-//
-//                            // Create the THIRD (final) list item
-//                            //$output .= '<li class="service equally';
-//                            //$output .= 'medium-4 columns">'; // Here I want to determine if it should be 1/3, 2/3, or 3/3 spread
-//
-//                            //$output .= '</li>';
-//
-//                        } // END third (final) list item
-
                     } else { // No Posts in the Services Child Pages query
 
                         // Get the 'Services' Page
@@ -168,7 +155,7 @@ $incomplete_section_ids = array();
 
                         // The Loop
                         if ( $clients_query->have_posts() ) {
-                            echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . __( 'Clients', 'jinn' ) . '</a></h3>';
+                            echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . esc_attr__( 'Clients', 'jinn' ) . '</a></h3>';
                             echo '<ul class="clients-list entry-content row">';
                             while ( $clients_query->have_posts() ) : $clients_query->the_post();
 
@@ -180,10 +167,9 @@ $incomplete_section_ids = array();
                         } else {
                             // No 'Clients' Child Pages found
                             $incomplete_sections++;
-                            $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Client Pages', 'jinn' ) . '</a>';
+                            $incomplete_section_ids[] = '<a href="#">' . esc_attr__( 'Pages: Individual Client Pages', 'jinn' ) . '</a>';
                         } ?>
                     
-                        <!--<a class="button more-link" role="button" href="/clients/"><?php // _e( 'View full list of Clients &rarr;', 'jinn' ); ?></a>-->
                     </section><!-- #clients -->
                 
                 <?php
@@ -275,7 +261,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
                         <section id="latest-projects" class="group">
 
-                            <h2 class="widget-title front-page-title"><a href="/portfolio/"><?php _e( 'Latest Projects', 'jinn' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="/portfolio/"><?php esc_attr_e( 'Latest Projects', 'jinn' ); ?></a></h2>
                             <div class="front-page-projects archive row">
 
                             <?php  
@@ -292,7 +278,7 @@ $incomplete_section_ids = array();
                             ?>
 
                             </div>
-                            <a class="button more-link" role="button" href="/portfolio/"><?php _e( 'View Full Portfolio &rarr;', 'jinn' ); ?></a>
+                            <a class="button more-link" role="button" href="/portfolio/"><?php esc_attr_e( 'View Full Portfolio &rarr;', 'jinn' ); ?></a>
                         </section><!-- #latest-work -->
 
                     <?php
@@ -332,30 +318,13 @@ $incomplete_section_ids = array();
                         
                         <section id="testimonials">
                             <div class="testimonials entry-content row">
-<!--                            <ul class="thumbnails">
-                                        
-                            <?php
-//                            while ( $query->have_posts() ) : $query->the_post();
-//                            
-//                                if ( '' != get_the_post_thumbnail() ) : ?>
-                                    <li class="testimonial-image image-//<?php //echo get_the_ID(); ?>" style="background: url( <?php //echo get_the_post_thumbnail_url( $post, 'thumbnail' ); ?> )">
-                                            <a href="//<?php //the_permalink(); ?>" class="testimonial-thumb">
-                                                        //<?php //echo the_title( '<span class="screen-reader-text">', '</span>', false ); ?>
-                                            </a>
-                                    </li>    
-                                //<?php
-//                                endif;
-//
-//                            endwhile; ?>
-                                            
-                            </ul>-->
                                 
                             <ul class="testimonial-quotes">
                             <?php
                             while ( $query->have_posts() ) : $query->the_post(); 
                             
                                 if ( '' != get_the_post_thumbnail() ) : ?>
-                                    <li class="quote quote-<?php echo get_the_ID(); ?>" data-thumb="<?php echo get_the_post_thumbnail_url( $post, 'medium' ); ?>">
+                                    <li class="quote quote-<?php echo get_the_ID(); ?>" data-thumb="<?php echo esc_url( get_the_post_thumbnail_url( $post, 'medium' ) ); ?>">
                                     <?php get_template_part( 'components/features/frontpage/front', 'testimonials' ); ?>
                                     </li>
                                 <?php
@@ -398,7 +367,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
 
                         <section id="blog">
-                            <h2 class="widget-title front-page-title"><a href="/blog/"><?php _e( 'Latest Articles', 'jinn' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="/blog/"><?php esc_attr_e( 'Latest Articles', 'jinn' ); ?></a></h2>
                             <div class="front-page-blog archive row">
 
                             <?php
@@ -412,7 +381,7 @@ $incomplete_section_ids = array();
                             ?>
                                 
                             </div>
-                            <a class="button more-link" role="button" href="/blog/"><?php _e( 'See More Articles &rarr;', 'jinn' ); ?></a>
+                            <a class="button more-link" role="button" href="/blog/"><?php esc_attr_e( 'See More Articles &rarr;', 'jinn' ); ?></a>
                         </section><!-- #blog -->
 
                     <?php
@@ -464,13 +433,13 @@ $incomplete_section_ids = array();
                     if ( $incomplete_sections > 0 && is_user_logged_in() ) {
                         echo '<section id="warnings">';
                         
-                        echo '<h2 class="page-title">' . __( 'Notifications', 'jinn' ) . '</h2>';
+                        echo '<h2 class="page-title">' . esc_attr__( 'Notifications', 'jinn' ) . '</h2>';
                         echo '<div class="entry-content row">';
-                        echo "<h4>You have $incomplete_sections incomplete Front Page sections.</h4>"; // @TODO sprintf here
-                        echo '<p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a>:'; // @TODO sprintf here
+                        echo "<h4>You have " . esc_attr( $incomplete_sections ) . " incomplete Front Page sections.</h4>";
+                        echo '<p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a>:';
                         echo '<ol>';
                         foreach( $incomplete_section_ids as $incomplete_section_id ) {
-                            echo "<li>$incomplete_section_id</li>";
+                            echo "<li>" . esc_html( $incomplete_section_id ) . "</li>";
                         }
                         echo '</ol>';
                         echo '</div>';

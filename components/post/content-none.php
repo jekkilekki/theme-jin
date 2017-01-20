@@ -14,7 +14,7 @@
 		<h1 class="entry-title">
                     <?php 
                     if ( is_404() ) { esc_html_e( 'Nothing Found', 'jinn' ); }
-                    else if ( is_search() ) { printf( _e( 'Nothing found for <ins>', 'jinn' ) . get_search_query() . '</ins>' ); } 
+                    else if ( is_search() ) { printf( esc_html_e( 'Nothing found for ', 'jinn' ) . '<ins>' . get_search_query() . '</ins>' ); } 
                     else { esc_html_e( 'Nothing found', 'jinn' ); }
                     ?>
                 </h1>
@@ -27,7 +27,7 @@
 
 		<?php elseif ( is_404() ) : ?>
                         
-                        <p><?php printf( __( 'Are you lost? Try another search below or click one of the latest posts.', 'jinn' ) ); ?></p>
+                        <p><?php esc_html_e( 'Are you lost? Try another search below or click one of the latest posts.', 'jinn' ); ?></p>
                         <?php get_search_form(); ?>
                              
                 <?php elseif ( is_search() ) : ?>
@@ -47,7 +47,7 @@
     <?php if ( is_404() || is_search() ) { ?>
 
             <header class="page-header not-found">
-                <h1 class="page-title">Recent Posts:</h1>
+                <h1 class="page-title"><?php esc_html_e( 'Recent Posts:' , 'jinn' ); ?></h1>
             </header>
     
 

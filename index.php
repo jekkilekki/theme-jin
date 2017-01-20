@@ -32,11 +32,10 @@ get_header(); ?>
         
 <?php } else { ?>   
         
-    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+    <div id="primary" class="content-area <?php echo esc_attr( get_theme_mod( 'layout_setting', 'no-sidebar' ) ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
         
 <?php } ?>
         
-	<!--<div id="primary" class="content-area small-12 medium-8 columns" data-equalizer-watch> Foundation .columns start -->
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -62,7 +61,6 @@ get_header(); ?>
 			endwhile;
 
                         jinn_paging_nav();
-			// the_posts_navigation();
 
 		else :
 

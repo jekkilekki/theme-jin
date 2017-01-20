@@ -47,7 +47,7 @@ function jinn_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'jinn-featured-image', 800, 9999 ); /** @TODO: or maybe 770px */
+	add_image_size( 'jinn-featured-image', 800, 9999 );
 	add_image_size( 'jinn-portfolio-featured-image', 800, 9999 );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -111,7 +111,7 @@ add_action( 'after_setup_theme', 'jinn_setup' );
  * @global int $content_width
  */
 function jinn_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'jinn_content_width', 640 ); /** @TODO: or maybe 770px */
+	$GLOBALS['content_width'] = apply_filters( 'jinn_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'jinn_content_width', 0 );
 
@@ -176,19 +176,14 @@ function jinn_foundation_enqueue() {
         /* Add Foundation 6.2 CSS */
         wp_enqueue_style( 'foundation', get_stylesheet_directory_uri() . '/assets/foundation/css/foundation.min.css' );    // This is the Foundation CSS
         
-        /* Add Custom CSS 
-        wp_enqueue_style( 'jinn-custom-style', get_stylesheet_directory_uri() . '/jinn.css' );
-        
         /* Add Foundation JS */
         wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/assets/foundation/js/foundation.min.js', array( 'jquery' ), true );
-        // wp_enqueue_script( 'foundation-modernizr-js', get_template_directory_uri() . '/foundation/js/vendor/modernizr.js', array( 'jquery' ), true );     // This specifically enqueues modernizr.js which had been unenqueued when doing this using Foundation 5.2
-        wp_enqueue_script( 'foundation-what-input', get_template_directory_uri() . '/assets/foundation/js/what-input.js', array( 'jquery' ), true );
+        //wp_enqueue_script( 'foundation-what-input', get_template_directory_uri() . '/assets/foundation/js/what-input.js', array( 'jquery' ), true );
         
         /* Foundation Init JS */
         wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
         /* Add Custom Fonts */
-        // wp_enqueue_style( 'gfonts', 'http://fonts.googleapis.com/css?family=Khula:300,400,600,700,800' );
         wp_enqueue_style( 'jinn-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
         wp_enqueue_style( 'jinn-fawesome', get_template_directory_uri() . '/assets/fonts/font-awesome.css' );  
         
@@ -197,7 +192,6 @@ add_action( 'wp_enqueue_scripts', 'jinn_foundation_enqueue' );
 
 /**
  * Enqueue scripts and styles.
- * @TODO: double-check all these scripts/styles and functionality
  */
 function jinn_scripts() {
 	wp_enqueue_style( 'jinn-style', get_stylesheet_uri() );
@@ -207,7 +201,6 @@ function jinn_scripts() {
 
 	/* Conditional stylesheet only for Front Page Template */
         if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-            // wp_enqueue_style( 'jinn-front-style', get_template_directory_uri() . '/landing.css' );
             wp_enqueue_script( 'jinn-front-scripts', get_stylesheet_directory_uri() . '/assets/js/frontpage-functions.js', array( 'jquery' ), '20160515', true ); 
 
             /* Slick Carousel */
@@ -266,11 +259,6 @@ require get_template_directory() . '/inc/jetpack.php';
  * JINN custom functions below
  * -----------------------------------------------------------------------------
  */
-
-/**
- * Load Theme Options file that includes the Theme Customizer and the Theme Options page
- */
-//require get_template_directory() . '/inc/theme-options.php';
 
 /*
  * Add Excerpts to Pages

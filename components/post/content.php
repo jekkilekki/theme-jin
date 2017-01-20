@@ -22,7 +22,7 @@
 <?php else : // Set the Featured Image as the Background Image on Archive Pages ?>
         
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php
-            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo the_post_thumbnail_url( 'jinn-featured-image' ); ?>);" <?php } ?>>
+            if ( '' != get_the_post_thumbnail() ) { ?> style="background: white url(<?php echo esc_url( the_post_thumbnail_url( 'jinn-featured-image' ) ); ?>);" <?php } ?>>
 
 <?php endif; ?>
         
@@ -44,13 +44,13 @@
 		<?php
                 
                 if ( is_archive() || is_home() || is_404() || is_front_page() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { // Makes EVERY Post on an index page an excerpt
-                    the_fancy_excerpt();
+                    jinn_fancy_excerpt();
                 } else {
                     
                         // Add the Excerpt as a "Lead-in" on Posts/Pages that contain it
                         if( has_excerpt( $post->ID ) ) {
                             echo '<div class="lead-in">';
-                            echo '<p>' . get_the_excerpt() . '</p>';
+                            echo '<p>' . wp_kses_post( get_the_excerpt() ) . '</p>';
                             echo '</div><!-- .lead-in -->';
                         }
                         

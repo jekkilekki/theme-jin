@@ -17,11 +17,10 @@ get_header(); ?>
         
 <?php } else { ?>   
         
-    <div id="primary" class="content-area <?php echo get_theme_mod( 'layout_setting', 'no-sidebar' ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
+    <div id="primary" class="content-area <?php echo esc_attr( get_theme_mod( 'layout_setting', 'no-sidebar' ) ); ?> small-12 medium-10 medium-push-1 large-8 large-push-2 columns">
         
 <?php } ?>
 
-	<!--<div id="primary" class="content-area small-12 medium-10 medium-push-1 large-8 large-push-2 columns">-->
 		<main id="main" class="site-main" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
