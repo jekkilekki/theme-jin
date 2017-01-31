@@ -24,16 +24,22 @@
 	wp.customize( 'header_textcolor', function( value ) {
 		value.bind( function( to ) {
 			if ( 'blank' === to ) {
-				$( '.site-title a, .site-title:after, .site-description' ).css( {
+				$( '.site-branding-header .site-title a, .site-description' ).css( {
 					'clip': 'rect(1px, 1px, 1px, 1px)',
 					'position': 'absolute'
 				} );
+                                $( '.site-branding-header, h1.site-title::after' ).css( {
+                                        'display': 'none'
+                                } );
 			} else {
-				$( '.site-title a, .site-title:after, .site-description' ).css( {
+				$( '.site-branding-header .site-title a, .site-description' ).css( {
 					'clip': 'auto',
 					'position': 'relative'
 				} );
-				$( '.site-title a, .site-description' ).css( {
+                                $( '.site-branding-header, h1.site-title::after' ).css( {
+                                        'display': 'block'
+                                } );
+				$( '.site-branding-header .site-title a, .site-description' ).css( {
 					'color': to
 				} );
 			}

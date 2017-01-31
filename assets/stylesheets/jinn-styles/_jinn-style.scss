@@ -342,6 +342,15 @@ ul, ol {
 /*    top: 32px;
     box-shadow: $color__header-box-shadow;*/
 }
+.top-bar-title .site-title a {
+    position: relative;
+    top: 3px;
+}
+@media screen and (min-width: 60.1em) {
+    .top-bar-title {
+        margin-left: 1rem;
+    }
+}
 .top-bar, .top-bar ul {
     padding: 0;
     background: $color__background-header;

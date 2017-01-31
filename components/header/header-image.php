@@ -7,11 +7,20 @@ $use_gradient = get_theme_mod( 'use_gradient' );
 
 if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
 
-        <div id="header-image" class="custom-header <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
-            if ( has_nav_menu( 'front' ) ) echo 'frontpage-portfolio';
-            if ( has_post_thumbnail() ) echo ' de-desaturate" style="background: url( ' . esc_url( get_the_post_thumbnail_url( $post, 'full' ) ) . ' ); background-size: cover;"'; 
-            else echo '"';
-        } ?>>
+        <div id="header-image" class="custom-header <?php 
+            if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
+                if ( has_nav_menu( 'front' ) ) {
+                    echo 'frontpage-portfolio';
+                }
+                if ( has_post_thumbnail() ) {
+                    echo ' de-desaturate" style="background: url( ' . esc_url( get_the_post_thumbnail_url( $post, 'full' ) ) . '); background-size: cover;"'; 
+                }
+            }
+                else if ( has_header_image() ) {
+                    echo '" style="background: url(' . esc_url( get_header_image() ) . '); background-size: cover;"';
+                }
+                else echo '"';
+        ?>>
                 <div class="header-wrapper">
                         <div class="site-branding-header">
 
@@ -24,12 +33,6 @@ if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
 
                         </div><!-- .site-branding -->
                 </div><!-- .header-wrapper -->
-                
-                <?php if ( ! empty( $header_image ) && ! ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) ) { ?>
-                    <img src="<?php header_image(); ?>" width="<?php echo esc_attr( 
-                            get_custom_header()->width ); ?>" height="<?php echo esc_attr( 
-                            get_custom_header()->height ); ?>" alt="">
-                <?php } ?>
                     
                 <?php if ( is_page_template( 'page-templates/frontpage-portfolio.php' ) ) { ?>
                     <div class="front-menu-box group unsaturate">

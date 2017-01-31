@@ -1678,7 +1678,7 @@ body {
   max-height: 40px;
   max-width: 100%;
   width: auto;
-  margin-left: 1rem;
+  margin-right: 1rem;
   display: inline-block;
 }
 
@@ -1745,7 +1745,7 @@ h6 {
   line-height: 4.375rem;
   text-transform: uppercase;
   margin-top: 0;
-  margin-left: 1rem;
+  /*        margin-left: 1rem;*/
 }
 
 .site-title:hover {
@@ -1844,7 +1844,7 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    margin-left: 1rem;
+    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -1921,7 +1921,7 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    margin-left: 1rem;
+    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -1967,7 +1967,7 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    margin-left: 1rem;
+    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -2185,6 +2185,17 @@ ul, ol {
 .admin-bar .site-header .fixed {
   /*    top: 32px;
     box-shadow: $color__header-box-shadow;*/
+}
+
+.top-bar-title .site-title a {
+  position: relative;
+  top: 3px;
+}
+
+@media screen and (min-width: 60.1em) {
+  .top-bar-title {
+    margin-left: 1rem;
+  }
 }
 
 .top-bar, .top-bar ul {
@@ -2450,6 +2461,11 @@ ul, ol {
   cursor: pointer;
   line-height: 1;
   z-index: 3;
+}
+
+.search-toggle .fa-search {
+  position: relative;
+  top: 2px;
 }
 
 .search-toggle:hover,

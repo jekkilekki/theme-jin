@@ -69,22 +69,22 @@ function jinn_customize_register( $wp_customize ) {
          * Use Gradient Checkbox
          */
         // Use Gradient Setting
-        $wp_customize->add_setting( 'use_gradient', array(
-            'default'           => 1,
-            'sanitize_callback' => 'jinn_sanitize_checkbox',
-        ) );
-        
-        // Use Gradient Control
-        $wp_customize->add_control(
-                new WP_Customize_Control(
-                        $wp_customize,
-                        'use_gradient',
-                        array( 
-                            'label'         => __( 'Use Header Gradient?', 'jinn' ),
-                            'type'          => 'checkbox',
-                            'section'       => 'colors',
-                        )
-        ) );
+//        $wp_customize->add_setting( 'use_gradient', array(
+//            'default'           => 1,
+//            'sanitize_callback' => 'jinn_sanitize_checkbox',
+//        ) );
+//        
+//        // Use Gradient Control
+//        $wp_customize->add_control(
+//                new WP_Customize_Control(
+//                        $wp_customize,
+//                        'use_gradient',
+//                        array( 
+//                            'label'         => __( 'Use Header Gradient?', 'jinn' ),
+//                            'type'          => 'checkbox',
+//                            'section'       => 'colors',
+//                        )
+//        ) );
         
         /* 
          * Gradient Color #1 
