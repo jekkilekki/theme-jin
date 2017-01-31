@@ -1,7 +1,8 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+# JINN
 
-JINN
-===
+`Version 2.0.4`
+
+![screenshot](https://cloud.githubusercontent.com/assets/6644259/22168820/d1c1c7c0-dfb2-11e6-8bbe-b455cecc9b91.png)
 
 JINN is a simple, modern Portfolio theme with great fonts (Khula) developed by Aaron Snowberger specifically for http://aaronsnowberger.com
 
