@@ -92,7 +92,7 @@ $incomplete_section_ids = array();
                         echo '</li>';
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Pages: Individual Service Pages', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Pages: Individual Service Pages', 'jinn' );
 
                     }
                     
@@ -120,7 +120,7 @@ $incomplete_section_ids = array();
                     wp_reset_postdata();
 
                     $incomplete_sections++;
-                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Services', 'jinn' ) . '</a>';
+                    $incomplete_section_ids[] = esc_attr__( 'Page: Services', 'jinn' );
 
                 } 
                 ?>
@@ -167,7 +167,7 @@ $incomplete_section_ids = array();
                         } else {
                             // No 'Clients' Child Pages found
                             $incomplete_sections++;
-                            $incomplete_section_ids[] = '<a href="#">' . esc_attr__( 'Pages: Individual Client Pages', 'jinn' ) . '</a>';
+                            $incomplete_section_ids[] = esc_attr__( 'Pages: Individual Client Pages', 'jinn' );
                         } ?>
                     
                     </section><!-- #clients -->
@@ -176,7 +176,7 @@ $incomplete_section_ids = array();
                 } else {
                     // No 'Clients' Page found
                     $incomplete_sections++;
-                    $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Clients', 'jinn' ) . '</a>';
+                    $incomplete_section_ids[] = esc_attr__( 'Page: Clients', 'jinn' );
                 }
                 // Restore original Post Data
                 wp_reset_postdata();
@@ -234,7 +234,7 @@ $incomplete_section_ids = array();
                     } else {
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: About', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Page: About', 'jinn' );
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -284,7 +284,7 @@ $incomplete_section_ids = array();
                     <?php
                     } else {
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Portfolio Projects', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Jetpack Portfolio Projects', 'jinn' );
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -340,7 +340,7 @@ $incomplete_section_ids = array();
                     } else {
                         
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Jetpack Testimonials', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Jetpack Testimonials', 'jinn' );
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -389,7 +389,7 @@ $incomplete_section_ids = array();
                         get_template_part( 'components/post/content', 'none' );
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Blog', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Blog', 'jinn' );
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
@@ -420,7 +420,7 @@ $incomplete_section_ids = array();
                     } else {
 
                         $incomplete_sections++;
-                        $incomplete_section_ids[] = '<a href="#">' . __( 'Page: Contact', 'jinn' ) . '</a>';
+                        $incomplete_section_ids[] = esc_attr__( 'Page: Contact', 'jinn' );
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
