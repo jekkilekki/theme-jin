@@ -1,6 +1,6 @@
 # JINN
 
-`Version 2.0.4`
+`Version 2.0.5`
 
 ![screenshot](https://cloud.githubusercontent.com/assets/6644259/22168820/d1c1c7c0-dfb2-11e6-8bbe-b455cecc9b91.png)
 
@@ -14,21 +14,19 @@ Pages also have the ability to have excerpts as Posts do by default. This is bec
 
 ### Customizer Options
 
-1. Custom colors
-2. Custom logo and favicon
-3. Header background color
+1. Custom logo and favicon
+2. Custom colors
+3. Header background color (3-color gradient)
 4. Header text color
 5. Optional Header image
 6. Sidebar position: left, right, none (default) - this is also customizable on individual Pages
-
-### Featured Images
-
-Featured Images default to take the place of the Header Image on any page as well as show up below the Post meta within the main content. In a later version, the Featured Image in this section may be able to be replaced with embedded media or turned off.
 
 ### Widget Areas
 
 1. Sidebar
 2. Footer
+3. Sidebar Pages (only on Pages)
+4. Sidebar Custom Post Types (only on Custom Post Types)
 
 ### Blockquotes
 
@@ -38,7 +36,7 @@ Blockquotes can be aligned left or right (in a similar way that images are) usin
 
 JINN is licensed under the GPLv2 Open Source license.
 
-JINN is derived from the _s Components Portfolio (http://underscores.me) theme developed by Automattic.
+JINN is derived from the _s Components Portfolio (http://components.underscores.me) theme developed by Automattic.
 
 Fonts used include:
 
