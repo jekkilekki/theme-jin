@@ -46,7 +46,10 @@
 					<div class="page-content">
 						<?php if ( current_user_can( 'publish_posts' ) ) : ?>
 
-							<p><?php printf( wp_kses( __( 'Ready to add your first testimonial? <a href="%1$s">Get started here</a>.', 'jinn' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php?post_type=jetpack-testimonial' ) ) ); ?></p>
+							<p><?php 
+                                                            /* translators: %1$s: link to create a new Jetpack Testimonial post */
+                                                            printf( wp_kses( __( 'Ready to add your first testimonial? <a href="%1$s">Get started here</a>.', 'jinn' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php?post_type=jetpack-testimonial' ) ) ); 
+                                                        ?></p>
 
 						<?php else : ?>
 

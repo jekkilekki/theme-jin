@@ -35,6 +35,7 @@ if ( have_comments() ) : ?>
                                 if ( 1 === $comment_number ) {
                                         printf( esc_html__( 'One thought', 'jinn' ), $comment_locale ); // WPCS: XSS OK.
                                 } else {
+                                        /* translators: %s: number of comments */
                                         printf( esc_html( _n( '%s thought', '% thoughts', $comment_locale, 'jinn' ) ), $comment_locale ); // WPCS: XSS OK.
                                 }
 			?>

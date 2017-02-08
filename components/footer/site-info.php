@@ -21,9 +21,15 @@
             <?php if ( get_theme_mod( 'show_theme_info', true ) ) : ?>
             
             <div class="theme-links">
-                <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'jinn' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'jinn' ), '<i class="fa fa-wordpress"></i> WordPress' ); ?></a>
+                <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'jinn' ) ); ?>"><?php 
+                    /* translators: %s: WordPress and icon */
+                    printf( esc_html__( 'Proudly powered by %s', 'jinn' ), '<i class="fa fa-wordpress"></i> WordPress' ); 
+                ?></a>
                 <span class="sep"> | </span>
-                <?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'jinn' ), 'jinn', '<a href="http://www.aaronsnowberger.com" rel="designer">Aaron Snowberger</a>' ); ?>
+                <?php 
+                    /* translators: 1: Theme name 2: Theme author name */
+                    printf( esc_html__( 'Theme: %1$s by %2$s.', 'jinn' ), 'Jinn', '<a href="http://www.aaronsnowberger.com" rel="designer">Aaron Snowberger</a>' ); 
+                ?>
             </div>
             
             <?php endif; ?>

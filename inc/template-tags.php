@@ -41,6 +41,7 @@ function jinn_posted_on() {
 	);
 
 	$byline = sprintf(
+                /* translators: %s: post author name */
 		esc_html_x( 'By %s', 'post author', 'jinn' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
@@ -82,7 +83,14 @@ function jinn_posted_on() {
                                                 'href' => array(),
                                                 'class' => array(),
                                                 'rel' => array()
-                                            ) ) ) . '</ul>', $the_rest ); // WPCS: XSS OK.     
+                                            ) ) ) . '</ul>', 
+                                    wp_kses( $the_rest, array( 
+                                            'li' => array( 'class' => array() ),
+                                            'a' => array(
+                                                'href' => array(),
+                                                'class' => array(),
+                                                'rel' => array()
+                                            ) ) ) ); // WPCS: XSS OK.     
                         }
                         echo '</span>';
 		}

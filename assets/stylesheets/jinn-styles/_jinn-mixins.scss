@@ -16,7 +16,7 @@
             margin: ( nth($htag_vmargins, $i) * 1em ) 0;
         }
     }
-    // Set H1 widget titles default size
+    /* Set H1 widget titles default size */
     .widget-title {
         $default: nth($htag_sizes, 4);
         $size: if( ($default * $factor) < 1, 1, $default * $factor );
@@ -29,8 +29,7 @@
         font-weight: bold;
         line-height: 4.375rem;
         text-transform: uppercase;
-        margin-top: 0; //0.2rem;
-/*        margin-left: 1rem;*/
+        margin-top: 0;
         &:hover {
             text-shadow: $color__box-shadow;
         }
@@ -38,14 +37,12 @@
 }
 
 // Mixins to apply coloring
-
-@mixin guide() { // Originally used as a guide, but this is the color I want for these items
+@mixin guide() { /* Originally used as a guide, but this is the color I want for these items */
     background: #ffffff;
 }
 
 @mixin body() {
     body {
-        /*border-top: 2*$px solid $color__border-main-panel;*/
         background-color: $color__background-body;
     }
 }
@@ -241,7 +238,7 @@
         border-bottom: 1px dotted transparent;
     }
     a:hover, a:active {
-        // border-bottom: 1px dotted $color__link;
+        
     }
 }
 
@@ -263,7 +260,6 @@
         padding: $default_gutter / 2 $default_gutter;
         margin: $default_gutter $default_gutter / 2;
         font-size: 24*$px;
-        //font-style: italic;
         font-weight: 300;
         background-color: inherit;
         border-left: 6*$px solid $color__light-border;
@@ -286,7 +282,6 @@
             margin-left: 2em;
             border-left: none;
             border-right: 6*$px solid $color__light-border;
-            /*margin-right: 0;*/
         }
         &.alignright cite {
             margin-left: 0;
@@ -298,7 +293,6 @@
             float: left;
             padding: 1em 0 0 2em;
             margin-right: 2em;
-            /*margin-left: 0;*/
         }
     }
 }
@@ -315,10 +309,6 @@
     border: 1*$px solid $color__border-sub-panel;
     box-shadow: inset $color__box-shadow;
     color: $color__text-sub-panel;
-    /*float: left;*/
-    /*width: 33.33333%;*/
-    /*margin-left: .9375rem;*/
-    /*margin-right: .9375rem;*/
     a, a:visited, a:active {
         color: inherit;
     }
@@ -340,14 +330,12 @@
         color: inherit;
     }
     a:hover, a:active {
-        // border-bottom: 1px dotted $color__link;
+        
     }
 }
 @mixin content_link() {
     a, a:link, a:visited {
        position: relative;
-        // background-color: lighten($color__background-sub-panel, 2%);
-        // color: $color__text-main;
         &:after {
             border-bottom: 1px solid #00acdf;
             position: absolute;
@@ -379,9 +367,7 @@
     }
 }
 @mixin comment() {
-    //background-color: rgba(250, 250, 250, 0.05);
-    //border: 1*$px solid silver;
-    //box-shadow: inset $color__box-shadow;
+
 }
 @mixin sticky_post() {
     border-top: 1*$px solid $color__link;

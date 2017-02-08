@@ -63,14 +63,13 @@
                     if ( has_custom_logo() ) {
                         jinn_the_site_logo(); 
                     }
-                    if ( ! has_custom_logo() || ( has_custom_logo() && get_theme_mod( 'show_logo_sitename' ) === true ) ) { ?>
+                    if ( get_theme_mod( 'show_sitename_in_menubar', true ) ) { ?>
                     
                                 <?php if ( is_front_page() || is_home() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) : ?>
                                     <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                                 <?php else : ?>
                                     <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
                                 <?php endif; ?>
-                                <p class="site-description"><?php bloginfo( 'description' ); ?></p>
                     
                     <?php } // endif ?>
                     </div><!-- .site-branding -->

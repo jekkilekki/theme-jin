@@ -29,19 +29,11 @@ a.topbutton:active {
 
 .front-page > .site-content {
     margin-top: 0;
-    //box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-    // border-top: 1px solid #00adcf;
-    //margin-bottom: 5rem;
 }
 .front-page .hentry,
 .front-page section {
-     // border-top: 1px solid white;
-     // border-bottom: 1px solid #e2e2e5;
      background: white;
      margin: 0;
-     // box-shadow: none;
-/*     width: 100vw;
-    padding: 0 calc(( 100vw - 75em ) / 2 );*/
 }
 .front-page section,
 .services-title {
@@ -62,8 +54,6 @@ a.topbutton:active {
 .front-page section {
     padding-top: $post_t_padding;
     padding-bottom: $post_b_padding;
-    //padding-left: $post_l_padding;
-    //padding-right: $post_r_padding;
 }
 .front-menu-box {
     max-width: 1000px;
@@ -76,7 +66,6 @@ a.topbutton:active {
         padding: 3.25rem!important;
 }
 .button.large a {
-        //color: $color__text-main!important;
         font-size: 1.75rem;
         font-weight: 100;
         margin-top: 2rem;
@@ -89,7 +78,6 @@ a.topbutton:active {
        float: left;
        width: 100%;
        height: 100%;
-       //padding-left: 1rem;
        margin: 0;
        padding: 0;
 }
@@ -257,10 +245,8 @@ a.topbutton:active {
 
 .panel,
 .panel.callout {
-	//border: none;
-        // STYLED LIKE THEME WIDGETS
+        /* STYLED LIKE THEME WIDGETS */
         border: 0.05rem solid silver;
-        //box-shadow: 0 0 2px rgba(0,0,0,0.15);
         background-color: #f5f5f5;
 }
 .panel a {
@@ -310,7 +296,6 @@ a.topbutton:active {
 }
 ul.follow {
 	list-style: none;
-	/*margin-top: 1rem;*/
 	text-align: center;
 	margin: 0.5rem 0 0;
 }
@@ -427,8 +412,6 @@ ul.follow a:hover {
         }
     }
     .more-link {
-        //margin-top: -$widget_b_padding;
-        //border: 1px solid $color__light-border!important;
         position: absolute;
         bottom: 0;
         transform: translateX(-50%);
@@ -454,38 +437,6 @@ ul.follow a:hover {
     opacity: 0.1;
     background-size: cover!important;
 }
-/*.services-list li:nth-child(1) .service-background:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: -webkit-linear-gradient(transparent 10%, white 70%);
-    background: linear-gradient(to left, transparent 85%, #1A3547 100%);
-}
-.services-list li:nth-child(3) .service-background:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: -webkit-linear-gradient(transparent 10%, white 70%);
-    background: linear-gradient(to right, transparent 85%, #1A3547 100%);
-}*/
-/*.services-list li:nth-child(3):after {
-    background-color: #1A3547;
-    content: " ";
-    height: 100%;
-    left: -16%;
-    position: absolute;
-    top: -20px;
-    -webkit-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    transform: rotate(15deg);
-    width: 40%;
-}*/
 .services-list li,
 .services-list li a,
 .services-list li h3 {
@@ -505,11 +456,8 @@ ul.follow a:hover {
     height: 100%;
     border: 1px solid #B5CBD8;
     top: 0;
-    /*margin-top: -25%;*/
-    //transform: rotate(10deg);
     left: 0;
     opacity: 0.2;
-    //width: 50px;
 }
 .service:first-child:after {
     border: 0;
@@ -537,22 +485,9 @@ ul.follow a:hover {
     }
 }
 .service:hover {
-    //background: #00adcf;
     .services-lede, .services-title span {
         opacity: 1;
     }
-}
-.services-list li:hover,
-.services-list li:hover a h3 {
-    //color: hsl( 0, 0%, 100% )!important;
-}
-.services-list li:hover a {
-    //border-color: white!important;
-    //color: white!important;
-}
-.services-list li:hover a:hover {
-    //border-color: #363636!important;
-    //color: #363636!important;
 }
 
 /* 
@@ -768,7 +703,6 @@ ul.follow a:hover {
             align-items: stretch;
             width: auto;
             height: auto;
-            /*background: $color__link;*/
             opacity: 0.5;
             .thumb {
                 margin: 0;
@@ -809,8 +743,6 @@ ul.follow a:hover {
 #latest-projects {
     padding-left: 0;
     padding-right: 0;
-    //padding-top: 5rem;
-    //padding-bottom: 5rem;
 }
 .front-page-blog {
     margin-bottom: $default_gutter;

@@ -43,49 +43,27 @@ function jinn_customize_register( $wp_customize ) {
         ) );
         
         /*
-         * Show Logo with Sitename Checkbox
+         * Show Sitename in Menubar Checkbox
          */
-        // Show Logo with Sitename Setting
-        $wp_customize->add_setting( 'show_logo_sitename', array(
-            'default'           => 0,
+        // Show Sitename in Menubar Setting
+        $wp_customize->add_setting( 'show_sitename_in_menubar', array(
+            'default'           => 1,
             'sanitize_callback' => 'jinn_sanitize_checkbox',
         ) );
         
-        // Show Logo with Sitename Control
+        // Show Sitename in Menubar Control
         $wp_customize->add_control(
                 new WP_Customize_Control(
                         $wp_customize,
-                        'show_logo_sitename',
+                        'show_sitename_in_menubar',
                         array( 
-                            'label'         => __( 'Show sitename after the logo?', 'jinn' ),
+                            'label'         => __( 'Show sitename in menu bar?', 'jinn' ),
                             'type'          => 'checkbox',
                             'section'       => 'title_tagline',
                         )
         ) );
         
         /* ///////////////// GRADIENT ////////////////// */
-        
-        /*
-         * Use Gradient Checkbox
-         */
-        // Use Gradient Setting
-//        $wp_customize->add_setting( 'use_gradient', array(
-//            'default'           => 1,
-//            'sanitize_callback' => 'jinn_sanitize_checkbox',
-//        ) );
-//        
-//        // Use Gradient Control
-//        $wp_customize->add_control(
-//                new WP_Customize_Control(
-//                        $wp_customize,
-//                        'use_gradient',
-//                        array( 
-//                            'label'         => __( 'Use Header Gradient?', 'jinn' ),
-//                            'type'          => 'checkbox',
-//                            'section'       => 'colors',
-//                        )
-//        ) );
-        
         /* 
          * Gradient Color #1 
          */

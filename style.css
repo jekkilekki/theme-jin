@@ -4,7 +4,7 @@ Theme URI:          https://github.com/jekkilekki/theme-jin
 Author:             Aaron Snowberger
 Author URI:         http://aaronsnowberger.com
 Description:        A simple portfolio theme built with Sass and Foundation
-Version:            2.0.5
+Version:            2.0.6
 License:            GNU General Public License v2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:        jinn
@@ -685,10 +685,6 @@ table {
 }
 
 /*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-/*@import "links";*/
-/*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation ul {
@@ -714,6 +710,8 @@ table {
 .main-navigation ul li a {
   display: inline-block;
   line-height: 4.375rem;
+  position: relative;
+  top: 3px;
 }
 
 .main-navigation ul li:hover,
@@ -1507,7 +1505,6 @@ object {
 * {
   box-sizing: border-box;
   word-wrap: break-word;
-  /*position: relative;*/
   margin: 0;
   padding: 0;
 }
@@ -1566,7 +1563,6 @@ table tfoot td {
 }
 
 body {
-  /*border-top: 2*$px solid $color__border-main-panel;*/
   background-color: #f1f1f3;
 }
 
@@ -1734,6 +1730,7 @@ h6 {
   margin: 0.75em 0;
 }
 
+/* Set H1 widget titles default size */
 .widget-title {
   font-size: 1.1817em;
 }
@@ -1744,7 +1741,6 @@ h6 {
   line-height: 4.375rem;
   text-transform: uppercase;
   margin-top: 0;
-  /*        margin-left: 1rem;*/
 }
 
 .site-title:hover {
@@ -1780,7 +1776,6 @@ blockquote.alignright {
   margin-left: 2em;
   border-left: none;
   border-right: 0.3rem solid #e2e2e5;
-  /*margin-right: 0;*/
 }
 
 blockquote.alignright cite {
@@ -1794,7 +1789,6 @@ blockquote.alignleft {
   float: left;
   padding: 1em 0 0 2em;
   margin-right: 2em;
-  /*margin-left: 0;*/
 }
 
 pre {
@@ -1834,6 +1828,7 @@ pre {
     font-size: 1em;
     margin: 0.75em 0;
   }
+  /* Set H1 widget titles default size */
   .widget-title {
     font-size: 1.06353em;
   }
@@ -1843,42 +1838,10 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   }
-  /*    // redeclare variables to be smaller
-    $default_h_padding: $phi * $phi * 1rem;
-    $default_v_padding: $default_h_padding;
-
-    // Posts and widgets horizontal padding
-    $post_l_padding: $default_h_padding;
-    $post_r_padding: $post_l_padding;
-
-    // Posts and widgets vertical padding
-    $post_t_padding: $default_h_padding / $phi;
-    $post_b_padding: $post_t_padding;
-    
-    .hentry,
-    .comments-area, 
-    .page-header,
-    .site-main .posts-navigation,
-    .site-main .post-navigation,
-    .paging-navigation {
-        padding-left: $post_l_padding;
-        padding-right: $post_r_padding;
-        padding-top: $post_t_padding;
-        padding-bottom: $post_b_padding;
-    }
-    
-    .entry-title {
-        margin-bottom: $post_t_padding;
-    }
-    
-    .site-footer {
-        padding: $phi * 1em;
-    }*/
 }
 
 @media (max-width: 30rem) {
@@ -1911,6 +1874,7 @@ pre {
     font-size: 1em;
     margin: 0.75em 0;
   }
+  /* Set H1 widget titles default size */
   .widget-title {
     font-size: 0.94536em;
   }
@@ -1920,7 +1884,6 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -1957,6 +1920,7 @@ pre {
     font-size: 1em;
     margin: 0.75em 0;
   }
+  /* Set H1 widget titles default size */
   .widget-title {
     font-size: 0.9em;
   }
@@ -1966,7 +1930,6 @@ pre {
     line-height: 4.375rem;
     text-transform: uppercase;
     margin-top: 0;
-    /*        margin-left: 1rem;*/
   }
   .site-title:hover {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -2161,10 +2124,6 @@ ul, ol {
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
-  /*float: left;*/
-  /*width: 33.33333%;*/
-  /*margin-left: .9375rem;*/
-  /*margin-right: .9375rem;*/
   border: none;
   margin: 0;
   padding: 0;
@@ -2179,11 +2138,6 @@ ul, ol {
 .portfolio-title {
   text-align: center;
   margin-top: 0;
-}
-
-.admin-bar .site-header .fixed {
-  /*    top: 32px;
-    box-shadow: $color__header-box-shadow;*/
 }
 
 .top-bar-title .site-title a {
@@ -2229,6 +2183,7 @@ ul, ol {
 .comments-area,
 .page-content,
 .site-main .posts-navigation {
+  /* Originally used as a guide, but this is the color I want for these items */
   background: #ffffff;
   background-color: #fff;
   border: 0.05rem solid transparent;
@@ -2256,8 +2211,6 @@ ul, ol {
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
   padding-bottom: 2.61792rem;
-  /*        padding-top: $phi * 1rem;
-        padding-bottom: $phi * 1rem;*/
   margin: 0;
 }
 
@@ -2348,7 +2301,6 @@ ul, ol {
 
 .site-main .comment-navigation {
   border-top: 1px solid #e2e2e5;
-  /*border-bottom: 1px solid $color__light-border;*/
   box-shadow: none;
 }
 
@@ -2381,15 +2333,12 @@ ul, ol {
 }
 
 .widget {
+  /* Originally used as a guide, but this is the color I want for these items */
   background: #ffffff;
   background-color: #fafafb;
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
-  /*float: left;*/
-  /*width: 33.33333%;*/
-  /*margin-left: .9375rem;*/
-  /*margin-right: .9375rem;*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
@@ -2429,15 +2378,6 @@ ul, ol {
   float: left;
 }
 
-/*.content-area {
-    //float: left;
-    margin: 0 (-$size__site-sidebar) 0 0;
-    //width: $size__site-main;
-}
-
-.site-main {
-    margin: 0 $size__site-sidebar 0 0;
-}*/
 .site-title {
   margin-bottom: 0;
   display: inline-block;
@@ -2495,8 +2435,6 @@ ul, ol {
   padding: 1rem 1rem 0.5rem 1.5rem;
   font-size: 1.2rem;
   color: #9e9e9e;
-  /*margin-top: -25*$px;*/
-  /*height: 45*$px;*/
   max-width: 100%;
   width: 50%;
   float: right;
@@ -2504,10 +2442,7 @@ ul, ol {
 
 .hentry .search-field,
 .widget .search-field {
-  /*margin-top: $phi * 1rem;*/
-  /*margin-bottom: 1rem;*/
   width: 100%;
-  /*    height: 45*$px;*/
   padding: 1rem 1rem 0.5rem 1.5rem;
   font-size: 1.2rem;
   color: #9e9e9e;
@@ -2660,7 +2595,6 @@ ul, ol {
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
   padding-top: 2.61792rem;
-  /*padding-bottom: $post_b_padding;*/
   margin: 0 0 3.03375rem 0;
   border-top: 0.05rem solid gainsboro;
 }
@@ -2684,10 +2618,6 @@ ul, ol {
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
-  /*float: left;*/
-  /*width: 33.33333%;*/
-  /*margin-left: .9375rem;*/
-  /*margin-right: .9375rem;*/
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
   padding-left: 4.2358rem;
   padding-right: 4.2358rem;
@@ -2748,8 +2678,6 @@ ul, ol {
 }
 
 .archive .show-hide-author {
-  /*font-size: 16*$px;*/
-  /*display: inline-block;*/
   margin-top: 2.0225rem !important;
 }
 
@@ -2768,12 +2696,8 @@ ul, ol {
 .page-title {
   text-align: center;
   font-size: 2rem;
-  /*text-transform: uppercase;*/
   font-weight: 400;
   margin: 0;
-  /*border-top: 1px solid $color__light-border;*/
-  /*border-bottom: 1px solid $color__light-border;*/
-  /*padding: 1rem 0 0.75rem;*/
 }
 
 #content .sticky {
@@ -2938,10 +2862,6 @@ ul, ol {
   border: 0.05rem solid white;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.15);
   color: #9e9e9e;
-  /*float: left;*/
-  /*width: 33.33333%;*/
-  /*margin-left: .9375rem;*/
-  /*margin-right: .9375rem;*/
   display: none;
 }
 
@@ -3014,34 +2934,6 @@ ul, ol {
 
 .vcard .fn {
   font-weight: 400;
-}
-
-.entry-content {
-  /*    a.more-link {
-        font-size: 18*$px;
-        font-weight: 300;
-        text-transform: uppercase;
-        letter-spacing: 2*$px;
-        display: inline-block;
-        padding: 0.75em $phi * 1em 0.5em;
-        margin: 0 0 2em 0;
-        &:before {
-            font-family: "FontAwesome";
-            content: "\f0a4";
-            margin-right: 0.5em;
-            opacity: 0.5;
-        }
-        &:after {
-            font-family: "FontAwesome";
-            content: "\f0a5";
-            margin-left: 0.5em;
-            opacity: 0.5;
-        }
-        @include more_link();
-    }
-    a.more-link:hover {
-        background-color: $color__background-sub-panel;
-    }*/
 }
 
 .entry-content .continue-reading {
@@ -3152,7 +3044,6 @@ ul, ol {
 
 .entry-content .wp-caption-text, .entry-content .gallery-caption {
   font-size: 0.9rem;
-  /*font-weight: 300;*/
   margin-top: -1.5rem;
   padding: 0.5rem;
   line-height: 1.618rem;
@@ -3184,7 +3075,6 @@ a.more-link:hover {
   font-size: 0.9rem;
   font-weight: 300;
   padding: 0.5rem 0;
-  /*    line-height: 3em;*/
   color: #9e9e9e;
   border-bottom: none;
 }
@@ -3586,6 +3476,7 @@ input.search-field {
 }
 
 .site-footer {
+  /* Originally used as a guide, but this is the color I want for these items */
   background: #ffffff;
   clear: both;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
@@ -3818,16 +3709,6 @@ input.search-field {
   position: relative;
 }
 
-.entry-list-main li .list-link {
-  /*        figure {
-            padding-top: $widget_t_padding;
-            padding-bottom: $widget_b_padding;
-            img {
-                margin: auto;
-            }
-        }*/
-}
-
 .entry-list-main li .list-link h2 {
   font-weight: 400;
   color: #404040;
@@ -3909,8 +3790,6 @@ a.topbutton:active {
 .front-page section {
   background: white;
   margin: 0;
-  /*     width: 100vw;
-    padding: 0 calc(( 100vw - 75em ) / 2 );*/
 }
 
 .front-page section,
@@ -4132,6 +4011,7 @@ a.topbutton:active {
 
 .panel,
 .panel.callout {
+  /* STYLED LIKE THEME WIDGETS */
   border: 0.05rem solid silver;
   background-color: #f5f5f5;
 }
@@ -4193,7 +4073,6 @@ a.topbutton:active {
 
 ul.follow {
   list-style: none;
-  /*margin-top: 1rem;*/
   text-align: center;
   margin: 0.5rem 0 0;
 }
@@ -4375,38 +4254,6 @@ ul.follow a:hover {
   background-size: cover !important;
 }
 
-/*.services-list li:nth-child(1) .service-background:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: -webkit-linear-gradient(transparent 10%, white 70%);
-    background: linear-gradient(to left, transparent 85%, #1A3547 100%);
-}
-.services-list li:nth-child(3) .service-background:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: -webkit-linear-gradient(transparent 10%, white 70%);
-    background: linear-gradient(to right, transparent 85%, #1A3547 100%);
-}*/
-/*.services-list li:nth-child(3):after {
-    background-color: #1A3547;
-    content: " ";
-    height: 100%;
-    left: -16%;
-    position: absolute;
-    top: -20px;
-    -webkit-transform: rotate(15deg);
-    -ms-transform: rotate(15deg);
-    transform: rotate(15deg);
-    width: 40%;
-}*/
 .services-list li,
 .services-list li a,
 .services-list li h3 {
@@ -4429,7 +4276,6 @@ ul.follow a:hover {
   height: 100%;
   border: 1px solid #B5CBD8;
   top: 0;
-  /*margin-top: -25%;*/
   left: 0;
   opacity: 0.2;
 }
@@ -4739,7 +4585,6 @@ ul.follow a:hover {
           align-items: stretch;
   width: auto;
   height: auto;
-  /*background: $color__link;*/
   opacity: 0.5;
 }
 
