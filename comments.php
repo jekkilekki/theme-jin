@@ -33,10 +33,10 @@ if ( have_comments() ) : ?>
 				$comment_number = get_comments_number();
                                 $comment_locale = number_format_i18n( $comment_number );
                                 if ( 1 === $comment_number ) {
-                                        printf( esc_html__( 'One thought', 'jinn' ), $comment_locale ); // WPCS: XSS OK.
+                                        esc_html_e( 'One thought', 'jinn' );
                                 } else {
                                         /* translators: %s: number of comments */
-                                        printf( esc_html( _n( '%s thought', '% thoughts', $comment_locale, 'jinn' ) ), $comment_locale ); // WPCS: XSS OK.
+                                        printf( esc_html( _n( '%s thought', '%s thoughts', $comment_locale, 'jinn' ) ), $comment_locale ); // WPCS: XSS OK.
                                 }
 			?>
 		</h2>
