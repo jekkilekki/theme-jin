@@ -1,6 +1,6 @@
 # JINN
 
-`Version 2.0.5`
+`Version 2.0.8`
 
 ![screenshot](https://cloud.githubusercontent.com/assets/6644259/22168820/d1c1c7c0-dfb2-11e6-8bbe-b455cecc9b91.png)
 
