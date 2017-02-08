@@ -32,7 +32,7 @@ if ( have_comments() ) : ?>
 			<?php
 				$comment_number = get_comments_number();
                                 $comment_locale = number_format_i18n( $comment_number );
-                                if ( 1 === $comment_number ) {
+                                if ( '1' === $comment_number ) {
                                         esc_html_e( 'One thought', 'jinn' );
                                 } else {
                                         /* translators: %s: number of comments */
