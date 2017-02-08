@@ -113,16 +113,6 @@ function jinn_social_menu() {
 endif;
 
 /**
- * Add Post Type Support for JetPack Custom Post Types
- */
-function jinn_add_jetpack_testimonial_taxonomies() {
-
-        register_taxonomy_for_object_type( 'category', 'jetpack-testimonial' );
-
-}
-add_action( 'init', 'jinn_add_jetpack_testimonial_taxonomies' );
-
-/**
  * Add Even/Odd classes to various Posts
  * 1. Testimonials
  * 
