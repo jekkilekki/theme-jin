@@ -13,8 +13,9 @@
 	<header class="entry-header">
 		<h1 class="entry-title">
                     <?php 
-                    if ( is_404() ) { esc_html_e( 'Nothing Found', 'jinn' ); }
+                    if ( is_404() ) { esc_html_e( 'Nothing found', 'jinn' ); }
                     else if ( is_search() ) { printf( esc_html_e( 'Nothing found for ', 'jinn' ) . '<ins>' . get_search_query() . '</ins>' ); } 
+                    else if ( is_page_template( 'page-templates/page-client.php' ) ) { esc_html_e( 'Additional Setup required', 'jinn' ); }
                     else { esc_html_e( 'Nothing found', 'jinn' ); }
                     ?>
                 </h1>
@@ -36,6 +37,16 @@
                 <?php elseif ( is_search() ) : ?>
 
 			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'jinn' ); ?></p>
+			<?php get_search_form(); ?>
+                        
+                <?php elseif ( is_page_template( 'page-templates/page-client.php' ) ) : ?>
+
+			<p><?php esc_html_e( 'Please check the following THREE conditions to display client projects on this page:', 'jinn' ); ?></p>
+                        <ol>
+                            <li><?php esc_html_e( 'Be sure Jetpack and its Portfolio custom content type are activated.', 'jinn' ); ?></li>
+                            <li><?php esc_html_e( "In THIS PAGE, assign a custom meta key of 'client' with a value of the Client's name (i.e. 'client': 'WordPress'", "jinn" ); ?></li>
+                            <li><?php esc_html_e( "On every Client Project page (i.e. something created for 'WordPress'), be sure to Tag it with the same Client name.", "jinn" ); ?></li>
+                        </ol>
 			<?php get_search_form(); ?>
 
 		<?php else : ?>

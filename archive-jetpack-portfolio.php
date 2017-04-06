@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<?php   
                                     echo '<h1 class="page-title">';
-                                    post_type_archive_title( 'All ' );
+                                    the_archive_title();
                                     echo '</h1>';
                                     the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
@@ -41,6 +41,11 @@ get_header(); ?>
                         echo '</section>';
 
                         jinn_paging_nav();
+                        the_posts_pagination( array(
+                            'mid_size'      => 3,
+                            'prev_text'     => __( 'Back', 'jinn' ),
+                            'next_text'     => __( 'Onward', 'jinn' )
+                        ));
 
 		else :
 

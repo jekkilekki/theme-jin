@@ -118,13 +118,13 @@ endif;
  * 
  * @link    http://www.wpbeginner.com/wp-themes/how-to-add-oddeven-class-to-your-post-in-wordpress-themes/
  */
-global $current_class;
-$current_class = 'odd';
+global $jinn_current_class;
+$jinn_current_class = 'odd';
 function jinn_odd_even_post_class( $classes ) {
     if( get_post_type( get_the_ID() ) === 'jetpack-testimonial' ) {
-        global $current_class;
-        $classes[] = $current_class;
-        $current_class = ( $current_class == 'odd' ) ? 'even' : 'odd';
+        global $jinn_current_class;
+        $classes[] = $jinn_current_class;
+        $jinn_current_class = ( $jinn_current_class == 'odd' ) ? 'even' : 'odd';
     }
     return $classes;
 }

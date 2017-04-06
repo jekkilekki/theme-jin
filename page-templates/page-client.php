@@ -10,7 +10,7 @@ get_header(); ?>
         <main id="main" class="site-main" role="main">
 
             <header class="page-header page-header-client">
-                <?php echo '<h1 class="page-title"><span class="page-title-pre">Client Page:</span>' . get_the_title() . '</h1>'; ?>
+                <?php echo '<h1 class="page-title"><span class="page-title-pre">' . __( 'Client Page:', 'jinn' ) . '</span>' . get_the_title() . '</h1>'; ?>
             </header>
             
 
@@ -60,7 +60,7 @@ get_header(); ?>
                                     'terms'     => $client,
                                     )
                                 ),
-                            'posts_per_page'    => -1,
+                            'posts_per_page'    => 10,
                         );
 
                         $query = new WP_Query( $args );

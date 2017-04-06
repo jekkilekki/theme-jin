@@ -356,7 +356,7 @@ function jinn_breadcrumbs() {
     $breadcrumb_class = 'entry-meta';
     
     $page_title = '<span class="current">' . get_the_title( $post->ID ) . '</span>';
-    $home_link = '<a aria-label="Home" title="Home" class="breadcrumb-home" href="' . home_url() . '"><i class="fa fa-home"></i></a>' . $separator;
+    $home_link = '<a aria-label="Home" title="Home" class="breadcrumb-home" href="' . esc_url( home_url() ) . '"><i class="fa fa-home"></i></a>' . $separator;
     
     $output .= "<div aria-label='You are here:' id='$breadcrumb_id' class='$breadcrumb_class'>";
     $output .= $home_link;
@@ -366,7 +366,7 @@ function jinn_breadcrumbs() {
         
         while( $parent_id ) {
             $page = get_page( $parent_id );
-            $breadcrumbs[] = '<a href="' . get_permalink( $page->ID ) . '">' . get_the_title( $page->ID ) . '</a>';
+            $breadcrumbs[] = '<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a>';
             $parent_id = $page->post_parent;
         }
         

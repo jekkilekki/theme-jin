@@ -16,12 +16,6 @@
  * @TODO: Add CONDITIONAL statements to test for the existence of each of the pages - OR add dummy content to tell people to fill those in
  */
 
-if ( get_theme_mod( 'jinn_show_front_page_notifications', '1' ) == '0' ) { ?>
-    <style>
-        #warnings { display: none; }
-    </style>
-<?php }
-
 get_header(); ?>
 
 <?php
@@ -430,23 +424,24 @@ $incomplete_section_ids = array();
          * WARNINGS SECTION ====================================================
          * /////////////////////////////////////////////////////////////////////
          */   
-                    if ( $incomplete_sections > 0 && is_user_logged_in() ) {
-                        echo '<section id="warnings">';
+                    if ( $incomplete_sections > 0 && is_user_logged_in() ) : ?>
+                        <section id="warnings <?php echo get_theme_mod( 'jinn_show_front_page_notifications', '1' ) == '0' ? 'hide' : '' ?>">
                         
-                        echo '<h2 class="page-title">' . esc_attr__( 'Notifications', 'jinn' ) . '</h2>';
-                        echo '<div class="entry-content row">';
-                        echo "<h4>You have " . esc_attr( $incomplete_sections ) . " incomplete Front Page sections.</h4>";
-                        echo '<p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a>:';
-                        echo '<ol>';
-                        foreach( $incomplete_section_ids as $incomplete_section_id ) {
-                            echo "<li>" . esc_html( $incomplete_section_id ) . "</li>";
-                        }
-                        echo '</ol>';
-                        echo '</div>';
+                            <h2 class="page-title"><?php esc_attr__( 'Notifications', 'jinn' ); ?></h2>
+                            <div class="entry-content row">
+                                <h4>You have <?php echo esc_attr( $incomplete_sections ); ?> incomplete Front Page sections.</h4>
+                                <p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a></p>
+                                <ol>
+                                <?php
+                                    foreach( $incomplete_section_ids as $incomplete_section_id ) {
+                                        echo "<li>" . esc_html( $incomplete_section_id ) . "</li>";
+                                    }
+                                ?>
+                                </ol>
+                            </div>
                         
-                        echo '</section>';
-                    } 
-                    ?>
+                        </section>
+                    <?php endif; ?>
                     
 	</div><!-- #primary -->
 

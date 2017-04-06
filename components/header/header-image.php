@@ -39,7 +39,6 @@ if ( ! empty( $header_image ) || $use_gradient !== 0 ) { ?>
             
                         <?php wp_nav_menu( array( 
                             'theme_location'    => 'front', 
-                            'menu'              => 'front',
                             'menu_id'           => 'front-menu',
                             'menu_class'        => 'small-block-grid-2 medium-block-grid-3 flip-cards',
                             'fallback_cb'       => false,

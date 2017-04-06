@@ -18,7 +18,7 @@ get_header(); ?>
 			<header class="page-header">
 				<?php   
                                     echo '<h1 class="page-title">';
-                                    post_type_archive_title( 'All ' );
+                                    the_archive_title();
                                     echo '</h1>';
                                     the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>

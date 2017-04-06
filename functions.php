@@ -181,11 +181,11 @@ function jinn_foundation_enqueue() {
         //wp_enqueue_script( 'foundation-what-input', get_template_directory_uri() . '/assets/foundation/js/what-input.js', array( 'jquery' ), true );
         
         /* Foundation Init JS */
-        wp_enqueue_script( 'foundation-init-js', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
+        wp_enqueue_script( 'jinn-foundation-init', get_template_directory_uri() . '/foundation.js', array( 'jquery' ), true );   // Small (author) customized JS script to start the Foundation library, sitting freely in the Theme folder
         
         /* Add Custom Fonts */
         wp_enqueue_style( 'jinn-local-fonts', get_template_directory_uri() . '/assets/fonts/custom-fonts.css' );
-        wp_enqueue_style( 'jinn-fawesome', get_template_directory_uri() . '/assets/fonts/font-awesome.css' );  
+        wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome.css' );  
         
 }
 add_action( 'wp_enqueue_scripts', 'jinn_foundation_enqueue' );
@@ -259,6 +259,18 @@ require get_template_directory() . '/inc/jetpack.php';
  * JINN custom functions below
  * -----------------------------------------------------------------------------
  */
+
+/**
+ * Customize The Archive Title output
+ */ 
+function jinn_modify_archive_title( $title ) {
+    if( is_page_template( 'archive-jetpack-portfolio.php' ) || is_page_template( 'archive-jetpack-testimonial.php' ) ) {
+        return __( 'All ', 'jinn' ) . $title;
+    } else {
+        return $title;
+    }
+}
+add_filter( 'get_the_archive_title', 'jinn_modify_archive_title', 10, 1 );
 
 /*
  * Add Excerpts to Pages
