@@ -250,9 +250,11 @@ require get_template_directory() . '/inc/extras.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Load Jetpack compatibility file - only if Jetpack is active
  */
-require get_template_directory() . '/inc/jetpack.php';
+if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+    require get_template_directory() . '/inc/jetpack.php';
+}
 
 /**
  * -----------------------------------------------------------------------------
@@ -265,7 +267,7 @@ require get_template_directory() . '/inc/jetpack.php';
  */ 
 function jinn_modify_archive_title( $title ) {
     if( is_page_template( 'archive-jetpack-portfolio.php' ) || is_page_template( 'archive-jetpack-testimonial.php' ) ) {
-        return __( 'All ', 'jinn' ) . $title;
+        return esc_html__( 'All ', 'jinn' ) . $title;
     } else {
         return $title;
     }

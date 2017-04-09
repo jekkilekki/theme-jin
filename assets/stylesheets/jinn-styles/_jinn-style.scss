@@ -200,6 +200,7 @@ pre {
 --------------------------------------------------------------*/
 /* Hides navigation links and site footer when infinite scroll is active */
 .infinite-scroll .paging-navigation,
+.infinite-scroll .pagination,
 .infinite-scroll.neverending #footer {
     display: none;
 }
@@ -384,7 +385,8 @@ ul, ol {
     }
 }
 
-.paging-navigation {
+.paging-navigation,
+.pagination {
     margin-bottom: 5rem;
     text-align: center;
     ul {
@@ -415,6 +417,10 @@ ul, ol {
             font-size: 18*$px;
             display: inline-block;
             color: $color__text-sub-panel;
+        }
+        .dots {
+            border-right: 1px solid $color__background-body;
+            border-left: 1px solid $color__background-body;
         }
         &:first-child {
             border-radius: 5px 0 0 5px;

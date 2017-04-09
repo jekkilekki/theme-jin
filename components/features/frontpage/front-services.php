@@ -16,7 +16,7 @@
 
         <!--Services Title--> 
         <div class="services-title">
-            <a class="services-link" href="<?php the_permalink(); ?>" title="Learn more about <?php the_title(); ?>">
+            <a class="services-link" href="<?php the_permalink(); ?>" title="<?php echo esc_html__( 'Learn more about ', 'jinn' ) . get_the_title(); ?>">
 
                 <?php jinn_the_post_icon(); ?>
                 <h2 class="entry-title"><?php the_title(); ?></h2>

@@ -8,7 +8,7 @@
  */
 ?>
         <li class="clear small-4 medium-3 large-2 columns">
-            <a class="clients-link" href="<?php echo esc_url( get_permalink() ); ?>" title="See all Projects for <?php echo get_the_title(); ?>">
+            <a class="clients-link" href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_html__( 'See all Projects for ', 'jinn' ) . get_the_title(); ?>">
                 <figure class="client-figure">
                     <?php if ( has_post_thumbnail() ) the_post_thumbnail( 'medium', array( 'class' => 'desaturate' ) ); ?>
                 </figure>

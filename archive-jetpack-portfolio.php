@@ -41,11 +41,6 @@ get_header(); ?>
                         echo '</section>';
 
                         jinn_paging_nav();
-                        the_posts_pagination( array(
-                            'mid_size'      => 3,
-                            'prev_text'     => __( 'Back', 'jinn' ),
-                            'next_text'     => __( 'Onward', 'jinn' )
-                        ));
 
 		else :
 

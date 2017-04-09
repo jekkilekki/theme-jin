@@ -4,7 +4,7 @@ Theme URI:          https://github.com/jekkilekki/theme-jin
 Author:             Aaron Snowberger
 Author URI:         http://aaronsnowberger.com
 Description:        A simple portfolio theme built with Sass and Foundation
-Version:            2.0.8
+Version:            2.1.0
 License:            GNU General Public License v2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:        jinn
@@ -91,7 +91,7 @@ audio:not([controls]) {
 }
 
 [hidden],
-.hide, 
+.hide,
 template {
   display: none;
 }
@@ -710,7 +710,7 @@ table {
 
 .main-navigation ul li a {
   display: inline-block;
-  line-height: 4.375rem;
+  line-height: 4rem;
   position: relative;
   top: 3px;
 }
@@ -753,6 +753,17 @@ table {
 
 .main-navigation ul li ul.childopen {
   display: table;
+  padding-bottom: 3px;
+}
+
+.main-navigation ul li ul.childopen li:hover,
+.main-navigation ul li ul.childopen li .active {
+  box-shadow: none;
+}
+
+.main-navigation ul li ul.childopen li:hover a,
+.main-navigation ul li ul.childopen li .active a {
+  background: transparent;
 }
 
 /* expanded nav menu */
@@ -2029,6 +2040,7 @@ input[type="submit"]:active,
 --------------------------------------------------------------*/
 /* Hides navigation links and site footer when infinite scroll is active */
 .infinite-scroll .paging-navigation,
+.infinite-scroll .pagination,
 .infinite-scroll.neverending #footer {
   display: none;
 }
@@ -2244,24 +2256,28 @@ ul, ol {
   color: #9e9e9e;
 }
 
-.paging-navigation {
+.paging-navigation,
+.pagination {
   margin-bottom: 5rem;
   text-align: center;
 }
 
-.paging-navigation ul {
+.paging-navigation ul,
+.pagination ul {
   margin: 0 auto;
   display: inline-block;
   border: 0.05rem solid white;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
-.paging-navigation li {
+.paging-navigation li,
+.pagination li {
   display: inline-block;
   list-style: none;
 }
 
-.paging-navigation li a {
+.paging-navigation li a,
+.pagination li a {
   background: -webkit-linear-gradient(#FFF, #FBFBFC);
   background: linear-gradient(#FFF, #FBFBFC);
   font-size: 0.9rem;
@@ -2271,13 +2287,15 @@ ul, ol {
   border-bottom: 0;
 }
 
-.paging-navigation li a:hover {
+.paging-navigation li a:hover,
+.pagination li a:hover {
   color: #00ACDF;
   background: -webkit-linear-gradient(#FCFCFD, #F3F4F5);
   background: linear-gradient(#FCFCFD, #F3F4F5);
 }
 
-.paging-navigation li span.page-numbers {
+.paging-navigation li span.page-numbers,
+.pagination li span.page-numbers {
   background: -webkit-linear-gradient(#FFF, #FBFBFC);
   background: linear-gradient(#FFF, #FBFBFC);
   margin: 0 -0.14rem;
@@ -2287,15 +2305,24 @@ ul, ol {
   color: #9e9e9e;
 }
 
-.paging-navigation li:first-child {
+.paging-navigation li .dots,
+.pagination li .dots {
+  border-right: 1px solid #f1f1f3;
+  border-left: 1px solid #f1f1f3;
+}
+
+.paging-navigation li:first-child,
+.pagination li:first-child {
   border-radius: 5px 0 0 5px;
 }
 
-.paging-navigation li:last-child {
+.paging-navigation li:last-child,
+.pagination li:last-child {
   border-radius: 0 5px 5px 0;
 }
 
-.paging-navigation .current {
+.paging-navigation .current,
+.pagination .current {
   font-weight: 300;
   color: #9e9e9e;
 }

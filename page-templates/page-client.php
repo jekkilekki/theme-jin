@@ -10,7 +10,7 @@ get_header(); ?>
         <main id="main" class="site-main" role="main">
 
             <header class="page-header page-header-client">
-                <?php echo '<h1 class="page-title"><span class="page-title-pre">' . __( 'Client Page:', 'jinn' ) . '</span>' . get_the_title() . '</h1>'; ?>
+                <?php echo '<h1 class="page-title"><span class="page-title-pre">' . esc_html__( 'Client Page:', 'jinn' ) . '</span>' . get_the_title() . '</h1>'; ?>
             </header>
             
 
@@ -30,12 +30,12 @@ get_header(); ?>
 	
 						<div class="entry-content">
 							<?php the_content(); ?>
-							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'jinn' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+							<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'jinn' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
                                                         <?php jinn_jetpack_sharing(); ?>
                                                 </div><!-- .entry-content -->
 	
 						<footer class="entry-footer">
-							<?php edit_post_link( __( 'Edit', 'jinn' ), '<span class="edit-link">', '</span>' ); ?>
+							<?php edit_post_link( esc_html__( 'Edit', 'jinn' ), '<span class="edit-link">', '</span>' ); ?>
 						</footer><!-- .entry-meta -->
 					</div>
 				</article><!-- #post -->

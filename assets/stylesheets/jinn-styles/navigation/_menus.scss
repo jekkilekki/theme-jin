@@ -14,7 +14,7 @@
 			padding: 0;
 			a {
 				display: inline-block;
-                                line-height: 4.375rem;
+                                line-height: 4rem;
                                 position: relative;
                                 top: 3px;
 			}
@@ -52,6 +52,16 @@
 			/* show child */
 			ul.childopen {
 				display: table;
+                                padding-bottom: 3px;
+                                li {
+                                    &:hover,
+                                    .active {
+                                        box-shadow: none;
+                                        a {
+                                            background: transparent;
+                                        }
+                                    }
+                                }
 			}
 		}
 	}

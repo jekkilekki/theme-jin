@@ -1,6 +1,6 @@
 # JINN
 
-`Version 2.0.8`
+`Version 2.1.0`
 
 ![screenshot](https://cloud.githubusercontent.com/assets/6644259/22168820/d1c1c7c0-dfb2-11e6-8bbe-b455cecc9b91.png)
 
@@ -74,6 +74,15 @@ Slick Carousel
 * License: MIT License, http://www.opensource.org/licenses/mit-license.html
 
 ## Changelog
+
+### 2.1.0 - Apr 8, 2017
+
+* Internationalize everything
+* Escape everything
+* Clean up everything
+* Replace custom `paging_nav()` function with `the_posts_navigation()`
+* Replace custom `archive_title()` function with `the_archive_title()`
+* Remove extraneous files/folders
 
 ### 2.0.8 - Feb 8, 2017
 

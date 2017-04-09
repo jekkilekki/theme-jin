@@ -34,7 +34,8 @@ $incomplete_section_ids = array();
          */
     
                 // FIRST QUERY : Get the 'Services' Page
-                $query = new WP_Query( 'pagename=services' );
+                $pagename = 'pagename=' . esc_html__( 'services', 'jinn' );
+                $query = new WP_Query( $pagename );
 
                 // If we have a 'Services' page
                 if( $query->have_posts() ) { ?>
@@ -129,7 +130,8 @@ $incomplete_section_ids = array();
                 /*
                  * CLIENTS LOOP : Get ALL individual Client Pages
                  */
-                $query = new WP_Query( 'pagename=clients' );
+                $pagename = 'pagename=' . esc_html__( 'clients', 'jinn' );
+                $query = new WP_Query( $pagename );
 
                 if ( $query->have_posts() ) { ?>
                     <section id="clients">    
@@ -205,7 +207,8 @@ $incomplete_section_ids = array();
          * ABOUT SECTION =======================================================
          * /////////////////////////////////////////////////////////////////////
          */                    
-                    $query = new WP_Query( 'pagename=about' );
+                    $pagename = 'pagename=' . esc_html__( 'about', 'jinn' );
+                    $query = new WP_Query( $pagename );
 
                     // The Loop
                     if ( $query->have_posts() ) {
@@ -393,7 +396,8 @@ $incomplete_section_ids = array();
          * CONTACT SECTION =====================================================
          * /////////////////////////////////////////////////////////////////////
          */                
-                    $query = new WP_Query( 'pagename=contact' );
+                    $pagename = 'pagename=' . esc_html__( 'contact', 'jinn' );
+                    $query = new WP_Query( $pagename );
 
                     // The Loop
                     if ( $query->have_posts() ) { ?>

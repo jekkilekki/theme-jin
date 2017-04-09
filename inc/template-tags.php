@@ -263,9 +263,9 @@ function jinn_author_box() {
          * Create the Author box
          */
         $author_details  = '<aside class="author_bio_section">';
-        $author_details .= '<h3 class="author-title"><span>About ';
-            if ( is_author() ) $author_details .= $display_name;    // If an author archive, just show the author name
-            else $author_details .= 'the Author';                   // If a regular page, show "About the Author"
+        $author_details .= '<h3 class="author-title"><span>' . esc_html__( 'About ', 'jinn' );
+            if ( is_author() ) $author_details .= $display_name;        // If an author archive, just show the author name
+            else $author_details .= esc_html__( 'the Author', 'jinn' ); // If a regular page, show "About the Author"
         $author_details .= '</span></h3>';
         
         $author_details .= '<div class="author-box">';
@@ -281,17 +281,17 @@ function jinn_author_box() {
             $author_details .= '<p class="author-description">' . $user_desc . '</p>';
         
         if ( ! is_author() ) {  // Don't show the meta info on an author archive page
-            $author_details .= '<p class="author-links entry-meta"><span class="vcard">All posts by <a class="fn" href="' . $user_posts . '">' . $display_name . '</a></span>';
+            $author_details .= '<p class="author-links entry-meta"><span class="vcard">' . esc_html__( 'All posts by', 'jinn' ) . '<a class="fn" href="' . $user_posts . '">' . $display_name . '</a></span>';
 
             // Check if author has a website in their profile
             if ( ! empty( $user_site ) ) 
-                $author_details .= '<a class="author-site" href="' . $user_site . '" target="_blank" rel="nofollow">Website</a></p>';
+                $author_details .= '<a class="author-site" href="' . $user_site . '" target="_blank" rel="nofollow">' . esc_html__( 'Website', 'jinn' ) . '</a></p>';
             else $author_details .= '</p>';
         }
         
         $author_details .= '</section>';
         $author_details .= '</div>';
-        $author_details .= '<p class="show-hide-author label">Hide</p>';
+        $author_details .= '<p class="show-hide-author label">' . esc_html__( 'Hide', 'jinn' ) . '</p>';
         $author_details .= '</aside>';
         
         echo wp_kses_post( $author_details );
@@ -356,9 +356,9 @@ function jinn_breadcrumbs() {
     $breadcrumb_class = 'entry-meta';
     
     $page_title = '<span class="current">' . get_the_title( $post->ID ) . '</span>';
-    $home_link = '<a aria-label="Home" title="Home" class="breadcrumb-home" href="' . esc_url( home_url() ) . '"><i class="fa fa-home"></i></a>' . $separator;
+    $home_link = '<a aria-label="' . esc_html__( 'Home', 'jinn' ) .'" title="' . esc_html__( 'Home', 'jinn' ) .'" class="breadcrumb-home" href="' . esc_url( home_url() ) . '"><i class="fa fa-home"></i></a>' . $separator;
     
-    $output .= "<div aria-label='You are here:' id='$breadcrumb_id' class='$breadcrumb_class'>";
+    $output .= "<div aria-label='" . esc_html__( 'You are here:', 'jinn' ) . "' id='$breadcrumb_id' class='$breadcrumb_class'>";
     $output .= $home_link;
     
     if( $post->post_parent ) {
@@ -486,50 +486,12 @@ if ( ! function_exists( 'jinn_paging_nav' ) ) :
  * @global WP_Rewrite $wp_rewrite WordPress Rewrite object.
  */
 function jinn_paging_nav() {
-	global $wp_query, $wp_rewrite;
-
-	// Don't print empty markup if there's only one page.
-	if ( $wp_query->max_num_pages < 2 ) {
-		return;
-	}
-
-	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-	$pagenum_link = html_entity_decode( get_pagenum_link() );
-	$query_args   = array();
-	$url_parts    = explode( '?', $pagenum_link );
-
-	if ( isset( $url_parts[1] ) ) {
-		wp_parse_str( $url_parts[1], $query_args );
-	}
-
-	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
-	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
-
-	$format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-	$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
-
-	// Set up paginated links.
-	$links = paginate_links( array(
-		'base'     => $pagenum_link,
-		'format'   => $format,
-		'total'    => $wp_query->max_num_pages,
-		'current'  => $paged,
-		'mid_size' => 3,
-		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '<i class="fa fa-caret-left"></i> Previous', 'jinn' ),
-		'next_text' => __( 'Next <i class="fa fa-caret-right"></i>', 'jinn' ),
-                'type'      => 'list',
-	) );
-
-	if ( $links ) : 
-
-	?>
-	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'jinn' ); ?></h1>
-                <?php echo wp_kses_post( $links ); ?>
-	</nav><!-- .navigation -->
-	<?php
-	endif;
+        the_posts_pagination( array(               
+            'mid_size'      => 3,
+            'prev_text' => __( '<i class="fa fa-caret-left"></i> Previous', 'jinn' ),
+            'next_text' => __( 'Next <i class="fa fa-caret-right"></i>', 'jinn' ),
+            'type'      => 'list',
+        ));
 }
 endif;
 

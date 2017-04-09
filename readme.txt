@@ -4,8 +4,8 @@ Contributors: jekkilekki
 Tags: blog, portfolio, one-column, two-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 Requires at least: 4.0
-Tested up to: 4.7.2
-Stable tag: 2.0.8
+Tested up to: 4.7.3
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,15 @@ JINN is derived from the _s Components Portfolio (http://components.underscores.
 Underscores WordPress Theme is distributed under the terms of the GNU GPL
 
 == Changelog ==
+
+= 2.1.0 - Apr 8, 2017 =
+
+* Internationalize everything
+* Escape everything
+* Clean up everything
+* Replace custom paging_nav() function with the_posts_navigation()
+* Replace custom archive_title() function with the_archive_title()
+* Remove extraneous files/folders
 
 = 2.0.8 - Feb 8, 2017 =
 
