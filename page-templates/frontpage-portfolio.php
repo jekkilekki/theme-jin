@@ -433,8 +433,8 @@ $incomplete_section_ids = array();
                         
                             <h2 class="page-title"><?php esc_attr__( 'Notifications', 'jinn' ); ?></h2>
                             <div class="entry-content row">
-                                <h4>You have <?php echo esc_attr( $incomplete_sections ); ?> incomplete Front Page sections.</h4>
-                                <p>Click any of the links to <u>learn how to complete that section</u> OR <a href="#">turn off notifications in the Theme Customizer</a></p>
+                                <h4><?php printf( esc_html__('You have %s incomplete Front Page sections.', 'jinn' ), $incomplete_sections ); ?></h4>
+                                <p><?php esc_html_e( 'Complete the sections listed below OR turn off notifications in the Theme Customizer.', 'jinn' ); ?></p>
                                 <ol>
                                 <?php
                                     foreach( $incomplete_section_ids as $incomplete_section_id ) {

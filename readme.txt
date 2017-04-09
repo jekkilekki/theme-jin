@@ -76,6 +76,10 @@ Underscores WordPress Theme is distributed under the terms of the GNU GPL
 
 == Changelog ==
 
+= 2.1.1 - Apr 9, 2017 =
+
+* Minor bug fixes and cleanup
+
 = 2.1.0 - Apr 8, 2017 =
 
 * Internationalize everything

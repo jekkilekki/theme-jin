@@ -210,7 +210,7 @@ function jinn_fancy_excerpt() {
     global $post;
     if( is_archive() ) {
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">' . esc_html__( 'Keep Reading', 'jinn' ) . '</a>'; 
         echo '</div>';
     } elseif ( is_page_template( 'page-templates/page-child-pages.php' ) ) {
         the_excerpt();
@@ -218,7 +218,7 @@ function jinn_fancy_excerpt() {
     } elseif ( has_excerpt() || is_page_template( 'page-templates/frontpage-portfolio.php' ) ) {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">' . esc_html__( 'Keep Reading', 'jinn' ) . '</a>'; 
         echo '</div>';
     } elseif ( strpos ( $post->post_content, '<!--more-->' ) ) {
         the_content();
@@ -227,7 +227,7 @@ function jinn_fancy_excerpt() {
     } else {
         the_excerpt();
         echo '<div class="continue-reading">';
-        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">Keep Reading</a>'; 
+        echo '<a class="more-link" href="' . esc_url( get_permalink() ) . '" title="' . esc_html__( 'Keep Reading ', 'jinn' ) . get_the_title() . '" rel="bookmark">' . esc_html__( 'Keep Reading', 'jinn' ) . '</a>'; 
         echo '</div>';
     }
 }
@@ -236,6 +236,9 @@ function jinn_fancy_excerpt() {
  * Customize the read-more indicator for excerpts
  */
 function jinn_excerpt_more( $more ) {
+    if( is_admin() ) {
+        return $more;
+    }
     return " &hellip;";
 }
 add_filter( 'excerpt_more', 'jinn_excerpt_more' );
@@ -274,18 +277,18 @@ function jinn_author_box() {
         
         if ( ! empty( $display_name ) && ! is_author() ) {          // Don't show this name on an author archive page
             $author_details .= '<h3 class="author-name">';
-            $author_details .= '<a class="fn" href="' . $user_posts . '">' . $display_name . '</a>';
+            $author_details .= '<a class="fn" href="' . esc_url( $user_posts ) . '">' . $display_name . '</a>';
             $author_details .= '</h3>';
         }
         if ( ! empty( $user_desc ) ) 
             $author_details .= '<p class="author-description">' . $user_desc . '</p>';
         
         if ( ! is_author() ) {  // Don't show the meta info on an author archive page
-            $author_details .= '<p class="author-links entry-meta"><span class="vcard">' . esc_html__( 'All posts by', 'jinn' ) . '<a class="fn" href="' . $user_posts . '">' . $display_name . '</a></span>';
+            $author_details .= '<p class="author-links entry-meta"><span class="vcard">' . esc_html__( 'All posts by', 'jinn' ) . '<a class="fn" href="' . esc_url( $user_posts ) . '">' . $display_name . '</a></span>';
 
             // Check if author has a website in their profile
             if ( ! empty( $user_site ) ) 
-                $author_details .= '<a class="author-site" href="' . $user_site . '" target="_blank" rel="nofollow">' . esc_html__( 'Website', 'jinn' ) . '</a></p>';
+                $author_details .= '<a class="author-site" href="' . esc_url( $user_site ) . '" target="_blank" rel="nofollow">' . esc_html__( 'Website', 'jinn' ) . '</a></p>';
             else $author_details .= '</p>';
         }
         

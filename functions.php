@@ -252,7 +252,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file - only if Jetpack is active
  */
-if ( is_plugin_active( 'jetpack/jetpack.php' ) ) {
+if ( class_exists( 'Jetpack') ) {
     require get_template_directory() . '/inc/jetpack.php';
 }
 
