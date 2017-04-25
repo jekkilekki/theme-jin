@@ -51,7 +51,7 @@ get_header(); ?>
                        $args = array(
                            'post_type'     => 'page',
                            'post_parent'   => $post->ID,
-                           'posts_per_page'=> -1,
+                           'posts_per_page'=> 12,
                            'orderby'       => 'title',
                            'order'         => 'ASC'
                        );

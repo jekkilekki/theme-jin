@@ -522,3 +522,32 @@ function jinn_copyright() {
     return $output;
 }
 endif;
+
+
+/**
+ * Display a front page section.
+ *
+ * @param $partial WP_Customize_Partial Partial associated with a selective refresh request.
+ * @param $id integer Front page section to display.
+ */
+function jinn_front_page_section( $partial = null, $page_name = "" ) {
+	if ( is_a( $partial, 'WP_Customize_Partial' ) ) {
+		// Find out the id and set it up during a selective refresh.
+		// Check TwentySeventeen theme if implementing this in the future
+	}
+
+	global $post; // Modify the global post object before setting up post data.
+	if ( get_theme_mod( 'panel_' . $page_name ) ) {
+		global $post;
+		$post = get_post( get_theme_mod( 'panel_' . $page_name ) );
+		setup_postdata( $post );
+		set_query_var( 'panel', $page_name );
+
+		get_template_part( 'template-parts/page/content', 'front-page-panels' );
+
+		wp_reset_postdata();
+	} elseif ( is_customize_preview() ) {
+		// The output placeholder anchor.
+		echo '<article class="panel-placeholder panel jinn-panel jinn-panel-' . $page_name . '" id="panel-' . $page_name . '"><span class="jinn-panel-title">' . sprintf( __( '%1$s Page Placeholder', 'jinn' ), $page_name ) . '</span></article>';
+	}
+}

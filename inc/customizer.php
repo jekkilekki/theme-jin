@@ -167,6 +167,40 @@ function jinn_customize_register( $wp_customize ) {
                 ) );
         
         /**
+	 * Front Page sections 
+	 *
+	 * @since Jinn 2.1.2
+	 *
+	 * @param $page_names array
+	 */
+	$page_names = [ 'services', 'clients', 'about', 'contact' ];
+
+	// Create a setting and control for each of the sections available in the theme.
+	for ( $i = 0; $i < count( $page_names ); $i++ ) {
+		$wp_customize->add_setting( 'panel_' . $page_names[$i], array(
+			'default'           => false,
+			'sanitize_callback' => 'absint',
+//			'transport'         => 'postMessage',
+		) );
+
+		$wp_customize->add_control( 'panel_' . $page_names[$i], array(
+			/* translators: %s is the front page section name */
+			'label'          => sprintf( __( '%s Page Content', 'jinn' ), ucwords( $page_names[$i] ) ),
+			'description'    => ( 0 !== $i ? '' : __( 'Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed.', 'jinn' ) ),
+			'section'        => 'static_front_page',
+			'type'           => 'dropdown-pages',
+			'allow_addition' => true,
+			'active_callback' => 'jinn_is_static_front_page',
+		) );
+
+//		$wp_customize->selective_refresh->add_partial( 'panel_' . $page_names[$i], array(
+//			'selector'            => '#' . $page_names[$i],
+//			'render_callback'     => 'jinn_front_page_section',
+//			'container_inclusive' => true,
+//		) );
+	}
+        
+        /**
          * Show Theme Info
          */
         $wp_customize->add_setting( 'show_theme_info',
@@ -199,6 +233,13 @@ function jinn_customize_register( $wp_customize ) {
                 ));
 }
 add_action( 'customize_register', 'jinn_customize_register' );
+
+/**
+ * Return whether we're previewing the front page and it's a static page.
+ */
+function jinn_is_static_front_page() {
+	return ( is_front_page() && ! is_home() );
+}
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

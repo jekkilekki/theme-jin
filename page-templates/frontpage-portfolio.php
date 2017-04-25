@@ -20,6 +20,8 @@ get_header(); ?>
 
 <?php
 
+// Can probably get rid of Incomplete Sections Warnings with new 
+// Customizer implementation of front page sections
 $incomplete_sections = 0;
 $incomplete_section_ids = array();
 ?>
@@ -32,10 +34,12 @@ $incomplete_section_ids = array();
          * SERVICES SECTION ====================================================
          * /////////////////////////////////////////////////////////////////////
          */
-    
+        if( get_theme_mod( 'panel_services' ) ) :
+                   
                 // FIRST QUERY : Get the 'Services' Page
-                $pagename = 'pagename=' . esc_html__( 'services', 'jinn' );
-                $query = new WP_Query( $pagename );
+                $pagename = get_theme_mod( 'panel_services' );
+                echo $pagename;
+                $query = new WP_Query( array( 'page_id' => $pagename ) );
 
                 // If we have a 'Services' page
                 if( $query->have_posts() ) { ?>
@@ -45,12 +49,10 @@ $incomplete_section_ids = array();
 
                     <?php
                     // SECOND QUERY : Check for Child Pages of 'Services'
-                    $services_id = $query->queried_object->ID;
-
                     $args = array(
                         'post_type'     => 'page',
-                        'post_parent'   => $services_id,
-                        'posts_per_page'=> -1, // This is the parameter passed in to tell how many Service Child Pages to display
+                        'post_parent'   => $pagename,
+                        'posts_per_page'=> 12, // This is the parameter passed in to tell how many Service Child Pages to display
                         'orderby'       => 'rand',
                     );
                     $services_query = new WP_Query( $args );
@@ -120,38 +122,38 @@ $incomplete_section_ids = array();
                 } 
                 ?>
                         
-                    <?php    
+                    <?php  
+        endif;
+        
         /**
          * /////////////////////////////////////////////////////////////////////
          * CLIENTS SECTION =====================================================
          * /////////////////////////////////////////////////////////////////////
          */                 
-                    
+        if( get_theme_mod( 'panel_clients' ) ) :  
+            
                 /*
                  * CLIENTS LOOP : Get ALL individual Client Pages
                  */
-                $pagename = 'pagename=' . esc_html__( 'clients', 'jinn' );
-                $query = new WP_Query( $pagename );
+                $pagename = get_theme_mod( 'panel_clients' );
+                $query = new WP_Query( array( 'page_id' => $pagename ) );
 
                 if ( $query->have_posts() ) { ?>
                     <section id="clients">    
                     
                         <?php
-                        $clients_id = $query->queried_object->ID;
-                        
-                        //remove_all_filters( 'posts_orderby' );
                         // Get the children of the clients page
                         $args = array(
                             'post_type'     => 'page',
-                            'post_parent'   => $clients_id,
-                            'posts_per_page'=> -1,
+                            'post_parent'   => $pagename,
+                            'posts_per_page'=> 24,
                             'orderby'       => 'rand'
                         );
                         $clients_query = new WP_Query( $args );
 
                         // The Loop
                         if ( $clients_query->have_posts() ) {
-                            echo '<h3 class="widget-title front-page-title"><a href="/clients/">' . esc_attr__( 'Clients', 'jinn' ) . '</a></h3>';
+                            echo '<h3 class="widget-title front-page-title"><a href="' . esc_url( home_url( "/clients/" )) . '">' . esc_attr__( 'Clients', 'jinn' ) . '</a></h3>';
                             echo '<ul class="clients-list entry-content row">';
                             while ( $clients_query->have_posts() ) : $clients_query->the_post();
 
@@ -180,6 +182,7 @@ $incomplete_section_ids = array();
                         
                         
                     <?php
+        endif;
         /**
          * /////////////////////////////////////////////////////////////////////
          * HOME SECTION ========================================================
@@ -206,9 +209,11 @@ $incomplete_section_ids = array();
          * /////////////////////////////////////////////////////////////////////
          * ABOUT SECTION =======================================================
          * /////////////////////////////////////////////////////////////////////
-         */                    
-                    $pagename = 'pagename=' . esc_html__( 'about', 'jinn' );
-                    $query = new WP_Query( $pagename );
+         */  
+        if( get_theme_mod( 'panel_about' ) ) :  
+            
+                    $pagename = get_theme_mod( 'panel_about' );
+                    $query = new WP_Query( array( 'page_id' => $pagename ) );
 
                     // The Loop
                     if ( $query->have_posts() ) {
@@ -241,6 +246,7 @@ $incomplete_section_ids = array();
         <!-- END main page content -->        
                         
                     <?php
+        endif;
         /**
          * /////////////////////////////////////////////////////////////////////
          * PROJECTS SECTION ====================================================
@@ -258,7 +264,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
                         <section id="latest-projects" class="group">
 
-                            <h2 class="widget-title front-page-title"><a href="/portfolio/"><?php esc_attr_e( 'Latest Projects', 'jinn' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="<?php echo esc_url( home_url( '/portfolio/' ) ); ?>"><?php esc_attr_e( 'Latest Projects', 'jinn' ); ?></a></h2>
                             <div class="front-page-projects archive row">
 
                             <?php  
@@ -275,7 +281,7 @@ $incomplete_section_ids = array();
                             ?>
 
                             </div>
-                            <a class="button more-link" role="button" href="/portfolio/"><?php esc_attr_e( 'View Full Portfolio &rarr;', 'jinn' ); ?></a>
+                            <a class="button more-link" role="button" href="<?php echo esc_url( home_url( '/portfolio/' ) ); ?>"><?php esc_attr_e( 'View Full Portfolio &rarr;', 'jinn' ); ?></a>
                         </section><!-- #latest-work -->
 
                     <?php
@@ -300,7 +306,7 @@ $incomplete_section_ids = array();
                  */
                     
                     /*
-                     * LOOP : Gets (up to) 8 individual testimonials (images ONLY)
+                     * LOOP : Gets (up to) 10 individual testimonials (images ONLY)
                      */
                     $args = array(
                         'posts_per_page'    => 10,
@@ -364,7 +370,7 @@ $incomplete_section_ids = array();
                     if ( $query->have_posts() ) { ?>
 
                         <section id="blog">
-                            <h2 class="widget-title front-page-title"><a href="/blog/"><?php esc_attr_e( 'Latest Articles', 'jinn' ); ?></a></h2>
+                            <h2 class="widget-title front-page-title"><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_attr_e( 'Latest Articles', 'jinn' ); ?></a></h2>
                             <div class="front-page-blog archive row">
 
                             <?php
@@ -378,7 +384,7 @@ $incomplete_section_ids = array();
                             ?>
                                 
                             </div>
-                            <a class="button more-link" role="button" href="/blog/"><?php esc_attr_e( 'See More Articles &rarr;', 'jinn' ); ?></a>
+                            <a class="button more-link" role="button" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_attr_e( 'See More Articles &rarr;', 'jinn' ); ?></a>
                         </section><!-- #blog -->
 
                     <?php
@@ -395,9 +401,11 @@ $incomplete_section_ids = array();
          * /////////////////////////////////////////////////////////////////////
          * CONTACT SECTION =====================================================
          * /////////////////////////////////////////////////////////////////////
-         */                
-                    $pagename = 'pagename=' . esc_html__( 'contact', 'jinn' );
-                    $query = new WP_Query( $pagename );
+         */ 
+        if( get_theme_mod( 'panel_contact' ) ) :
+                    
+                    $pagename = get_theme_mod( 'panel_contact' );
+                    $query = new WP_Query( array( 'page_id' => $pagename ) );
 
                     // The Loop
                     if ( $query->have_posts() ) { ?>
@@ -422,7 +430,8 @@ $incomplete_section_ids = array();
                     }
                     // Restore original Post Data
                     wp_reset_postdata();
-                  
+        endif;
+                    
         /**
          * /////////////////////////////////////////////////////////////////////
          * WARNINGS SECTION ====================================================

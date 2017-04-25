@@ -75,6 +75,11 @@ Slick Carousel
 
 ## Changelog
 
+### 2.1.2 - Apr 26, 2017
+
+* Hard code front page URLs
+* Add Customizer functions to select front page sections
+
 ### 2.1.1 - Apr 9, 2017
 
 * Minor bug fixes and cleanup

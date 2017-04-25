@@ -5,7 +5,7 @@ Tags: blog, portfolio, one-column, two-columns, left-sidebar, right-sidebar, gri
 
 Requires at least: 4.0
 Tested up to: 4.7.3
-Stable tag: 2.1.0
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,11 @@ JINN is derived from the _s Components Portfolio (http://components.underscores.
 Underscores WordPress Theme is distributed under the terms of the GNU GPL
 
 == Changelog ==
+
+= 2.1.2 - Apr 26, 2017 =
+
+* Hard code front page URLs
+* Add Customizer functions to select front page sections
 
 = 2.1.1 - Apr 9, 2017 =
 
