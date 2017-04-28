@@ -173,7 +173,7 @@ function jinn_customize_register( $wp_customize ) {
 	 *
 	 * @param $page_names array
 	 */
-	$page_names = [ 'services', 'clients', 'about', 'contact' ];
+	$page_names = array( 'services', 'clients', 'about', 'contact' );
 
 	// Create a setting and control for each of the sections available in the theme.
 	for ( $i = 0; $i < count( $page_names ); $i++ ) {

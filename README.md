@@ -1,6 +1,6 @@
 # JINN
 
-`Version 2.1.0`
+`Version 2.1.3`
 
 ![screenshot](https://cloud.githubusercontent.com/assets/6644259/22168820/d1c1c7c0-dfb2-11e6-8bbe-b455cecc9b91.png)
 
@@ -74,6 +74,10 @@ Slick Carousel
 * License: MIT License, http://www.opensource.org/licenses/mit-license.html
 
 ## Changelog
+
+### 2.1.3 - Apr 28, 2017
+
+* Code cleanup
 
 ### 2.1.2 - Apr 26, 2017
 

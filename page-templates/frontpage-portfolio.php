@@ -38,7 +38,6 @@ $incomplete_section_ids = array();
                    
                 // FIRST QUERY : Get the 'Services' Page
                 $pagename = get_theme_mod( 'panel_services' );
-                echo $pagename;
                 $query = new WP_Query( array( 'page_id' => $pagename ) );
 
                 // If we have a 'Services' page
